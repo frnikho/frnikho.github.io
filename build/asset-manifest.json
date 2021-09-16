@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/frnikho/frnikho.github.io/static/css/main.a617e044.chunk.css",
+    "main.js": "/frnikho/frnikho.github.io/static/js/main.237843ce.chunk.js",
+    "main.js.map": "/frnikho/frnikho.github.io/static/js/main.237843ce.chunk.js.map",
+    "runtime-main.js": "/frnikho/frnikho.github.io/static/js/runtime-main.be49ab8f.js",
+    "runtime-main.js.map": "/frnikho/frnikho.github.io/static/js/runtime-main.be49ab8f.js.map",
+    "static/js/2.d430c3b1.chunk.js": "/frnikho/frnikho.github.io/static/js/2.d430c3b1.chunk.js",
+    "static/js/2.d430c3b1.chunk.js.map": "/frnikho/frnikho.github.io/static/js/2.d430c3b1.chunk.js.map",
+    "static/js/3.25af404f.chunk.js": "/frnikho/frnikho.github.io/static/js/3.25af404f.chunk.js",
+    "static/js/3.25af404f.chunk.js.map": "/frnikho/frnikho.github.io/static/js/3.25af404f.chunk.js.map",
+    "index.html": "/frnikho/frnikho.github.io/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/frnikho/frnikho.github.io/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.d430c3b1.chunk.js.LICENSE.txt": "/frnikho/frnikho.github.io/static/js/2.d430c3b1.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/frnikho/frnikho.github.io/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.be49ab8f.js",
+    "static/js/2.d430c3b1.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.237843ce.chunk.js"
+  ]
+}
