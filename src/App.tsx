@@ -1,25 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import wip from './wip.json';
+import Lottie from "react-lottie";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+          <p className={"title"}>En construction....</p>
+          <Lottie height={400} width={400} options={{loop: true, autoplay: true, animationData: wip}}/>
+          <div className={"contact"}>
+              <a href={"mailto:contact@nikho.dev"}><p>contact@nikho.dev</p></a>
+              <p>SANS Nicolas - 2024</p>
+          </div>
+      </div>
   );
 }
 
