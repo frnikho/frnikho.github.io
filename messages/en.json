@@ -1,4 +1,10 @@
 {
+  "TopBar": {
+    "home": "Home",
+    "projects": "Projects",
+    "services": "Services",
+    "contact": "Contact"
+  },
   "Home": {
 
   },

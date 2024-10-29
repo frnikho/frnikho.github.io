@@ -1,9 +1,14 @@
+import createNextIntlPlugin from "next-intl/plugin";
+import {NextConfig} from "next";
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
     output: 'standalone',
     eslint: {
         ignoreDuringBuilds: true,
     }
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl(nextConfig);
