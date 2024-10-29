@@ -1,0 +1,38 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL") // uses connection pooling
+}
+
+model Projects {
+  id        String   @id @default(cuid())
+  name      String
+  description String
+  created_at DateTime @default(now())
+  tags String[]
+}
+
+model Contacts {
+  id  String  @id @default(cuid())
+  firstname String
+  lastname String
+  email String
+  company String?
+  created_at DateTime @default(now())
+}
+
+model Info {
+  id  String
+  available AvailableStatus
+}
+
+enum AvailableStatus {
+  FullTime
+  PartTime
+  NotAvailable
+}
