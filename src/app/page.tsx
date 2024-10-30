@@ -8,7 +8,7 @@ import ContactCard from "@/components/contacts/ContactCard";
 
 export default async function Home() {
     return (
-        <div className={"flex flex-col w-11/12 lg:w-8/12 m-auto gap-24"}>
+        <div className={"flex flex-col w-11/12 xl:w-8/12 m-auto gap-24"}>
             <CookiesProvider>
                 <TopBar/>
             </CookiesProvider>

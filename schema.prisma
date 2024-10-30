@@ -13,6 +13,8 @@ model Projects {
   id          String   @id @default(cuid())
   name        String
   description String
+  picture     String
+  link        String
   created_at  DateTime @default(now())
   tags        String[]
 }
@@ -27,8 +29,16 @@ model Contacts {
 }
 
 model Info {
-  id        String          @id @default(cuid())
-  available AvailableStatus
+  id          String          @id @default(cuid())
+  available   AvailableStatus
+  info        String
+  infoPicture String
+}
+
+model SocialNetworks {
+  id   String @id @default(cuid())
+  name String
+  link String
 }
 
 enum AvailableStatus {

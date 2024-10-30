@@ -23,7 +23,8 @@ const config: Config = {
         'card-background': '#EBEBEB',
         'dark': '#1c1c1c',
         'card-icon': '#E4E4E4',
-        'input': '#D9D9D9'
+        'input': '#D9D9D9',
+        'darkblue-pastel': '#71BAFF',
       },
       fontFamily: {
         prompt: ['var(--font-prompt)']

@@ -1,10 +1,15 @@
 import Image from "next/image";
+import prisma from "@/libs/prisma";
 
 let content = 'Salut 👋\nabc'
-
 let stacks = [{src: '/github.png', alt: 'Github', link: 'https://github.com/frnikho'}, {src: '/linkedin.png', alt: 'Linkedin', link: 'https://www.linkedin.com/in/nicosans/'}, {src: '/dailydev.png', alt: 'Daily Dev', link: 'https://app.daily.dev/nikho'}];
 
-export default function MyInfoCard() {
+export default async function MyInfoCard() {
+
+    const info = await prisma.info.findFirst();
+
+    console.log(info);
+
     return (
         <div className={"w-full bg-card-background rounded-2xl relative flex flex-row gap-2"}>
             <div className={"w-9/12 p-8 flex flex-col justify-between"}>
