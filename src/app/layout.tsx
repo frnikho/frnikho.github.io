@@ -9,6 +9,9 @@ const inter = Prompt({ subsets: ["latin"], weight: ["100", "200", '300', '400', 
 export const metadata: Metadata = {
   title: "SANS Nicolas - Portfolio",
   description: "",
+    icons: {
+      icon: '/favicon.ico'
+    }
 };
 
 export default async function RootLayout({
@@ -18,12 +21,12 @@ export default async function RootLayout({
 }>) {
 
   return (
-    <html lang={await getLocale()}>
-      <body className={`${inter.className} bg-white-pastel dark:bg-dark`}>
-          <NextIntlClientProvider messages={await getMessages()}>
-              {children}
-          </NextIntlClientProvider>
-      </body>
-    </html>
+      <html lang={await getLocale()}>
+          <body className={`${inter.className} bg-white-pastel dark:bg-dark`}>
+              <NextIntlClientProvider messages={await getMessages()}>
+                  {children}
+              </NextIntlClientProvider>
+          </body>
+      </html>
   );
 }

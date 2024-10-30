@@ -21,7 +21,6 @@ export default function ProjectList() {
                         <Project/>
                         <Project/>
                         <Project/>
-                        <Project/>
                     </div>
                     <div className={"self-center"}>
                        <button className={'m-4'}>abc</button>

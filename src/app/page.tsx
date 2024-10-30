@@ -15,7 +15,7 @@ export default async function Home() {
             <Hero/>
             <MyInfoCard/>
             <ProjectList/>
-            <ServiceList/>
+            {/*<ServiceList/>*/}
             <ContactCard/>
         </div>
     );
