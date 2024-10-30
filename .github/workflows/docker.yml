@@ -51,3 +51,7 @@ jobs:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+      - name: 'Webhook to autodeploy site'
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.APP_DEPLOY_WEBHOOK }}
