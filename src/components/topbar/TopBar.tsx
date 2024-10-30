@@ -31,13 +31,20 @@ export default function TopBar() {
         setDarkMode(!isDarkMode)
     }
 
+    const moveTo= (top: number) => {
+        window.scroll({
+            top,
+            behavior: 'smooth'
+        });
+    }
+
     return (
         <div className={"flex flex-row w-full justify-between h-16"}>
             <div className={"flex flex-row items-center gap-20"}>
-                <p className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark"}>{t('home')}</p>
-                <p className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark"}>{t('projects')}</p>
-                <p className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark"}>{t('services')}</p>
-                <p className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark"}>{t('contact')}</p>
+                <p onClick={() => moveTo(0)} className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('home')}</p>
+                <p onClick={() => moveTo(900)} className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('projects')}</p>
+                <p onClick={() => moveTo(2200)} className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('services')}</p>
+                <p onClick={() => moveTo(2200)} className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('contact')}</p>
             </div>
             <div className={"flex flex-row-reverse items-center gap-16"}>
                 <button>Un projet ?</button>

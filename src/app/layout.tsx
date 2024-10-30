@@ -19,7 +19,7 @@ export default async function RootLayout({
 
   return (
     <html lang={await getLocale()}>
-      <body className={`${inter.className} bg-white-pastel dark:bg-blue-950`}>
+      <body className={`${inter.className} bg-white-pastel dark:bg-dark`}>
           <NextIntlClientProvider messages={await getMessages()}>
               {children}
           </NextIntlClientProvider>

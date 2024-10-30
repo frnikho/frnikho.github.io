@@ -14,22 +14,22 @@ export function Sun() {
             <g clipPath="url(#clip0_68_118)">
                 <path
                     d="M12.5354 17.8415C15.2968 17.8415 17.5354 15.6029 17.5354 12.8415C17.5354 10.0801 15.2968 7.84149 12.5354 7.84149C9.77398 7.84149 7.5354 10.0801 7.5354 12.8415C7.5354 15.6029 9.77398 17.8415 12.5354 17.8415Z"
-                    stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12.5354 1.84149V3.84149" stroke="black" strokeWidth="2" strokeLinecap="round"
+                    stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12.5354 1.84149V3.84149" stroke="white" strokeWidth="2" strokeLinecap="round"
                       strokeLinejoin="round"/>
-                <path d="M12.5354 21.8415V23.8415" stroke="black" strokeWidth="2" strokeLinecap="round"
+                <path d="M12.5354 21.8415V23.8415" stroke="white" strokeWidth="2" strokeLinecap="round"
                       strokeLinejoin="round"/>
-                <path d="M4.75537 5.06146L6.17537 6.48146" stroke="black" strokeWidth="2" strokeLinecap="round"
+                <path d="M4.75537 5.06146L6.17537 6.48146" stroke="white" strokeWidth="2" strokeLinecap="round"
                       strokeLinejoin="round"/>
-                <path d="M18.8954 19.2015L20.3154 20.6215" stroke="black" strokeWidth="2" strokeLinecap="round"
+                <path d="M18.8954 19.2015L20.3154 20.6215" stroke="white" strokeWidth="2" strokeLinecap="round"
                       strokeLinejoin="round"/>
-                <path d="M1.5354 12.8415H3.5354" stroke="black" strokeWidth="2" strokeLinecap="round"
+                <path d="M1.5354 12.8415H3.5354" stroke="white" strokeWidth="2" strokeLinecap="round"
                       strokeLinejoin="round"/>
-                <path d="M21.5354 12.8415H23.5354" stroke="black" strokeWidth="2" strokeLinecap="round"
+                <path d="M21.5354 12.8415H23.5354" stroke="white" strokeWidth="2" strokeLinecap="round"
                       strokeLinejoin="round"/>
-                <path d="M4.75537 20.6215L6.17537 19.2015" stroke="black" strokeWidth="2" strokeLinecap="round"
+                <path d="M4.75537 20.6215L6.17537 19.2015" stroke="white" strokeWidth="2" strokeLinecap="round"
                       strokeLinejoin="round"/>
-                <path d="M18.8954 6.48146L20.3154 5.06146" stroke="black" strokeWidth="2" strokeLinecap="round"
+                <path d="M18.8954 6.48146L20.3154 5.06146" stroke="white" strokeWidth="2" strokeLinecap="round"
                       strokeLinejoin="round"/>
             </g>
             <defs>

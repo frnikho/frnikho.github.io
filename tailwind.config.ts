@@ -9,6 +9,10 @@ const config: Config = {
   darkMode: 'selector',
   theme: {
     extend: {
+      transitionDuration: {
+        '150': '150ms',
+        '250': '250ms',
+      },
       colors: {
         'white-pastel': '#F4F3EE',
         'blue-pastel': '#BDD2E5',
@@ -17,6 +21,9 @@ const config: Config = {
         'primary-text': '#303030',
         'primary-text-dark': '#FEFEFE',
         'card-background': '#EBEBEB',
+        'dark': '#1c1c1c',
+        'card-icon': '#E4E4E4',
+        'input': '#D9D9D9'
       },
       fontFamily: {
         prompt: ['var(--font-prompt)']
