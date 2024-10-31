@@ -17,6 +17,14 @@
   "Contact": {
     "title": "Contact",
     "subtitle": "Want to chat ?",
-    "message": "Contact me via this form and I'll get back to you as soon as possible."
+    "message": "Contact me via this form and I'll get back to you as soon as possible.",
+    "form": {
+      "firstname": "* Firstname",
+      "lastname": "* Lastname",
+      "email": "* Email address",
+      "company": "Company",
+      "message": "* Your message...."
+    },
+    "send-btn": "Send"
   }
 }

@@ -9,7 +9,7 @@ export type ProjectData = {
 }
 
 export const getAllTags = (): String[] => {
-    return Array.from(new Set<String>(allProjects.map((a) => a.tags).flat()))
+    return ['All', ...Array.from(new Set<String>(allProjects.map((a) => a.tags).flat()))]
 }
 
 export const allProjects: ProjectData[] = [
@@ -23,13 +23,13 @@ export const allProjects: ProjectData[] = [
         stack: ['Docker', 'NestJS', 'React'],
     },
     {
-        name: 'MyRPG',
-        link: 'https://github.com/frnikho/Epitech_rpg',
-        description: 'MyRPG est un projet Epitech de premère année qui a pour but de créer un RPG en C avec comme seul librairie la CSFM',
-        stack: ['C'],
-        tags: ['Game'],
-        photo: '/projects/my_rpg.png',
-        created_at: new Date('2019-06-01')
+        name: 'Trip planner',
+        description: 'Trip planner est un projet web qui a pour but de développer une web app pour planifier un trajet',
+        link: '',
+        created_at: new Date('2023-09-01'),
+        photo: '/projects/trip_planner.png',
+        stack: ['NestJS', 'NextJS'],
+        tags: ['Web', 'Api']
     },
     {
         name: 'fbx-cli',
@@ -54,18 +54,9 @@ export const allProjects: ProjectData[] = [
         description: 'T-Cloud est un projet d\'école qui a pour but de monter sois-même un cluster kube bare metal avec 3 noeuds, avec de l\'IaS, du DevOps et du GitOps',
         link: '',
         tags: ['DevOps'],
-        stack: ['Kubernetes', 'Docker', 'Terraform'],
+        stack: ['Kubernetes', 'Docker', 'Terraform', 'Grafana', 'Ansible'],
         photo: '/bg.png',
         created_at: new Date('2024-04-01')
-    },
-    {
-        name: 'Trip planner',
-        description: 'Trip planner est un projet web qui a pour but de développer une web app pour planifier un trajet',
-        link: '',
-        created_at: new Date('2023-09-01'),
-        photo: '/projects/trip_planner.png',
-        stack: ['NestJS', 'NextJS'],
-        tags: ['Web', 'Api']
     },
     {
         name: 'ARGames',
@@ -75,5 +66,14 @@ export const allProjects: ProjectData[] = [
         photo: '/projects/argames.png',
         stack: ['Unity', 'C#', 'C++', 'C'],
         tags: ['Game', 'IoT']
-    }
+    },
+    {
+        name: 'MyRPG',
+        link: 'https://github.com/frnikho/Epitech_rpg',
+        description: 'MyRPG est un projet Epitech de premère année qui a pour but de créer un RPG en C avec comme seul librairie la CSFM',
+        stack: ['C'],
+        tags: ['Game'],
+        photo: '/projects/my_rpg.png',
+        created_at: new Date('2019-06-01')
+    },
 ];

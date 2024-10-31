@@ -17,6 +17,14 @@
   "Contact": {
     "title": "Contact",
     "subtitle": "Vous souhaitez discuter ?",
-    "message": "Contactez-moi via ce formulaire, je vous répondrai dans les meilleurs délais."
+    "message": "Contactez-moi via ce formulaire, je vous répondrai dans les meilleurs délais.",
+    "form": {
+      "firstname": "* Prénom",
+      "lastname": "* Nom",
+      "email": "* Adresse email",
+      "company": "Entreprise",
+      "message": "* Votre message...."
+    },
+    "send-btn": "Envoyer"
   }
 }

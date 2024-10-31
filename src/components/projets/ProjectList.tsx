@@ -13,7 +13,7 @@ export default function ProjectList() {
 
     const projects = useMemo(() => {
         console.log(filter);
-        return allProjects.filter((p) => p.tags.map((a) => a.toLowerCase()).includes(filter.toLowerCase()));
+        return allProjects.filter((p) => filter === 'All' ? true : p.tags.map((a) => a.toLowerCase()).includes(filter.toLowerCase()));
     }, [filter]);
     return (
         <div className={"flex flex-col gap-10"}>
@@ -24,8 +24,13 @@ export default function ProjectList() {
                     <div className={"grid lg:grid-cols-2 gap-4 lg:gap-8"}>
                         {projects.map((p) => <Project key={p.name} project={p}/>)}
                     </div>
-                    <div className={"self-center"}>
-                       <button className={'m-4'}>{t('see-all')}</button>
+                    <div className={"self-center mt-4 relative"}>
+                        <a href={'https://github.com/frnikho?tab=repositories'} target={'_blank'}>
+                            <button
+                                className={'bg-red-pastel px-8 py-1 rounded-2xl text-white text-lg cursor-pointer active:translate-y-1'}>{t('see-all')}
+                            </button>
+                        </a>
+                    <p className={"absolute bg-[#d96961] w-full mt-2 h-full rounded-2xl top-0 left-0 -z-10"}></p>
                     </div>
                 </div>
             </div>
@@ -33,7 +38,7 @@ export default function ProjectList() {
     )
 }
 
-export function FilterBar({onChangeFilter}: {onChangeFilter: (filter: String) => void}) {
+export function FilterBar({onChangeFilter}: { onChangeFilter: (filter: String) => void}) {
 
     const [selected, setSelected] = useState(0);
 
