@@ -11,7 +11,7 @@ export default function ProjectList() {
 
     const t = useTranslations('Projects');
 
-    const [filter, setFilter] = useState(allFilters[0]);
+    const [_, setFilter] = useState(allFilters[0]);
 
     return (
         <div className={"flex flex-col gap-10"}>
