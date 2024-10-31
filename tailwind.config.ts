@@ -9,6 +9,12 @@ const config: Config = {
   darkMode: 'selector',
   theme: {
     extend: {
+      scale: {
+        '60': '0.60'
+      },
+      borderWidth: {
+        '1': '1px'
+      },
       transitionDuration: {
         '150': '150ms',
         '250': '250ms',

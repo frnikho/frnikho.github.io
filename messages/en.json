@@ -3,12 +3,20 @@
     "home": "Home",
     "projects": "Projects",
     "services": "Services",
-    "contact": "Contact"
+    "contact": "Contact",
+    "project-btn": "A project ?"
   },
   "Home": {
-
+    "developer": "Developer",
+    "message": "Hello \uD83D\uDC4B\nThis site is currently under development to offer you an overview of my work and skills. Very soon, you'll be able to explore my projects in detail, discover my experiences and see how my solutions adapt to everyone's needs.\nStay tuned for new features and content coming soon!"
   },
   "Projects": {
-
+    "title": "Projects",
+    "see-all": "See all"
+  },
+  "Contact": {
+    "title": "Contact",
+    "subtitle": "Want to chat ?",
+    "message": "Contact me via this form and I'll get back to you as soon as possible."
   }
 }

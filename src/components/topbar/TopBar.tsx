@@ -46,10 +46,10 @@ export default function TopBar() {
                 <p onClick={() => moveTo(2200)} className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('services')}</p>
                 <p onClick={() => moveTo(2200)} className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('contact')}</p>
             </div>
-            <div className={"flex flex-row-reverse items-center gap-16"}>
+            <div className={"flex flex-row-reverse items-center gap-16 ml-auto"}>
                 <button className={"bg-blue-pastel px-4 py-1.5 relative rounded-xl"}>
                     <div className={"rounded-xl absolute bg-darkblue-pastel h-full w-full -z-10 -mx-2"}></div>
-                    <p className={"uppercase font-semibold text-primary-text"}>Un projet ?</p>
+                    <p className={"uppercase font-semibold text-primary-text"}>{t('project-btn')}</p>
                 </button>
                 <div className={"flex flex-row gap-4 items-center justify-center"}>
                     <div className={"cursor-pointer"} onClick={changeTheme}>
