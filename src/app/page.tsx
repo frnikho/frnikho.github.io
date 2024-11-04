@@ -4,6 +4,7 @@ import MyInfoCard from "@/components/home/MyInfoCard";
 import {CookiesProvider} from "next-client-cookies/server";
 import ProjectList from "@/components/projets/ProjectList";
 import ContactCard from "@/components/contacts/ContactCard";
+import ServiceList from "@/components/services/ServiceList";
 
 export default async function Home() {
     return (
