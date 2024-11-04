@@ -9,10 +9,10 @@ export default function MyInfoCard() {
     const t = useTranslations('Home');
 
     return (
-        <div className={"w-full bg-card-background rounded-2xl relative flex flex-col lg:flex-row gap-2"}>
+        <div className={"w-full bg-card-background dark:bg-dark-card-background rounded-2xl relative flex flex-col lg:flex-row gap-2"}>
             <div className={"lg:w-9/12 p-8 flex flex-col justify-between"}>
                 <div>
-                    <p className={"text-primary-text whitespace-break-spaces"}>{t('message')}</p>
+                    <p className={"text-primary-text dark:text-primary-text-dark whitespace-break-spaces"}>{t('message')}</p>
                 </div>
                 <div className={'flex flex-row gap-5 mt-4'}>
                     {stacks.map((s) => <a className={"self-center"} key={s.alt} target={'_blank'} href={s.link}><Image className={'items-center self-center cursor-pointer'} src={s.src} alt={s.alt} width={36} height={36}/></a>)}

@@ -56,8 +56,8 @@ export default function TopBar() {
                         {isDarkMode ? <Sun/> : <Moon/>}
                     </div>
                     <div className={"cursor-pointer"} onClick={changeLanguage}>
-                        {local === 'en' ? <p>EN</p> : null}
-                        {local === 'fr' ? <p>FR</p> : null}
+                        {local === 'en' ? <p className={"text-primary-text dark:text-primary-text-dark"}>EN</p> : null}
+                        {local === 'fr' ? <p className={"text-primary-text dark:text-primary-text-dark"}>FR</p> : null}
                     </div>
                 </div>
             </div>

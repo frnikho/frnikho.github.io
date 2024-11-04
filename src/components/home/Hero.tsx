@@ -17,11 +17,11 @@ export default function Hero() {
                                height={1000}></Image>
                         <p className={"absolute right-0 bottom-0 -m-2 bg-green-pastel rounded-full h-5 w-5"}></p>
                     </div>
-                    <p className={"text-nowrap font-medium text-2xl text-primary-text"}>SANS Nicolas</p>
+                    <p className={"text-nowrap font-medium text-2xl text-primary-text dark:text-primary-text-dark"}>SANS Nicolas</p>
                 </div>
                 <div
                     className={"w-7/12 items-center flex justify-center scale-60 sm:scale-75 lg:scale-100 -translate-x-16 lg:-translate-x-0"}>
-                    <h1 className={"text-4xl lg:text-5xl font-semibold uppercase text-primary-text"}>{t('developer')}</h1>
+                    <h1 className={"text-4xl lg:text-5xl font-semibold uppercase text-primary-text dark:text-primary-text-dark"}>{t('developer')}</h1>
                     <div className={"relative flex ml-4 lg:ml-10"}>
                         <p className={"absolute bg-white bottom-0 top-0 m-auto self-center py-1.5 w-52 lg:w-60 text-center rounded-full text-2xl font-bold text-primary-text "}>Fullstack</p>
                         <p className={"absolute bg-blue-pastel bottom-0 top-4 left-3 group-hover:top-24 group-hover:left-6 transition-all m-auto self-center py-1.5 w-52 lg:w-60 text-center rounded-full text-2xl font-bold text-primary-text duration-150"}>Salesforce</p>

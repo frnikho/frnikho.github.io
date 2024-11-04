@@ -27,9 +27,11 @@ const config: Config = {
         'primary-text': '#303030',
         'primary-text-dark': '#FEFEFE',
         'card-background': '#EBEBEB',
+        'dark-card-background': '#343434',
         'dark': '#1c1c1c',
         'card-icon': '#E4E4E4',
         'input': '#D9D9D9',
+        'dark-input': '#5A5A5A',
         'darkblue-pastel': '#71BAFF',
       },
       fontFamily: {

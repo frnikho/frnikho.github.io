@@ -11,6 +11,7 @@
   "dependencies": {
     "@prisma/client": "^5.21.1",
     "autoprefixer": "^10.4.20",
+    "lottie-web": "^5.12.2",
     "next": "15.0.1",
     "next-client-cookies": "^2.0.0",
     "next-intl": "^3.23.5",

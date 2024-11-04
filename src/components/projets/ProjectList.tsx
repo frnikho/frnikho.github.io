@@ -17,7 +17,7 @@ export default function ProjectList() {
     }, [filter]);
     return (
         <div className={"flex flex-col gap-10"}>
-            <h1 className={"text-4xl font-semibold text-primary-text"}>{t('title')}</h1>
+            <h1 className={"text-4xl font-semibold text-primary-text dark:text-primary-text-dark "}>{t('title')}</h1>
             <div className={"flex flex-col gap-6"}>
                 <FilterBar onChangeFilter={setFilter}/>
                 <div className={"flex flex-col"}>
@@ -50,7 +50,7 @@ export function FilterBar({onChangeFilter}: { onChangeFilter: (filter: String) =
     return (
         <div className={"flex flex-row gap-x-4 gap-y-2 flex-wrap"}>
             {getAllTags().map((f, i) => <div key={`${f}`} className={`${i === selected ? 'bg-red-pastel text-white border-black border-opacity-15' : 'border-primary-text border-opacity-15 text-primary-text'} px-4 lg:px-10 py-0.5 lg:py-1.5 rounded-full border-1 cursor-pointer transition-all`} onClick={() => onChange(i)}>
-                <p className={"text-md"}>{f}</p>
+                <p className={"text-md text-primary-text dark:text-primary-text-dark "}>{f}</p>
             </div>)}
         </div>
     )
