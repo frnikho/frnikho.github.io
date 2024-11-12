@@ -3,6 +3,7 @@ import { Prompt } from "next/font/google";
 import "./globals.css";
 import {NextIntlClientProvider} from "next-intl";
 import {getLocale, getMessages} from "next-intl/server";
+import { AptabaseProvider } from '@aptabase/react';
 
 const inter = Prompt({ subsets: ["latin"], weight: ["100", "200", '300', '400', '500', '600', '700'], variable: '--font-prompt' });
 
@@ -32,9 +33,11 @@ export default async function RootLayout({
   return (
       <html lang={await getLocale()}>
       <body className={`${inter.className} bg-white-pastel dark:bg-dark`}>
-      <NextIntlClientProvider messages={await getMessages()}>
-          {children}
-      </NextIntlClientProvider>
+      <AptabaseProvider appKey="A-SH-2055091501">
+        <NextIntlClientProvider messages={await getMessages()}>
+            {children}
+        </NextIntlClientProvider>
+      </AptabaseProvider>
       </body>
       </html>
   );
