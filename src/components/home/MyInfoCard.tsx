@@ -19,7 +19,7 @@ export default function MyInfoCard() {
                 </div>
             </div>
             <div className={"lg:w-6/12 p-8"}>
-                <Image className={"rounded-xl object-cover"} src={'/bg.png'} alt={''} width={600} height={0}/>
+                <Image className={"rounded-xl object-cover"} src={'/cover.svg'} alt={''} width={1000} quality={100} height={0}/>
             </div>
             <div className={"absolute w-full h-full m-4 bg-gray-500 -z-10 rounded-2xl opacity-20"}></div>
         </div>

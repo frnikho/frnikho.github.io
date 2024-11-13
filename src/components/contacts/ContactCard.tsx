@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import {useTranslations} from "next-intl";
 import {HTMLInputTypeAttribute, useCallback, useMemo, useState} from "react";
+import {useAptabase} from "@aptabase/react";
 
 type ContactResult = {
     type: 'error' | 'success' | 'not-send';
@@ -23,6 +24,7 @@ export default function ContactCard() {
     const [contactResult, setContactResult] = useState<ContactResult>({type: 'not-send', message: ''});
     const [form, setForm] = useState<ContactForm>({company: '', email: '', firstname: '', lastname: '', message: ''});
     const [loading, setLoading] = useState(false);
+    const { trackEvent } = useAptabase();
 
     const check = useMemo((): boolean => {
         if (form.firstname.length <= 1 || form.lastname.length <= 1 || form.message.length <= 5)
@@ -35,6 +37,7 @@ export default function ContactCard() {
         if (loading || !check)
             return;
         setLoading(true);
+        trackEvent('send_contact_form');
         fetch('/contact', {method: 'POST', body: JSON.stringify(form)}).then(((r) => {
             if (r.status !== 200) {
                 return setContactError();

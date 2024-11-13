@@ -12,7 +12,6 @@ export default function ProjectList() {
     const [filter, setFilter] = useState(getAllTags()[0]);
 
     const projects = useMemo(() => {
-        console.log(filter);
         return allProjects.filter((p) => filter === 'All' ? true : p.tags.map((a) => a.toLowerCase()).includes(filter.toLowerCase()));
     }, [filter]);
     return (

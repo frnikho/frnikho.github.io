@@ -33,7 +33,7 @@ export default async function RootLayout({
   return (
       <html lang={await getLocale()}>
       <body className={`${inter.className} bg-white-pastel dark:bg-dark`}>
-      <AptabaseProvider appKey="A-SH-2055091501">
+      <AptabaseProvider appKey="A-SH-2910616357" options={{host: 'https://analytics.nikho.dev', isDebug: false}}>
         <NextIntlClientProvider messages={await getMessages()}>
             {children}
         </NextIntlClientProvider>
