@@ -51,6 +51,10 @@ export default function ContactCard() {
     return (
         <div className={"flex flex-col gap-10"}>
             <h1 className={"text-4xl font-semibold text-primary-text dark:text-primary-text-dark rounded-3xl"}>{t('title')}</h1>
+            <div className={"absolute w-full -z-50 -mx-[15%]"}>
+            <div className={"relative rounded-md bg-[#ececec] w-44 h-44 animate-rotate-infinite"}></div>
+            <div className={"relative rounded-full bg-[#ececec] -mt-10 w-44 h-44 animate-rotate-infinite -right-[80%]"}></div>
+            </div>
             <div className={"flex flex-row bg-card-background dark:bg-dark-card-background p-6 rounded-2xl gap-8"}>
                 <div className={"w-full lg:w-8/12 flex flex-col gap-2 z-20"}>
                     <h2 className={"text-2xl font-semibold text-primary-text dark:text-primary-text-dark"}>{t('subtitle')}</h2>

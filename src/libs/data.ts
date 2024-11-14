@@ -9,7 +9,7 @@ export type ProjectData = {
 }
 
 export const getAllTags = (): String[] => {
-    return ['All', ...Array.from(new Set<String>(allProjects.map((a) => a.tags).flat()))]
+    return [...Array.from(new Set<String>(allProjects.map((a) => a.tags).flat()))]
 }
 
 export const allProjects: ProjectData[] = [

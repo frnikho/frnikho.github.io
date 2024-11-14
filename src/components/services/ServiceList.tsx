@@ -1,6 +1,5 @@
 'use client';
 
-import lottie from 'lottie-web';
 import {useEffect, useMemo, useRef, useState} from "react";
 
 type ServiceKind = 'Application' | 'Mobile' | 'Salesforce' | 'DevOps';
@@ -132,21 +131,34 @@ export function ServiceCard({services, kind}: {services: Service[], kind: string
     const animationContainer = useRef(null);
 
     useEffect(() => {
+        if (!animationContainer)
+            return;
         const animation = animations.find((a) => a.kind === kind)!;
-        lottie.loadAnimation({
-            container: animationContainer.current!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: animation.url,
-        });
-        return () => lottie.destroy();
+        initAnimation(animation.url);
     }, [services]);
 
     const getAnimationsScale = useMemo(() => {
         const animation = animations.find((a) => a.kind === kind)!;
         return animation.scale;
     }, [services]);
+
+    const initAnimation = async (animationUrl: string) => {
+        
+        const lot = await import("lottie-web/build/player/lottie_light");
+        lot.default.destroy();
+        lot.default.loadAnimation({
+            container: animationContainer.current!,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: animationUrl,
+        });
+    }
+
+    const deleteAnimation = async () => {
+        const lot = await import("lottie-web/build/player/lottie_light");
+        return lot.default.destroy();
+    }
 
     return (
         <>

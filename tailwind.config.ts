@@ -9,6 +9,17 @@ const config: Config = {
   darkMode: 'selector',
   theme: {
     extend: {
+      keyframes: {
+        rotate: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+      },
+      animation: {
+        'rotate-infinite-quick': 'rotate 10s linear infinite',
+        'rotate-infinite': 'rotate 20s linear infinite',
+        'rotate-infinite-slow': 'rotate 30s linear infinite',
+      },
       scale: {
         '60': '0.60'
       },
@@ -26,7 +37,7 @@ const config: Config = {
         'green-pastel': '#B3F5BC',
         'primary-text': '#303030',
         'primary-text-dark': '#FEFEFE',
-        'card-background': '#EBEBEB',
+        'card-background': '#ececec',
         'dark-card-background': '#343434',
         'dark': '#1c1c1c',
         'card-icon': '#E4E4E4',

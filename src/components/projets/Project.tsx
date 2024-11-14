@@ -7,9 +7,9 @@ type Props = {
 
 export default function Project({project}: Props) {
     return (
-        <div className={'w-full relative bg-card-background dark:bg-dark-card-background rounded-3xl group flex flex-col'}>
+        <div className={'w-full relative bg-card-background dark:bg-dark-card-background rounded-xl group flex flex-col'}>
             <div className={"relative h-80 w-full overflow-hidden"}>
-                <Image className={"rounded-3xl object-top object-cover group-hover:opacity-70 transition-all"}
+                <Image className={"rounded-t-xl object-top object-cover group-hover:opacity-70 transition-all"}
                        src={project.photo}
                        alt={''} width={1000} height={0} style={{width: '100%', height: '100%'}}/>
                 {/*<div*/}
