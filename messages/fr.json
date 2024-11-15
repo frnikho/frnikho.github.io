@@ -9,11 +9,111 @@
   "Home": {
     "developer": "Développeur",
     "": "Bienvenue sur mon portfolio, Je suis Nicolas SANS, développeur fullstack confirmé 👋\n\nDiplômé de cinq années d'études à Epitech Nantes, je suis actuellement freelance",
-    "message": "Salut ! Je suis Nicolas, développeur fullstack passionné par les solutions robustes, fiables et innovantes 🚀\n\nDiplômé de cinq années d'études à Epitech Nantes, j'ai forgé mon expertise à travers des missions en tant que consultant et développeur Salesforce chez Capgemini NANTES, où je poursuis actuellement mon aventure. Passionné par les défis techniques et toujours à la recherche de solutions efficientes, je me spécialise en Rust 🦀, un langage performant qui me permet de concevoir des projets à faible consommation de ressources, contribuant à une approche plus écologique du développement.\n\nMon parcours m'a permis de développer des solutions variées, allant d’applications mobiles natives et cross-plateformes en React Native et Flutter 📱, à des projets IoT avec ESP32 en C et C++. J'ai également conçu un SaaS en React, NestJS et MongoDB durant mes études pour répondre à des besoins concrets de mes collègues.\n\nEn parallèle, j'ai construit et administré un cluster Kubernetes bare-metal, accompagné d'une architecture GitOps, assurant un déploiement automatisé et fiable de solutions.\n\nJe suis sérieux, adaptable, et j’apprécie autant la conception que le déploiement de projets complexes. Mon expérience comprend également la mise en œuvre de solutions robustes sur AWS et Azure, avec une expertise éprouvée sur des projets à grande échelle (jusqu’à 300 000 clients).\n\nJe suis actuellement ouvert aux missions à mi-temps. Contactez-moi pour discuter de vos projets !"
+    "message": "Hello \uD83D\uDC4B\nJe suis Nicolas SANS, un développeur fullstack confirmé passionné par le web, les solutions robustes, fiables et innovantes.\n\nDiplômé de cinq années d'études à Epitech Nantes, j'ai forgé mon expertise à travers des missions en tant que consultant et développeur Salesforce chez Capgemini NANTES, où je poursuis actuellement mon aventure. Passionné par les défis techniques et toujours à la recherche de solutions efficientes, je me spécialise en Rust 🦀, un langage performant qui me permet de concevoir des projets à faible consommation de ressources, contribuant à une approche plus écologique du développement.\n\nMon parcours m'a permis de développer des solutions variées, allant d’applications mobiles natives et cross-plateformes en React Native et Flutter 📱, à des projets IoT avec ESP32 en C et C++. J'ai également conçu un SaaS en React, NestJS et MongoDB durant mes études pour répondre à des besoins concrets de mes collègues.\n\nEn parallèle, j'ai construit et administré un cluster Kubernetes bare-metal, accompagné d'une architecture GitOps, assurant un déploiement automatisé et fiable de solutions.\n\nJe suis sérieux, adaptable, et j’apprécie autant la conception que le déploiement de projets complexes. Mon expérience comprend également la mise en œuvre de solutions robustes sur AWS et Azure, avec une expertise éprouvée sur des projets à grande échelle (jusqu’à 300 000 clients).\n\nJe suis actuellement ouvert aux missions à mi-temps. Contactez-moi pour discuter de vos projets !"
   },
   "Projects": {
     "title": "Projets",
-    "see-all": "Voir +"
+    "subtitle": "Découvrez mes projets et solutions, conçus avec soin pour allier robustesse, fiabilité et innovation. Qu'il s'agisse de développement web, d'applications mobiles ou de solutions cloud, chaque réalisation a été pensée pour répondre à des besoins concrets et offrir une expérience efficace et durable.",
+    "see-all": "Voir +",
+    "see-on-github": "Voir sur GitHub",
+    "pld": {
+      "title": "PldMaker",
+      "description": "Trip Planner est une application web conçue avec Next.js et un backend en microservices sous NestJS, pour une planification de voyages efficace et performante.\n\nLe projet a débuté avec un prototype Figma, permettant de définir précisément les besoins des utilisateurs avant le développement. Cette approche centrée sur l'utilisateur garantit une solution robuste et adaptée."
+    },
+    "atrip": {
+      "title": "ATrip",
+      "description": "Trip Planner est une application web conçue avec Next.js et un backend en microservices sous NestJS, pour une planification de voyages efficace et performante.\n\nLe projet a débuté avec un prototype Figma, permettant de définir précisément les besoins des utilisateurs avant le développement. Cette approche centrée sur l'utilisateur garantit une solution robuste et adaptée."
+    },
+    "fbx": {
+      "title": "fbx-cli",
+      "description": "fbx-cli est un outil en ligne de commande (CLI) permettant de contrôler et gérer une Freebox à distance. Il offre une interface simple et efficace pour interagir avec la Freebox sans avoir à passer par l'interface web."
+    },
+    "iot": {
+      "title": "IOTSensorSensei",
+      "description": "IOTSensorSensei est un projet d'école visant à collecter des données depuis des capteurs sur un ESP32, les transmettre via LoRa, les récupérer sur un autre ESP32 et les envoyer à une API pour visualisation."
+    },
+    "cloud": {
+      "title": "T-Cloud",
+      "description": "T-Cloud est un projet d'école consistant à mettre en place un cluster Kubernetes bare metal avec trois nœuds, en intégrant des pratiques d'IaaS, DevOps et GitOps."
+    },
+    "argames": {
+      "title": "ARGames",
+      "description": "ARGames est un projet de fin d'étude visant à créer un jeu en réalité augmentée, où des ESP32 activent des mécanismes (lumière, son, tiroir) pour faire progresser le joueur sur mobile ou tablette."
+    },
+    "myrpg": {
+      "title": "MyRPG",
+      "description": "MyRPG est un projet de première année à Epitech, consistant à créer un jeu RPG en C, en utilisant uniquement la bibliothèque CSFM."
+    }
+  },
+  "Services": {
+    "application": {
+      "title": "Application",
+      "fullstack": {
+        "title": "Création d'applications web fullstack",
+        "description": "Conception d’applications web modernes et interactives, optimisées pour la performance et l’expérience utilisateur. Utilisation de Next.js, React et Tailwind CSS pour développer des solutions scalables et adaptées aux besoins spécifiques"
+      },
+      "api": {
+        "title": "Développement d’API robustes, performantes et sécurisées",
+        "description": "Développement d’API en Rust ou Node.js, garantissant des performances optimales et une sécurité avancée. Des solutions conçues pour répondre à des besoins variés et assurer une communication fluide entre systèmes."
+      },
+      "optimization": {
+        "title": "Optimisation et refonte de sites existants",
+        "description": "Amélioration de la vitesse, de l'accessibilité et du SEO des sites web pour offrir une expérience utilisateur enrichie. Propositions de refontes de design et de fonctionnalités pour renforcer l'engagement des utilisateurs."
+      },
+      "integration": {
+        "title": "Intégration de fonctionnalités de gestion",
+        "description": "Intégration d'outils de gestion de tâches, d'abonnements et de dépenses, adaptés aux environnements multi-utilisateurs. Ces fonctionnalités sont conçues pour faciliter la collaboration et répondre aux besoins de diverses équipes et utilisateurs."
+      }
+    },
+    "mobile": {
+      "title": "Mobile",
+      "native": {
+        "title": "Développement native Android",
+        "description": "Création d’applications Android natives, optimisées pour des performances élevées et une intégration complète des fonctionnalités spécifiques à la plateforme. Conception sur mesure pour offrir une expérience utilisateur fluide et responsive"
+      },
+      "cross": {
+        "title": "Développement cross-platform Android et IOS",
+        "description": "Développement d’applications mobiles multi-plateformes avec React Native, permettant de cibler à la fois Android et iOS. Optimisation des fonctionnalités pour garantir une expérience cohérente et performante sur les deux plateformes."
+      },
+      "optimize": {
+        "title": "Déploiement et optimisation d’applications",
+        "description": "Gestion complète du déploiement d’applications sur Google Play Store et Apple App Store, avec optimisation des performances et de la compatibilité. Mise en œuvre des meilleures pratiques pour un lancement fluide et une performance stable."
+      }
+    },
+    "devops": {
+      "title": "DevOps",
+      "ci": {
+        "title": "Mise en place et configuration intégration continue",
+        "description": "Configuration de pipelines d’intégration continue (CI) pour automatiser les tests, les builds et les déploiements. Amélioration de la productivité et de la qualité du code avec des processus de développement optimisés et fiables."
+      },
+      "orchestration": {
+        "title": "Containerisation et orchestration",
+        "description": "Mise en place de conteneurs Docker et d’orchestration pour un déploiement flexible et sécurisé des applications. Optimisation des ressources pour une gestion efficace des environnements de développement et de production."
+      },
+      "observability": {
+        "title": "Surveillance de la performance",
+        "description": "Implémentation de solutions de monitoring pour analyser les performances des applications et serveurs en temps réel. Détection proactive des problèmes et optimisation des performances pour une disponibilité et une réactivité maximales."
+      }
+    },
+    "salesforce": {
+      "title": "Salesforce",
+      "integration": {
+        "title": "Développement de solutions et d'intégrations",
+        "description": "Conception et développement de solutions sur mesure pour Salesforce, adaptées aux besoins spécifiques de chaque entreprise. Intégration fluide avec les processus internes pour améliorer l’efficacité et la gestion des données."
+      },
+      "workflow": {
+        "title": "Automatisation des workflows, gestion des processus d'entreprise",
+        "description": "Mise en place de workflows automatisés et d’outils de gestion de processus dans Salesforce, permettant d’optimiser les opérations et de renforcer la productivité. Automatisation des tâches répétitives pour une meilleure allocation des ressources."
+      },
+      "external_app": {
+        "title": "Intégration de Salesforce avec d'autres systèmes et applications",
+        "description": "Intégration de Salesforce avec des systèmes et applications externes pour créer un écosystème unifié. Synchronisation des données et automatisation des flux entre plateformes pour une expérience utilisateur sans interruption."
+      },
+      "custom": {
+        "title": "Développement d’applications personnalisées dans Salesforce",
+        "description": "Développement d’applications personnalisées au sein de Salesforce pour répondre aux besoins spécifiques des utilisateurs. Création d'outils sur mesure pour enrichir l'expérience client et optimiser les processus métier."
+      }
+    }
   },
   "Contact": {
     "title": "Contact",

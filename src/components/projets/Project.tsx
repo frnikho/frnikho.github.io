@@ -1,11 +1,15 @@
 import Image from "next/image";
 import {ProjectData} from "@/libs/data";
+import {useTranslations} from "next-intl";
 
 type Props = {
     project: ProjectData;
 }
 
 export default function Project({project}: Props) {
+
+    const t = useTranslations('Projects');
+
     return (
         <div className={'w-full relative bg-card-background dark:bg-dark-card-background rounded-xl group flex flex-col'}>
             <div className={"relative h-80 w-full overflow-hidden"}>
@@ -21,7 +25,7 @@ export default function Project({project}: Props) {
             <div className={"p-4 flex flex-col gap-4"}>
                 <h3 className={"text-2xl font-medium text-primary-text dark:text-primary-text-dark"}>{project.name}</h3>
                 <p className={"text-primary-text text-sm dark:text-primary-text-dark"}>{project.description}</p>
-                {project.link.length !== 0 ? <a className={"self-end dark:text-primary-text-dark"} target={'_blank'} href={project.link}><div className={""}>Voir sur github</div></a> : null}
+                {project.link.length !== 0 ? <a className={"self-end dark:text-primary-text-dark"} target={'_blank'} href={project.link}><div className={""}>{t('see-on-github')}</div></a> : null}
             </div>
         </div>
     )

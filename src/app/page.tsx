@@ -8,14 +8,14 @@ import ServiceList from "@/components/services/ServiceList";
 
 export default async function Home() {
     return (
-        <div className={"flex flex-col w-11/12 xl:w-8/12 m-auto gap-28 lg:gap-24"}>
+        <div className={"flex flex-col w-11/12 xl:w-8/12 m-auto gap-28 lg:gap-24 mb-10"}>
             <CookiesProvider>
                 <TopBar/>
             </CookiesProvider>
             <Hero/>
             <MyInfoCard/>
             <ProjectList/>
-            {/* <ServiceList/> */}
+            <ServiceList/>
             <ContactCard/>
         </div>
     );

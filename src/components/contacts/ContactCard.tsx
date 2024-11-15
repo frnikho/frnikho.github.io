@@ -49,31 +49,40 @@ export default function ContactCard() {
     const setContactError = () => setContactResult({type: 'error', message: '❌ Une erreur est survenue, veuillez réessayer plus tard.'});
 
     return (
-        <div className={"flex flex-col gap-10"}>
+        <div className={"flex flex-col gap-10 relative"}>
+            <div
+                className={"absolute -z-20 rounded-md bg-[#ececec] dark:bg-[#202020] w-28 h-28 animate-rotate-infinite lg:-mx-[15%]"}></div>
+            <div
+                className={"absolute -z-20 rounded-md bg-[#ececec] dark:bg-[#202020] top-[5%] w-44 h-44 animate-rotate-infinite lg:-mx-[15%] right-0"}></div>
+
             <h1 className={"text-4xl font-semibold text-primary-text dark:text-primary-text-dark rounded-3xl"}>{t('title')}</h1>
-            <div className={"absolute w-full -z-50 -mx-[15%]"}>
-            <div className={"relative rounded-md bg-[#ececec] w-44 h-44 animate-rotate-infinite"}></div>
-            <div className={"relative rounded-full bg-[#ececec] -mt-10 w-44 h-44 animate-rotate-infinite -right-[80%]"}></div>
-            </div>
-            <div className={"flex flex-row bg-card-background dark:bg-dark-card-background p-6 rounded-2xl gap-8"}>
+            <div className={"flex flex-row bg-card-background dark:bg-dark-card-background p-6 rounded-2xl gap-8 shadow-xl"}>
                 <div className={"w-full lg:w-8/12 flex flex-col gap-2 z-20"}>
                     <h2 className={"text-2xl font-semibold text-primary-text dark:text-primary-text-dark"}>{t('subtitle')}</h2>
                     <p className={"text-primary-text dark:text-primary-text-dark"}>{t('message')}</p>
                     <ContactResult {...contactResult} />
                     <div className={"mt-2 grid grid-cols-2 gap-3"}>
-                        <Input type={'text'} size={'1'} value={form.lastname} onChange={(e) => setForm({...form, lastname: e})} placeholder={t('form.lastname')}/>
-                        <Input type={'text'} size={'1'} value={form.firstname} onChange={(e) => setForm({...form, firstname: e})} placeholder={t('form.firstname')}/>
-                        <Input type={'email'} size={'1'} value={form.email} onChange={(e) => setForm({...form, email: e})} placeholder={t('form.email')}/>
-                        <Input type={'text'} size={'1'} value={form.company} onChange={(e) => setForm({...form, company: e})} placeholder={t('form.company')}/>
+                        <Input type={'text'} size={'1'} value={form.lastname}
+                               onChange={(e) => setForm({...form, lastname: e})} placeholder={t('form.lastname')}/>
+                        <Input type={'text'} size={'1'} value={form.firstname}
+                               onChange={(e) => setForm({...form, firstname: e})} placeholder={t('form.firstname')}/>
+                        <Input type={'email'} size={'1'} value={form.email}
+                               onChange={(e) => setForm({...form, email: e})} placeholder={t('form.email')}/>
+                        <Input type={'text'} size={'1'} value={form.company}
+                               onChange={(e) => setForm({...form, company: e})} placeholder={t('form.company')}/>
                         <textarea required
                                   className={"resize-none w-full p-3 rounded-xl bg-input dark:bg-dark-input text-primary-text dark:text-primary-text-dark focus:opacity-50 outline-none col-span-2"}
-                                  rows={5} placeholder={t('form.message')} value={form.message} onChange={(e) => setForm({...form, message: e.currentTarget.value})}/>
+                                  rows={5} placeholder={t('form.message')} value={form.message}
+                                  onChange={(e) => setForm({...form, message: e.currentTarget.value})}/>
                     </div>
                     <div className={"self-center relative w-full"}>
-                        <div className={`text-center h-16 ${loading || !check ? 'cursor-default opacity-100 text-white text-opacity-50' : 'text-white cursor-pointer active:translate-y-1'} bg-red-pastel w-full py-4 rounded-2xl font-medium text-lg`} onClick={sendForm}>
+                        <div
+                            className={`text-center h-16 ${loading || !check ? 'cursor-default opacity-100 text-white text-opacity-50' : 'text-white cursor-pointer active:translate-y-1'} bg-red-pastel w-full py-4 rounded-2xl font-medium text-lg`}
+                            onClick={sendForm}>
                             {loading ? <span className="loader"></span> : t('send-btn')}
                         </div>
-                        <div className={`${loading || !check ? 'opacity-70' : ''} absolute bg-[#d96961] w-full mt-2 h-full rounded-2xl top-0 left-0 -z-20`}></div>
+                        <div
+                            className={`${loading || !check ? 'opacity-70' : ''} absolute bg-[#d96961] w-full mt-2 h-full rounded-2xl top-0 left-0 -z-20`}></div>
                     </div>
                 </div>
                 <div className={"lg:w-4/12 hidden lg:flex flex-col relative overflow-hidden rounded-2xl"}>
@@ -98,7 +107,8 @@ type InputProps = {
 function Input({type, value, onChange, error, size = '1', placeholder}: InputProps) {
     return (
         <>
-            <input placeholder={placeholder} className={`w-full p-3 rounded-xl bg-input dark:bg-dark-input text-primary-text dark:text-primary-text-dark focus:opacity-50 outline-none col-span-${size}`} type={type} value={value} onChange={(e) => onChange(e.currentTarget.value)}/>
+            <input placeholder={placeholder}
+                   className={`w-full p-3 rounded-xl bg-input dark:bg-dark-input text-primary-text dark:text-primary-text-dark focus:opacity-50 outline-none col-span-${size}`} type={type} value={value} onChange={(e) => onChange(e.currentTarget.value)}/>
             {error ? <p>{error}</p> : null}
         </>
     )

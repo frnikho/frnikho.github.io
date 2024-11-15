@@ -1,15 +1,14 @@
 'use client';
 
 import {useEffect, useMemo, useRef, useState} from "react";
+import {MessageKeys, useTranslations} from "next-intl";
 
 type ServiceKind = 'Application' | 'Mobile' | 'Salesforce' | 'DevOps';
-
-const items = ['Application', 'Mobile', 'Salesforce', 'DevOps'];
 
 const animations: {url: string, kind: ServiceKind, scale: string}[] = [
     {
         kind: 'Application',
-        url: '/animations/lottie_application.json',
+        url: '/animations/lottie_web2.json',
         scale: '75',
     },
     {
@@ -35,91 +34,51 @@ type Service = {
     description: string;
 }
 
-const allService: Service[] = [
-    {
-        kind: 'Application',
-        name: 'Création d\'applications web fullstack',
-        description: 'Conception d’applications web modernes et interactives, optimisées pour la performance et l’expérience utilisateur. Utilisation de Next.js, React et Tailwind CSS pour développer des solutions scalables et adaptées aux besoins spécifiques',
+const items : ServiceKind[] = ['Application', 'Mobile', 'Salesforce', 'DevOps'];
+
+const services = (t: any) => ({
+    Application: {
+        title: t('application.title'),
+        keys: ['application.fullstack', 'application.api', 'application.optimization', 'application.integration']
     },
-    {
-        kind: 'Application',
-        name: 'Développement d’API robustes, performantes et sécurisées',
-        description: 'Développement d’API en Rust ou Node.js, garantissant des performances optimales et une sécurité avancée. Des solutions conçues pour répondre à des besoins variés et assurer une communication fluide entre systèmes.'
+    Mobile: {
+        title: t('mobile.title'),
+        keys: ['mobile.native', 'mobile.cross', 'mobile.optimize']
     },
-    {
-        kind: 'Application',
-        name: 'Optimisation et refonte de sites existants',
-        description: 'Amélioration de la vitesse, de l\'accessibilité et du SEO des sites web pour offrir une expérience utilisateur enrichie. Propositions de refontes de design et de fonctionnalités pour renforcer l\'engagement des utilisateurs.'
+    Salesforce: {
+        title: t('devops.title'),
+        keys: ['devops.ci', 'devops.orchestration', 'devops.observability']
     },
-    {
-        kind: 'Application',
-        name: 'Intégration de fonctionnalités de gestion',
-        description: 'Intégration d\'outils de gestion de tâches, d\'abonnements et de dépenses, adaptés aux environnements multi-utilisateurs. Ces fonctionnalités sont conçues pour faciliter la collaboration et répondre aux besoins de diverses équipes et utilisateurs.'
-    },
-    {
-        kind: 'Mobile',
-        name: 'Développement native Android',
-        description: 'Création d’applications Android natives, optimisées pour des performances élevées et une intégration complète des fonctionnalités spécifiques à la plateforme. Conception sur mesure pour offrir une expérience utilisateur fluide et responsive',
-    },
-    {
-        kind: 'Mobile',
-        name: 'Développement cross-platform Android et IOS',
-        description: 'Développement d’applications mobiles multi-plateformes avec React Native, permettant de cibler à la fois Android et iOS. Optimisation des fonctionnalités pour garantir une expérience cohérente et performante sur les deux plateformes.',
-    },
-    {
-        kind: 'DevOps',
-        name: 'Mise en place et configuration intégration continue',
-        description: 'Configuration de pipelines d’intégration continue (CI) pour automatiser les tests, les builds et les déploiements. Amélioration de la productivité et de la qualité du code avec des processus de développement optimisés et fiables.',
-    },
-    {
-        kind: 'Mobile',
-        name: 'Déploiement et optimisation d’applications',
-        description: 'Gestion complète du déploiement d’applications sur Google Play Store et Apple App Store, avec optimisation des performances et de la compatibilité. Mise en œuvre des meilleures pratiques pour un lancement fluide et une performance stable.'
-    },
-    {
-        kind: 'DevOps',
-        name: 'Containerisation et orchestration',
-        description: 'Mise en place de conteneurs Docker et d’orchestration pour un déploiement flexible et sécurisé des applications. Optimisation des ressources pour une gestion efficace des environnements de développement et de production.'
-    },
-    {
-        kind: 'DevOps',
-        name: 'Surveillance de la performance',
-        description: 'Implémentation de solutions de monitoring pour analyser les performances des applications et serveurs en temps réel. Détection proactive des problèmes et optimisation des performances pour une disponibilité et une réactivité maximales.'
-    },
-    {
-        kind: 'Salesforce',
-        name: 'Développement de solutions et d\'intégrations',
-        description: 'Conception et développement de solutions sur mesure pour Salesforce, adaptées aux besoins spécifiques de chaque entreprise. Intégration fluide avec les processus internes pour améliorer l’efficacité et la gestion des données.',
-    },
-    {
-        kind: 'Salesforce',
-        name: 'Automatisation des workflows, gestion des processus d\'entreprise',
-        description: 'Mise en place de workflows automatisés et d’outils de gestion de processus dans Salesforce, permettant d’optimiser les opérations et de renforcer la productivité. Automatisation des tâches répétitives pour une meilleure allocation des ressources.'
-    },
-    {
-        kind: 'Salesforce',
-        name: 'Intégration de Salesforce avec d\'autres systèmes et applications',
-        description: 'Intégration de Salesforce avec des systèmes et applications externes pour créer un écosystème unifié. Synchronisation des données et automatisation des flux entre plateformes pour une expérience utilisateur sans interruption.'
-    },
-    {
-        kind: 'Salesforce',
-        name: 'Développement d’applications personnalisées dans Salesforce',
-        description: 'Développement d’applications personnalisées au sein de Salesforce pour répondre aux besoins spécifiques des utilisateurs. Création d\'outils sur mesure pour enrichir l\'expérience client et optimiser les processus métier.'
+    DevOps: {
+        title: t('salesforce.title'),
+        keys: ['salesforce.integration', 'salesforce.workflow', 'salesforce.external_app', 'salesforce.custom']
     }
-];
+});
 
 export default function ServiceList() {
 
-    const [menu, setMenu] = useState(items[0]);
+    const [menu, setMenu] = useState<ServiceKind>(items[0]);
+    const t = useTranslations('Services');
 
     const getServiceItem = useMemo(() => {
-        return allService.filter((s) => menu === s.kind)!;
-    }, [menu]);
+        const m = services(t)[`${menu}`];
+        return m.keys.map((k) => ({
+            kind: m.title,
+            name: t(`${k}.title` as MessageKeys<any, any>),
+            description: t(`${k}.description` as MessageKeys<any, any>)
+        })) as Service[];
+    }, [menu, t]);
 
     return (
-        <div className={"flex flex-col gap-10"}>
+        <div className={"flex flex-col gap-10 relative"}>
+            <div
+                className={"absolute -z-20 rounded-md bg-[#ececec] dark:bg-[#202020] w-32 h-32 animate-rotate-infinite lg:-mx-[15%]"}></div>
+            <div
+                className={"absolute -z-20 rounded-md bg-[#ececec] dark:bg-[#202020] top-12 w-16 h-16 animate-rotate-infinite-quick lg:-mx-[15%] right-0"}></div>
+            <div
+                className={"absolute -z-20 rounded-md bg-[#ececec] dark:bg-[#202020] top-24 w-36 h-36 animate-rotate-infinite-slow lg:-mx-[15%] right-[10%]"}></div>
             <h1 className={"text-4xl font-semibold text-primary-text dark:text-primary-text-dark"}>Services</h1>
-            <ServiceMenu item={menu} onChange={setMenu}/>
+            <ServiceMenu item={menu} onChangeAction={setMenu}/>
             <div className={"flex flex-col lg:flex-row justify-between"}>
                 <ServiceCard services={getServiceItem} kind={menu}/>
             </div>
@@ -127,8 +86,10 @@ export default function ServiceList() {
     )
 }
 
-export function ServiceCard({services, kind}: {services: Service[], kind: string}) {
+export function ServiceCard({services, kind}: { services: Service[], kind: string }) {
     const animationContainer = useRef(null);
+
+    const t = useTranslations('Services');
 
     useEffect(() => {
         if (!animationContainer)
@@ -155,11 +116,6 @@ export function ServiceCard({services, kind}: {services: Service[], kind: string
         });
     }
 
-    const deleteAnimation = async () => {
-        const lot = await import("lottie-web/build/player/lottie_light");
-        return lot.default.destroy();
-    }
-
     return (
         <>
             <div className={"w-12/12 lg:w-7/12 rounded-2xl"}>
@@ -180,11 +136,11 @@ export function ServiceCard({services, kind}: {services: Service[], kind: string
     )
 }
 
-export function ServiceMenu({item, onChange}: { item: string, onChange: (i: string) => void }) {
+export function ServiceMenu({item, onChangeAction}: { item: string, onChangeAction: (i: ServiceKind) => void }) {
 
     return (
         <div className={"scroll-invisible flex flex-row gap-3 lg:gap-6"}>
-            {items.map((i) => <div key={i} className={"h-10 text-md lg:text-xl text-primary-text relative cursor-pointer"} onClick={() => onChange(i)}>
+            {items.map((i) => <div key={i} className={"h-10 text-md lg:text-xl text-primary-text relative cursor-pointer"} onClick={() => onChangeAction(i)}>
                 <p className={`text-primary-text dark:text-primary-text-dark ${item === i ? '' : 'text-[#303030] opacity-60'}`}>{i}</p>
                 <p className={`${item === i ? 'border-1 border-primary-text dark:border-primary-text-dark bg-primary-text rounded-2xl mt-1' : ''} absolute w-full`}></p>
             </div>)}

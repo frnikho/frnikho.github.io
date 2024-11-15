@@ -46,10 +46,10 @@ export default function TopBar() {
     return (
         <div className={"flex flex-row w-full justify-between h-16"}>
             <div className={"hidden lg:flex flex-row items-center gap-20"}>
-                <p onClick={() => moveTo('home', 0)} className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('home')}</p>
-                <p onClick={() => moveTo('project', 900)} className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('projects')}</p>
-                <p onClick={() => moveTo('service', 2200)} className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('services')}</p>
-                <p onClick={() => moveTo('contact', 2200)} className={"font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('contact')}</p>
+                <p onClick={() => moveTo('home', 0)} className={"w-24 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('home')}</p>
+                <p onClick={() => moveTo('project', 900)} className={"w-24 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('projects')}</p>
+                <p onClick={() => moveTo('service', 2200)} className={"w-24 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('services')}</p>
+                <p onClick={() => moveTo('contact', 2200)} className={"w-24 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('contact')}</p>
             </div>
             <div className={"flex flex-row-reverse items-center gap-6 lg:gap-16 ml-auto"}>
                 {/*<button className={"bg-blue-pastel px-3 py-1 lg:px-4 lg:py-1.5 relative rounded-xl"}>*/}

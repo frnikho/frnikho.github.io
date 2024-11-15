@@ -17,14 +17,14 @@ export const allProjects: ProjectData[] = [
         name: 'PldMaker',
         link: 'https://github.com/frnikho/PldMaker',
         created_at: new Date('2022-07-01'),
-        description: 'PldMaker est un side project realisé dans le but d\'auto-générer des documents de suivi de projets pour les EIP Epitech.',
+        description: 'PLD Maker est un SaaS qui aide ses utilisateurs à gérer leurs projets en générant des fichiers de suivi au format PDF entièrement personnalisables. L’outil propose des fonctionnalités adaptées pour répondre à différents besoins de suivi et de gestion',
         photo: '/projects/pld_1.png',
         tags: ['Web', 'Api'],
         stack: ['Docker', 'NestJS', 'React'],
     },
     {
-        name: 'Trip planner',
-        description: 'Trip planner est un projet web qui a pour but de développer une web app pour planifier un trajet',
+        name: 'ATrip',
+        description: 'Trip Planner est une application web conçue avec Next.js et un backend en microservices sous NestJS, pour une planification de voyages efficace et performante.\n\nLe projet a débuté avec un prototype Figma, permettant de définir précisément les besoins des utilisateurs avant le développement. Cette approche centrée sur l\'utilisateur garantit une solution robuste et adaptée.',
         link: '',
         created_at: new Date('2023-09-01'),
         photo: '/projects/trip_planner.png',
@@ -33,7 +33,7 @@ export const allProjects: ProjectData[] = [
     },
     {
         name: 'fbx-cli',
-        description: 'fbx-cli est un outils pour gérer sa freebox depuis son terminal',
+        description: 'fbx-cli est un outil en ligne de commande (CLI) permettant de contrôler et gérer une Freebox à distance. Il offre une interface simple et efficace pour interagir avec la Freebox sans avoir à passer par l\'interface web.',
         link: 'https://github.com/frnikho/fbx-cli',
         tags: ['CLI'],
         stack: ['Rust'],
@@ -42,7 +42,7 @@ export const allProjects: ProjectData[] = [
     },
     {
         name: 'IOTSensorSensei',
-        description: 'IOTSensorSensei est un projet d\'école qui a pour but de collecter des données depuis des capteurs sur un esp32, de transmettre ces données via la communication LoRa, de récupérer ces données sur un autre esp32 et de les envoyés sur une api pour ensuite les visualiser',
+        description: 'IOTSensorSensei est un projet d\'école visant à collecter des données depuis des capteurs sur un ESP32, les transmettre via LoRa, les récupérer sur un autre ESP32 et les envoyer à une API pour visualisation.',
         link: '',
         stack: ['C++', 'C', 'Rust'],
         tags: ['IoT', 'Api'],
@@ -51,7 +51,7 @@ export const allProjects: ProjectData[] = [
     },
     {
         name: 'T-Cloud',
-        description: 'T-Cloud est un projet d\'école qui a pour but de monter sois-même un cluster kube bare metal avec 3 noeuds, avec de l\'IaS, du DevOps et du GitOps',
+        description: 'T-Cloud est un projet d\'école consistant à mettre en place un cluster Kubernetes bare metal avec trois nœuds, en intégrant des pratiques d\'IaaS, DevOps et GitOps.',
         link: '',
         tags: ['DevOps'],
         stack: ['Kubernetes', 'Docker', 'Terraform', 'Grafana', 'Ansible'],
@@ -60,7 +60,7 @@ export const allProjects: ProjectData[] = [
     },
     {
         name: 'ARGames',
-        description: '',
+        description: 'ARGames est un projet de fin d\'étude visant à créer un jeu en réalité augmentée, où des ESP32 activent des mécanismes (lumière, son, tiroir) pour faire progresser le joueur sur mobile ou tablette',
         link: '',
         created_at: new Date('2023-01-01'),
         photo: '/projects/argames.png',
@@ -70,7 +70,7 @@ export const allProjects: ProjectData[] = [
     {
         name: 'MyRPG',
         link: 'https://github.com/frnikho/Epitech_rpg',
-        description: 'MyRPG est un projet Epitech de premère année qui a pour but de créer un RPG en C avec comme seul librairie la CSFM',
+        description: 'MyRPG est un projet de première année à Epitech, consistant à créer un jeu RPG en C, en utilisant uniquement la bibliothèque CSFM',
         stack: ['C'],
         tags: ['Game'],
         photo: '/projects/my_rpg.png',
