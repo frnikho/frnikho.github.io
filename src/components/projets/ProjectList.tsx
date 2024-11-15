@@ -22,7 +22,7 @@ export default function ProjectList() {
             <div
                 className={"absolute -z-20 rounded-md bg-[#ececec] dark:bg-[#202020] top-0 w-12 h-64 animate-rotate-infinite-slow right-[20%]"}></div>
             <div className={"flex flex-col gap-4"}>
-                <h1 className={"text-4xl font-semibold text-primary-text dark:text-primary-text-dark"}>{t('title')}</h1>
+                <h1 className={"text-4xl font-semibold text-primary-text dark:text-primary-text-dark"} id={"project"}>{t('title')}</h1>
                 <p className="text-md">{t('subtitle')}</p>
             </div>
             <div className={"flex flex-col gap-6"}>

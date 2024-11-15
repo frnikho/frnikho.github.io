@@ -49,7 +49,7 @@ export default function ContactCard() {
     const setContactError = () => setContactResult({type: 'error', message: '❌ Une erreur est survenue, veuillez réessayer plus tard.'});
 
     return (
-        <div className={"flex flex-col gap-10 relative"}>
+        <div className={"flex flex-col gap-10 relative"} id={"contact"}>
             <div
                 className={"absolute -z-20 rounded-md bg-[#ececec] dark:bg-[#202020] w-28 h-28 animate-rotate-infinite lg:-mx-[15%]"}></div>
             <div

@@ -7,13 +7,16 @@ import {useRouter} from "next/navigation";
 import {useCookies} from "next-client-cookies";
 import {Moon, Sun} from "@/components/Icon";
 import {useAptabase} from "@aptabase/react";
+import Image from "next/image";
+
+let stacks = [{src: '/github.png', alt: 'Github', link: 'https://github.com/frnikho'}, {src: '/linkedin.png', alt: 'Linkedin', link: 'https://www.linkedin.com/in/nicosans/'}, {src: '/malt.png', alt: 'Malt', link: 'https://www.malt.fr/profile/nicolassans'}];
 
 export default function TopBar() {
     const {toggle, load} = useDarkMode();
     const [isDarkMode, setDarkMode] = useState(false);
     const local = useLocale();
-    const t = useTranslations('TopBar');
     const { trackEvent } = useAptabase();
+    const t= useTranslations('TopBar');
 
     const cookies = useCookies();
     const router = useRouter();
@@ -35,27 +38,28 @@ export default function TopBar() {
         setDarkMode(!isDarkMode)
     }
 
-    const moveTo= (name: string, top: number) => {
-        trackEvent('click', {target: name});
-        window.scroll({
-            top,
-            behavior: 'smooth'
-        });
+    const moveTo = (id: string) => {
+        document.querySelector(`#${id}`)?.scrollIntoView({behavior: 'smooth'});
     }
 
     return (
         <div className={"flex flex-row w-full justify-between h-16"}>
-            <div className={"hidden lg:flex flex-row items-center gap-20"}>
-                <p onClick={() => moveTo('home', 0)} className={"w-24 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('home')}</p>
-                <p onClick={() => moveTo('project', 900)} className={"w-24 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('projects')}</p>
-                <p onClick={() => moveTo('service', 2200)} className={"w-24 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('services')}</p>
-                <p onClick={() => moveTo('contact', 2200)} className={"w-24 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('contact')}</p>
+            <div className={"hidden lg:flex flex-row items-center gap-12"}>
+                <p onClick={() => moveTo('home')}
+                   className={"w-28 rounded-lg text-center font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('home')}</p>
+                <p onClick={() => moveTo('project')}
+                   className={"w-28 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('projects')}</p>
+                <p onClick={() => moveTo('service')}
+                   className={"w-28 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('services')}</p>
+                <p onClick={() => moveTo('contact')}
+                   className={"w-28 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('contact')}</p>
             </div>
-            <div className={"flex flex-row-reverse items-center gap-6 lg:gap-16 ml-auto"}>
-                {/*<button className={"bg-blue-pastel px-3 py-1 lg:px-4 lg:py-1.5 relative rounded-xl"}>*/}
-                {/*    <div className={"rounded-xl absolute bg-darkblue-pastel h-full w-full -z-10 -mx-2"}></div>*/}
-                {/*    <p className={"uppercase font-semibold text-primary-text text-sm lg:text-md"}>{t('project-btn')}</p>*/}
-                {/*</button>*/}
+            <div className={"flex flex-row items-center gap-10 lg:gap-20 ml-auto"}>
+                <div className={"flex flex-row gap-4"}>
+                    {stacks.map((s) => <a className={"self-center"} key={s.alt} target={'_blank'} href={s.link}><Image
+                        className={'items-center self-center cursor-pointer'} src={s.src} alt={s.alt} width={24}
+                        height={24}/></a>)}
+                </div>
                 <div className={"flex flex-row gap-4 items-center justify-center"}>
                     <div className={"cursor-pointer"} onClick={changeTheme}>
                         {isDarkMode ? <Sun/> : <Moon/>}

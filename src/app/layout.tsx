@@ -39,7 +39,7 @@ export default async function RootLayout({
           <div className={"relative rounded-full bg-[#ececec] dark:bg-[#202020] m-auto mt-8 rotate-45 w-60 h-28 left-[40%] animate-rotate-infinite-slow"}></div>
           <div className={"relative rounded-md bg-[#ececec] dark:bg-[#202020] m-auto rotate-45 w-32 h-12 right-[40%] mt-40 animate-rotate-infinite-quick"}></div>
         </div>
-        <AptabaseProvider appKey="A-SH-2910616357" options={{host: 'https://analytics.nikho.dev', isDebug: true, appVersion: 'v0.2.3'}}>
+        <AptabaseProvider appKey="A-SH-2910616357" options={{host: 'https://analytics.nikho.dev', isDebug: false, appVersion: 'v0.2.5'}}>
           <NextIntlClientProvider messages={await getMessages()}>
               {children}
           </NextIntlClientProvider>

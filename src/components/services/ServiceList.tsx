@@ -70,7 +70,7 @@ export default function ServiceList() {
     }, [menu, t]);
 
     return (
-        <div className={"flex flex-col gap-10 relative"}>
+        <div className={"flex flex-col gap-10 relative"} id={"service"}>
             <div
                 className={"absolute -z-20 rounded-md bg-[#ececec] dark:bg-[#202020] w-32 h-32 animate-rotate-infinite lg:-mx-[15%]"}></div>
             <div
