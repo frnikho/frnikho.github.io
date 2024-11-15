@@ -27,7 +27,5 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Generate prisma client
-        run: pnpm exec prisma generate
       - name: Build with Next.js
         run: pnpm run build

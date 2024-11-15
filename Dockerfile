@@ -22,7 +22,6 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN corepack enable pnpm
-RUN pnpm exec prisma generate
 RUN pnpm run build
 # Production image, copy all the files and run next
 FROM base AS runner
