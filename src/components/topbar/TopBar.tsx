@@ -9,7 +9,7 @@ import {Moon, Sun} from "@/components/Icon";
 import {useAptabase} from "@aptabase/react";
 import Image from "next/image";
 
-let stacks = [{src: '/github.png', alt: 'Github', link: 'https://github.com/frnikho'}, {src: '/linkedin.png', alt: 'Linkedin', link: 'https://www.linkedin.com/in/nicosans/'}, {src: '/malt.png', alt: 'Malt', link: 'https://www.malt.fr/profile/nicolassans'}];
+let stacks = (darkMode: boolean) => [{src: darkMode ? '/github-mark-white.svg' : '/github-mark.svg', alt: 'Github', link: 'https://github.com/frnikho'}, {src: '/linkedin.png', alt: 'Linkedin', link: 'https://www.linkedin.com/in/nicosans/'}, {src: '/malt.png', alt: 'Malt', link: 'https://www.malt.fr/profile/nicolassans'}];
 
 export default function TopBar() {
     const {toggle, load} = useDarkMode();
@@ -43,7 +43,7 @@ export default function TopBar() {
     }
 
     return (
-        <div className={"flex flex-row w-full justify-between h-16"}>
+        <div className={"flex flex-row w-full justify-between h-16 lg:my-2"}>
             <div className={"hidden lg:flex flex-row items-center gap-12"}>
                 <p onClick={() => moveTo('home')}
                    className={"w-28 rounded-lg text-center font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('home')}</p>
@@ -56,7 +56,7 @@ export default function TopBar() {
             </div>
             <div className={"flex flex-row items-center gap-10 lg:gap-20 ml-auto"}>
                 <div className={"flex flex-row gap-4"}>
-                    {stacks.map((s) => <a className={"self-center"} key={s.alt} target={'_blank'} href={s.link}><Image
+                    {stacks(isDarkMode).map((s) => <a className={"self-center"} key={s.alt} target={'_blank'} href={s.link}><Image
                         className={'items-center self-center cursor-pointer'} src={s.src} alt={s.alt} width={24}
                         height={24}/></a>)}
                 </div>

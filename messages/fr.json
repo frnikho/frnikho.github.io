@@ -8,8 +8,7 @@
   },
   "Home": {
     "developer": "Développeur",
-    "": "Bienvenue sur mon portfolio, Je suis Nicolas SANS, développeur fullstack confirmé 👋\n\nDiplômé de cinq années d'études à Epitech Nantes, je suis actuellement freelance",
-    "message": "Salut ! \uD83D\uDC4B\n\nJe m'appelle Nicolas, et j'adore créer des projets qui allient performance, robustesse et innovation. Qu'il s'agisse d'applications web, mobiles ou de systèmes plus techniques comme l'IoT ou le cloud, j'aime explorer de nouvelles idées et relever des défis.\n\nMon outil de prédilection est Rust \uD83E\uDD80, parfait pour concevoir des solutions efficaces et optimisées. Mais je travaille aussi avec des technologies comme React, NestJS, et Kubernetes, je m'adapte rapidement selon les besoins des projets.\n\nToujours curieux et motivé, je suis là pour discuter ou collaborer. Vous avez un projet en tête ? Parlons-en ! \uD83D\uDE80"
+    "message": "Salut \uD83D\uDC4B je suis Nicolas SANS, un Nantais de 24 ans qui développe des solutions qui allient performance, robustesse et innovation. Qu'il s'agisse d'applications web, mobiles ou de systèmes plus techniques comme l'IoT ou le cloud, j'aime explorer de nouvelles technologies et relever des défis.\n\nMon language de prédilection est Rust \uD83E\uDD80, concu pour développer des solutions efficaces et optimisées. Je travaille aussi avec des technologies comme React, NestJS, et Kubernetes, je m'adapte rapidement selon les besoins des projets.\n\nToujours curieux et motivé, je suis là pour discuter ou collaborer. Vous avez un projet en tête ? Parlons-en ! \uD83D\uDE80"
   },
   "Projects": {
     "title": "Projets",
@@ -22,7 +21,7 @@
     },
     "atrip": {
       "title": "ATrip",
-      "description": "Trip Planner est une application web conçue avec Next.js et un backend en microservices sous NestJS, pour une planification de voyages efficace et performante.\n\nLe projet a débuté avec un prototype Figma, permettant de définir précisément les besoins des utilisateurs avant le développement. Cette approche centrée sur l'utilisateur garantit une solution robuste et adaptée."
+      "description": "Trip Planner est une application web conçue avec Next.js et un backend en microservices sous NestJS, pour gérer et planifier ses voyages."
     },
     "fbx": {
       "title": "fbx-cli",

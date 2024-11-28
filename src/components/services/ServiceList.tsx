@@ -79,7 +79,7 @@ export default function ServiceList() {
                 className={"absolute -z-20 rounded-md bg-[#ececec] dark:bg-[#202020] top-24 w-36 h-36 animate-rotate-infinite-slow lg:-mx-[15%] right-[10%]"}></div>
             <h1 className={"text-4xl font-semibold text-primary-text dark:text-primary-text-dark"}>Services</h1>
             <ServiceMenu item={menu} onChangeAction={setMenu}/>
-            <div className={"flex flex-col lg:flex-row justify-between"}>
+            <div className={"flex flex-col lg:flex-row justify-between lg:h-[32em]"}>
                 <ServiceCard services={getServiceItem} kind={menu}/>
             </div>
         </div>
