@@ -12,7 +12,7 @@
     "@aptabase/react": "^0.3.5",
     "autoprefixer": "^10.4.20",
     "lottie-web": "^5.12.2",
-    "next": "15.0.1",
+    "next": "15.1.2",
     "next-client-cookies": "^2.0.0",
     "next-intl": "^3.23.5",
     "nodemailer": "^6.9.16",
@@ -26,8 +26,9 @@
     "@types/react-dom": "^18.3.1",
     "eslint": "^9.13.0",
     "eslint-config-next": "15.0.1",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14",
-    "typescript": "^5.6.3"
-  }
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  },
+  "packageManager": "pnpm@9.15.0"
 }

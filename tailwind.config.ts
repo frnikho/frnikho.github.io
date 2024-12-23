@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { PluginAPI } from "tailwindcss/types/config";
 
 const config: Config = {
   content: [
@@ -55,6 +56,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+      function ({addVariant}: PluginAPI) {
+        addVariant('firefox', ':-moz-any(&)');
+      }
+  ],
 };
 export default config;
