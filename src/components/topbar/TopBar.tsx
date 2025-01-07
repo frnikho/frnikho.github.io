@@ -44,7 +44,7 @@ export default function TopBar() {
 
     return (
         <div className={"flex flex-row w-full justify-between h-16 lg:my-2"}>
-            <div className={"hidden lg:flex flex-row items-center gap-12"}>
+            {/* <div className={"hidden lg:flex flex-row items-center gap-12"}>
                 <p onClick={() => moveTo('home')}
                    className={"w-28 rounded-lg text-center font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('home')}</p>
                 <p onClick={() => moveTo('project')}
@@ -53,13 +53,8 @@ export default function TopBar() {
                    className={"w-28 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('services')}</p>
                 <p onClick={() => moveTo('contact')}
                    className={"w-28 font-medium text-lg uppercase text-primary-text dark:text-primary-text-dark cursor-pointer"}>{t('contact')}</p>
-            </div>
+            </div> */}
             <div className={"flex flex-row items-center gap-10 lg:gap-20 ml-auto"}>
-                <div className={"flex flex-row gap-4"}>
-                    {stacks(isDarkMode).map((s) => <a className={"self-center"} key={s.alt} target={'_blank'} href={s.link}><Image
-                        className={'items-center self-center cursor-pointer'} src={s.src} alt={s.alt} width={24}
-                        height={24}/></a>)}
-                </div>
                 <div className={"flex flex-row gap-4 items-center justify-center"}>
                     <div className={"cursor-pointer"} onClick={changeTheme}>
                         {isDarkMode ? <Sun/> : <Moon/>}

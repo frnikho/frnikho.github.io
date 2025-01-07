@@ -24,7 +24,8 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ]
+      ],
+      "@utils/*": ["./src/utils/*"]
     },
     "target": "ES2017"
   },
@@ -33,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/utils/Magnet.jsx"  ],
   "exclude": [
     "node_modules"
   ]
