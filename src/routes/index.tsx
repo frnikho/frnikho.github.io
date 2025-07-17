@@ -1,6 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 import Header from "@/components/header";
 import CTA from "@/components/cta";
+import Work from "@/components/work";
+import Projects from "@/components/projects";
+import Feedback from "@/components/feedback";
+import Footer from "@/components/footer";
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -10,5 +14,9 @@ function RouteComponent() {
   return <div>
     <Header/>
     <CTA/>
+    <Work/>
+    <Projects/>
+    <Feedback/>
+    <Footer/>
   </div>
 }

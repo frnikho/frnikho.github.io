@@ -18,7 +18,7 @@ function Hero() {
     return (
         <div className={"flex flex-col gap-48 my-28"}>
             <div className={"flex flex-row justify-between items-center"}>
-                <div className={"flex flex-col gap-4"}>
+                <div className={"flex flex-col gap-4 w-96"}>
                     <h1 className={"text-[4em] 3xl:text-[4.5em] leading-tight"}>Hey There,<br/> I'm Nicolas</h1>
                     <h3 className={"text-xl"}>Architecte logiciel et développeur d'applications</h3>
                 </div>
@@ -48,7 +48,7 @@ function Navigation() {
             <div>
                 <img className={"cursor-pointer"} alt={'logo'} src={'/android-chrome-192x192.png'} width={48} height={48}/>
             </div>
-            <div className={"flex flex-row gap-20 justify-center"}>
+            <div className={"flex flex-row gap-12 justify-center"}>
                 <NavItem first>Services</NavItem>
                 <NavItem>Projets</NavItem>
                 <NavItem>Contact</NavItem>

@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+h1, h2, h3, h4, h5, h6 {
+    color: #0C2E3D;
+}
 
 h1 {
     color: #0C2E3D;
@@ -17,4 +20,9 @@ h3 {
     --font-montserrat: 'Montserrat', sans-serif;
     --font-nunito: 'Nunito', sans-serif;
     --breakpoint-3xl: 140rem;
+    --radius-5xl: 3rem;
+}
+
+@utility no-scrollbar {
+    @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
 }
