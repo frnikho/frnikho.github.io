@@ -1,36 +1,37 @@
-import {ReactNode, RefObject, useRef} from "react";
+import {type RefObject, useRef} from "react";
 import { useDraggable } from "react-use-draggable-scroll";
+import {Container, Title} from "@/components/lib/title";
 
 type ProjectProps = {
   title: string;
   description: string;
-  image: ReactNode;
+  image: string;
   variant: 'blue' | 'yellow' | 'green' | 'red';
 }
 
 const data: ProjectProps[] = [
   {
-    title: "Project 1",
+    title: "Everyloc",
     description: "Description of project 1",
-    image: <img src="https://placehold.co/300x300/png" alt="Project 1" />,
+    image: '/projects/angers-location.png',
     variant: 'yellow'
   },
   {
-    title: "Project 2",
+    title: "Citrine",
     description: "Description of project 2",
-    image: <img src="https://placehold.co/300x300/png" alt="Project 2" />,
+    image: "/projects/citrine.png",
     variant: 'blue'
   },
   {
     title: "Project 3",
     description: "Description of project 3",
-    image: <img src="https://placehold.co/300x300/png" alt="Project 3" />,
+    image: "https://placehold.co/300x300/png",
     variant: 'green'
   },
   {
     title: "Project 4",
     description: "Description of project 1",
-    image: <img src="https://placehold.co/300x300/png" alt="Project 1" />,
+    image: "https://placehold.co/300x300/png",
     variant: 'red'
   },
 ]
@@ -42,13 +43,13 @@ export default function Projects() {
 
   return (
     <div className={"flex flex-col m-auto relative py-20 gap-24"}>
-      <div className={"3xl:w-8/12 w-10/12 flex flex-row justify-between items-center relative m-auto"}>
-        <div>
-          <h1 className={"m-auto text-[3em]"}>My Lastest Works</h1>
+      <Container className={"flex flex-col gap-6 lg:flex-row justify-between lg:items-center relative m-auto"}>
+        <div className={"space-y-3"}>
+          <Title>My Lastest Works</Title>
           <p>Perfect solution for digital experience</p>
         </div>
-        <p className={"text-[#FCA693]"}>Explore more work</p>
-      </div>
+        <p className={"text-[#FCA693] cursor-pointer hover:underline"} onClick={() => window.open('https://github.com/frnikho', '_blank')}>Explorer tout mes projets</p>
+      </Container>
       <div ref={ref} className={"flex flex-row gap-8 overflow-x-auto no-scrollbar pr-[8%]"} {...events}>
         {data.map((project, index) => <Project first={index === 0} key={project.title} {...project}/>)}
       </div>
@@ -56,7 +57,7 @@ export default function Projects() {
   )
 }
 
-function Project({first = false, variant, title, description}: ProjectProps & {first?: boolean}) {
+function Project({first = false, variant, title, description, image}: ProjectProps & {first?: boolean}) {
 
   const color = () => {
     if (variant === 'blue') {
@@ -74,10 +75,15 @@ function Project({first = false, variant, title, description}: ProjectProps & {f
   }
 
   return (
-    <div className={`${first ? 'ml-[8.15%]' : null} min-w-[600px] min-h-[550px] ${color()} rounded-4xl p-8`}>
-      <div className={"flex flex-col gap-2"}>
-        <p className={"text-white text-3xl font-bold font-montserrat"}>{title}</p>
-        <p className={"text-white text-lg font-montserrat font-medium"}>{description}</p>
+    <div className={`${first ? 'ml-[8.15%]' : null} min-w-[600px] min-h-[550px] ${color()} rounded-4xl`}>
+      <div className={"flex flex-col justify-between h-full"}>
+        <div className={"flex flex-col gap-2 p-8"}>
+          <p className={"text-white text-3xl font-bold font-montserrat"}>{title}</p>
+          <p className={"text-white text-lg font-montserrat font-medium"}>{description}</p>
+        </div>
+        <div className={"self-end p-4"}>
+          <img src={image} alt={title}/>
+        </div>
       </div>
     </div>
   )

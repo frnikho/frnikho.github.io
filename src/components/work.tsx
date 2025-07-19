@@ -1,3 +1,5 @@
+import {Container, Heading, SubTitle, Text, Title} from "@/components/lib/title";
+
 type Work = {
     title: string;
     description: string;
@@ -35,12 +37,12 @@ export default function Work() {
     return (
         <div className={"bg-[#F8F7F1] flex flex-col py-28 gap-20"}>
             <div className={"flex flex-row w-full"}>
-                <h1 className={"m-auto text-[3em] text-primary"}>My Work Experience</h1>
+                <Title className={"m-auto"}>Expérience</Title>
             </div>
 
-            <div className={"flex flex-col 3xl:w-8/12 w-10/12 mx-auto"}>
+            <Container className={"flex flex-col mx-auto"}>
                 {works.map((work) => <WorkItem key={work.title} work={work}/>)}
-            </div>
+            </Container>
 
         </div>
     )
@@ -67,8 +69,8 @@ function WorkItem({work}: { work: Work }) {
         <p className={"w-full group"}>
             <div className={"flex flex-row justify-between align-middle gap-12 group-hover:mb-12 transition-all"}>
                 <div className={"flex-5/12 flex flex-col gap-2"}>
-                    <h1 className={"text-2xl text-primary"}>{work.company}</h1>
-                    <p className={""}>{work.date}</p>
+                    <Heading>{work.company}</Heading>
+                    <Text className={"uppercase"}>{work.date}</Text>
                 </div>
                 <div className={"z-10"}>
                     <div className={`bg-[#F8F7F1] h-12 w-12 border-dashed rounded-full border-[#CCC] border-[2px] relative
@@ -80,8 +82,8 @@ function WorkItem({work}: { work: Work }) {
                     </div>
                 </div>
                 <p className={"flex-5/12 flex flex-col gap-4 h-40"}>
-                    <h1 className={"text-xl text-primary"}>{work.title}</h1>
-                    <p className={"text-primary tex-lg font-nunito"}>{work.description}</p>
+                    <Heading>{work.title}</Heading>
+                    <Text>{work.description}</Text>
                 </p>
             </div>
         </p>

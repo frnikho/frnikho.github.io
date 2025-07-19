@@ -4,17 +4,17 @@ h1, h2, h3, h4, h5, h6 {
     color: #0C2E3D;
 }
 
-h1 {
+/*h1 {
     color: #0C2E3D;
     font-family: 'Montserrat', sans-serif;
     font-weight: 650;
-}
+}*/
 
-h3 {
+/*h3 {
     color: #0C2E3D;
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
-}
+}*/
 
 .step::before {
     content: '';
