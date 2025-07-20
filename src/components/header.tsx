@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import type {ReactNode} from "react";
 import {Button, Container, SubTitle, Text, Title} from "@/components/lib/title";
 
 type Social = {
@@ -48,7 +48,10 @@ function Hero() {
                         <Title>SANS Nicolas</Title>
                         <SubTitle className={""}>Développeur Fullstack</SubTitle>
                     </div>
-                    <Text className={"text-sm xl:text-lg font-semibold"}>Bienvenue sur mon portfolio, je suis développeur fullstack et j’aide mes clients à concevoir des solutions robustes, modernes et prêtes pour la production.</Text>
+                    <Text className={"text-sm xl:text-lg font-semibold whitespace-pre-wrap"}>
+                        👋 Bienvenue sur mon portfolio !<br/><br/>
+                        Je suis Nicolas, développeur fullstack, mobile, DevOps et consultant Salesforce.<br/><br/>
+                        Depuis plusieurs années, j’accompagne des entreprises, de la startup aux projets à fort trafic, dans la conception de solutions robustes, scalables, et parfaitement intégrées à leur écosystème.</Text>
                 </div>
             </div>
             <div className={"flex flex-col lg:flex-row justify-between gap-4"}>
@@ -92,16 +95,17 @@ function Navigation() {
             <div className={"flex-2/12"}>
                 <img className={"cursor-pointer"} alt={'logo'} src={'/android-chrome-192x192.png'} width={48} height={48}/>
             </div>
-            <div className={"flex-row gap-12 justify-center flex-8/12 lg:flex hidden"}>
-                <NavItem first>Services</NavItem>
-                <NavItem>Projets</NavItem>
-                <NavItem>Contact</NavItem>
-                <NavItem>Contact</NavItem>
+            <div className={"flex-row gap-2 justify-center flex-8/12 lg:flex hidden"}>
+                <NavItem element={'.service'} first>Service</NavItem>
+                <NavItem element={'.work'}>Expérience</NavItem>
+                <NavItem element={'.project'}>Projets</NavItem>
+                <NavItem element={'.feedback'}>Recommandation</NavItem>
+                <NavItem element={'.contact'}>Contact</NavItem>
             </div>
             <div className={"flex flex-row gap-10 lg:flex-2/12"}>
                 <Button className={"flex flex-row items-center gap-2"} onClick={onClickPhone}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                         stroke="#0C2E3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         stroke="#0C2E3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                          className="lucide lucide-phone-call-icon lucide-phone-call">
                         <title>phone call</title>
                         <path d="M13 2a9 9 0 0 1 9 9"/>
@@ -122,14 +126,24 @@ function Navigation() {
     )
 }
 
-function NavItem({children, first = false}: { children: ReactNode, first?: boolean }) {
+function NavItem({children, element, first = false}: { children: ReactNode, element: string, first?: boolean }) {
+
+    const onClick = () => {
+        const item = document.querySelector(element);
+        console.log(element)
+        if (item) {
+            item.scrollIntoView({behavior: 'smooth', inline: 'center', block: 'center'});
+        }
+    }
+
     return (
-        <div
-            className={`bg-[#F8F7F1] hover:bg-[#FFFFFF] hover:rounded-full px-8 py-3.5 transition-all hover:shadow-xs`}>
+        <Button
+            onClick={onClick}
+            className={`shadow-none bg-[#F8F7F1] hover:bg-[#FFFFFF] hover:rounded-full px-8 py-3.5 transition-all hover:shadow-xs`}>
             <p className={`${first ? 'border-[#246D6A] text-[#246D6A] border-x-3 px-6' : ''} text-[1.2em] font-bold font-nunito leading-4 cursor-pointer tracking-wide`}>
                 {children}
             </p>
-        </div>
+        </Button>
     )
 }
 

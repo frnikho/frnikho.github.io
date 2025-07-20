@@ -1,5 +1,6 @@
-import {useState} from "react";
-import {Title} from "@/components/lib/title";
+import {useEffect, useRef, useState} from "react";
+import {Button, Container, Title} from "@/components/lib/title";
+import {useIsMobile} from "@/hooks/use-is-mobile";
 
 type Feedback = {
     user: string;
@@ -29,47 +30,91 @@ const feedbacks: Feedback[] = [
     },
     {
         user: 'Antoine H',
-        description: 'blabla',
+        description: 'Nicolas s’est montré très attentif et toujours investi, même face à nos changements de dernière minute. Flexibleet  à l’écoute il s’adapte parfaitement aux besoins. La qualité de son travail reflète son sérieux. Je le recommande sans hésitation',
         profile_picture: '/users/ah.jpeg',
         role: 'Co-founder of Everyloc'
     },
     {
-        user: 'Bob b',
-        description: 'I had a great experience with the recruitment process, it was smooth and efficient.',
-        profile_picture: '/github.png',
-        role: 'Product Manager'
+        user: 'Justin M',
+        description: 'BLABLABLA',
+        profile_picture: '/users/jm.jpeg',
+        role: 'Backend Developer'
     }
 ]
 
-export default function Feedbacks() {
+const VISIBLE_COUNT = 3;
 
-    const [currentIndex, setIndex] = useState(0);
+export default function Feedbacks() {
+    // Clone last and first items for infinite effect
+    const extendedFeedbacks = [
+        ...feedbacks.slice(-VISIBLE_COUNT),
+        ...feedbacks,
+        ...feedbacks.slice(0, VISIBLE_COUNT)
+    ];
+
+    const [currentIndex, setIndex] = useState(VISIBLE_COUNT);
+    const [isAnimating, setIsAnimating] = useState(true);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const isMobile = useIsMobile();
 
     const handleNext = () => {
-        setIndex((prev) => (prev + 1) % feedbacks.length);
+        if (currentIndex > feedbacks.length + 1) {
+            return;
+        }
+        console.log(currentIndex + 1);
+        setIsAnimating(true);
+        setIndex((prev) => prev + 1);
     };
 
     const handlePrev = () => {
-        setIndex((prev) => (prev - 1 + feedbacks.length) % feedbacks.length);
+        console.log(currentIndex - 1);
+        setIsAnimating(true);
+        setIndex((prev) => prev - 1);
     };
 
-    const visibleFeedbacks = [
-        feedbacks[(currentIndex) % feedbacks.length],
-        feedbacks[(currentIndex + 1) % feedbacks.length],
-        feedbacks[(currentIndex + 2) % feedbacks.length],
-    ];
+    // Handle the jump after animation ends
+    const handleTransitionEnd = () => {
+
+        if (currentIndex > feedbacks.length) {
+            setIsAnimating(false);
+            setIndex(1);
+        } else if (currentIndex <= 0) {
+            setIsAnimating(false);
+            setIndex(feedbacks.length);
+        }
+
+        /*if (currentIndex === extendedFeedbacks.length - VISIBLE_COUNT) {
+            setIndex(VISIBLE_COUNT);
+        } else if (currentIndex === 0) {
+            setIndex(extendedFeedbacks.length - 2 * VISIBLE_COUNT);
+        }*/
+    };
+
+    // Calculate translateX
+    const translateX = `-${(currentIndex * (100 / (isMobile ? 1 : VISIBLE_COUNT)))}%`;
 
     return (
-        <div className={"bg-[#F8F7F1] flex flex-col py-20 mx-auto justify-center gap-16"}>
-            <div className={"flex flex-col w-full m-auto text-center gap-8 mb-20"}>
+        <div className={"bg-[#F8F7F1] flex flex-col py-20 mx-auto justify-center gap-0 feedback"}>
+            <Container className={"flex flex-col m-auto text-center gap-8 mb-10"}>
                 <Title>Recommandations</Title>
-                <h2 className={""}>Chaque collaboration m’a permis d’apprendre, d’évoluer et de recevoir des retours précieux de la part de ceux avec qui j’ai travaillé.</h2>
+                <h2>Chaque collaboration m’a permis d’apprendre, d’évoluer et de recevoir des retours précieux de la part de ceux avec qui j’ai travaillé.</h2>
+            </Container>
+            <div className="overflow-hidden w-full">
+                <div
+                    ref={containerRef}
+                    className={`flex ${isAnimating ? "transition-transform duration-300" : ""}`}
+                    style={{ transform: `translateX(${translateX})` }}
+                    onTransitionEnd={handleTransitionEnd}
+                >
+                    {extendedFeedbacks.map((feed, index) => (
+                        <div key={feed.user + index} className={`${isAnimating ? 'transition-transform duration-300' : ''} w-full lg:w-1/3 flex-shrink-0 lg:py-12 ${index === (currentIndex + 1) ? "-translate-y-[40px]" : "translate-y-0"}`}>
+                            <FeedbackItem feed={feed}/>
+                        </div>
+                    ))}
+                </div>
             </div>
-            <div className={"3xl:w-8/12 mx-auto w-10/12 flex flex-row gap-16 scroll-auto transition-transform duration-500"}>
-                {visibleFeedbacks.map((feed, index) => <FeedbackItem key={feed.user} feed={feed} selected={index === 1} />)}
-            </div>
-            <div className={"flex flex-row gap-2 justify-center"}>
-                <div className={"bg-white rounded-full p-6 cursor-pointer"} onClick={handlePrev}>
+            <div className={"flex flex-row gap-4 lg:gap-2 justify-center"}>
+                <Button className={"bg-white rounded-full p-4 lg:p-6 cursor-pointer"} onClick={handlePrev}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                          stroke="lightgray" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                          className="lucide lucide-circle-arrow-left-icon lucide-circle-arrow-left">
@@ -78,8 +123,8 @@ export default function Feedbacks() {
                         <path d="m12 8-4 4 4 4"/>
                         <path d="M16 12H8"/>
                     </svg>
-                </div>
-                <div className={"bg-white rounded-full p-6 cursor-pointer"} onClick={handleNext}>
+                </Button>
+                <Button className={"bg-white rounded-full p-4 lg:p-6 cursor-pointer"} onClick={handleNext}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                          stroke="#2A7069" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                          className="lucide lucide-circle-arrow-right-icon lucide-circle-arrow-right">
@@ -88,22 +133,24 @@ export default function Feedbacks() {
                         <path d="m12 16 4-4-4-4"/>
                         <path d="M8 12h8"/>
                     </svg>
-                </div>
+                </Button>
             </div>
         </div>
     );
 }
 
-function FeedbackItem({feed, selected}: {feed: Feedback, selected: boolean}) {
+function FeedbackItem({feed}: {feed: Feedback}) {
     return (
-        <div className={`flex-1/3 bg-white relative rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] ${selected ? '-translate-y-[50px]' : '-translate-y-0'} `}>
-            <img width={64} height={64} className={"bg-[#F8F7F1] absolute left-1/2 -translate-x-1/2 -translate-y-[30px] shadow-xl rounded-full p-2"} src={feed.profile_picture} alt={feed.user}/>
-            <div className={"mt-6 py-6 px-12 flex flex-col gap-4 text-center justify-start"}>
-                <h3 className={"text-md h-[120px] align-middle content-center"}>{feed.description}</h3>
-                <hr className={"border-[#F8F7F1] border-1"}/>
-                <div className={"flex flex-col gap-1"}>
-                    <p className={"text-primary font-bold text-xl"}>{feed.user}</p>
-                    <p className={"text-gray-500 text-sm"}>{feed.role}</p>
+        <div className={`m-8 flex-1/3 bg-white relative rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)]`}>
+            <img width={64} height={128} className={"bg-[#F8F7F1] absolute left-1/2 -translate-x-1/2 -translate-y-[30px] shadow-xl rounded-full p-2"} src={feed.profile_picture} alt={feed.user}/>
+            <div className={"pt-12 pb-4 px-12 flex flex-col gap-4 text-center justify-between h-full"}>
+                <h3 className={"text-md  align-middle content-center min-h-24 font-nunito"}>{feed.description}</h3>
+                <div className={"flex flex-col gap-2"}>
+                    <hr className={"border-[#F8F7F1] border-1"}/>
+                    <div className={"flex flex-col gap-1"}>
+                        <p className={"text-primary font-bold text-xl"}>{feed.user}</p>
+                        <p className={"text-gray-500 text-sm"}>{feed.role}</p>
+                    </div>
                 </div>
             </div>
         </div>
