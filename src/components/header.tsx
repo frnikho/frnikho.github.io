@@ -41,8 +41,8 @@ export default function Header() {
 
 function Hero() {
     return (
-        <div className={"flex flex-col gap-12 lg:gap-40 my-12 lg:my-28"}>
-            <div className={"flex flex-col lg:flex-row"}>
+        <div className={"flex flex-col gap-12 lg:gap-20 my-12 lg:mt-28"}>
+            <div className={"flex flex-col lg:flex-row justify-between gap-4"}>
                 <div className={"flex flex-col gap-8 max-w-[28rem]"}>
                     <div>
                         <Title>SANS Nicolas</Title>
@@ -55,15 +55,16 @@ function Hero() {
                 </div>
             </div>
             <div className={"flex flex-col lg:flex-row justify-between gap-4"}>
-                <div className={"flex flex-col gap-2"}>
+                <div className={"flex flex-col gap-2 justify-center"}>
                     <div className={"flex flex-row gap-2 items-baseline"}>
                         <SubTitle className={"text-[2.5em] 3xl:text-[2.5em]"}>5</SubTitle>
                         <Text className={"text-lg uppercase font-montserrat font-medium"}>ans d'expériences</Text>
                     </div>
                 </div>
-                <div className={"text-lg"}>
-                    <div className={"flex flex-row gap-4"}>
-                        {socials.map((s) => <Social key={s.name} {...s}/>)}
+                <div>
+                    <div className={"flex flex-row gap-4 items-center"}>
+                        <img src="/pd1.png" alt="Plateform developer I - certification" width={80}/>
+                        <img src="/rncp.png" alt="Plateform developer I - certification" width={180}/>
                     </div>
                 </div>
             </div>
@@ -117,10 +118,6 @@ function Navigation() {
                         +33 6 29 42 37 83
                     </Text>
                 </Button>
-
-                {/*<NavIcon>
-                    <img src="/linkedin.png" alt="Linkedin" width={26} height={26}/>
-                </NavIcon>*/}
             </div>
         </div>
     )
@@ -144,13 +141,5 @@ function NavItem({children, element, first = false}: { children: ReactNode, elem
                 {children}
             </p>
         </Button>
-    )
-}
-
-function NavIcon({children}: { children: ReactNode}) {
-    return (
-        <div className={"bg-[#FFFFFF] p-3.5 shadow-xs rounded-2xl hover:opacity-80 hover:bg-[#FFFFFE] transition-all cursor-pointer"}>
-            {children}
-        </div>
     )
 }
