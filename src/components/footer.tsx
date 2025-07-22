@@ -8,7 +8,7 @@ export default function Footer() {
 
     return (
         <Container className={"flex flex-col pt-14 lg:pt-28 mb-6 mx-auto gap-8 contact"}>
-            <div className={"flex flex-col lg:flex-row"}>
+            <div className={"flex flex-col lg:flex-row gap-16"}>
                 <div className={"flex-2/3 flex flex-col gap-16"}>
                     <SubTitle>Un projet en tête ? Une idée à concrétiser ? <br/>Écrivons-en les premières lignes ensemble.</SubTitle>
                     <SubTitle>Tu peux me contacter directement <span className={"underline text-[#E06141] cursor-pointer"} onClick={onClickContact}>ici</span></SubTitle>
@@ -22,7 +22,7 @@ export default function Footer() {
                     </div>
                     <div className={"flex flex-col gap-3"}>
                         <div className={"flex flex-row gap-2 items-center cursor-pointer"} onClick={() => window.open('https://linkedin.com/in/nicosans/', '_blank')}>
-                            <img src="/linkedin.png" alt="linkedin" width={24}/>
+                            <img src="/icons/linkedin.png" alt="linkedin" width={24}/>
                             <p className={"text-primary font-semibold"}>Linkedin</p>
                         </div>
                         <div className={"flex flex-row gap-2 items-center cursor-pointer"} onClick={() => window.open('https://github.com/frnikho', '_blank')}>

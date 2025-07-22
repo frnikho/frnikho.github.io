@@ -16,7 +16,7 @@ type Service = {
 const services: Service[] = [
     {
         title: 'Développement Web & Architecture logicielle',
-        icon: '/react.png',
+        icon: '/icons/computer.png',
         variant: 'yellow',
         services: [
             {
@@ -39,7 +39,7 @@ const services: Service[] = [
     },
     {
         title: 'Développement Mobile',
-        icon: '/c++.png',
+        icon: '/icons/smartphones.png',
         variant: 'purple',
         services: [
             {
@@ -58,7 +58,7 @@ const services: Service[] = [
     },
     {
         title: 'DevOps & Infrastructure',
-        icon: '/k8s.svg',
+        icon: '/icons/continous.png',
         variant: 'green',
         services: [
             {
@@ -154,10 +154,11 @@ function CtaItem(props: Props) {
     }
 
     return (
-        <Button className={"active:scale-[.97] group p-4 lg:px-6 lg:py-6 shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all cursor-pointer"} onClick={() => setCollapsed(!collapsed)}>
+        <Button className={"active:scale-[.97] group p-4 shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all cursor-pointer"} onClick={() => setCollapsed(!collapsed)}>
             <div className={"flex flex-row lg:gap-8 items-center"}>
                 <div className={`flex-3/12 lg:flex-none`}>
-                    <div className={`${color()} rounded-3xl p-4 w-fit`}>
+                    <div className={`p-4 w-fit relative z-10`}>
+                        <div className={`${color()} ${collapsed ? 'rotate-45' : 'rotate-0'} rounded-3xl absolute w-full h-full -z-10 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 transition-all`}></div>
                         <img src={props.icon} alt={props.title} width={34} height={34}/>
                     </div>
                 </div>
@@ -173,7 +174,7 @@ function CtaItem(props: Props) {
                         <path d="m6 9 6 6 6-6"/>
                     </svg>
                 </div>
-                <div className={`${collapsed ? 'h-fit' : 'h-0'} transition-all overflow-hidden mt-4`}>
+                <div className={`${collapsed ? 'h-fit' : 'h-0'} transition-all overflow-hidden mt-2`}>
                     {props.services.map((s) => <Service key={s.title} {...s} />)}
                 </div>
             </div>
