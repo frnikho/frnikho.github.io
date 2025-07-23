@@ -1,4 +1,5 @@
 import {Container, Heading, Text, Title} from "@/components/lib/title";
+import { motion, useScroll } from "motion/react"
 
 type Work = {
     title: string;
@@ -95,7 +96,7 @@ function WorkItem({work}: { work: Work }) {
     }
 
     return (
-        <div className={"w-full project-card"}>
+        <motion.div initial={{ opacity: 0, translateX: 5 }} whileInView={{ opacity: 1, translateX: 0 }} viewport={{ amount: 0.75, once: true }} className={"w-full project-card"}>
             <div className={"flex flex-row justify-between align-middle lg:gap-12 gap-6 transition-all"}>
                 <div className={"flex-4/12 flex-row gap-4 items-start not-lg:hidden lg:flex"}>
                     <img className={"mt-2.5"} src={work.logo} alt={work.title} width={28} height={38}/>
@@ -124,6 +125,6 @@ function WorkItem({work}: { work: Work }) {
                     <Text className={"not-lg:text-xs lg:text-sm italic text-gray-600"}>{work.techo?.join(', ')}</Text>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

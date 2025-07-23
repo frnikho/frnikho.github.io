@@ -7,7 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
     server: {
         port: 3000,
-        allowedHosts: ['stunning-incentive-mental-al.trycloudflare.com'],
+        allowedHosts: ['.trycloudflare.com'],
     },
     plugins: [
         tsConfigPaths(),

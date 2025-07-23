@@ -1,5 +1,6 @@
-import {act, ReactNode, useState} from "react";
+import {type ReactNode, useState} from "react";
 import {Button, Container, SubTitle, Text, Title} from "@/components/lib/title";
+import { motion } from "motion/react";
 
 type Social = {
     name: string;
@@ -7,34 +8,17 @@ type Social = {
     link: string;
 }
 
-const socials: Social[] = [
-    {
-        name: 'Linkedin',
-        icon: '/linkedin.png',
-        link: 'https://linkedin.com/in/nicosans'
-    },
-    {
-        name: 'Malt',
-        icon: '/malt.png',
-        link: 'https://malt.fr/profile/nicolassans'
-    },
-    {
-        name: 'Github',
-        icon: '/github.png',
-        link: 'https://github.com/frnikho/'
-    }
-]
-
 export default function Header() {
-
 
     return (
         <div className={"bg-[#F8F7F1]"}>
-            <Container className={"flex flex-col m-auto"}>
+            <Container className={"flex flex-col m-auto relative"}>
                 <Navigation/>
-                <Hero/>
-                <div className={"lg:absolute lg:bottom-0 lg:left-1/2 transform lg:-translate-x-1/2 mx-auto"}>
-                    <img className={"rounded-t-full"} src="https://placehold.co/400x600/png" alt="Nicolas SANS profile" width={400}/>
+                <div className={'flex flex-col'}>
+                    <Hero/>
+                    <div className={"xl:absolute xl:bottom-0 xl:left-1/2 transform xl:-translate-x-1/2 overflow-hidden"}>
+                        <motion.img initial={{translateY: 200, opacity: 0}} animate={{opacity: 1, translateY: 0}} transition={{ type: "keyframes", stiffness: 10, duration: 0.2 }} className={"rounded-t-full"} src="/pp.jpg" alt="Nicolas SANS profile" width={400}/>
+                    </div>
                 </div>
             </Container>
         </div>
@@ -43,7 +27,7 @@ export default function Header() {
 
 function Hero() {
     return (
-        <div className={"flex flex-col gap-12 lg:gap-20 my-12 lg:mt-28"}>
+        <div className={"flex flex-col gap-12 lg:gap-20 mb-12 lg:my-12 lg:mt-28 home"}>
             <div className={"flex flex-col lg:flex-row justify-between gap-4"}>
                 <div className={"flex flex-col gap-8 max-w-[28rem]"}>
                     <div>
@@ -100,14 +84,14 @@ function Navigation() {
             <div className={"flex-2/12"}>
                 <img className={`not-lg:hidden cursor-pointer w-[38px] lg:min-w-[48px]`} alt={'logo'} src={'/android-chrome-192x192.png'} width={48} height={48}/>
             </div>
-            <div className={"flex-row gap-2 justify-center flex-8/12 lg:flex hidden"}>
+            <div className={"flex-row gap-2 justify-center flex-8/12 xl:flex hidden"}>
                 <NavItem element={'.service'} first>Service</NavItem>
                 <NavItem element={'.work'}>Expérience</NavItem>
                 <NavItem element={'.project'}>Projets</NavItem>
                 <NavItem element={'.feedback'}>Recommandation</NavItem>
                 <NavItem element={'.contact'}>Contact</NavItem>
             </div>
-            <div className={"flex flex-row gap-10 lg:flex-2/12 not-lg:hidden"}>
+            <div className={"flex flex-row gap-10 xl:flex-2/12 not-xl:hidden"}>
                 <Button className={"flex flex-row items-center gap-2"} onClick={onClickPhone}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                          stroke="#0C2E3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -123,16 +107,19 @@ function Navigation() {
                     </Text>
                 </Button>
             </div>
-            <div>
-                <svg onClick={() => setActiveMenu(!activeMenu)} className={`z-20 fixed right-0 top-0 m-6 ${activeMenu ? 'rotate-90' : '0'} transition-all`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <title>menu</title>
-                    <path d="M4 12h16" className={`${activeMenu ? 'translate-x-[3px]' : ''}`}/>
-                    <path d="M4 18h16" className={`${activeMenu ? '-translate-x-[3px]' : ''}`}/>
-                    <path d="M4 6h16" className={`${activeMenu ? '-translate-x-[3px]' : ''}`}/>
-                </svg>
-                <div className={`fixed h-full mt-10 right-0 transition-all overflow-x-clip pl-8 pr-4 z-20`}>
+            <div className={'xl:hidden'}>
+                <Button className={'rounded-xl p-2 fixed right-0 top-0 m-5 z-20'}>
+                    <svg onClick={() => setActiveMenu(!activeMenu)} className={`${activeMenu ? 'rotate-90' : '0'} transition-all`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="#0C2E3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <title>menu</title>
+                        <path d="M4 12h16" className={`${activeMenu ? 'translate-x-[3px]' : ''}`}/>
+                        <path d="M4 18h16" className={`${activeMenu ? '-translate-x-[3px]' : ''}`}/>
+                        <path d="M4 6h16" className={`${activeMenu ? '-translate-x-[3px]' : ''}`}/>
+                    </svg>
+                </Button>
+                <div className={`fixed h-full mt-16 right-0 transition-all overflow-x-clip pl-8 pr-4 z-20`}>
                     <div className={`${!activeMenu ? 'translate-x-[200px]' : 'translate-x-[0px]'} py-4 flex flex-col gap-3 transition-all`}>
+                        <MobileNavItem element={'.home'} title={'Home'} icon={'home'}/>
                         <MobileNavItem element={'.service'} title={'Service'} icon={'service'}/>
                         <MobileNavItem element={'.work'} title={'Expérience'} icon={'work'}/>
                         <MobileNavItem element={'.project'} title={'Projets'} icon={'project'}/>
@@ -145,20 +132,41 @@ function Navigation() {
     )
 }
 
-function MobileNavItem({title, element, icon}: {title: string, element: string, icon: 'service' | 'work' | 'project' | 'feedback' | 'contact'}) {
+function MobileNavItem({title, element, icon}: {title: string, element: string, icon: 'service' | 'work' | 'project' | 'feedback' | 'contact' | 'home'}) {
+
+    const delay = () => {
+        return {
+            service: 'delay-50',
+            work: 'delay-100',
+            project: 'delay-150',
+            feedback: 'delay-200',
+            contact: 'delay-250'
+        }[icon];
+    }
 
     const onClick = () => {
         const item = document.querySelector(element);
         console.log(element)
         if (item) {
-            item.scrollIntoView({behavior: 'smooth', inline: 'center', block: 'center'});
+            item.scrollIntoView({behavior: 'smooth', inline: 'start', block: 'start'});
         }
     }
 
     const showIcon = () => {
+        if (icon === 'home') {
+            return (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0C2E3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <title>home</title>
+                    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+                    <path
+                        d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                </svg>
+            )
+        }
         if (icon === 'feedback') {
             return (
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                     stroke="#0C2E3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <title>feedback</title>
                     <path
                         d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>
@@ -168,7 +176,7 @@ function MobileNavItem({title, element, icon}: {title: string, element: string, 
         if (icon === 'project') {
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="#0C2E3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <title>project</title>
                     <path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/>
                     <path d="M10 19v-3.96 3.15"/>
@@ -180,7 +188,7 @@ function MobileNavItem({title, element, icon}: {title: string, element: string, 
         if (icon === 'service') {
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="#0C2E3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <title>service</title>
                     <path
                         d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/>
@@ -193,7 +201,7 @@ function MobileNavItem({title, element, icon}: {title: string, element: string, 
         if (icon === 'work') {
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="#0C2E3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <title>work</title>
                     <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                     <rect width="20" height="14" x="2" y="6" rx="2"/>
@@ -203,7 +211,7 @@ function MobileNavItem({title, element, icon}: {title: string, element: string, 
         if (icon === 'contact') {
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="#0C2E3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <title>mail</title>
                     <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/>
                     <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -212,11 +220,9 @@ function MobileNavItem({title, element, icon}: {title: string, element: string, 
         }
     }
 
-
     return (
-        <Button className={'bg-white p-4 rounded-3xl flex flex-row gap-2 items-center shadow-[0_8px_30px_rgb(0,0,0,0.16)]'} onClick={onClick}>
+        <Button className={`bg-white p-4 rounded-3xl flex flex-row gap-2 items-center ${delay()} shadow-[0_8px_30px_rgb(0,0,0,0.16)]`} onClick={onClick}>
             {showIcon()}
-            <Text className={'text-xs font-bold font-montserrat'}>{title}</Text>
         </Button>
     )
 }

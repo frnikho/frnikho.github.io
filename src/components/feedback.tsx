@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import {Button, Container, Title} from "@/components/lib/title";
 import {useIsMobile} from "@/hooks/use-is-mobile";
+import { motion } from "motion/react";
 
 type Feedback = {
     user: string;
@@ -100,12 +101,14 @@ export default function Feedbacks() {
     const translateX = `-${(currentIndex * (100 / (isMobile ? 1 : VISIBLE_COUNT)))}%`;
 
     return (
-        <div className={"bg-[#F8F7F1] flex flex-col py-20 mx-auto justify-center gap-0 feedback"}>
-            <Container className={"flex flex-col m-auto text-center gap-8 mb-10"}>
-                <Title>Recommandations</Title>
-                <h2>Chaque collaboration m’a permis d’apprendre, d’évoluer et de recevoir des retours précieux de la part de ceux avec qui j’ai travaillé.</h2>
-            </Container>
-            <div className="overflow-hidden w-full">
+        <motion.div className={"bg-[#F8F7F1] flex flex-col py-20 mx-auto justify-center gap-0 feedback"}>
+            <motion.div initial={{ opacity: 0 }} animate={{opacity: 1}} viewport={{ amount: 0.9, once: true }}>
+                <Container className={"flex flex-col m-auto text-center gap-8 mb-10"}>
+                    <Title>Recommandations</Title>
+                    <h2>Chaque collaboration m’a permis d’apprendre, d’évoluer et de recevoir des retours précieux de la part de ceux avec qui j’ai travaillé.</h2>
+                </Container>
+            </motion.div>
+            <motion.div className="overflow-hidden w-full" initial={{ opacity: 0 }} animate={{opacity: 1}}  viewport={{ amount: 0.7, once: true }}>
                 <div
                     ref={containerRef}
                     className={`flex ${isAnimating ? "transition-transform duration-300" : ""}`}
@@ -118,7 +121,7 @@ export default function Feedbacks() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
             <div className={"flex flex-row gap-4 lg:gap-2 justify-center"}>
                 <Button className={"bg-white rounded-full p-4 lg:p-6 cursor-pointer"} onClick={handlePrev}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -141,7 +144,7 @@ export default function Feedbacks() {
                     </svg>
                 </Button>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

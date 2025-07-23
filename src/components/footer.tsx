@@ -13,7 +13,7 @@ export default function Footer() {
                     <SubTitle>Un projet en tête ? Une idée à concrétiser ? <br/>Écrivons-en les premières lignes ensemble.</SubTitle>
                     <SubTitle>Tu peux me contacter directement <span className={"underline text-[#E06141] cursor-pointer"} onClick={onClickContact}>ici</span></SubTitle>
                 </div>
-                <div className={"flex-1/3 flex flex-col gap-8"}>
+                <div className={"flex-1/3 flex flex-row lg:flex-col gap-8 not-lg:items-end"}>
                     <div className={"flex flex-col"}>
                         <h3 className={"text-2xl mb-2"}>Informations</h3>
                         <p className={"font-nunito"}>Nantes et ses alentours</p>
