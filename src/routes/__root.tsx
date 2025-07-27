@@ -23,7 +23,7 @@ export const Route = createRootRoute({
             },
             {
                 name: 'description',
-                content: 'Portfolio de Nicolas SANS, développeur web fullstack spécialisé dans la création de sites et d\'applications web modernes et performants.',
+                content: 'Nicolas SANS, développeur web fullstack spécialisé dans la création de sites et d\'applications web modernes et performants.',
             },
             {
                 name: 'keywords',
@@ -32,6 +32,42 @@ export const Route = createRootRoute({
             {
                 name: 'author',
                 content: 'Nicolas SANS',
+            },
+            {
+                property: 'og:title',
+                content: 'Nicolas SANS - Portfolio'
+            },
+            {
+                property: 'og:description',
+                content: 'Nicolas SANS, développeur web fullstack spécialisé dans la création de sites et d\'applications web modernes et performants.'
+            },
+            {
+                property: 'og:type',
+                content: 'website'
+            },
+            {
+                property: 'og:image',
+                content: '/android-chrome-192x192.png'
+            },
+            {
+                property: 'og:url',
+                content: 'https://nikho.dev'
+            },
+            {
+                name: 'twitter:card',
+                content: 'summary_large_image'
+            },
+            {
+                name: 'twitter:title',
+                content: 'Nicolas SANS - Portfolio'
+            },
+            {
+                name: 'twitter:description',
+                content: 'Nicolas SANS, développeur web fullstack spécialisé dans la création de sites et d\'applications web modernes et performants.'
+            },
+            {
+                name: 'twitter:image',
+                content: '/android-chrome-192x192.png'
             }
         ],
         links: [
