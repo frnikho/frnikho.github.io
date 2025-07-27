@@ -68,13 +68,11 @@ export default function Feedbacks() {
         if (currentIndex > feedbacks.length + 1) {
             return;
         }
-        console.log(currentIndex + 1);
         setIsAnimating(true);
         setIndex((prev) => prev + 1);
     };
 
     const handlePrev = () => {
-        console.log(currentIndex - 1);
         setIsAnimating(true);
         setIndex((prev) => prev - 1);
     };

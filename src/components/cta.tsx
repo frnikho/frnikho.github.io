@@ -20,7 +20,7 @@ const services: Service[] = [
         variant: 'yellow',
         services: [
             {
-                title: 'Applications ',
+                title: 'Applications',
                 description: 'Développement d’interfaces interactives avec React, Next.js et Tailwind. Conception d’architectures modulaires, scalables, orientées clean code et DDD.'
             },
             {

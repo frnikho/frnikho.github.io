@@ -138,7 +138,6 @@ function MobileNavItem({title, element, icon}: {title: string, element: string, 
 
     const onClick = () => {
         const item = document.querySelector(element);
-        console.log(element)
         if (item) {
             item.scrollIntoView({behavior: 'smooth', inline: 'start', block: 'start'});
         }
@@ -223,7 +222,6 @@ function NavItem({children, element, first = false}: { children: ReactNode, elem
 
     const onClick = () => {
         const item = document.querySelector(element);
-        console.log(element)
         if (item) {
             item.scrollIntoView({behavior: 'smooth', inline: 'center', block: 'center'});
         }

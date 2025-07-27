@@ -14,7 +14,7 @@ type ProjectProps = {
 const data: ProjectProps[] = [
   {
     title: "Everyloc",
-    description: 'Site de location d\événementiels pour particuliers et professionnels sur Angers et ses alentours',
+    description: 'Site de location d\'événementiels pour particuliers et professionnels sur Angers et ses alentours',
     image: '/projects/everyloc.png',
     variant: 'green',
     link: 'https://www.angers-location.fr',
