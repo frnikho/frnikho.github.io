@@ -35,12 +35,12 @@ const feedbacks: Feedback[] = [
         profile_picture: '/users/ah.jpeg',
         role: 'Co-founder of Everyloc'
     },
-    {
+/*    {
         user: 'Justin M',
         description: 'BLABLABLA',
         profile_picture: '/users/jm.jpeg',
         role: 'Backend Developer'
-    },
+    },*/
     {
         user: 'Denis S',
         description: 'Que ce soit dans son approche aux défis ou dans les travaux qu\'il réalise, Nicolas présente un réel sens du besoin client, des attentions affinées et une technique maîtrisée qui traduisent des productions robustes et sans accros. Ayant travaillé avec lui par le passé, il propose des solutions sur-mesures et m’a accompagné tout au long de mes besoins. Je le recommande fortement.',
