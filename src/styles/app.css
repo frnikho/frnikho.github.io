@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+
+h1, h2, h3, h4, h5, h6 {
+    color: #0C2E3D;
+}
+
+/*h1 {
+    color: #0C2E3D;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650;
+}*/
+
+/*h3 {
+    color: #0C2E3D;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+}*/
+
+.step::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 40px;
+    border-left: 2px dotted #ccc;
+    z-index: -1;
+}
+
+.step:first-child::before {
+    display: none;
+}
+
+@theme {
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-nunito: 'Nunito', sans-serif;
+    --breakpoint-3xl: 140rem;
+    --radius-5xl: 3rem;
+    --color-primary: #0C2E3D;
+}
+
+@utility no-scrollbar {
+    @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}

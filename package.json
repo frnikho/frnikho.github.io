@@ -1,34 +1,35 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "frnikho.github.io",
+  "module": "index.ts",
+  "type": "module",
   "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "2.1.2",
+    "@types/bun": "latest",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "vite dev",
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@aptabase/react": "^0.3.5",
-    "autoprefixer": "^10.4.20",
-    "lottie-web": "^5.12.2",
-    "next": "15.1.2",
-    "next-client-cookies": "^2.0.0",
-    "next-intl": "^3.23.5",
-    "nodemailer": "^6.9.16",
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021"
-  },
-  "devDependencies": {
-    "@types/node": "^20.17.2",
-    "@types/nodemailer": "^6.4.16",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "eslint": "^9.13.0",
-    "eslint-config-next": "15.0.1",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.2"
-  },
-  "packageManager": "pnpm@9.15.0"
+    "@tailwindcss/vite": "^4.1.11",
+    "@tanstack/react-router": "^1.128.0",
+    "@tanstack/react-start": "^1.128.1",
+    "clsx": "^2.1.1",
+    "gsap": "^3.13.0",
+    "motion": "^12.23.6",
+    "ogl": "^1.0.11",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-use-draggable-scroll": "^0.4.7",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.11",
+    "vite": "^7.0.5"
+  }
 }
