@@ -1,23 +1,18 @@
 import {type ReactNode, useState} from "react";
-import {Button, Container, SubTitle, Text, Title} from "@/components/lib/title";
+import {Button, Container, SubTitle, Text} from "@/components/lib/title";
 import { motion } from "motion/react";
-
-type Social = {
-    name: string;
-    icon: string;
-    link: string;
-}
+import SplitText from "@/components/lib/split-text";
 
 export default function Header() {
 
     return (
-        <div className={"bg-[#F8F7F1]"}>
-            <Container className={"flex flex-col m-auto relative"}>
+        <div className={"bg-[#F8F7F1] relative"}>
+            <Container className={"flex flex-col m-auto relative home"}>
                 <Navigation/>
                 <div className={'flex flex-col'}>
                     <Hero/>
                     <div className={"xl:absolute xl:bottom-0 xl:left-1/2 transform xl:-translate-x-1/2 overflow-hidden"}>
-                        <motion.img initial={{translateY: 200, opacity: 0}} animate={{opacity: 1, translateY: 0}} transition={{ type: "keyframes", stiffness: 10, duration: 0.2 }} className={"rounded-t-full"} src="/pp.jpg" alt="Nicolas SANS profile" width={400}/>
+                        <motion.img  className={"rounded-t-[100px]"} src="/pp.jpg" alt="Nicolas SANS profile" width={400}/>
                     </div>
                 </div>
             </Container>
@@ -27,12 +22,24 @@ export default function Header() {
 
 function Hero() {
     return (
-        <div className={"flex flex-col gap-12 lg:gap-20 mb-12 lg:my-12 lg:mt-28 home"}>
+        <div className={"flex flex-col gap-6 lg:gap-20 mb-3 lg:mb-8 lg:mt-28 relative"}>
             <div className={"flex flex-col lg:flex-row justify-between gap-4"}>
-                <div className={"flex flex-col gap-8 max-w-[28rem]"}>
+                <div className={"flex flex-col gap-8 lg:max-w-[28rem]"}>
                     <div>
-                        <Title>SANS Nicolas</Title>
-                        <SubTitle className={""}>Développeur Fullstack</SubTitle>
+                        <SplitText
+                            kind='title'
+                            text="SANS Nicolas"
+                            delay={50}
+                            duration={0.4}
+                            threshold={0.1}
+                        />
+                        <SplitText
+                            kind='subtitle'
+                            text="Développeur Fullstack"
+                            delay={50}
+                            duration={0.6}
+                            threshold={0.1}
+                        />
                     </div>
                     <Text className={"text-sm xl:text-lg font-semibold whitespace-pre-wrap"}>
                         👋 Bienvenue sur mon portfolio !<br/><br/>
@@ -40,33 +47,18 @@ function Hero() {
                         Depuis plusieurs années, j’accompagne des entreprises, de la startup aux projets à fort trafic, dans la conception de solutions robustes, scalables, et parfaitement intégrées à leur écosystème.</Text>
                 </div>
             </div>
-            <div className={"flex flex-col lg:flex-row justify-between gap-4"}>
-                <div className={"flex flex-col gap-2 justify-center"}>
+            <div className={"flex flex-col lg:flex-row justify-between lg:gap-4"}>
+                <div className={"flex flex-col gap-2 justify-center items-center"}>
                     <div className={"flex flex-row gap-2 items-baseline"}>
                         <SubTitle className={"text-[2.5em] 3xl:text-[2.5em]"}>5</SubTitle>
                         <Text className={"text-lg uppercase font-montserrat font-medium"}>ans d'expériences</Text>
                     </div>
                 </div>
-                <div>
-                    <div className={"flex flex-row gap-4 items-center"}>
-                        <img className={"cursor-pointer"} src="/pd1.png" alt="Plateform developer I - certification" width={70} onClick={() => window.open('https://trailheadacademy.salesforce.com/certificate/exam-platform-dev1---Plat-Dev-201', '_blank')}/>
-                        <img className={"cursor-pointer"} src="/rncp.png" alt="RNCP35075" width={140} onClick={() => window.open('https://www.francecompetences.fr/recherche/rncp/35075/', '_blank')}/>
-                    </div>
+                <div className={"flex flex-row gap-4 items-center justify-center"}>
+                    <img className={"cursor-pointer"} src="/pd1.png" alt="Plateform developer I - certification" width={70} onClick={() => window.open('https://trailheadacademy.salesforce.com/certificate/exam-platform-dev1---Plat-Dev-201', '_blank')}/>
+                    <img className={"cursor-pointer"} src="/rncp.png" alt="RNCP35075" width={140} onClick={() => window.open('https://www.francecompetences.fr/recherche/rncp/35075/', '_blank')}/>
                 </div>
             </div>
-        </div>
-    )
-}
-
-function Social(social: Social) {
-
-    const onClick = () => {
-        window.open(social.link, '_blank');
-    }
-
-    return (
-        <div className={"p-4 bg-[#FFFFFF] shadow-[0_8px_30px_rgb(0,0,0,0.09)] active:scale-95 rounded-3xl transition-all cursor-pointer flex flex-row w-fit"} onClick={onClick}>
-            <img className={"w-6"} src={social.icon} alt={social.name}/>
         </div>
     )
 }

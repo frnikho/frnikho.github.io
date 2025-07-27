@@ -1,6 +1,6 @@
 import {type RefObject, useRef} from "react";
 import { useDraggable } from "react-use-draggable-scroll";
-import {Button, Container, Text, Title} from "@/components/lib/title";
+import {Container, Text, Title} from "@/components/lib/title";
 
 type ProjectProps = {
   title: string;
