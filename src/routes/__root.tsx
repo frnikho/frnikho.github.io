@@ -21,6 +21,18 @@ export const Route = createRootRoute({
             {
                 title: 'Nicolas SANS - Portfolio',
             },
+            {
+                name: 'description',
+                content: 'Portfolio de Nicolas SANS, développeur web fullstack spécialisé dans la création de sites et d\'applications web modernes et performants.',
+            },
+            {
+                name: 'keywords',
+                content: 'Nicolas SANS, portfolio, développeur web, fullstack, sites web, applications web, développement web',
+            },
+            {
+                name: 'author',
+                content: 'Nicolas SANS',
+            }
         ],
         links: [
             { rel: 'stylesheet', href: appCss },
