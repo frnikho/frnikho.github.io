@@ -24,7 +24,7 @@ export const Heading = React.forwardRef<
 	HTMLHeadingElement,
 	React.ComponentProps<"h3">
 >(({ className, ...props }, ref) => {
-	return <h3 className={cn('text-lg lg:text-2xl font-montserrat font-[600] leading-tight text-primary', className)} {...props} ref={ref}/>;
+	return <h3 className={cn('text-lg xl:text-2xl font-montserrat font-[600] leading-tight text-primary', className)} {...props} ref={ref}/>;
 });
 
 export const Text = React.forwardRef<
