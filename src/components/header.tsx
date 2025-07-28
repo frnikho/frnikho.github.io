@@ -11,8 +11,8 @@ export default function Header() {
                 <Navigation/>
                 <div className={'flex flex-col'}>
                     <Hero/>
-                    <div className={"xl:absolute xl:bottom-0 xl:left-1/2 transform xl:-translate-x-1/2 overflow-hidden"}>
-                        <motion.img  className={"rounded-t-[100px]"} src="/pp.jpg" alt="Nicolas SANS profile" width={400}/>
+                    <div className={"xl:absolute xl:right-0 2xl:right-auto bottom-0 2xl:left-1/2 transform 2xl:-translate-x-1/2 overflow-hidden"}>
+                        <img className={"rounded-t-[100px]"} src="/pp.jpg" alt="Nicolas SANS profile" width={400}/>
                     </div>
                 </div>
             </Container>
@@ -47,7 +47,7 @@ function Hero() {
                         Depuis plusieurs années, j’accompagne des entreprises, de la startup aux projets à fort trafic, dans la conception de solutions robustes, scalables, et parfaitement intégrées à leur écosystème.</Text>
                 </div>
             </div>
-            <div className={"flex flex-col lg:flex-row justify-between lg:gap-4"}>
+            <div className={"flex flex-col lg:flex-row 2xl:justify-between lg:gap-4"}>
                 <div className={"flex flex-col gap-2 justify-center items-center"}>
                     <div className={"flex flex-row gap-2 items-baseline"}>
                         <SubTitle className={"text-[2.5em] 3xl:text-[2.5em]"}>5</SubTitle>

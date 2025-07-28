@@ -114,7 +114,7 @@ export default function Feedbacks() {
                     onTransitionEnd={handleTransitionEnd}
                 >
                     {extendedFeedbacks.map((feed, index) => (
-                        <div key={feed.user + index} className={`${isAnimating ? 'transition-transform duration-300' : ''} w-full lg:w-1/3 flex-shrink-0 lg:py-12 ${index === (currentIndex + 1) ? "-translate-y-[40px]" : "translate-y-0"}`}>
+                        <div key={feed.user + index} className={`${isAnimating ? 'transition-transform duration-300' : ''} w-full lg:w-1/3 flex-shrink-0 self-center lg:py-12 ${index === (currentIndex + 1) ? "-translate-y-[40px]" : "translate-y-0"}`}>
                             <FeedbackItem feed={feed}/>
                         </div>
                     ))}
