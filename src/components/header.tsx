@@ -50,13 +50,13 @@ function Hero() {
             <div className={"flex flex-row 2xl:justify-between gap-8"}>
                 <div className={"flex flex-col gap-2 justify-center "}>
                     <div className={"flex flex-row gap-2 items-baseline"}>
-                        <SubTitle className={"text-[2.5em] 3xl:text-[2.5em]"}>5</SubTitle>
-                        <Text className={"text-lg uppercase font-montserrat font-medium"}>ans d'expériences</Text>
+                        <SubTitle className={"text-[1.5em] lg:text-[2em] 3xl:text-[2.5em]"}>5</SubTitle>
+                        <Text className={"text-sm lg:text-md uppercase font-montserrat font-medium"}>ans d'expériences</Text>
                     </div>
                 </div>
-                <div className={"flex flex-row gap-4 items-center justify-center"}>
-                    <img className={"cursor-pointer"} src="/pd1.png" alt="Plateform developer I - certification" width={70} onClick={() => window.open('https://trailheadacademy.salesforce.com/certificate/exam-platform-dev1---Plat-Dev-201', '_blank')}/>
-                    <img className={"cursor-pointer"} src="/rncp.png" alt="RNCP35075" width={140} onClick={() => window.open('https://www.francecompetences.fr/recherche/rncp/35075/', '_blank')}/>
+                <div className={"flex flex-row gap-1 items-center justify-center"}>
+                    <img className={"cursor-pointer w-[55px] lg:w-[70px]"} src="/pd1.png" alt="Plateform developer I - certification" onClick={() => window.open('https://trailheadacademy.salesforce.com/certificate/exam-platform-dev1---Plat-Dev-201', '_blank')}/>
+                    <img className={"cursor-pointer w-[100px] lg:w-[140px]"} src="/rncp.png" alt="RNCP35075" onClick={() => window.open('https://www.francecompetences.fr/recherche/rncp/35075/', '_blank')}/>
                 </div>
             </div>
         </div>
