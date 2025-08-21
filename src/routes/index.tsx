@@ -16,7 +16,7 @@ function RouteComponent() {
   return <div>
     <Header/>
     <CTA/>
-    {/*<Skills/>*/}
+    <Skills/>
     <Work/>
     <Projects/>
     <Feedback/>
