@@ -15,7 +15,7 @@ type Service = {
 
 const services: Service[] = [
     {
-        title: 'Développement Web & Architecture logicielle',
+        title: 'Développement Web & Applications',
         icon: '/icons/computer.png',
         variant: 'yellow',
         services: [
