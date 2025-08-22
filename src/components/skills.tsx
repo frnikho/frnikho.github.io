@@ -1,136 +1,301 @@
-import {Container} from "@/components/lib/title";
+import {Container, Text} from "@/components/lib/title";
 import { twMerge } from 'tailwind-merge'
-import {cva, VariantProps} from "class-variance-authority";
-
-/*type AllSkills = {
-    [key: string]: Skill;
-}*/
+import Magnet from "@/components/lib/magnet";
 
 const skills = {
     'typescript': {
         name: 'TypeScript',
-        description: 'A superset of JavaScript that adds static types.',
-        icon: '/icons/typescript.svg',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
+        type: 'frontend',
         color: 'blue',
-        link: 'https://www.typescriptlang.org/',
-        type: 'frontend'
     },
     'react': {
         name: 'React',
-        description: 'A JavaScript library for building user interfaces.',
-        icon: '/icons/react.svg',
-        color: 'cyan',
-        link: 'https://reactjs.org/',
-        type: 'frontend'
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+        type: 'frontend',
+        color: 'blue',
     },
     'rust': {
         name: 'Rust',
-        description: 'A systems programming language focused on safety and performance.',
-        icon: '/icons/rust.svg',
-        color: 'orange',
-        link: 'https://www.rust-lang.org/',
-        type: 'backend'
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg',
+        type: 'backend',
+        color: 'blue',
     },
     'docker': {
         name: 'Docker',
-        description: 'A platform for developing, shipping, and running applications in containers.',
-        icon: '/icons/docker.svg',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
+        type: 'devops',
         color: 'blue',
-        link: 'https://www.docker.com/',
-        type: 'devops'
     },
     'postgresql': {
         name: 'PostgreSQL',
-        description: 'An open-source relational database management system.',
-        icon: '/icons/postgresql.svg',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+        type: 'backend',
         color: 'blue',
-        link: 'https://www.postgresql.org/',
-        type: 'backend'
     },
     'elysiajs': {
-        name: 'Elysia.js',
-        description: 'A modern, fast, and lightweight web framework for building APIs in Node.js.',
-        icon: '/icons/elysiajs.svg',
-        color: 'purple',
-        link: 'https://elysiajs.org/',
-        type: 'backend'
+        name: 'ElysiaJS',
+        icon: 'https://avatars.githubusercontent.com/u/119793569?s=200&v=4',
+        type: 'backend',
+        color: 'blue',
     },
     'nestjs': {
         name: 'NestJS',
-        description: 'A progressive Node.js framework for building efficient and scalable server-side applications.',
-        icon: '/icons/nestjs.svg',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg',
+        type: 'backend',
+        color: 'red',
+    },
+    'tailwind': {
+        name: 'Tailwind CSS',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+        type: 'design',
+        color: 'blue',
+    },
+    'android': {
+        name: 'Android',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg',
+        type: 'frontend',
+        color: 'green',
+    },
+    'kubernetes': {
+        name: 'Kubernetes',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg',
+        type: 'devops',
+        color: 'blue',
+    },
+    'githubactions': {
+        name: 'GitHub Actions',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg',
+        type: 'devops',
+        color: 'purple',
+    },
+    'terraform': {
+        name: 'Terraform',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg',
+        type: 'devops',
+        color: 'blue',
+    },
+    'redis': {
+        name: 'Redis',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg',
+        type: 'backend',
+        color: 'red',
+    },
+    'prisma': {
+        name: 'Prisma',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg',
+        type: 'backend',
+        color: 'blue',
+    },
+    'node': {
+        name: 'Node.js',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
+        type: 'backend',
+        color: 'green',
+    },
+    'nextjs': {
+        name: 'Next.js',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg',
+        type: 'frontend',
+        color: 'black',
+    },
+    'mongodb': {
+        name: 'MongoDB',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg',
+        type: 'backend',
+        color: 'green',
+    },
+    'linux': {
+        name: 'Linux',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg',
+        type: 'devops',
+        color: 'black',
+    },
+    'jenkins': {
+        name: 'Jenkins',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg',
+        type: 'devops',
+        color: 'red',
+    },
+    'java': {
+        name: 'Java 17-21',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
+        type: 'backend',
+        color: 'red',
+    },
+    'influxdb': {
+        name: 'InfluxDB',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/influxdb/influxdb-original.svg',
+        type: 'backend',
+        color: 'blue',
+    },
+    'graphql': {
+        name: 'GraphQL',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg',
+        type: 'backend',
+        color: 'pink',
+    },
+    'grafana': {
+        name: 'Grafana',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grafana/grafana-original.svg',
+        type: 'devops',
+        color: 'orange',
+    },
+    'googlecloud': {
+        name: 'Google Cloud',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg',
+        type: 'devops',
+        color: 'blue',
+    },
+    'github': {
+        name: 'GitHub',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
+        type: 'devops',
+        color: 'black',
+    },
+    'gitlab': {
+        name: 'GitLab',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg',
+        type: 'devops',
+        color: 'orange',
+    },
+    'framer': {
+        name: 'Framer',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg',
+        type: 'design',
+        color: 'blue',
+    },
+    'flutter': {
+        name: 'Flutter',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg',
+        type: 'frontend',
+        color: 'blue',
+    },
+    'figma': {
+        name: 'Figma',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg',
+        type: 'design',
+        color: 'pink',
+    },
+    'cypress': {
+        name: 'Cypress',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg',
+        type: 'devops',
+        color: 'green',
+    },
+    'cloudflare': {
+        name: 'Cloudflare',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg',
+        type: 'devops',
+        color: 'orange',
+    },
+    'bun': {
+        name: 'Bun',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg',
+        type: 'backend',
         color: 'yellow',
-        link: 'https://nestjs.com/',
-        type: 'backend'
+    },
+    'azure': {
+        name: 'Azure',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg',
+        type: 'devops',
+        color: 'blue',
+    },
+    'argocd': {
+        name: 'ArgoCD',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/argocd/argocd-original.svg',
+        type: 'devops',
+        color: 'blue',
     }
 } as const;
 
-const buttonVariants = cva(
-    "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium text-sm outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-    {
-        variants: {
-            variant: {
-                default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
-                destructive:
-                    "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40",
-                outline:
-                    "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
-                secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-                ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-                link: "text-primary underline-offset-4 hover:underline",
-            },
-            size: {
-                default: "h-9 px-4 py-2 has-[>svg]:px-3",
-                sm: "h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5",
-                lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-                icon: "size-9",
-            },
-        },
-        defaultVariants: {
-            variant: "default",
-            size: "default",
-        },
-    },
-);
-
+type SkillType = typeof skills[keyof typeof skills]['type'];
+type SkillColor = typeof skills[keyof typeof skills]['color'];
 
 export default function Skills() {
+
     return (
-        <Container className={"grid grid-cols-10 gap-8 m-auto relative py-16 lg:py-32 service"}>
-            <SkillCard skill={skills.typescript}/>
+        <Container className={"flex flex-col gap-12 m-auto relative pb-16 lg:pb-32 service"}>
+            <div className={'grid grid-cols-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4'}>
+                <SkillCard favorite size={'xl'} skill={skills.typescript} className={'col-span-2 row-span-2'}/>
+                <SkillCard favorite size={'lg'} skill={skills.react} className={'col-span-2'}/>
+                <SkillCard favorite size={'md'} skill={skills.elysiajs} className={'col-span-2'}/>
+                <SkillCard skill={skills.java} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.docker} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.kubernetes} size={'lg'} className={'col-span-2'}/>
+                <SkillCard skill={skills.nextjs} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.tailwind} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.githubactions} size={'sm'} className={'col-span-2'}/>
+                <SkillCard skill={skills.linux} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.prisma} size={'sm'} className={'col-span-1'}/>
+                <SkillCard favorite skill={skills.bun} size={'xl'} className={'col-span-2 row-span-2'}/>
+                <SkillCard skill={skills.flutter} size={'sm'} className={'col-span-2'}/>
+                <SkillCard skill={skills.figma} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.redis} size={'sm'} className={'col-span-1'}/>
+                <SkillCard favorite skill={skills.rust} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.nestjs} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.node} size={'sm'} className={'col-span-1'}/>
+                <SkillCard favorite skill={skills.postgresql} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.mongodb} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.terraform} size={'sm'} className={'col-span-1'}/>
+            </div>
         </Container>
     )
 }
 
 type Skill = {
     name: string;
-    description: string;
     icon: string;
-    color: string;
-    link?: string;
     type?: 'frontend' | 'backend' | 'devops' | 'design';
+    color: SkillColor
 }
 
 type Props = {
+    favorite?: boolean;
+    size: 'sm' | 'md' | 'lg' | 'xl';
     className?: string | undefined;
     skill: Skill;
 }
 
-const SkillCard = ({skill, className}: Props & VariantProps<typeof buttonVariants>) => {
+const SkillCard = ({skill, className, size, favorite}: Props) => {
+
+    const getColor = () => {
+        switch (skill.color) {
+            case 'blue':
+                return 'bg-blue-50';
+            case 'red':
+                return 'bg-red-100';
+            case 'green':
+                return 'bg-green-100';
+            case 'black':
+                return 'bg-black/10';
+            case 'purple':
+                return 'bg-purple-100';
+            case 'pink':
+                return 'bg-pink-100';
+            case 'orange':
+                return 'bg-orange-100';
+            case 'yellow':
+                return 'bg-yellow-100';
+            default:
+                return 'bg-gray-100';
+        }
+    }
+
     return (
-        <div className={twMerge(className, `bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300`)}>
-            <div className="flex items-center space-x-4">
-                <img src={skill.icon} alt={skill.name} className="w-8 h-8"/>
-                <div>
-                    <h3 className="text-lg font-semibold">{skill.name}</h3>
-                    <p className="text-sm text-gray-600">{skill.description}</p>
+        <div className={twMerge(`bg-white py-4 shadow-sm border border-slate-200 rounded-2xl relative group`, className)}>
+            {favorite && <img alt={'star'} className={'absolute top-0 right-0 w-4 h-4 m-3'} src={'/star.png'}/>}
+            <Magnet padding={20} wrapperClassName={'flex items-center w-full h-full'} innerClassName={'w-full h-full'}>
+                <div className={'w-full flex flex-col items-center justify-center gap-2 h-full group-hover:scale-120 transition-all'}>
+                    <div className={`${getColor()} rounded-2xl p-2`}>
+                        <img src={skill.icon} alt="" className={`${size === 'xl' ? 'w-20 h-20' : ''} ${size === 'lg' ? 'w-16 h-16' : ''} ${size === 'md' ? 'w-12 h-12' : ''} ${size === 'sm' ? 'w-8 h-8' : ''}`}/>
+                    </div>
+                    {size === 'xl' && <Text className="text-2xl font-bold text-center">{skill.name}</Text>}
+                    {size === 'lg' && <Text className="text-xl font-bold text-center">{skill.name}</Text>}
+                    {size === 'md' && <Text className="text-lg font-semibold text-center">{skill.name}</Text>}
+                    {size === 'sm' && <Text className="text-md font-semibold text-center">{skill.name}</Text>}
                 </div>
-            </div>
-            {skill.link && (
-                <a href={skill.link} className="text-blue-500 hover:underline mt-2 block">
-                    Learn more
-                </a>
-            )}
+            </Magnet>
         </div>
     );
 }
