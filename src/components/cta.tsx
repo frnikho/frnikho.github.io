@@ -80,6 +80,29 @@ const services: Service[] = [
         ]
     },
     {
+        title: 'IoT & Système embarqué',
+        icon: '/icons/iot.png',
+        variant: 'orange',
+        services: [
+            {
+                title: 'Prototypage & développement',
+                description: 'Conception et développement de systèmes embarqués avec Arduino, Raspberry Pi, ESP32, etc.'
+            },
+            {
+                title: 'Connectivité & protocoles',
+                description: 'Intégration de capteurs, actionneurs, communication sans fil (WiFi, Bluetooth, Zigbee).'
+            },
+            {
+                title: 'Applications IoT',
+                description: 'Développement d’applications pour la collecte, le traitement et la visualisation des données IoT.'
+            },
+            {
+                title: 'Sécurité & maintenance',
+                description: 'Mise en place de mesures de sécurité pour les dispositifs IoT et gestion des mises à jour à distance (OTA).'
+            }
+        ]
+    },
+    {
         title: 'Salesforce',
         icon: '/salesforce.png',
         variant: 'blue',
@@ -122,7 +145,10 @@ export default function CTA() {
                     </div>
                     <div className={"flex flex-col gap-0"}>
                         <Title>+380</Title>
-                        <p>Contribution par an</p>
+                        <div className={'flex flex-row gap-2 items-center'}>
+                            <p>Contribution par an</p>
+                            <img className={'w-4 h-4'} src="/github-mark.svg" alt="github" title={'Contribution sur github'}/>
+                        </div>
                     </div>
                 </div>
             </div>

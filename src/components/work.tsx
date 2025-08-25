@@ -67,7 +67,7 @@ const works: Work[] = [
         company: 'Epitech, NANTES',
         date: 'Septembre 2019 - Juillet 2024',
         description: 'Formation en informatique orientée projets, autonomie et expertise technique, axée sur le développement logiciel, l’architecture système et les méthodes agiles. Obtention du titre RNCP35075 ',
-        techo: ['C', 'C++', 'JS/TS', 'Docker', 'K8S', 'React', 'Tanstack/NextJS'],
+        techo: ['C', 'C++', 'JS/TS', 'Docker', 'K8S', 'React', 'Tanstack/NextJS', 'PlatformIO', 'Linux', 'Git'],
         variant: 'red',
         logo: '/icons/epitech.png',
     },
@@ -132,7 +132,7 @@ function WorkItem({work}: { work: Work }) {
 
 
     return (
-        <motion.div initial={{ opacity: 0, translateX: 5 }} whileInView={{ opacity: 1, translateX: 0 }} viewport={{ amount: 0.75, once: true }} className={"w-full project-card"}>
+        <motion.div initial={{ opacity: 0, translateX: 5 }} whileInView={{ opacity: 1, translateX: 0 }} viewport={{ amount: 0.5, once: true }} className={"w-full project-card"}>
             <div className={"flex flex-row justify-between align-middle lg:gap-12 gap-6 transition-all group"}>
                 <div className={"flex-4/12 flex-row gap-4 items-start not-lg:hidden lg:flex"}>
                     <img className={"mt-2.5"} src={work.logo} alt={work.title} width={28} height={38}/>

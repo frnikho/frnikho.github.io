@@ -206,6 +206,12 @@ const skills = {
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/argocd/argocd-original.svg',
         type: 'devops',
         color: 'blue',
+    },
+    'cpp': {
+        name: 'C++',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg',
+        type: 'backend',
+        color: 'blue',
     }
 } as const;
 
@@ -226,11 +232,10 @@ export default function Skills() {
                 <SkillCard skill={skills.nextjs} size={'sm'} className={'col-span-1'}/>
                 <SkillCard skill={skills.tailwind} size={'sm'} className={'col-span-1'}/>
                 <SkillCard skill={skills.githubactions} size={'sm'} className={'col-span-2'}/>
-                <SkillCard skill={skills.linux} size={'sm'} className={'col-span-1'}/>
-                <SkillCard skill={skills.prisma} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.cpp} size={'md'} className={'col-span-2'}/>
                 <SkillCard favorite skill={skills.bun} size={'xl'} className={'col-span-2 row-span-2'}/>
                 <SkillCard skill={skills.flutter} size={'sm'} className={'col-span-2'}/>
-                <SkillCard skill={skills.figma} size={'sm'} className={'col-span-1'}/>
+                <SkillCard skill={skills.linux} size={'sm'} className={'col-span-1'}/>
                 <SkillCard skill={skills.redis} size={'sm'} className={'col-span-1'}/>
                 <SkillCard favorite skill={skills.rust} size={'sm'} className={'col-span-1'}/>
                 <SkillCard skill={skills.nestjs} size={'sm'} className={'col-span-1'}/>
@@ -285,7 +290,7 @@ const SkillCard = ({skill, className, size, favorite}: Props) => {
     return (
         <div className={twMerge(`bg-white py-4 shadow-sm border border-slate-200 rounded-2xl relative group`, className)}>
             {favorite && <img alt={'star'} className={'absolute top-0 right-0 w-4 h-4 m-3'} src={'/star.png'}/>}
-            <Magnet padding={20} wrapperClassName={'flex items-center w-full h-full'} innerClassName={'w-full h-full'}>
+            <Magnet padding={20} magnetStrength={4} wrapperClassName={'flex items-center w-full h-full'} innerClassName={'w-full h-full'}>
                 <div className={'w-full flex flex-col items-center justify-center gap-2 h-full group-hover:scale-120 transition-all'}>
                     <div className={`${getColor()} rounded-2xl p-2`}>
                         <img src={skill.icon} alt="" className={`${size === 'xl' ? 'w-20 h-20' : ''} ${size === 'lg' ? 'w-16 h-16' : ''} ${size === 'md' ? 'w-12 h-12' : ''} ${size === 'sm' ? 'w-8 h-8' : ''}`}/>
