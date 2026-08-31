@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 @import 'tailwindcss';
 
-h1, h2, h3, h4, h5, h6 { color: #0C2E3D; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+h1, h2, h3, h4, h5, h6 { color: #0C2E3D; }
 .step::before {
     content: '';
     position: absolute;
@@ -22,6 +24,7 @@ h1, h2, h3, h4, h5, h6 { color: #0C2E3D; }
     --font-display: 'Space Grotesk', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --font-serif: 'Instrument Serif', serif;
+    --font-label: 'JetBrains Mono', monospace;
     --breakpoint-3xl: 140rem;
     --radius-5xl: 3rem;
     --color-primary: #0C2E3D;
