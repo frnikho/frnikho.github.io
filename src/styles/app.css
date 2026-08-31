@@ -1,20 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 @import 'tailwindcss';
 
-h1, h2, h3, h4, h5, h6 {
-    color: #0C2E3D;
-}
-
-/*h1 {
-    color: #0C2E3D;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 650;
-}*/
-
-/*h3 {
-    color: #0C2E3D;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 600;
-}*/
+h1, h2, h3, h4, h5, h6 { color: #0C2E3D; }
 
 .step::before {
     content: '';
@@ -27,19 +14,38 @@ h1, h2, h3, h4, h5, h6 {
     border-left: 2px dotted #ccc;
     z-index: -1;
 }
-
-.step:first-child::before {
-    display: none;
-}
+.step:first-child::before { display: none; }
 
 @theme {
     --font-montserrat: 'Montserrat', sans-serif;
     --font-nunito: 'Nunito', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-serif: 'Instrument Serif', serif;
     --breakpoint-3xl: 140rem;
     --radius-5xl: 3rem;
     --color-primary: #0C2E3D;
+    --color-paper: #F8F7F1;
+    --color-ink: #0A1F2A;
+    --color-accent: #FF3E1F;
+    --color-line: #E7E2D9;
 }
 
 @utility no-scrollbar {
     @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
+
+/* industrial grid */
+.grid-paper {
+  background-image:
+    linear-gradient(to right, rgba(12,46,61,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(12,46,61,0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.noise::after{
+  content:"";
+  position:absolute; inset:0;
+  opacity:0.04;
+  pointer-events:none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
