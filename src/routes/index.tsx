@@ -17,14 +17,14 @@ const services = [
   ]},
   { n: '02', title: 'Mobile', accent: '#0C2E3D', icon: '/icons/smartphones.png', desc: 'Natif ou cross - une finition qui tient en main.', items: [
     { t: 'Android natif', d: 'Apps optimisées avec intégration complète aux spécificités Android.' },
-    { t: 'Cross-platform', d: 'React Native — une base, iOS + Android, expérience fluide.' },
+    { t: 'Cross-platform', d: 'React Native - une base, iOS + Android, expérience fluide.' },
     { t: 'Publication & performance', d: 'Déploiement stores, compatibilité et stabilité au long cours.' },
   ]},
   { n: '03', title: 'DevOps', accent: '#2E7D5A', icon: '/icons/continous.png', desc: 'De la CI au run - tout est observable.', items: [
     { t: 'CI/CD & automatisation', d: 'GitHub Actions / GitLab CI / Jenkins : build, tests, déploiements avec rollback.' },
     { t: 'Containerisation & orchestration', d: 'Docker & Kubernetes : packaging, orchestration multi-services, montée en charge.' },
     { t: 'Monitoring & observabilité', d: 'Prometheus, Grafana, ELK, cloud-monitoring : fiabilité et proactivité.' },
-    { t: 'Cloud & IaC', d: 'AWS, Azure, GCP avec Terraform — infra cloud public/privé.' },
+    { t: 'Cloud & IaC', d: 'AWS, Azure, GCP avec Terraform - infra cloud public/privé.' },
   ]},
   { n: '04', title: 'IoT', accent: '#C08A1A', icon: '/icons/iot.png', desc: 'Du capteur au dashboard.', items: [
     { t: 'Prototypage & développement', d: 'Systèmes embarqués Arduino, Raspberry Pi, ESP32.' },
@@ -296,7 +296,7 @@ function GridPaper({ children }: { children: React.ReactNode }) {
   )
 }
 
-/* --- page --- */
+/* --- page : lecture en entonnoir - offre → preuves → réalisations → outillage → confiance → contact --- */
 function RouteComponent() {
   return (
     <div className="bg-[#FCFCF9] text-[#0C2E3D] selection:bg-[#FF3E1F] selection:text-white antialiased">
@@ -305,15 +305,21 @@ function RouteComponent() {
         <Hero />
       </GridPaper>
       <Services />
-      <StackMagnetic />
       <Work />
       <Projects />
+      <StackMagnetic />
       <FeedbackInfinite />
       <Contact />
       <footer className="border-t border-[#E7E2D9]/60 py-8">
-        <div className="max-w-[1160px] mx-auto px-6 flex flex-col md:flex-row justify-between gap-3 font-display text-[11px] tracking-widest uppercase opacity-40">
-          <span className="flex items-center gap-2"><img src="/android-chrome-192x192.png" alt="" width={18} height={18} className="rounded-full" />© 2025 Nicolas Sans - Nantes - Remote</span>
-          <span>Éditorial doux - clarté & arrondi</span>
+        <div className="max-w-[1160px] mx-auto px-6 flex flex-col md:flex-row justify-between gap-3 font-display text-[11px] tracking-widest uppercase opacity-80">
+          <span className="flex items-center gap-2"><img src="/android-chrome-192x192.png" alt="" width={24} height={24} className="rounded-full" />© 2025 Nicolas Sans - Nantes</span>
+          <a href={"https://github.com/frnikho"} className={'flex flex-row items-center gap-2'}>
+            <span>Github</span>
+            <span className="w-7 h-7 rounded-full bg-[#0C2E3D] grid place-items-center group-hover:bg-black transition-colors">
+            <img src="/github-mark-white.svg" alt="" width={14} height={14} />
+          </span>
+          </a>
+
         </div>
       </footer>
     </div>
@@ -493,8 +499,8 @@ function SectionLabel({ k, title, serif, desc }: { k: string; title: string; ser
 function Services() {
   const [open, setOpen] = useState('01')
   return (
-    <section id="services" className="max-w-[1160px] mx-auto px-6 py-16 lg:py-20">
-      <SectionLabel k="Services" title="Ce que je livre" serif="vraiment" desc="Une liste claire. 5 pôles, livrables concrets - pas de jargon, juste ce qui part en prod." />
+    <section id="services" className="max-w-[1040px] mx-auto px-6 py-16 lg:py-22">
+      <SectionLabel k="Services" title="Comment je peux" serif="vous aider" desc="Cinq domaines où j’interviens, de l’idée à la mise en production - livrables définis, suivi transparent." />
       <div className="mt-10 bg-white rounded-[2rem] border border-[#E7E2D9] overflow-hidden shadow-[0_16px_40px_rgba(12,46,61,0.06)]">
         {services.map(s => {
           const isOpen = open === s.n
@@ -542,19 +548,17 @@ function Services() {
     </section>
   )
 }
-
-/* --- stack magnétique - ancrée, plus perdue --- */
 function StackMagnetic() {
   return (
-    <section id="stack" className="max-w-290 mx-auto px-6 pb-12">
+    <section id="stack" className="bg-[#F8F7F1] border-y border-[#E7E2D9]/60">
+      <div className="max-w-[1280px] mx-auto px-6 py-16 lg:py-20">
       <div className="rounded-[2rem] bg-white border border-[#E7E2D9] shadow-[0_16px_40px_rgba(12,46,61,0.06)] p-6 lg:p-8">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
-          <div>
-            <span className="inline-flex bg-[#0C2E3D] text-white rounded-full px-3 py-1 font-display text-[10px] tracking-widest uppercase">Stack</span>
-            <h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[26px] lg:text-[34px] leading-none">Technos qui <span className="font-serif italic font-normal text-[#FF3E1F]">réagissent</span></h2>
-            <p className="mt-2 font-display text-sm opacity-60">Grande grille d’origine - chaque carte suit doucement la souris. Pas de marquee, juste l’interaction.</p>
+          <div className="">
+            <span className="inline-flex bg-[#F8F7F1] border border-[#E7E2D9] rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.14em] uppercase">Stack technique</span>
+            <h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[28px] lg:text-[36px] leading-none">Les outils <span className="font-serif italic font-normal text-[#FF3E1F]">du quotidien</span></h2>
+            <p className="mt-2.5 font-display text-[14px] leading-relaxed opacity-60">Celles que j’utilise régulièrement - choisies pour leur fiabilité et leur adéquation au produit, pas pour la tendance.</p>
           </div>
-          <span className="self-start lg:self-auto bg-[#FCFCF9] border border-[#E7E2D9] rounded-full px-3 py-1.5 font-display text-[11px] tracking-widest uppercase opacity-60">16 techs - favoris ★ - survole</span>
         </div>
         <div className="mt-6 grid grid-cols-4 md:grid-cols-6 xl:grid-cols-8 gap-3 lg:gap-4">
           <SkillCard skill={skillsData.typescript} size="xl" favorite className="col-span-2 row-span-2" />
@@ -575,24 +579,130 @@ function StackMagnetic() {
           <SkillCard skill={skillsData.grafana} size="sm" className="col-span-1" />
         </div>
       </div>
+      </div>
     </section>
   )
 }
 
 function SkillCard({ skill, className, size, favorite }: { skill: { name: string; icon: string; color: 'blue' | 'red' | 'green' | 'black' | 'purple' | 'pink' | 'orange' | 'yellow' }; className?: string; size: 'sm' | 'md' | 'lg' | 'xl'; favorite?: boolean }) {
   const bg: Record<string, string> = { blue: 'bg-blue-50', red: 'bg-red-50', green: 'bg-green-50', black: 'bg-zinc-100', purple: 'bg-purple-50', pink: 'bg-pink-50', orange: 'bg-orange-50', yellow: 'bg-yellow-50' }
+  const fillBg: Record<string, string> = { blue: 'bg-blue-100', red: 'bg-red-100', green: 'bg-green-100', black: 'bg-zinc-200', purple: 'bg-purple-100', pink: 'bg-pink-100', orange: 'bg-orange-100', yellow: 'bg-yellow-100' }
+  const bubbleColor: Record<string, string> = { blue: 'rgba(96,165,250,0.32)', red: 'rgba(248,113,113,0.32)', green: 'rgba(74,222,128,0.32)', black: 'rgba(161,161,170,0.24)', purple: 'rgba(167,139,250,0.32)', pink: 'rgba(244,114,182,0.32)', orange: 'rgba(251,146,60,0.32)', yellow: 'rgba(250,204,21,0.32)' }
+  const bubbleColorSoft: Record<string, string> = { blue: 'rgba(96,165,250,0.18)', red: 'rgba(248,113,113,0.18)', green: 'rgba(74,222,128,0.18)', black: 'rgba(161,161,170,0.14)', purple: 'rgba(167,139,250,0.18)', pink: 'rgba(244,114,182,0.18)', orange: 'rgba(251,146,60,0.18)', yellow: 'rgba(250,204,21,0.18)' }
+  const [holding, setHolding] = useState(false)
+  const [showBubbles, setShowBubbles] = useState(false)
+  const [open, setOpen] = useState(false)
+  const timerRef = useRef<number | null>(null)
+  const hideRef = useRef<number | null>(null)
+  const startHold = () => {
+    clearTimeout(hideRef.current as unknown as number)
+    setShowBubbles(true)
+    setHolding(true)
+    timerRef.current = window.setTimeout(() => {
+      setHolding(false)
+      setOpen(true)
+      hideRef.current = window.setTimeout(() => setShowBubbles(false), 420) as unknown as number
+    }, 1000)
+  }
+  const cancelHold = () => {
+    setHolding(false)
+    clearTimeout(timerRef.current as unknown as number)
+    timerRef.current = null
+    clearTimeout(hideRef.current as unknown as number)
+    hideRef.current = window.setTimeout(() => setShowBubbles(false), 380) as unknown as number
+  }
+  useEffect(() => () => { clearTimeout(timerRef.current as unknown as number); clearTimeout(hideRef.current as unknown as number) }, [])
+  const baseBubbles = [
+    { l: '12%', s: 10, d: 0, dur: 900 },
+    { l: '28%', s: 6, d: 120, dur: 820 },
+    { l: '42%', s: 12, d: 60, dur: 1000 },
+    { l: '62%', s: 7, d: 180, dur: 860 },
+    { l: '78%', s: 9, d: 40, dur: 950 },
+    { l: '18%', s: 5, d: 200, dur: 740 },
+    { l: '52%', s: 8, d: 90, dur: 920 },
+    { l: '88%', s: 6, d: 150, dur: 800 },
+  ]
+  const extraBubblesXl = [
+    { l: '6%', s: 8, d: 30, dur: 880 },
+    { l: '35%', s: 5, d: 100, dur: 780 },
+    { l: '48%', s: 7, d: 140, dur: 860 },
+    { l: '70%', s: 11, d: 20, dur: 980 },
+    { l: '82%', s: 4, d: 170, dur: 760 },
+    { l: '25%', s: 9, d: 50, dur: 940 },
+  ]
+  const extraBubblesLg = [
+    { l: '6%', s: 8, d: 30, dur: 880 },
+    { l: '48%', s: 7, d: 140, dur: 860 },
+    { l: '70%', s: 11, d: 20, dur: 980 },
+  ]
+  const cardBubbles = size === 'xl' ? [...baseBubbles, ...extraBubblesXl] : size === 'lg' ? [...baseBubbles, ...extraBubblesLg] : baseBubbles
   return (
-    <div className={`bg-[#FCFCF9] border border-[#E7E2D9] rounded-[1.6rem] relative overflow-hidden hover:bg-white hover:shadow-[0_8px_24px_rgba(12,46,61,0.08)] transition ${className ?? ''}`}>
-      {favorite && <img alt="fav" src="/star.png" className="absolute top-2 right-2 w-4 h-4 pointer-events-none" />}
-      <Magnet padding={24} magnetStrength={5} wrapperClassName="flex items-center w-full h-full p-3" innerClassName="w-full h-full">
+    <>
+    <style>{`@keyframes bubbleRise{0%{transform:translateY(0) scale(0.85);opacity:0}12%{opacity:0.9}88%{opacity:0.55}100%{transform:translateY(-160px) scale(1.05);opacity:0}}`}</style>
+    <div
+      id={'card'}
+      onPointerDown={startHold}
+      onPointerUp={cancelHold}
+      onPointerLeave={cancelHold}
+      onPointerCancel={cancelHold}
+      onContextMenu={(e) => e.preventDefault()}
+      className={`bg-[#FCFCF9] border border-[#E7E2D9] rounded-[1.6rem] relative overflow-hidden hover:bg-white hover:shadow-[0_8px_24px_rgba(12,46,61,0.08)] transition select-none touch-manipulation ${className ?? ''} ${holding ? 'scale-[0.98]' : 'scale-100'}`}
+      style={{ transition: holding ? 'transform 120ms ease' : 'transform 200ms ease' }}
+    >
+      {/* bubbles card - fade, pas de snap */}
+      <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden rounded-[1.6rem]" style={{ opacity: holding ? 1 : 0, transition: 'opacity 380ms ease' }}>
+        {showBubbles && cardBubbles.map((b, i) => (
+          <span key={i} className="absolute bottom-0 rounded-full" style={{ left: b.l, width: b.s, height: b.s, background: bubbleColor[skill.color] ?? 'rgba(12,46,61,0.10)', border: '1px solid rgba(255,255,255,0.45)', animation: `bubbleRise ${b.dur}ms ease-in ${b.d}ms forwards` }} />
+        ))}
+      </div>
+      <div aria-hidden className="absolute inset-0 pointer-events-none rounded-[1.6rem] ring-1 ring-black/5" />
+      {favorite && <img alt="fav" src="/star.png" className="absolute top-2 right-2 w-4 h-4 pointer-events-none z-10" />}
+      <Magnet padding={24} magnetStrength={5} wrapperClassName="flex items-center w-full h-full p-3 relative z-10" innerClassName="w-full h-full">
         <div className="w-full h-full flex flex-col items-center justify-center gap-2 py-2">
-          <div className={`${bg[skill.color] ?? 'bg-white'} rounded-2xl p-2 border border-black/5`}>
-            <img src={skill.icon} alt={skill.name} className={`${size === 'xl' ? 'w-14 h-14 lg:w-16 lg:h-16' : ''} ${size === 'lg' ? 'w-12 h-12' : ''} ${size === 'md' ? 'w-10 h-10' : ''} ${size === 'sm' ? 'w-8 h-8' : ''} object-contain`} />
+          <div className={`${bg[skill.color] ?? 'bg-white'} rounded-2xl p-2 border border-black/5 relative overflow-hidden`}>
+            {/* fill icon - plus visible */}
+            <div aria-hidden className={`absolute inset-x-0 bottom-0 pointer-events-none ${fillBg[skill.color] ?? 'bg-[#E7E2D9]'}`} style={{ height: holding ? '100%' : '0%', opacity: holding ? 1 : 0, transition: holding ? 'height 1000ms linear, opacity 220ms ease' : 'height 420ms cubic-bezier(0.32,0.72,0,1), opacity 320ms ease' }} />
+            <img src={skill.icon} alt={skill.name} className={`${size === 'xl' ? 'w-14 h-14 lg:w-16 lg:h-16' : ''} ${size === 'lg' ? 'w-12 h-12' : ''} ${size === 'md' ? 'w-10 h-10' : ''} ${size === 'sm' ? 'w-8 h-8' : ''} object-contain relative z-10`} />
           </div>
           <span className={`${size === 'xl' ? 'text-[15px] font-bold' : size === 'lg' ? 'text-sm font-bold' : 'text-xs font-semibold'} font-display text-center leading-tight`}>{skill.name}</span>
         </div>
       </Magnet>
     </div>
+    <AnimatePresence>
+      {open && (
+        <>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.22 }} onClick={() => setOpen(false)} className="fixed inset-0 z-[70] bg-[#0C2E3D]/30 backdrop-blur-[6px]" aria-hidden="true" />
+          <motion.div initial={{ opacity: 0, y: 12, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 12, scale: 0.98 }} transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }} className="fixed inset-0 z-[71] grid place-items-center p-4 pointer-events-none" role="dialog" aria-modal="true" aria-label={`${skill.name} - mini-jeu`}>
+            <div className="pointer-events-auto w-full max-w-[440px] bg-white/90 backdrop-blur-xl rounded-[1.8rem] border border-white/60 shadow-[0_24px_64px_rgba(12,46,61,0.20)] overflow-hidden">
+              <div className="p-7">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`${bg[skill.color] ?? 'bg-white'} rounded-2xl p-2.5 border border-black/5`}><img src={skill.icon} alt="" className="w-9 h-9 object-contain" /></div>
+                    <div>
+                      <div className="font-display font-bold text-[16px] leading-none">{skill.name}</div>
+                      <div className="font-mono text-[10px] tracking-[0.14em] uppercase opacity-50 mt-1">mode jeu - bientôt</div>
+                    </div>
+                  </div>
+                  <button type="button" onClick={() => setOpen(false)} aria-label="Fermer" className="w-8 h-8 rounded-full bg-white border border-[#E7E2D9] grid place-items-center hover:bg-[#F8F7F1] transition">✕</button>
+                </div>
+                <p className="mt-5 font-display text-[14px] leading-relaxed opacity-70">
+                  Mini-jeu en préparation - un petit Tetris avec <span className="font-semibold text-[#0C2E3D]">{skill.name}</span> est prévu ici.
+                  <br />
+                  <span className="opacity-60">En attendant, tu as bien maintenu 1s : le verre est plein.</span>
+                </p>
+                <div className={`mt-4 rounded-xl border px-3 py-2.5 flex items-center gap-2 ${fillBg[skill.color]} border-black/5`}>
+                  <span className="w-2 h-2 rounded-full bg-[#0C2E3D] animate-pulse" />
+                  <span className="font-mono text-[11px] tracking-wide">Placeholder Tetris - {skill.name}</span>
+                  <span className="ml-auto font-mono text-[10px] tracking-widest uppercase opacity-40">coming soon</span>
+                </div>
+                <button type="button" onClick={() => setOpen(false)} className="mt-5 w-full bg-[#0C2E3D] text-white rounded-full py-3 font-display text-[11px] tracking-widest uppercase hover:bg-black transition">Fermer</button>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+    </>
   )
 }
 
@@ -602,15 +712,12 @@ function Work() {
     <section id="work" className="relative bg-[#F8F7F1] border-y border-[#E7E2D9]/60 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 opacity-[0.035]" style={{ backgroundImage: 'linear-gradient(#0C2E3D 1px, transparent 1px), linear-gradient(90deg, #0C2E3D 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
       <div className="pointer-events-none absolute -top-28 -right-24 w-[520px] h-[520px] bg-[#FFD8CC] rounded-full blur-[90px] opacity-[0.10]" />
-      <div className="relative max-w-[1160px] mx-auto px-6 py-16 lg:py-20">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-          <div className="max-w-[620px]">
-            <span className="inline-flex items-center gap-2 bg-white border border-[#E7E2D9] rounded-full px-3 py-1 font-display text-[10px] tracking-[0.16em] uppercase shadow-sm"><span className="w-1.5 h-1.5 rounded-full bg-[#FF3E1F]" /> Parcours - 2018 → aujourd’hui</span>
-            <h2 className="mt-3 font-display font-bold tracking-[-0.04em] text-[34px] lg:text-[46px] leading-[0.9]">Timeline <span className="font-serif italic font-normal text-[#FF3E1F]">vivante</span></h2>
-            <p className="mt-3 text-[15px] leading-relaxed opacity-60">abcdef</p>
+      <div className="relative max-w-[1100px] mx-auto px-6 py-16 lg:py-22">
+        <div className="max-w-[640px]">
+            <span className="inline-flex items-center gap-2 bg-white border border-[#E7E2D9] rounded-full px-3 py-1 font-display text-[10px] tracking-[0.16em] uppercase shadow-sm"><span className="w-1.5 h-1.5 rounded-full bg-[#FF3E1F]" /> Parcours · 2018 → aujourd’hui</span>
+            <h2 className="mt-4 font-display font-bold tracking-[-0.04em] text-[32px] lg:text-[44px] leading-[0.9]">Un chemin <span className="font-serif italic font-normal text-[#FF3E1F]">progressif</span></h2>
+            <p className="mt-3 text-[15px] leading-relaxed opacity-60">De la formation d’expert informatique à l’expérience en entreprise et en freelance - une montée en compétences continue, du système au produit.</p>
           </div>
-        </div>
-
         <div className="relative mt-10 lg:mt-12 max-w-[980px]">
           <div className="absolute left-[7px] lg:left-[164px] top-3 bottom-3 w-px bg-[#E7E2D9]" aria-hidden="true" />
           <div className="grid gap-7 lg:gap-6">
@@ -687,17 +794,18 @@ function Work() {
   )
 }
 
-/* --- projets - bullets plus graphiques --- */
+/* --- projets - galerie resserrée, lecture claire --- */
 function Projects() {
   const ref = useRef<HTMLDivElement>(null)
   const { events } = useDraggable(ref as unknown as React.RefObject<HTMLElement>)
   return (
-    <section id="projects" className="bg-[#F8F7F1] border-y border-[#E7E2D9]/60">
-      <div className="max-w-[1160px] mx-auto px-6 py-16 lg:py-20">
+    <section id="projects" className="bg-white">
+      <div className="max-w-[1180px] mx-auto px-6 py-16 lg:py-22">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
-          <div>
-            <span className="inline-flex bg-white border border-[#E7E2D9] rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.14em] uppercase font-medium shadow-sm">Projets</span>
-            <h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[30px] lg:text-[40px] leading-none">Sélection <span className="font-serif italic font-normal">- 4 réalisations</span></h2>
+          <div className="max-w-[560px]">
+            <span className="inline-flex bg-[#F8F7F1] border border-[#E7E2D9] rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.14em] uppercase font-medium shadow-sm">Réalisations</span>
+            <h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[30px] lg:text-[40px] leading-none">Quelques projets <span className="font-serif italic font-normal text-[#FF3E1F]">sélectionnés</span></h2>
+            <p className="mt-3 font-display text-[14px] leading-relaxed opacity-60">Quatre exemples représentatifs - produits et outils livrés récemment, de la location événementielle au CLI système.</p>
           </div>
           <a href="https://github.com/frnikho" target="_blank" rel="noreferrer" className="self-start lg:self-auto group inline-flex items-center gap-2 bg-white border border-line rounded-full pl-3 pr-1 py-1 shadow-sm transition-colors">
             <span className="font-mono text-[11px] tracking-[0.14em] uppercase font-medium opacity-60 group-hover:opacity-100 transition-opacity">Voir tout sur GitHub</span>
@@ -741,7 +849,6 @@ function Projects() {
   )
 }
 
-/* --- feedback - système d’origine, ralenti & embelli --- */
 function FeedbackInfinite() {
   const VISIBLE_COUNT = 3
   const extended = [...feedbacks.slice(-VISIBLE_COUNT), ...feedbacks, ...feedbacks.slice(0, VISIBLE_COUNT)]
@@ -760,19 +867,19 @@ function FeedbackInfinite() {
   }
   const tx = `-${(idx * (100 / (displayIsMobile ? 1 : VISIBLE_COUNT)))}%`
   return (
-    <section id="feedback" className="bg-[#FCFCF9] py-16 lg:py-20">
+    <section id="feedback" className="bg-[#FCFCF9] py-16 lg:py-22">
       <div className="max-w-[1160px] mx-auto px-6">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
-          <div>
-            <span className="inline-flex bg-white border border-[#E7E2D9] rounded-full px-3 py-1 font-display text-[10px] tracking-widest uppercase shadow-sm">Recommandations</span>
-            <h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[30px] lg:text-[40px] leading-none">Ils m’ont fait <span className="font-serif italic font-normal text-[#FF3E1F]">confiance</span></h2>
+          <div className="max-w-[560px]">
+            <span className="inline-flex bg-white border border-[#E7E2D9] rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.14em] uppercase shadow-sm">Recommandations</span>
+            <h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[30px] lg:text-[40px] leading-none">On a travaillé <span className="font-serif italic font-normal text-[#FF3E1F]">ensemble</span></h2>
+            <p className="mt-3 font-display text-[14px] leading-relaxed opacity-60">Quelques retours de collègues et clients - courts, directs, et toujours appréciés.</p>
           </div>
           <div className="flex gap-2">
             <button type="button" onClick={prev} aria-label="Précédent" className="w-10 h-10 rounded-full bg-white border border-[#E7E2D9] grid place-items-center hover:bg-[#0C2E3D] hover:text-white hover:border-[#0C2E3D] transition">‹</button>
             <button type="button" onClick={next} aria-label="Suivant" className="w-10 h-10 rounded-full bg-[#0C2E3D] text-white grid place-items-center hover:bg-black transition">›</button>
           </div>
         </div>
-        <p className="mt-3 font-display text-sm opacity-60 max-w-[60ch]">Découvrez ce que les clients disent de mon travail.</p>
       </div>
       <div className="mt-8 overflow-hidden">
         <div onTransitionEnd={onEnd} className={`flex ${anim ? 'transition-transform duration-[560ms] ease-[cubic-bezier(0.32,0.72,0,1)]' : ''}`} style={{ transform: `translateX(${tx})` }}>
@@ -794,7 +901,6 @@ function FeedbackInfinite() {
   )
 }
 
-/* --- contact - essentiel + modale log --- */
 function Contact() {
   const [open, setOpen] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -808,11 +914,11 @@ function Contact() {
   }
   return (
     <>
-      <section id="contact" className="max-w-[1160px] mx-auto px-6 py-16 lg:py-20">
-        <div className="max-w-[720px] mx-auto text-center">
+      <section id="contact" className="max-w-[760px] mx-auto px-6 py-16 lg:py-22">
+        <div className="text-center">
           <span className="inline-flex bg-white border border-[#E7E2D9] rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.16em] uppercase font-medium shadow-sm">Contact</span>
-          <h2 className="mt-4 font-display font-bold tracking-[-0.04em] text-[32px] lg:text-[48px] leading-[0.92]">Un projet en tête ?<br /><span className="font-serif italic font-normal text-[#FF3E1F]">Écrivons la suite.</span></h2>
-          <p className="mt-4 text-[15px] leading-relaxed opacity-60">Nantes & remote, réponse sous 24h</p>
+          <h2 className="mt-4 font-display font-bold tracking-[-0.04em] text-[32px] lg:text-[46px] leading-[0.92]">Un projet en tête ?<br /><span className="font-serif italic font-normal text-[#FF3E1F]">Parlons-en.</span></h2>
+          <p className="mt-4 text-[15px] leading-relaxed opacity-60">Nantes & remote - réponse en général sous 24h. On fait le point simplement, sans engagement.</p>
           <div className="mt-8 flex flex-col items-center gap-3">
             <button type="button" onClick={() => setOpen(true)} className="group inline-flex items-center gap-2 bg-[#0C2E3D] text-white rounded-full pl-6 pr-1.5 py-1.5 font-mono text-[11px] tracking-[0.14em] uppercase font-medium hover:bg-black transition-colors shadow-[0_8px_24px_rgba(12,46,61,0.16)]">
               <span>Échanger sur votre projet</span>
@@ -835,23 +941,22 @@ function Contact() {
               <div className="pointer-events-auto w-full max-w-[520px] bg-white rounded-[1.8rem] border border-[#E7E2D9] shadow-[0_24px_64px_rgba(12,46,61,0.18)] overflow-hidden">
                 <div className="px-6 sm:px-8 pt-7 pb-4 flex items-start justify-between gap-4 border-b border-[#E7E2D9]/60">
                   <div>
-                    <p className="font-mono text-[10px] tracking-[0.16em] uppercase font-medium opacity-40">Contact</p>
-                    <h3 className="mt-1 font-display font-bold tracking-[-0.02em] text-[20px] leading-none">Parlons de votre projet</h3>
+                    <h3 className="mt-1 font-display font-bold tracking-[-0.02em] text-[20px] leading-none">Contacter moi</h3>
                     <p className="mt-1.5 font-display text-sm opacity-60">Réponse sous 24h - ou écrivez direct à nicolas.sansd@gmail.com</p>
                   </div>
                   <button type="button" onClick={() => setOpen(false)} aria-label="Fermer" className="w-8 h-8 rounded-full border border-[#E7E2D9] grid place-items-center hover:bg-[#F8F7F1] transition">✕</button>
                 </div>
                 <form onSubmit={onSubmit} className="px-6 sm:px-8 py-6 flex flex-col gap-5">
                   <label className="flex flex-col gap-1.5">
-                    <span className="font-mono text-[10px] tracking-[0.14em] uppercase font-medium opacity-50">Nom</span>
+                    <span className="text-[10px] tracking-[0.14em] font-medium opacity-50">Nom</span>
                     <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Votre nom" className="w-full bg-[#FCFCF9] border border-[#E7E2D9] rounded-xl px-3.5 py-3 font-display text-sm outline-none focus:border-[#0C2E3D]/25 focus:bg-white transition placeholder:opacity-40" />
                   </label>
                   <label className="flex flex-col gap-1.5">
-                    <span className="font-mono text-[10px] tracking-[0.14em] uppercase font-medium opacity-50">Email</span>
+                    <span className="text-[10px] tracking-[0.14em] font-medium opacity-50">Email</span>
                     <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="vous@exemple.com" className="w-full bg-[#FCFCF9] border border-[#E7E2D9] rounded-xl px-3.5 py-3 font-display text-sm outline-none focus:border-[#0C2E3D]/25 focus:bg-white transition placeholder:opacity-40" />
                   </label>
                   <label className="flex flex-col gap-1.5">
-                    <span className="font-mono text-[10px] tracking-[0.14em] uppercase font-medium opacity-50">Message</span>
+                    <span className="text-[10px] tracking-[0.14em] font-medium opacity-50">Message</span>
                     <textarea required rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Contexte, objectifs, budget / timing..." className="w-full bg-[#FCFCF9] border border-[#E7E2D9] rounded-xl px-3.5 py-3 font-display text-sm outline-none focus:border-[#0C2E3D]/25 focus:bg-white transition placeholder:opacity-40 resize-none" />
                   </label>
                   <button type="submit" disabled={sent} className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-mono text-[11px] tracking-[0.14em] uppercase font-medium transition-colors ${sent ? 'bg-[#2E7D5A] text-white' : 'bg-[#0C2E3D] text-white hover:bg-black'}`}>

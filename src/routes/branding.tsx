@@ -9,6 +9,38 @@ const H = 396
 function BrandingPage() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
+  // titre animé - frappe élégante (branding test uniquement)
+  useEffect(() => {
+    const phrases = [
+      'Fullstack Developer',
+      'TypeScript • React • Next.js • Node.js',
+      'Remote • Disponible',
+    ]
+    const original = document.title
+    let pi = 0
+    let ti = 0
+    let dir: 1 | -1 = 1
+    let pause = 0
+    let id: number | null = null
+    const tick = () => {
+      const phrase = phrases[pi]
+      if (dir === 1) {
+        ti++
+        document.title = phrase.slice(0, ti) + (ti < phrase.length ? ' ▌' : '')
+        if (ti >= phrase.length) { pause = 1400; dir = -1 as const }
+      } else {
+        ti--
+        document.title = phrase.slice(0, ti) + ' ▌'
+        if (ti <= 0) { dir = 1 as const; pi = (pi + 1) % phrases.length }
+      }
+      const delay = pause ? pause : dir === 1 ? 80 : 45
+      pause = 0
+      id = window.setTimeout(tick, delay) as unknown as number
+    }
+    tick()
+    return () => { if (id) clearTimeout(id); document.title = original }
+  }, [])
+
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -35,7 +67,7 @@ function BrandingPage() {
       ctx.fillStyle = vig
       ctx.fillRect(0, 0, W, H)
 
-      // dotted grid (like ref on right side) — very subtle white dots
+      // dotted grid (like ref on right side) - very subtle white dots
       ctx.fillStyle = 'rgba(255,255,255,0.18)'
       for (let x = 0; x < W; x += 18) {
         for (let y = 0; y < H; y += 18) {
@@ -51,9 +83,9 @@ function BrandingPage() {
       const fade = ctx.createLinearGradient(0, 0, W * 0.55, 0)
       fade.addColorStop(0, 'transparent')
       fade.addColorStop(1, 'rgba(6,11,20,1)')
-      // not needed — keep faint globally, it's okay
+      // not needed - keep faint globally, it's okay
 
-      // bottom-left glow — ink accent vermillon + blue (map purple ref -> vermillon)
+      // bottom-left glow - ink accent vermillon + blue (map purple ref -> vermillon)
       const glow = (cx: number, cy: number, r: number, col: string) => {
         const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r)
         g.addColorStop(0, col)
@@ -81,7 +113,7 @@ function BrandingPage() {
       ctx.strokeStyle = '#6E5CFF'
       ctx.lineWidth = 3
       ctx.lineJoin = 'miter'
-      // draw N shape — geometric
+      // draw N shape - geometric
       const nx = leftX, ny = 42, ns = 26
       ctx.beginPath()
       // vertical left
@@ -215,7 +247,7 @@ function BrandingPage() {
       const cy = H / 2 + 8
       const R = 168
 
-      // orbit arcs — thin
+      // orbit arcs - thin
       ctx.strokeStyle = 'rgba(123,108,255,0.22)'
       ctx.lineWidth = 1
       // full circle faint
@@ -391,7 +423,7 @@ function BrandingPage() {
             Ta bannière, <span className="font-serif italic font-normal text-[#FF3E1F]">comme ta ref.</span>
           </h1>
           <p className="mt-3 text-[15px] leading-relaxed opacity-60">
-            Contenu repris de ta référence — claim + stack TS/React/Next/Node + schéma orbit. Réinterprété en ink premium.
+            Contenu repris de ta référence - claim + stack TS/React/Next/Node + schéma orbit. Réinterprété en ink premium.
           </p>
         </div>
 
@@ -418,7 +450,7 @@ function BrandingPage() {
           </div>
           <div className="rounded-2xl bg-white border border-[#E7E2D9] p-4">
             <div className="font-mono text-[10px] tracking-[0.14em] uppercase opacity-40">Style</div>
-            <div className="mt-2 font-display text-[13px] leading-relaxed opacity-70">Fond noir ink + grille pointillée + glow violet bas-gauche + orbit + monogramme N — senior, pas violet criard.</div>
+            <div className="mt-2 font-display text-[13px] leading-relaxed opacity-70">Fond noir ink + grille pointillée + glow violet bas-gauche + orbit + monogramme N - senior, pas violet criard.</div>
           </div>
           <div className="rounded-2xl bg-[#0A1F2A] text-white p-4">
             <div className="font-mono text-[10px] tracking-[0.14em] uppercase opacity-50">Usage</div>

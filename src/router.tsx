@@ -6,7 +6,7 @@ export function createRouter() {
         routeTree,
         scrollRestoration: true,
         notFoundMode: 'root',
-        // Don't `throw redirect()` here — it throws a Response (307) inside
+        // Don't `throw redirect()` here - it throws a Response (307) inside
         // renderToReadableStream during SSR/prerender which React can't render.
         // TanStack Start only handles `redirect()` in loaders/beforeLoad.
         // For a static GH Pages site there is no server 307 anyway.
