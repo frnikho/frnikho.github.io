@@ -186,7 +186,8 @@ const timeline = [
 		type: null,
 		accent: "#FF3E1F",
 		bg: "#FFF1EB",
-		desc: "Accompagnement de plusieurs clients sur des projets web et mobile, de la conception à la mise en production. J’ai participé à la création et à la maintenance d’applications complètes, tout en assurant l’architecture, le développement fullstack et la mise en place des bonnes pratiques.\n" +
+		desc:
+			"Accompagnement de plusieurs clients sur des projets web et mobile, de la conception à la mise en production. J’ai participé à la création et à la maintenance d’applications complètes, tout en assurant l’architecture, le développement fullstack et la mise en place des bonnes pratiques.\n" +
 			"\n",
 		mastered: [
 			{
@@ -226,7 +227,8 @@ const timeline = [
 		type: "Campus scolaire · support & infra",
 		accent: "#C08A1A",
 		bg: "#FFFBEB",
-		desc: "J’ai assuré la gestion et la maintenance des infrastructures informatiques d’un établissement campus scolaire, avec un rôle polyvalent mêlant support utilisateurs, administration réseau et gestion des systèmes. Mon travail a consisté à diagnostiquer les incidents, maintenir la sécurité du parc, gérer les comptes utilisateurs, et accompagner le personnel dans l’usage des outils numériques.\n" +
+		desc:
+			"J’ai assuré la gestion et la maintenance des infrastructures informatiques d’un établissement campus scolaire, avec un rôle polyvalent mêlant support utilisateurs, administration réseau et gestion des systèmes. Mon travail a consisté à diagnostiquer les incidents, maintenir la sécurité du parc, gérer les comptes utilisateurs, et accompagner le personnel dans l’usage des outils numériques.\n" +
 			"\n",
 		mastered: [
 			{
@@ -262,7 +264,8 @@ const timeline = [
 		type: "Formation par projets · autonomie & agilité",
 		accent: "#0C2E3D",
 		bg: "#F0FDFA",
-		desc: "Formation en informatique orientée projets, autonomie et expertise technique, axée sur le développement logiciel, l’architecture système et les méthodes agiles. Obtention du titre RNCP35075\n" +
+		desc:
+			"Formation en informatique orientée projets, autonomie et expertise technique, axée sur le développement logiciel, l’architecture système et les méthodes agiles. Obtention du titre RNCP35075\n" +
 			"\n",
 		mastered: [
 			{ k: "Fondamentaux", d: "C / C++ système, structures, perf & rigueur" },
@@ -288,7 +291,8 @@ const timeline = [
 		type: "ONG · reconditionnement & déploiement",
 		accent: "#2E7D5A",
 		bg: "#F0FDF4",
-		desc: "Mission technique au sein d’une organisation à but non lucratif spécialisée dans le reconditionnement et la distribution d’équipements informatiques à des établissements scolaires dans des pays en développement. J’ai participé à l’installation, la configuration et à la remise en état de postes informatiques destinés à être expédiés vers des écoles partenaires.\n" +
+		desc:
+			"Mission technique au sein d’une organisation à but non lucratif spécialisée dans le reconditionnement et la distribution d’équipements informatiques à des établissements scolaires dans des pays en développement. J’ai participé à l’installation, la configuration et à la remise en état de postes informatiques destinés à être expédiés vers des écoles partenaires.\n" +
 			"\n",
 		mastered: [
 			{
@@ -522,8 +526,8 @@ function GridPaper({ children }: { children: React.ReactNode }) {
 			ctx.strokeStyle = "rgba(12,46,61,0.07)";
 			ctx.lineWidth = 1;
 			const grid = 32;
-			const radius = 190;
-			const strength = 18;
+			const radius = 280;
+			const strength = 36;
 			for (let x = 0; x <= width; x += grid) {
 				ctx.beginPath();
 				for (let y = 0; y <= height; y += 5) {
@@ -660,7 +664,7 @@ function Nav() {
 		}
 		const startY = window.scrollY;
 		const diff = y - startY;
-		const duration = Math.min(950, Math.max(550, Math.abs(diff) * 0.52));
+		const duration = 50;
 		let start: number | null = null;
 		const ease = (t: number) =>
 			t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
@@ -835,48 +839,84 @@ function Hero() {
 								href="#contact"
 								className="bg-primary text-white rounded-full px-7 py-3.5 font-display text-xs tracking-widest uppercase hover:bg-black transition shadow-[0_10px_24px_rgba(12,46,61,0.16)]"
 							>
-								Démarrer un projet →
+								Contact
 							</a>
 							<a
 								href="#projects"
 								className="bg-white border border-primary/15 rounded-full px-7 py-3.5 font-display text-xs tracking-widest uppercase hover:bg-white transition shadow-sm"
 							>
-								Voir les projets
+								Voir mes projets
 							</a>
 						</div>
-						<div className="mt-1 bg-white rounded-full border border-line p-1 flex items-center gap-1 shadow-sm">
-							<div className="flex-1 grid grid-cols-2 gap-1">
-								<div className="rounded-full bg-surface border border-line/50 px-2.5 py-1.5 flex items-center gap-2">
-									<span className="w-6 h-6 rounded-full bg-primary text-white grid place-items-center font-display text-[11px] font-bold shrink-0">
+						{/* --- credentials — 3 badges ronds, minimal --- */}
+						<motion.div
+							initial={{ opacity: 0, y: 8 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: 0.34 }}
+							className="mt-3 flex items-center gap-3 sm:gap-3.5"
+						>
+							{/* 5+ ans — sceau primary */}
+							<motion.div
+								initial={{ scale: 0.9, opacity: 0 }}
+								animate={{ scale: 1, opacity: 1 }}
+								transition={{ duration: 0.4, delay: 0.4 }}
+								className="group relative w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-primary grid place-items-center shrink-0 shadow-[0_10px_28px_rgba(12,46,61,0.22)] ring-1 ring-white/10 hover:scale-[1.15] transition-transform"
+								aria-label="5 ans d'expérience"
+							>
+								{/* anneau pointillé subtil */}
+								<span className="absolute inset-[7px] rounded-full border border-dashed border-white/20 pointer-events-none" />
+								{/* liseré fin */}
+								<span className="absolute inset-[3px] rounded-full border border-white/10 pointer-events-none" />
+								<div className="flex flex-col items-center leading-none">
+									<span className="font-display font-bold text-[26px] sm:text-[28px] leading-none tracking-[-0.04em] text-white">
 										5+
 									</span>
-									<span className="font-display text-[11px] font-medium leading-none">
-										ans d’exp.
-									</span>
-									<span className="hidden sm:inline font-display text-[9px] tracking-widest uppercase opacity-40">
-										- freelance
+									<span className="font-display text-[8px] sm:text-[8.5px] tracking-[0.22em] uppercase text-white/60 leading-none mt-[1px]">
+										ans
 									</span>
 								</div>
-								<div className="rounded-full bg-white border border-line px-3 py-1.5 flex items-center justify-center gap-1.5 shadow-sm">
-									<span className="font-display text-[11px] font-bold tracking-[0.08em] leading-none">
-										RNCP 35075
+							</motion.div>
+
+							{/* RNCP 35075 — sceau clair / peach */}
+							<motion.div
+								initial={{ scale: 0.9, opacity: 0 }}
+								animate={{ scale: 1, opacity: 1 }}
+								transition={{ duration: 0.4, delay: 0.48 }}
+								className="group relative w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-white grid place-items-center shrink-0 border border-line shadow-[0_10px_28px_rgba(12,46,61,0.08)] hover:scale-[1.15] hover:shadow-[0_14px_32px_rgba(12,46,61,0.10)] transition-all"
+								aria-label="RNCP 35075 certifié"
+							>
+								<span className="absolute inset-[3px] rounded-full border border-primary/8 pointer-events-none" />
+								<span className="absolute inset-[7px] rounded-full border border-dashed border-primary/10 pointer-events-none" />
+								<div className="flex flex-col items-center leading-none gap-1">
+									<img
+										src="/rncp.png"
+										alt=""
+										className="w-[22px] h-[22px] object-contain opacity-90"
+									/>
+									<span className="font-display font-bold text-[10px] tracking-[0.08em] leading-none text-primary">
+										RNCP
 									</span>
-									<span className="hidden sm:inline font-display text-[9px] tracking-widest uppercase opacity-40">
-										certifié
+									<span className="font-display text-[7.5px] tracking-[0.14em] uppercase leading-none text-primary/40">
+										35075
 									</span>
 								</div>
-							</div>
-							<div className="hidden sm:flex items-center gap-1.5 bg-primary text-white rounded-full pl-1 pr-2.5 py-1 shrink-0">
+							</motion.div>
+
+							<motion.div
+								initial={{ scale: 0.9, opacity: 0 }}
+								animate={{ scale: 1, opacity: 1 }}
+								transition={{ duration: 0.4, delay: 0.56 }}
+								className="group relative w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-white grid place-items-center shrink-0 border border-[#0176D3]/15 shadow-[0_10px_28px_rgba(1,118,211,0.12)] p-[5px] hover:scale-[1.15] hover:shadow-[0_14px_32px_rgba(1,118,211,0.16)] hover:border-[#0176D3]/25 transition-all"
+								aria-label="Salesforce Platform Developer I certifié"
+							>
+								<span className="absolute inset-[3px] rounded-full border border-[#0176D3]/10 pointer-events-none" />
 								<img
 									src="/pd1.png"
-									alt=""
-									className="w-5 h-5 rounded-full bg-white p-0.5 object-contain"
+									alt="Salesforce Platform Developer I"
+									className=""
 								/>
-								<span className="font-display text-[9px] tracking-widest uppercase leading-none">
-									Platform Dev I
-								</span>
-							</div>
-						</div>
+							</motion.div>
+						</motion.div>
 					</motion.div>
 					<motion.div
 						initial={{ opacity: 0, y: 12 }}
@@ -1358,94 +1398,6 @@ function SkillCard({
 					</div>
 				</Magnet>
 			</div>
-			<AnimatePresence>
-				{open && (
-					<>
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							transition={{ duration: 0.22 }}
-							onClick={() => setOpen(false)}
-							className="fixed inset-0 z-[70] bg-primary/30 backdrop-blur-[6px]"
-							aria-hidden="true"
-						/>
-						<motion.div
-							initial={{ opacity: 0, y: 12, scale: 0.98 }}
-							animate={{ opacity: 1, y: 0, scale: 1 }}
-							exit={{ opacity: 0, y: 12, scale: 0.98 }}
-							transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
-							className="fixed inset-0 z-[71] grid place-items-center p-4 pointer-events-none"
-							role="dialog"
-							aria-modal="true"
-							aria-label={`${skill.name} - mini-jeu`}
-						>
-							<div className="pointer-events-auto w-full max-w-[440px] bg-white/90 backdrop-blur-xl rounded-[1.8rem] border border-white/60 shadow-[0_24px_64px_rgba(12,46,61,0.20)] overflow-hidden">
-								<div className="p-7">
-									<div className="flex items-start justify-between gap-4">
-										<div className="flex items-center gap-3">
-											<div
-												className={`${bg[skill.color] ?? "bg-white"} rounded-2xl p-2.5 border border-black/5`}
-											>
-												<img
-													src={skill.icon}
-													alt=""
-													className="w-9 h-9 object-contain"
-												/>
-											</div>
-											<div>
-												<div className="font-display font-bold text-[16px] leading-none">
-													{skill.name}
-												</div>
-												<div className="font-mono text-[10px] tracking-[0.14em] uppercase opacity-50 mt-1">
-													mode jeu - bientôt
-												</div>
-											</div>
-										</div>
-										<button
-											type="button"
-											onClick={() => setOpen(false)}
-											aria-label="Fermer"
-											className="w-8 h-8 rounded-full bg-white border border-line grid place-items-center hover:bg-paper transition"
-										>
-											✕
-										</button>
-									</div>
-									<p className="mt-5 font-display text-[14px] leading-relaxed opacity-70">
-										Mini-jeu en préparation - un petit Tetris avec{" "}
-										<span className="font-semibold text-primary">
-											{skill.name}
-										</span>{" "}
-										est prévu ici.
-										<br />
-										<span className="opacity-60">
-											En attendant, tu as bien maintenu 1s : le verre est plein.
-										</span>
-									</p>
-									<div
-										className={`mt-4 rounded-xl border px-3 py-2.5 flex items-center gap-2 ${fillBg[skill.color]} border-black/5`}
-									>
-										<span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-										<span className="font-mono text-[11px] tracking-wide">
-											Placeholder Tetris - {skill.name}
-										</span>
-										<span className="ml-auto font-mono text-[10px] tracking-widest uppercase opacity-40">
-											coming soon
-										</span>
-									</div>
-									<button
-										type="button"
-										onClick={() => setOpen(false)}
-										className="mt-5 w-full bg-primary text-white rounded-full py-3 font-display text-[11px] tracking-widest uppercase hover:bg-black transition"
-									>
-										Fermer
-									</button>
-								</div>
-							</div>
-						</motion.div>
-					</>
-				)}
-			</AnimatePresence>
 		</>
 	);
 }
@@ -1804,7 +1756,7 @@ function FeedbackInfinite() {
 							type="button"
 							onClick={next}
 							aria-label="Suivant"
-							className="w-10 h-10 rounded-full bg-primary text-white grid place-items-center hover:bg-black transition"
+							className="w-10 h-10 rounded-full bg-accent text-white grid place-items-center hover:bg-black transition"
 						>
 							›
 						</button>
