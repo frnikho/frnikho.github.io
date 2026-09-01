@@ -1,11 +1,12 @@
 /// <reference types="vite/client" />
-import appCss from '../styles/app.css?url'
 import {
     createRootRoute,
     HeadContent,
     Outlet,
     Scripts,
 } from '@tanstack/react-router'
+import { TanStackDevtools } from '@tanstack/react-devtools'
+import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import type { ReactNode } from 'react'
 
 import '../styles/app.css';
@@ -98,6 +99,16 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         </head>
         <body>
             {children}
+            {import.meta.env.DEV && (
+                <TanStackDevtools
+                    plugins={[
+                        {
+                            name: 'TanStack Router',
+                            render: <TanStackRouterDevtoolsPanel />,
+                        },
+                    ]}
+                />
+            )}
         <Scripts />
         </body>
         </html>

@@ -6,10 +6,23 @@ To install dependencies:
 bun install
 ```
 
-To run:
+To run locally:
 
 ```bash
-bun run index.ts
+bun run dev
 ```
 
-This project was created using `bun init` in bun v1.2.18. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+To build for production:
+
+```bash
+bun run build
+```
+
+To run with Docker:
+
+```bash
+docker build -t frnikho.github.io .
+docker run -p 3000:3000 frnikho.github.io
+```
+
+This project uses [Bun](https://bun.sh) and [TanStack Start](https://tanstack.com/start).

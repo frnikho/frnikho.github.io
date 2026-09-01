@@ -4,7 +4,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-h1, h2, h3, h4, h5, h6 { color: #0C2E3D; }
+h1, h2, h3, h4, h5, h6 { color: var(--color-primary); }
 .step::before {
     content: '';
     position: absolute;
@@ -29,13 +29,24 @@ h1, h2, h3, h4, h5, h6 { color: #0C2E3D; }
     --radius-5xl: 3rem;
     --color-primary: #0C2E3D;
     --color-paper: #F8F7F1;
+    --color-surface: #FCFCF9;
     --color-ink: #0A1F2A;
     --color-accent: #FF3E1F;
     --color-line: #E7E2D9;
+    --color-violet: #7B6CFF;
+    --color-violet-dark: #6352FF;
+    --color-night: #060B14;
+    --color-peach: #FFD8CC;
+    --color-peach-soft: #FFF1EB;
+    --color-coral: #E06141;
+    --color-teal: #246D6A;
+    --color-forest: #2E7D5A;
+    --color-amber: #C08A1A;
+    --color-salesforce: #0176D3;
 }
 
 @utility no-scrollbar {
-    @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+    @apply scrollbar-none [&::-webkit-scrollbar]:hidden;
 }
 
 /* industrial grid */
