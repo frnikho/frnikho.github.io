@@ -813,12 +813,17 @@ function Hero() {
 								</p>
 							</div>
 						</div>
-						<div className={'flex flex-col gap-2'}>
-							<p className={"max-w-[54ch] text-[16px] leading-[1.7] opacity-70"}>
+						<div className={"flex flex-col gap-2"}>
+							<p
+								className={"max-w-[54ch] text-[16px] leading-[1.7] opacity-70"}
+							>
 								Bienvenue sur mon portfolio 👋
 							</p>
 							<p className="max-w-[54ch] text-[16px] leading-[1.7] opacity-70">
-								Depuis plusieurs années, j’accompagne des entreprises, de la startup aux projets à fort trafic, dans la conception de solutions robustes, scalables, et parfaitement intégrées à leur écosystème.
+								Depuis plusieurs années, j’accompagne des entreprises, de la
+								startup aux projets à fort trafic, dans la conception de
+								solutions robustes, scalables, et parfaitement intégrées à leur
+								écosystème.
 							</p>
 						</div>
 						<div className="flex flex-wrap gap-3 pt-1">
@@ -937,12 +942,9 @@ function SectionLabel({
 function Services() {
 	const [open, setOpen] = useState("01");
 	return (
-		<section
-			id="services"
-			className="max-w-275 mx-auto px-6 py-16 lg:py-22"
-		>
+		<section id="services" className="max-w-275 mx-auto px-6 py-16 lg:py-22">
 			<div>
-				<div className={'flex flex-row items-center gap-2'}>
+				<div className={"flex flex-row items-center gap-2"}>
 					<h2 className="font-display font-bold tracking-[-0.04em] text-[32px] lg:text-[44px] leading-[0.9]">
 						Mes{" "}
 						<span className="font-extrabold text-accent underline underline-offset-4">
@@ -951,7 +953,10 @@ function Services() {
 					</h2>
 				</div>
 				<p className="mt-3 text-[15px] leading-relaxed opacity-60">
-					Mon expertise ainsi que mes compétences techniques me permettent <br/>de vous accompagner sur l’ensemble de votre projet, de la conception à la mise en production.
+					Mon expertise ainsi que mes compétences techniques me permettent{" "}
+					<br />
+					de vous accompagner sur l’ensemble de votre projet, de la conception à
+					la mise en production.
 				</p>
 			</div>
 			<div className="mt-10 bg-white rounded-[2rem] border border-line overflow-hidden shadow-[0_16px_40px_rgba(12,46,61,0.06)]">
@@ -1478,7 +1483,8 @@ function Work() {
 						</h2>
 					</div>
 					<p className="mt-3 text-[15px] leading-relaxed opacity-60">
-						Retrouver l’ensemble de mon parcours professionnel et académique, ainsi que mes expériences et compétences acquises au fil des années.
+						Retrouver l’ensemble de mon parcours professionnel et académique,
+						ainsi que mes expériences et compétences acquises au fil des années.
 					</p>
 				</div>
 				<div className="relative mt-10 lg:mt-12 max-w-[980px]">
@@ -1784,12 +1790,11 @@ function FeedbackInfinite() {
 				<div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
 					<div className="max-w-140">
 						<h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[30px] lg:text-[40px] leading-none">
-							<span className="font-bold text-accent">
-								Recommandations
-							</span>
+							<span className="font-bold text-accent">Recommandations</span>
 						</h2>
 						<p className="mt-2 font-display text-[14px] leading-relaxed opacity-60">
-							Quelques retours de collègues avec qui j'ai travaillé ainsi que des clients.
+							Quelques retours de collègues avec qui j'ai travaillé ainsi que
+							des clients.
 						</p>
 					</div>
 					<div className="flex gap-2">
@@ -1969,8 +1974,12 @@ function Contact() {
 											Contacter moi
 										</h3>
 										<p className="mt-1.5 font-display text-sm opacity-60">
-											Je vous recontacte en général sous 24h ou écrivez moi directement: {" "}
-											<a href="mailto:nicolas.sansd@gmail.com" className="text-primary hover:underline">
+											Je vous recontacte en général sous 24h ou écrivez moi
+											directement:{" "}
+											<a
+												href="mailto:nicolas.sansd@gmail.com"
+												className="text-primary hover:underline"
+											>
 												nicolas.sansd@gmail.com
 											</a>
 										</p>
