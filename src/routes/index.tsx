@@ -139,11 +139,11 @@ const timeline = [
 		type: "CDI",
 		accent: "#FF3E1F",
 		bg: "#FFF1EB",
-		desc: "Développement d’applications web modernes avec React, Node.js et PostgreSQL.",
+		desc: "Développement d’applications web modernes, mise en place de cluster kubernetes HA bare metal et casquette DevOps pour l’ensemble des projets de l’entreprise.",
 		mastered: [
 			{ k: "Frontend", d: "React, TypeScript, Tailwind CSS" },
 			{ k: "Backend", d: "Node.js, Express, PostgreSQL" },
-			{ k: "DevOps", d: "Docker, CI/CD, déploiement automatisé" },
+			{ k: "DevOps", d: "Kubernetes, Docker, CI/CD" },
 		],
 		tech: ["React", "Node.js", "PostgreSQL", "Docker", "GitHub Actions"],
 	},
@@ -158,7 +158,7 @@ const timeline = [
 		type: "CDI",
 		accent: "#0176D3",
 		bg: "#EFF6FF",
-		desc: "Conception, évolution et maintenance d’apps critiques - automatisation & intégrations inter-systèmes lourds.",
+		desc: "J'interviens auprès des client sur la conception, l’évolution et la maintenance d’applications métiers critiques, avec une forte dimension d’automatisation et d’intégration inter-systèmes",
 		mastered: [
 			{
 				k: "Apex / LWC",
@@ -186,7 +186,8 @@ const timeline = [
 		type: null,
 		accent: "#FF3E1F",
 		bg: "#FFF1EB",
-		desc: "De l’idée à la prod - DDD, sécurité, monitoring. Architecture, dev fullstack & bonnes pratiques de bout en bout.",
+		desc: "Accompagnement de plusieurs clients sur des projets web et mobile, de la conception à la mise en production. J’ai participé à la création et à la maintenance d’applications complètes, tout en assurant l’architecture, le développement fullstack et la mise en place des bonnes pratiques.\n" +
+			"\n",
 		mastered: [
 			{
 				k: "Architecture",
@@ -225,7 +226,8 @@ const timeline = [
 		type: "Campus scolaire · support & infra",
 		accent: "#C08A1A",
 		bg: "#FFFBEB",
-		desc: "Gestion & maintenance infra campus - support utilisateurs, réseau, sécurité du parc & comptes.",
+		desc: "J’ai assuré la gestion et la maintenance des infrastructures informatiques d’un établissement campus scolaire, avec un rôle polyvalent mêlant support utilisateurs, administration réseau et gestion des systèmes. Mon travail a consisté à diagnostiquer les incidents, maintenir la sécurité du parc, gérer les comptes utilisateurs, et accompagner le personnel dans l’usage des outils numériques.\n" +
+			"\n",
 		mastered: [
 			{
 				k: "Systèmes",
@@ -260,7 +262,8 @@ const timeline = [
 		type: "Formation par projets · autonomie & agilité",
 		accent: "#0C2E3D",
 		bg: "#F0FDFA",
-		desc: "Du C au cloud par projets - Linux, Git, Docker/K8s, React/Next. Méthodes agiles & autonomie radicale.",
+		desc: "Formation en informatique orientée projets, autonomie et expertise technique, axée sur le développement logiciel, l’architecture système et les méthodes agiles. Obtention du titre RNCP35075\n" +
+			"\n",
 		mastered: [
 			{ k: "Fondamentaux", d: "C / C++ système, structures, perf & rigueur" },
 			{
@@ -285,7 +288,8 @@ const timeline = [
 		type: "ONG · reconditionnement & déploiement",
 		accent: "#2E7D5A",
 		bg: "#F0FDF4",
-		desc: "Reconditionnement & distribution d’équipements vers écoles en pays en développement - remise en état & config.",
+		desc: "Mission technique au sein d’une organisation à but non lucratif spécialisée dans le reconditionnement et la distribution d’équipements informatiques à des établissements scolaires dans des pays en développement. J’ai participé à l’installation, la configuration et à la remise en état de postes informatiques destinés à être expédiés vers des écoles partenaires.\n" +
+			"\n",
 		mastered: [
 			{
 				k: "Hardware",
@@ -314,21 +318,21 @@ const projects = [
 	},
 	{
 		title: "Trip Planner",
-		desc: "Planification de voyages - UX dense, perf soignée.",
+		desc: "Planification de voyages",
 		img: "/projects/trip_planner.png",
-		stack: ["React", "NestJS"],
+		stack: ["NestJS", "React", "Docker"],
 	},
 	{
 		title: "FBX CLI",
-		desc: "CLI Freebox en Rust - automatisation box, DX radicale.",
+		desc: "CLI Freebox en Rust",
 		img: "/projects/fbx-cli.png",
 		stack: ["Rust", "CLI"],
 	},
 	{
 		title: "PLD Lab",
-		desc: "Laboratoire design & perfs - expe Motion & OGL.",
+		desc: "Solution web de gestion et de génération de document de suivi de projet.",
 		img: "/projects/pld_1.png",
-		stack: ["Motion", "OGL"],
+		stack: ["NestJS", "React", "Docker", "Kubernetes", "ArgoCD"],
 	},
 ];
 const feedbacks = [
@@ -1584,18 +1588,14 @@ function Work() {
 												{t.desc}
 											</p>
 											<div className="mt-5">
-												<div className="flex items-center gap-2 font-display text-[10px] tracking-[0.14em] uppercase opacity-35">
-													<span className="w-5 h-px bg-line" /> Maîtrisé pendant
-													cette période
-												</div>
 												<ul className="mt-3 grid gap-2.5">
 													{t.mastered.map((m) => (
 														<li
 															key={m.k}
-															className="flex gap-3 bg-surface border border-line/60 rounded-2xl px-3.5 py-3"
+															className="flex gap-2 bg-surface border border-line/60 rounded-2xl px-3.5 py-3"
 														>
 															<span
-																className="mt-1 w-1.5 h-1.5 rounded-full shrink-0"
+																className="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
 																style={{ background: t.accent }}
 																aria-hidden="true"
 															/>
@@ -1640,7 +1640,7 @@ function Projects() {
 	return (
 		<section id="projects" className="bg-white">
 			<div className="max-w-275 mx-auto px-6 py-16 lg:py-22">
-				<div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+				<div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
 					<div className="max-w-[560px]">
 						<h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[30px] lg:text-[40px] leading-none">
 							Mes derniers{" "}
@@ -1649,8 +1649,7 @@ function Projects() {
 							</span>
 						</h2>
 						<p className="mt-3 font-display text-[14px] leading-relaxed opacity-60">
-							Quatre exemples représentatifs - produits et outils livrés
-							récemment, de la location événementielle au CLI système.
+							Produits et outils développés par mes soins
 						</p>
 					</div>
 					<a
@@ -1703,11 +1702,6 @@ function Projects() {
 											{s}
 										</span>
 									))}
-									{p.href && (
-										<span className="ml-auto bg-primary text-white rounded-full px-4 py-1.5 font-display text-[11px] tracking-widest uppercase">
-											Ouvrir →
-										</span>
-									)}
 								</div>
 							</div>
 						</a>
@@ -1790,7 +1784,7 @@ function FeedbackInfinite() {
 				<div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
 					<div className="max-w-140">
 						<h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[30px] lg:text-[40px] leading-none">
-							<span className="font-bold text-accent">Recommandations</span>
+							<span className="font-bold text-primary">Recommandations</span>
 						</h2>
 						<p className="mt-2 font-display text-[14px] leading-relaxed opacity-60">
 							Quelques retours de collègues avec qui j'ai travaillé ainsi que
@@ -1918,12 +1912,6 @@ function Contact() {
 								</svg>
 							</span>
 						</button>
-						<a
-							href="mailto:nicolas.sansd@gmail.com"
-							className="font-mono text-[11px] tracking-[0.08em] opacity-40 hover:opacity-100 transition-opacity"
-						>
-							ou nicolas.sansd@gmail.com
-						</a>
 					</div>
 					<div className="mt-8 flex flex-wrap justify-center gap-2">
 						<a
