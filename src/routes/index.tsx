@@ -703,9 +703,6 @@ function Nav() {
 					className="flex items-center gap-3 pl-2 sm:pl-3 group shrink-0"
 					aria-label="Haut de page"
 				>
-					<div className="w-7 h-7 rounded-full border border-primary/12 grid place-items-center font-display text-[10px] font-bold tracking-widest text-primary group-hover:border-primary/25 transition-colors">
-						NS
-					</div>
 					<span className="font-display font-semibold text-[13px] tracking-[-0.02em] text-primary">
 						Nicolas Sans
 					</span>
@@ -939,11 +936,6 @@ function Hero() {
 										backgroundSize: "28px 28px",
 									}}
 								/>
-								<div className="absolute top-5 left-5 flex">
-									<span className="bg-white/90 backdrop-blur rounded-full px-3 py-1.5 font-display text-[10px] tracking-widest border border-white shadow z-20">
-										Disponible
-									</span>
-								</div>
 							</div>
 						</div>
 					</motion.div>
