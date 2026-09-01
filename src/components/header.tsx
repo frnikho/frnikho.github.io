@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { type ReactNode, useState } from "react";
 import SplitText from "@/components/lib/split-text";
 import { Button, Container, SubTitle, Text } from "@/components/lib/title";

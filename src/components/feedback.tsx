@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Button, Container, Title } from "@/components/lib/title";
 import { useIsMobile } from "@/hooks/use-is-mobile";
 

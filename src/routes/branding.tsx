@@ -33,7 +33,7 @@ function BrandingPage() {
 				}
 			} else {
 				ti--;
-				document.title = phrase.slice(0, ti) + " ▌";
+				document.title = `${phrase.slice(0, ti)} ▌`;
 				if (ti <= 0) {
 					dir = 1 as const;
 					pi = (pi + 1) % phrases.length;
@@ -180,7 +180,7 @@ function BrandingPage() {
 				tY + 52,
 			);
 			// bold part second line
-			const line2 = "performantes, robustes et évolutives.";
+			const _line2 = "performantes, robustes et évolutives.";
 			ctx.font = '400 13.5px "Space Grotesk", sans-serif';
 			// we make bold by using 700 for keywords
 			ctx.fillStyle = "rgba(255,255,255,0.82)";

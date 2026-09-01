@@ -334,38 +334,44 @@ const projects = [
 const feedbacks = [
 	{
 		user: "Theo F",
-		role: "Fullstack Developer",
-		profile_picture: "/users/tf.jpeg",
 		description:
-			"Travailleur, polyvalent - Nicolas ne vous décevra pas. Excellent élément.",
+			"J'ai eu la chance de faire de nombreux projets durant ma scolarité à Epitech Nantes avec Nicolas Sans et c'est un excellent élément. Travailleur et disposant d'une expérience dans de nombreux domaines Nicolas ne vous décevra pas !",
+		profile_picture: "/users/tf.jpeg",
+		role: "Fullstack Developer",
 	},
 	{
 		user: "Pierre D",
-		role: "Co-founder Everyloc",
-		profile_picture: "/users/pd.jpeg",
 		description:
-			"Irréprochable, soigné, orienté utilisateur. Notre site est plus clair et plus attractif depuis son passage.",
+			"Nous travaillons avec Nicolas depuis plusieurs mois et son travail est irréprochable, soigné et toujours orienté utilisateur. Ses conseils ont rendu notre site plus clair et attractif. Nous le recommandons vivement pour tout projet web",
+		profile_picture: "/users/pd.jpeg",
+		role: "Co-founder of Everyloc",
 	},
 	{
 		user: "Victor S",
-		role: "Fullstack Developer",
-		profile_picture: "/users/vs.jpeg",
 		description:
-			"Rigoureux et très talentueux. Un plaisir de travailler avec lui.",
+			"Rigoureux, motivé et très talentueux. C'est un plaisir de travailler avec lui.",
+		profile_picture: "/users/vs.jpeg",
+		role: "Fullstack Developer",
 	},
 	{
 		user: "Antoine H",
-		role: "Co-founder Everyloc",
-		profile_picture: "/users/ah.jpeg",
 		description:
-			"Attentif, flexible - même en last minute. Qualité reflète son sérieux.",
+			"Nicolas s’est montré très attentif et toujours investi, même face à nos changements de dernière minute. Flexibleet  à l’écoute il s’adapte parfaitement aux besoins. La qualité de son travail reflète son sérieux. Je le recommande sans hésitation",
+		profile_picture: "/users/ah.jpeg",
+		role: "Co-founder of Everyloc",
 	},
+	/*    {
+        user: 'Justin M',
+        description: 'BLABLABLA',
+        profile_picture: '/users/jm.jpeg',
+        role: 'Backend Developer'
+    },*/
 	{
 		user: "Denis S",
-		role: "Designer",
-		profile_picture: "/users/ds.jpg",
 		description:
-			"Sens du besoin client, technique maîtrisée - livrables robustes et sans accros.",
+			"Que ce soit dans son approche aux défis ou dans les travaux qu'il réalise, Nicolas présente un réel sens du besoin client, des attentions affinées et une technique maîtrisée qui traduisent des productions robustes et sans accros.",
+		profile_picture: "/users/ds.jpg",
+		role: "Designer Graphique",
 	},
 ];
 const skillsData = {
@@ -716,13 +722,10 @@ function Nav() {
 					<a
 						href="#contact"
 						onClick={(e) => handleNav(e, "#contact")}
-						className="hidden lg:inline-flex group items-center gap-2.5 pl-4 pr-1 py-1 rounded-full border border-primary/10 bg-white/60 hover:bg-white hover:border-primary/15 transition-colors"
+						className="hidden lg:inline-flex group items-center gap-2.5 pl-4 pr-1 py-1 rounded-full border-primary/10 bg-white/60 hover:bg-white hover:border-primary/15 transition-colors"
 					>
-						<span className="font-mono text-[10.5px] tracking-[0.16em] uppercase font-medium text-primary">
+						<span className="font-mono text-[10.5px] tracking-[0.09em] uppercase font-bold text-primary">
 							Me contacter
-						</span>
-						<span className="w-7 h-7 rounded-full bg-primary text-white grid place-items-center text-[12px] leading-none group-hover:bg-black transition-colors">
-							→
 						</span>
 					</a>
 					<button
@@ -810,14 +813,14 @@ function Hero() {
 								</p>
 							</div>
 						</div>
-						<p className="max-w-[54ch] text-[16px] leading-[1.7] opacity-70">
-							J’accompagne startups et équipes produit - interfaces soignées,
-							APIs robustes, infra qui tient la charge.
-							<br />
-							<span className="text-primary font-medium">
-								Propre, rapide, documenté. On cadre, on chiffre, on livre.
-							</span>
-						</p>
+						<div className={'flex flex-col gap-2'}>
+							<p className={"max-w-[54ch] text-[16px] leading-[1.7] opacity-70"}>
+								Bienvenue sur mon portfolio 👋
+							</p>
+							<p className="max-w-[54ch] text-[16px] leading-[1.7] opacity-70">
+								Depuis plusieurs années, j’accompagne des entreprises, de la startup aux projets à fort trafic, dans la conception de solutions robustes, scalables, et parfaitement intégrées à leur écosystème.
+							</p>
+						</div>
 						<div className="flex flex-wrap gap-3 pt-1">
 							<a
 								href="#contact"
@@ -936,14 +939,21 @@ function Services() {
 	return (
 		<section
 			id="services"
-			className="max-w-[1040px] mx-auto px-6 py-16 lg:py-22"
+			className="max-w-275 mx-auto px-6 py-16 lg:py-22"
 		>
-			<SectionLabel
-				k="Services"
-				title="Comment je peux"
-				serif="vous aider"
-				desc="Cinq domaines où j’interviens, de l’idée à la mise en production - livrables définis, suivi transparent."
-			/>
+			<div>
+				<div className={'flex flex-row items-center gap-2'}>
+					<h2 className="font-display font-bold tracking-[-0.04em] text-[32px] lg:text-[44px] leading-[0.9]">
+						Mes{" "}
+						<span className="font-extrabold text-accent underline underline-offset-4">
+							Services
+						</span>
+					</h2>
+				</div>
+				<p className="mt-3 text-[15px] leading-relaxed opacity-60">
+					Mon expertise ainsi que mes compétences techniques me permettent <br/>de vous accompagner sur l’ensemble de votre projet, de la conception à la mise en production.
+				</p>
+			</div>
 			<div className="mt-10 bg-white rounded-[2rem] border border-line overflow-hidden shadow-[0_16px_40px_rgba(12,46,61,0.06)]">
 				{services.map((s) => {
 					const isOpen = open === s.n;
@@ -1035,22 +1045,18 @@ function Services() {
 function StackMagnetic() {
 	return (
 		<section id="stack" className="bg-paper border-y border-line/60">
-			<div className="max-w-[1280px] mx-auto px-6 py-16 lg:py-20">
+			<div className="max-w-275 mx-auto px-6 py-16 lg:py-20">
 				<div className="rounded-[2rem] bg-white border border-line shadow-[0_16px_40px_rgba(12,46,61,0.06)] p-6 lg:p-8">
 					<div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
 						<div className="">
-							<span className="inline-flex bg-paper border border-line rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.14em] uppercase">
-								Stack technique
-							</span>
 							<h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[28px] lg:text-[36px] leading-none">
 								Ma stack{" "}
-								<span className="font-serif italic font-normal text-accent">
+								<span className="font-bold text-accent underline underline-offset-4">
 									Technique
 								</span>
 							</h2>
 							<p className="mt-2.5 font-display text-[14px] leading-relaxed opacity-60">
-								Celles que j’utilise régulièrement - choisies pour leur
-								fiabilité et leur adéquation au produit, pas pour la tendance.
+								Celles que je maitrise et que j’utilise régulièrement
 							</p>
 						</div>
 					</div>
@@ -1074,6 +1080,11 @@ function StackMagnetic() {
 						/>
 						<SkillCard
 							skill={skillsData.docker}
+							size="sm"
+							className="col-span-1"
+						/>
+						<SkillCard
+							skill={skillsData.nestjs}
 							size="sm"
 							className="col-span-1"
 						/>
@@ -1127,16 +1138,6 @@ function StackMagnetic() {
 						/>
 						<SkillCard
 							skill={skillsData.prisma}
-							size="sm"
-							className="col-span-1"
-						/>
-						<SkillCard
-							skill={skillsData.nestjs}
-							size="sm"
-							className="col-span-1"
-						/>
-						<SkillCard
-							skill={skillsData.grafana}
 							size="sm"
 							className="col-span-1"
 						/>
@@ -1199,16 +1200,6 @@ function SkillCard({
 		pink: "rgba(244,114,182,0.32)",
 		orange: "rgba(251,146,60,0.32)",
 		yellow: "rgba(250,204,21,0.32)",
-	};
-	const bubbleColorSoft: Record<string, string> = {
-		blue: "rgba(96,165,250,0.18)",
-		red: "rgba(248,113,113,0.18)",
-		green: "rgba(74,222,128,0.18)",
-		black: "rgba(161,161,170,0.14)",
-		purple: "rgba(167,139,250,0.18)",
-		pink: "rgba(244,114,182,0.18)",
-		orange: "rgba(251,146,60,0.18)",
-		yellow: "rgba(250,204,21,0.18)",
 	};
 	const [holding, setHolding] = useState(false);
 	const [showBubbles, setShowBubbles] = useState(false);
@@ -1284,7 +1275,7 @@ function SkillCard({
 				onPointerLeave={cancelHold}
 				onPointerCancel={cancelHold}
 				onContextMenu={(e) => e.preventDefault()}
-				className={`bg-surface border border-line rounded-[1.6rem] relative overflow-hidden hover:bg-white hover:shadow-[0_8px_24px_rgba(12,46,61,0.08)] transition select-none touch-manipulation ${className ?? ""} ${holding ? "scale-[0.98]" : "scale-100"}`}
+				className={`bg-surface border border-line rounded-[1.6rem] relative overflow-hidden transition select-none touch-manipulation ${className ?? ""} ${holding ? "scale-[0.98]" : "scale-100"}`}
 				style={{
 					transition: holding ? "transform 120ms ease" : "transform 200ms ease",
 				}}
@@ -1323,9 +1314,9 @@ function SkillCard({
 					/>
 				)}
 				<Magnet
-					padding={24}
+					padding={48}
 					magnetStrength={5}
-					wrapperClassName="flex items-center w-full h-full p-3 relative z-10"
+					wrapperClassName="flex items-center w-full h-full p-3 relative z-10 cursor-pointer"
 					innerClassName="w-full h-full"
 				>
 					<div className="w-full h-full flex flex-col items-center justify-center gap-2 py-2">
@@ -1465,23 +1456,29 @@ function Work() {
 					backgroundSize: "36px 36px",
 				}}
 			/>
-			<div className="pointer-events-none absolute -top-28 -right-24 w-[520px] h-[520px] bg-peach rounded-full blur-[90px] opacity-[0.10]" />
-			<div className="relative max-w-[1100px] mx-auto px-6 py-16 lg:py-22">
-				<div className="max-w-[640px]">
-					<span className="inline-flex items-center gap-2 bg-white border border-line rounded-full px-3 py-1 font-display text-[10px] tracking-[0.16em] uppercase shadow-sm">
-						<span className="w-1.5 h-1.5 rounded-full bg-accent" /> Parcours ·
-						2018 → aujourd’hui
-					</span>
-					<h2 className="mt-4 font-display font-bold tracking-[-0.04em] text-[32px] lg:text-[44px] leading-[0.9]">
-						Un chemin{" "}
-						<span className="font-serif italic font-normal text-accent">
-							progressif
-						</span>
-					</h2>
+			<div className="pointer-events-none absolute -top-28 -right-24 w-130 h-130 bg-peach rounded-full blur-[90px] opacity-[0.10]" />
+			<div className="relative max-w-275 mx-auto px-6 py-16 lg:py-22">
+				<div className="max-w-160">
+					<div className="flex items-center gap-2.5 mt-4">
+						<motion.span
+							initial={{ scale: 0, opacity: 0 }}
+							whileInView={{ scale: 1, opacity: 1 }}
+							viewport={{ once: true, amount: 0.6 }}
+							transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+							className="relative w-3 h-3 rounded-full border border-primary/15 grid place-items-center shrink-0"
+							aria-hidden="true"
+						>
+							<span className="w-1.5 h-1.5 rounded-full bg-primary" />
+						</motion.span>
+						<h2 className="font-display font-bold tracking-[-0.04em] text-[32px] lg:text-[44px] leading-[0.9]">
+							Mon{" "}
+							<span className="font-bold underline underline-offset-4 text-accent">
+								Expérience
+							</span>
+						</h2>
+					</div>
 					<p className="mt-3 text-[15px] leading-relaxed opacity-60">
-						De la formation d’expert informatique à l’expérience en entreprise
-						et en freelance - une montée en compétences continue, du système au
-						produit.
+						Retrouver l’ensemble de mon parcours professionnel et académique, ainsi que mes expériences et compétences acquises au fil des années.
 					</p>
 				</div>
 				<div className="relative mt-10 lg:mt-12 max-w-[980px]">
@@ -1636,16 +1633,13 @@ function Projects() {
 	);
 	return (
 		<section id="projects" className="bg-white">
-			<div className="max-w-[1180px] mx-auto px-6 py-16 lg:py-22">
+			<div className="max-w-275 mx-auto px-6 py-16 lg:py-22">
 				<div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
 					<div className="max-w-[560px]">
-						<span className="inline-flex bg-paper border border-line rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.14em] uppercase font-medium shadow-sm">
-							Réalisations
-						</span>
 						<h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[30px] lg:text-[40px] leading-none">
-							Quelques projets{" "}
-							<span className="font-serif italic font-normal text-accent">
-								sélectionnés
+							Mes derniers{" "}
+							<span className="font-bold text-accent underline underline-offset-4">
+								Réalisations
 							</span>
 						</h2>
 						<p className="mt-3 font-display text-[14px] leading-relaxed opacity-60">
@@ -1786,21 +1780,16 @@ function FeedbackInfinite() {
 	const tx = `-${idx * (100 / (displayIsMobile ? 1 : VISIBLE_COUNT))}%`;
 	return (
 		<section id="feedback" className="bg-surface py-16 lg:py-22">
-			<div className="max-w-[1160px] mx-auto px-6">
+			<div className="max-w-275 mx-auto px-6">
 				<div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
-					<div className="max-w-[560px]">
-						<span className="inline-flex bg-white border border-line rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.14em] uppercase shadow-sm">
-							Recommandations
-						</span>
+					<div className="max-w-140">
 						<h2 className="mt-3 font-display font-bold tracking-[-0.03em] text-[30px] lg:text-[40px] leading-none">
-							On a travaillé{" "}
-							<span className="font-serif italic font-normal text-accent">
-								ensemble
+							<span className="font-bold text-accent">
+								Recommandations
 							</span>
 						</h2>
-						<p className="mt-3 font-display text-[14px] leading-relaxed opacity-60">
-							Quelques retours de collègues et clients - courts, directs, et
-							toujours appréciés.
+						<p className="mt-2 font-display text-[14px] leading-relaxed opacity-60">
+							Quelques retours de collègues avec qui j'ai travaillé ainsi que des clients.
 						</p>
 					</div>
 					<div className="flex gap-2">
@@ -1826,7 +1815,7 @@ function FeedbackInfinite() {
 			<div className="mt-8 overflow-hidden">
 				<div
 					onTransitionEnd={onEnd}
-					className={`flex ${anim ? "transition-transform duration-[560ms] ease-[cubic-bezier(0.32,0.72,0,1)]" : ""}`}
+					className={`flex ${anim ? "transition-transform duration-360 ease-[cubic-bezier(0.32,0.72,0,1)]" : ""}`}
 					style={{ transform: `translateX(${tx})` }}
 				>
 					{extended.map((f, i) => (
@@ -1835,11 +1824,8 @@ function FeedbackInfinite() {
 							className="shrink-0 w-full md:w-1/3 px-3 box-border"
 						>
 							<div className="bg-white rounded-[1.6rem] border border-line p-6 shadow-[0_8px_24px_rgba(12,46,61,0.06)] h-full flex flex-col">
-								<span className="w-8 h-8 rounded-full bg-peach-soft border border-peach grid place-items-center font-serif text-lg text-accent">
-									“
-								</span>
 								<p className="mt-3 text-[15px] leading-relaxed flex-1">
-									“{f.description}”
+									{f.description}
 								</p>
 								<div className="mt-5 flex items-center gap-3">
 									<img
@@ -1894,18 +1880,14 @@ function Contact() {
 				className="max-w-[760px] mx-auto px-6 py-16 lg:py-22"
 			>
 				<div className="text-center">
-					<span className="inline-flex bg-white border border-line rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.16em] uppercase font-medium shadow-sm">
-						Contact
-					</span>
 					<h2 className="mt-4 font-display font-bold tracking-[-0.04em] text-[32px] lg:text-[46px] leading-[0.92]">
 						Un projet en tête ?<br />
 						<span className="font-serif italic font-normal text-accent">
-							Parlons-en.
+							Discutons-en
 						</span>
 					</h2>
 					<p className="mt-4 text-[15px] leading-relaxed opacity-60">
-						Nantes & remote - réponse en général sous 24h. On fait le point
-						simplement, sans engagement.
+						Je vous recontacte en général sous 24h.
 					</p>
 					<div className="mt-8 flex flex-col items-center gap-3">
 						<button
@@ -1913,9 +1895,22 @@ function Contact() {
 							onClick={() => setOpen(true)}
 							className="group inline-flex items-center gap-2 bg-primary text-white rounded-full pl-6 pr-1.5 py-1.5 font-mono text-[11px] tracking-[0.14em] uppercase font-medium hover:bg-black transition-colors shadow-[0_8px_24px_rgba(12,46,61,0.16)]"
 						>
-							<span>Échanger sur votre projet</span>
+							<span>Me contacter</span>
 							<span className="w-8 h-8 rounded-full bg-white text-primary grid place-items-center group-hover:bg-paper transition-colors">
-								→
+								<svg
+									width="14"
+									height="14"
+									viewBox="0 0 16 16"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth="1.7"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									aria-hidden="true"
+								>
+									<path d="M4 8h8" />
+									<path d="M8 4 12.5 8 8 12" />
+								</svg>
 							</span>
 						</button>
 						<a
@@ -1967,15 +1962,17 @@ function Contact() {
 							transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
 							className="fixed inset-0 z-[81] grid place-items-center p-4 pointer-events-none"
 						>
-							<div className="pointer-events-auto w-full max-w-[520px] bg-white rounded-[1.8rem] border border-line shadow-[0_24px_64px_rgba(12,46,61,0.18)] overflow-hidden">
+							<div className="pointer-events-auto w-full max-w-140 bg-white rounded-[1.8rem] border border-line shadow-[0_24px_64px_rgba(12,46,61,0.18)] overflow-hidden">
 								<div className="px-6 sm:px-8 pt-7 pb-4 flex items-start justify-between gap-4 border-b border-line/60">
 									<div>
 										<h3 className="mt-1 font-display font-bold tracking-[-0.02em] text-[20px] leading-none">
 											Contacter moi
 										</h3>
 										<p className="mt-1.5 font-display text-sm opacity-60">
-											Réponse sous 24h - ou écrivez direct à
-											nicolas.sansd@gmail.com
+											Je vous recontacte en général sous 24h ou écrivez moi directement: {" "}
+											<a href="mailto:nicolas.sansd@gmail.com" className="text-primary hover:underline">
+												nicolas.sansd@gmail.com
+											</a>
 										</p>
 									</div>
 									<button
