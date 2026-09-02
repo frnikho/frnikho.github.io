@@ -554,75 +554,11 @@ export function Nav() {
 									</span>
 									<span className="relative text-white/80">→</span>
 								</motion.a>
-								<p className="text-center font-mono text-[9px] tracking-[0.14em] uppercase text-primary/25 pt-3 pb-1">
-									Disponible pour nouvelles missions
-								</p>
 							</div>
 						</motion.div>
 					</>
 				)}
 			</AnimatePresence>
-
-			{/* ── BOTTOM LIQUID DOCK - mobile only ── */}
-			<div className="lg:hidden fixed bottom-0 inset-x-0 z-40 pointer-events-none px-3 pb-[max(10px,env(safe-area-inset-bottom))] pt-2">
-				<motion.nav
-					initial={{ y: 24, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					transition={{ delay: 0.5, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-					aria-label="Navigation principale"
-					className="pointer-events-auto relative mx-auto flex items-center justify-between gap-1 p-[5px] rounded-full max-w-[420px]"
-					style={{
-						filter:
-							"drop-shadow(0 16px 36px rgba(12,46,61,0.14)) drop-shadow(0 4px 12px rgba(12,46,61,0.10))",
-					}}
-				>
-					<span className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
-						<GlassBackground variant="dock" />
-					</span>
-					{links.map((a) => {
-						const isActive = active === a.h;
-						return (
-							<a
-								key={a.h}
-								href={a.h}
-								onClick={(e) => handleNav(e, a.h)}
-								className={`relative flex-1 flex items-center justify-center py-[9px] rounded-full transition-colors duration-200 ${isActive ? "text-primary" : "text-primary/38 hover:text-primary/65"}`}
-							>
-								{isActive && (
-									<motion.span
-										layoutId="liquid-dock-pill"
-										className="absolute inset-0 rounded-full overflow-hidden"
-										style={{
-											background:
-												"linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.78) 100%)",
-											backdropFilter: "blur(10px) saturate(160%)",
-											WebkitBackdropFilter: "blur(10px) saturate(160%)",
-											boxShadow:
-												"0 1px 2px rgba(12,46,61,0.06), 0 2px 10px rgba(12,46,61,0.07), inset 0 1px 0 rgba(255,255,255,1), inset 0 0 0 1px rgba(255,255,255,0.5)",
-											border: "1px solid rgba(255,255,255,0.62)",
-										}}
-										transition={{
-											type: "spring",
-											stiffness: 420,
-											damping: 32,
-											mass: 0.6,
-										}}
-									>
-										<span
-											aria-hidden
-											className="absolute inset-x-0 top-0 h-px bg-white/85 rounded-full"
-											style={{ margin: "1px 16% 0" }}
-										/>
-									</motion.span>
-								)}
-								<span className="relative font-mono text-[9.5px] sm:text-[10px] tracking-[0.09em] uppercase font-semibold leading-none">
-									{a.l}
-								</span>
-							</a>
-						);
-					})}
-				</motion.nav>
-			</div>
 		</>
 	);
 }
