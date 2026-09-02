@@ -1,6 +1,6 @@
+import { SectionHeader } from "@/features/home/components/section-header";
 import { feedbacks } from "@/features/home/data/feedbacks";
 import { useInfiniteCarousel } from "@/features/home/hooks/use-infinite-carousel";
-import {SectionHeader} from "@/features/home/components/section-header";
 
 function FeedbackCard({ f }: { f: (typeof feedbacks)[number] }) {
 	return (

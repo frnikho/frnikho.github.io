@@ -1,6 +1,6 @@
+import { SectionHeader } from "@/features/home/components/section-header";
 import { SkillCard } from "@/features/home/components/skill-card";
 import { skillsData } from "@/features/home/data/skills";
-import {SectionHeader} from "@/features/home/components/section-header";
 
 export function Stack() {
 	return (

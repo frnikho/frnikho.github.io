@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
+import { SectionHeader } from "@/features/home/components/section-header";
 import { projects } from "@/features/home/data/projects";
-import {SectionHeader} from "@/features/home/components/section-header";
 
 export function Projects() {
 	const ref = useRef<HTMLDivElement>(null);
@@ -24,7 +24,7 @@ export function Projects() {
 						className="self-start lg:self-auto group inline-flex items-center gap-2 bg-white border border-line rounded-full pl-3 pr-1 py-1 shadow-sm transition-colors"
 					>
 						<span className="font-mono text-[11px] tracking-[0.14em] uppercase font-medium opacity-60 group-hover:opacity-100 transition-opacity">
-							Voir tout sur GitHub
+							Voir sur GitHub
 						</span>
 						<span className="w-7 h-7 rounded-full bg-primary grid place-items-center group-hover:bg-black transition-colors">
 							<img src="/github-mark-white.svg" alt="" width={14} height={14} />

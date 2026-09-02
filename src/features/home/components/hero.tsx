@@ -80,13 +80,10 @@ export function Hero() {
 						initial={{ opacity: 0, y: 10 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5 }}
-						className="flex flex-col gap-6 lg:pr-4 pb-10 lg:pb-12"
+						className="flex flex-col gap-6 lg:pr-4 pb-10 lg:pb-16"
 					>
 						<div>
-							<p className="font-display text-[12px] tracking-[0.14em] uppercase opacity-50">
-								Nicolas Sans - Nantes - Remote
-							</p>
-							<h1 className="mt-2 font-display tracking-[-0.045em] leading-[0.88] text-[38px] sm:text-[52px] lg:text-[62px]">
+							<h1 className="font-display tracking-[-0.045em] leading-[0.88] text-[38px] sm:text-[52px] lg:text-[62px]">
 								Développeur
 								<br />
 								<span className="font-extrabold text-accent">Fullstack</span>

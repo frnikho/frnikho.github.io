@@ -24,7 +24,9 @@ function RouteComponent() {
 			<Projects />
 			<Stack />
 			<FeedbackCarousel />
-			<Contact />
+			<GridPaper>
+				<Contact />
+			</GridPaper>
 			<SiteFooter />
 		</div>
 	);
