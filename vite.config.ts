@@ -2,38 +2,20 @@ import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
+import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
 	server: {
-		port: 3000,
-		allowedHosts: [".trycloudflare.com"],
+		port: 3000
 	},
 	resolve: {
 		tsconfigPaths: true,
 	},
 	plugins: [
+		tanstackStart(),
 		devtools(),
-		tanstackStart({
-			prerender: {
-				enabled: true,
-				autoSubfolderIndex: true,
-				crawlLinks: true,
-				concurrency: 14,
-				retryCount: 2,
-				retryDelay: 1000,
-				failOnError: false,
-			},
-			pages: [
-				{ path: "/", prerender: { enabled: true } },
-				{ path: "/services", prerender: { enabled: true } },
-				{ path: "/stack", prerender: { enabled: true } },
-				{ path: "/parcours", prerender: { enabled: true } },
-				{ path: "/projets", prerender: { enabled: true } },
-				{ path: "/recommandations", prerender: { enabled: true } },
-				{ path: "/contact", prerender: { enabled: true } },
-			],
-		}),
+		nitro(),
 		viteReact(),
 		tailwindcss(),
 	],
