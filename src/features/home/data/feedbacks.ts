@@ -25,7 +25,7 @@ export const feedbacks: Feedback[] = [
 	{
 		user: "Antoine H",
 		description:
-			"Nicolas s’est montré très attentif et toujours investi, même face à nos changements de dernière minute. Flexibleet  à l’écoute il s’adapte parfaitement aux besoins. La qualité de son travail reflète son sérieux. Je le recommande sans hésitation",
+			"Nicolas s’est montré très attentif et toujours investi, même face à nos changements de dernière minute. Flexible et à l’écoute, il s’adapte parfaitement aux besoins. La qualité de son travail reflète son sérieux. Je le recommande sans hésitation",
 		profile_picture: "/users/ah.jpeg",
 		role: "Co-founder of Everyloc",
 	},

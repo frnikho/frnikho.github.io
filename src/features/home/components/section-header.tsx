@@ -16,7 +16,7 @@ const descriptionSizeClasses = {
 export type SectionHeaderProps = {
 	prefix?: string;
 	accent?: string;
-	/** Alternative full title as ReactNode — overrides prefix/accent split if provided */
+	/** Alternative full title as ReactNode - overrides prefix/accent split if provided */
 	title?: React.ReactNode;
 	description?: React.ReactNode;
 	withDot?: boolean;
@@ -108,6 +108,6 @@ export function SectionHeader({
 	);
 }
 
-// Alias demandé "header" — même style réutilisable partout
+// Alias demandé "header" - même style réutilisable partout
 export const Header = SectionHeader;
 export const SectionTitle = SectionHeader;

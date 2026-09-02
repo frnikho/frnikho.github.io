@@ -9,9 +9,9 @@ export function Stack() {
 				<div className="rounded-[2rem] bg-white border border-line shadow-[0_16px_40px_rgba(12,46,61,0.06)] p-6 lg:p-8">
 					<div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
 						<SectionHeader
-							prefix="Ma stack"
-							accent="Technique"
-							description="Celles que je maitrise et que j’utilise régulièrement"
+							prefix="Stack"
+							accent="technique"
+							description="Les technos que j'utilise au quotidien - et celles que je recommande en prod."
 							withDot={false}
 							size="sm"
 							containerClassName=""
@@ -95,12 +95,11 @@ export function Stack() {
 							size="sm"
 							className="col-span-1"
 						/>
-						<SkillCard
-							skill={skillsData.prisma}
-							size="sm"
-							className="col-span-1"
-						/>
 					</div>
+					<p className="mt-6 text-center font-display text-[11px] tracking-[0.14em] uppercase opacity-40">
+						+300k utilisateurs finaux · +380 contributions/an sur GitHub · 5+
+						ans en prod
+					</p>
 				</div>
 			</div>
 		</section>

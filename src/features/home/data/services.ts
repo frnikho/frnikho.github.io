@@ -6,23 +6,23 @@ export const services: Service[] = [
 		title: "Web & Apps",
 		accent: "#FF3E1F",
 		icon: "/icons/computer.png",
-		desc: "Interfaces propres, perf et accessibilité d’abord.",
+		desc: "Des interfaces rapides et accessibles, adossées à des APIs solides",
 		items: [
 			{
-				t: "Applications",
-				d: "Interfaces React / Next.js / Tailwind. Architectures modulaires, scalables, orientées clean code et DDD.",
+				t: "Interfaces & design systems",
+				d: "Des apps React/Next.js modulaires, testées et prêtes à scaler sereinement",
 			},
 			{
-				t: "APIs performantes & sécurisées",
-				d: "APIs Node.js ou Rust pensées pour scalabilité, sécurité et intégration multi-systèmes.",
+				t: "APIs & backends",
+				d: "Conçois des APIs Node.js ou Rust scalables, sécurisées et interopérables entre systèmes",
 			},
 			{
-				t: "Refonte & optimisation",
-				d: "Performance, SEO, accessibilité et UX sur sites existants.",
+				t: "Refonte & perf",
+				d: "Améliore perf, SEO et accessibilité de tes sites existants sans tout réécrire",
 			},
 			{
 				t: "Fonctionnalités métiers",
-				d: "Modules spécifiques : tâches, abonnements, budgets, multi-comptes.",
+				d: "Développe modules métiers sur mesure : tâches, abonnements, budgets, multi-comptes",
 			},
 		],
 	},
@@ -31,19 +31,19 @@ export const services: Service[] = [
 		title: "Mobile",
 		accent: "#0C2E3D",
 		icon: "/icons/smartphones.png",
-		desc: "Natif ou cross - une finition qui tient en main.",
+		desc: "Du natif Android au cross-platform, sans compromis sur la finition",
 		items: [
 			{
 				t: "Android natif",
-				d: "Apps optimisées avec intégration complète aux spécificités Android.",
+				d: "Livre des apps Android optimisées, intégration poussée aux APIs système",
 			},
 			{
 				t: "Cross-platform",
-				d: "React Native - une base, iOS + Android, expérience fluide.",
+				d: "Mutualise une base React Native pour iOS et Android sans sacrifier la fluidité",
 			},
 			{
 				t: "Publication & performance",
-				d: "Déploiement stores, compatibilité et stabilité au long cours.",
+				d: "Publie sur les stores et garantis compatibilité et stabilité au long cours",
 			},
 		],
 	},
@@ -52,23 +52,23 @@ export const services: Service[] = [
 		title: "DevOps",
 		accent: "#2E7D5A",
 		icon: "/icons/continous.png",
-		desc: "De la CI au run - tout est observable.",
+		desc: "De la CI au run - tout est observable",
 		items: [
 			{
 				t: "CI/CD & automatisation",
-				d: "GitHub Actions / GitLab CI / Jenkins : build, tests, déploiements avec rollback.",
+				d: "Automatise build, tests et déploiements avec rollback via GitHub Actions ou GitLab CI",
 			},
 			{
 				t: "Containerisation & orchestration",
-				d: "Docker & Kubernetes : packaging, orchestration multi-services, montée en charge.",
+				d: "Package et orchestre tes services avec Docker et Kubernetes pour scaler sereinement",
 			},
 			{
 				t: "Monitoring & observabilité",
-				d: "Prometheus, Grafana, ELK, cloud-monitoring : fiabilité et proactivité.",
+				d: "Supervise tes apps avec Prometheus, Grafana et ELK pour anticiper avant la rupture",
 			},
 			{
 				t: "Cloud & IaC",
-				d: "AWS, Azure, GCP avec Terraform - infra cloud public/privé.",
+				d: "Provisionne AWS/GCP/Azure avec Terraform en infra as code reproductible et versionnée",
 			},
 		],
 	},
@@ -77,23 +77,23 @@ export const services: Service[] = [
 		title: "IoT",
 		accent: "#C08A1A",
 		icon: "/icons/iot.png",
-		desc: "Du capteur au dashboard.",
+		desc: "Du capteur au dashboard temps réel",
 		items: [
 			{
 				t: "Prototypage & développement",
-				d: "Systèmes embarqués Arduino, Raspberry Pi, ESP32.",
+				d: "Prototype des systèmes embarqués Arduino, Raspberry Pi et ESP32 opérationnels rapidement",
 			},
 			{
 				t: "Connectivité & protocoles",
-				d: "Capteurs, actionneurs, WiFi / Bluetooth / Zigbee.",
+				d: "Connecte capteurs et actionneurs en WiFi, Bluetooth ou Zigbee sans friction",
 			},
 			{
 				t: "Applications IoT",
-				d: "Collecte, traitement et visualisation des données temps réel.",
+				d: "Collecte, traite et visualise tes données IoT en temps réel côté dashboard",
 			},
 			{
 				t: "Sécurité & OTA",
-				d: "Sécurisation des dispositifs et mises à jour à distance.",
+				d: "Sécurise tes dispositifs et déploie les mises à jour OTA sans interruption",
 			},
 		],
 	},
@@ -102,19 +102,19 @@ export const services: Service[] = [
 		title: "Salesforce",
 		accent: "#0176D3",
 		icon: "/salesforce.png",
-		desc: "L’outil s’adapte au métier, pas l’inverse.",
+		desc: "Le CRM qui s'adapte à ton métier, pas l'inverse",
 		items: [
 			{
 				t: "Développement sur mesure",
-				d: "Apps internes adaptées à vos besoins spécifiques.",
+				d: "Façonne des apps Salesforce sur mesure parfaitement alignées avec ton métier",
 			},
 			{
 				t: "Automatisation des workflows",
-				d: "Flows, Apex et LWC : processus intelligents qui fiabilisent l’exécution.",
+				d: "Flows, Apex et LWC : processus fiables et traçables",
 			},
 			{
 				t: "Intégrations tierces",
-				d: "Connexion Salesforce à vos outils via APIs, ERP et CRM.",
+				d: "Connecte Salesforce à tes outils via APIs, ERP et CRM sans silos",
 			},
 		],
 	},

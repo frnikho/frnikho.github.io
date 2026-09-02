@@ -23,17 +23,18 @@ export const Route = createRootRoute({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "Nicolas SANS - Portfolio",
+				title:
+					"Nicolas Sans - Développeur Fullstack & DevOps (React, Rust, K8s, Salesforce) | Nantes",
 			},
 			{
 				name: "description",
 				content:
-					"Nicolas SANS, développeur web fullstack spécialisé dans la création de sites et d'applications web modernes et performants.",
+					"Développeur fullstack & DevOps à Nantes. React, Rust, Kubernetes, Salesforce. J'accompagne startups et PME du design à la prod - perf, sécu, scalabilité.",
 			},
 			{
 				name: "keywords",
 				content:
-					"Nicolas SANS, portfolio, développeur web, fullstack, sites web, applications web, développement web",
+					"Nicolas Sans, développeur fullstack, DevOps, React, Rust, Kubernetes, Salesforce, Nantes, portfolio",
 			},
 			{
 				name: "author",
@@ -41,12 +42,13 @@ export const Route = createRootRoute({
 			},
 			{
 				property: "og:title",
-				content: "Nicolas SANS - Portfolio",
+				content:
+					"Nicolas Sans - Développeur Fullstack & DevOps (React, Rust, K8s, Salesforce) | Nantes",
 			},
 			{
 				property: "og:description",
 				content:
-					"Nicolas SANS, développeur web fullstack spécialisé dans la création de sites et d'applications web modernes et performants.",
+					"Développeur fullstack & DevOps à Nantes. React, Rust, Kubernetes, Salesforce. J'accompagne startups et PME du design à la prod - perf, sécu, scalabilité.",
 			},
 			{
 				property: "og:type",
@@ -66,12 +68,13 @@ export const Route = createRootRoute({
 			},
 			{
 				name: "twitter:title",
-				content: "Nicolas SANS - Portfolio",
+				content:
+					"Nicolas Sans - Développeur Fullstack & DevOps (React, Rust, K8s, Salesforce) | Nantes",
 			},
 			{
 				name: "twitter:description",
 				content:
-					"Nicolas SANS, développeur web fullstack spécialisé dans la création de sites et d'applications web modernes et performants.",
+					"Développeur fullstack & DevOps à Nantes. React, Rust, Kubernetes, Salesforce. J'accompagne startups et PME du design à la prod - perf, sécu, scalabilité.",
 			},
 			{
 				name: "twitter:image",

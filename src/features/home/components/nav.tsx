@@ -10,7 +10,7 @@ const links = [
 	{ l: "Recommandations", h: "#feedback" },
 ] as const;
 
-// ── SVG lens — must be in DOM once ──
+// ── SVG lens - must be in DOM once ──
 function LiquidLensDefs() {
 	return (
 		<svg
@@ -21,7 +21,7 @@ function LiquidLensDefs() {
 			style={{ position: "absolute" }}
 		>
 			<defs>
-				{/* Main liquid refraction — subtle warp of the backdrop */}
+				{/* Main liquid refraction - subtle warp of the backdrop */}
 				<filter
 					id="liquid-glass-lens"
 					x="-20%"
@@ -77,7 +77,7 @@ function GlassBackground({
 	const isSheet = variant === "sheet";
 	return (
 		<>
-			{/* 1 — translucent blurred backdrop + lens */}
+			{/* 1 - translucent blurred backdrop + lens */}
 			<span
 				aria-hidden
 				className={`absolute inset-0 ${isSheet ? "rounded-[28px]" : "rounded-full"} overflow-hidden`}
@@ -93,7 +93,7 @@ function GlassBackground({
 					// text stays sharp because content is in a sibling layer above
 				}}
 			/>
-			{/* 2 — refraction warp layer (warps backdrop behind, not text) */}
+			{/* 2 - refraction warp layer (warps backdrop behind, not text) */}
 			<span
 				aria-hidden
 				className={`absolute inset-0 ${isSheet ? "rounded-[28px]" : "rounded-full"} overflow-hidden pointer-events-none`}
@@ -104,7 +104,7 @@ function GlassBackground({
 					opacity: 0.55,
 				}}
 			/>
-			{/* 3 — inner bevel + outer depth shadow */}
+			{/* 3 - inner bevel + outer depth shadow */}
 			<span
 				aria-hidden
 				className={`absolute inset-0 ${isSheet ? "rounded-[28px]" : "rounded-full"} pointer-events-none`}
@@ -115,7 +115,7 @@ function GlassBackground({
 						: "inset 0 1px 1.5px rgba(255,255,255,0.92), inset 0 -1px 0.5px rgba(255,255,255,0.35), inset 0 0 18px rgba(255,255,255,0.22), inset 0 0 0 1px rgba(255,255,255,0.48)",
 				}}
 			/>
-			{/* 4 — 1px specular top edge (the iOS highlight) */}
+			{/* 4 - 1px specular top edge (the iOS highlight) */}
 			<span
 				aria-hidden
 				className={`pointer-events-none absolute inset-x-0 top-0 h-px ${isSheet ? "rounded-t-[28px]" : "rounded-full"}`}
@@ -126,7 +126,7 @@ function GlassBackground({
 					filter: "blur(0.2px)",
 				}}
 			/>
-			{/* 5 — soft top sheen (curved glossy highlight) */}
+			{/* 5 - soft top sheen (curved glossy highlight) */}
 			<span
 				aria-hidden
 				className={`pointer-events-none absolute inset-x-0 top-0 ${isSheet ? "h-[56%] rounded-t-[28px]" : "h-[62%] rounded-full"} overflow-hidden`}
@@ -137,7 +137,7 @@ function GlassBackground({
 					filter: "blur(0.6px)",
 				}}
 			/>
-			{/* 6 — faint chromatic edge (prismatic fringe like real glass) */}
+			{/* 6 - faint chromatic edge (prismatic fringe like real glass) */}
 			<span
 				aria-hidden
 				className={`pointer-events-none absolute inset-0 ${isSheet ? "rounded-[28px]" : "rounded-full"}`}
@@ -149,7 +149,7 @@ function GlassBackground({
 					opacity: 0.7,
 				}}
 			/>
-			{/* 7 — thin outer stroke (hairline) */}
+			{/* 7 - thin outer stroke (hairline) */}
 			<span
 				aria-hidden
 				className={`pointer-events-none absolute inset-0 ${isSheet ? "rounded-[28px]" : "rounded-full"}`}
@@ -226,7 +226,7 @@ export function Nav() {
 		<>
 			<LiquidLensDefs />
 
-			{/* ── DESKTOP — floating liquid capsule ── */}
+			{/* ── DESKTOP - floating liquid capsule ── */}
 			<div className="sticky top-0 z-50 hidden lg:block pointer-events-none px-6 pt-5">
 				<motion.div
 					initial={{ y: -14, opacity: 0, scale: 0.97 }}
@@ -234,7 +234,7 @@ export function Nav() {
 					transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
 					className="pointer-events-auto relative mx-auto flex items-center gap-1.5 p-1.25 rounded-full max-w-275"
 					style={{
-						// outer floating shadow — detached from glass
+						// outer floating shadow - detached from glass
 						filter: scrolled
 							? "drop-shadow(0 16px 36px rgba(12,46,61,0.12)) drop-shadow(0 4px 10px rgba(12,46,61,0.08))"
 							: "drop-shadow(0 10px 28px rgba(12,46,61,0.08)) drop-shadow(0 2px 6px rgba(12,46,61,0.06))",
@@ -256,7 +256,7 @@ export function Nav() {
 						aria-label="Haut de page"
 					>
 						<span className="w-8 h-8 rounded-full text-white shrink-0 overflow-hidden shadow-[0_2px_10px_rgba(12,46,61,0.18),inset_0_1px_0_rgba(255,255,255,0.18)]">
-							<img src="/android-chrome-192x192.ico" alt=""/>
+							<img src="/android-chrome-192x192.ico" alt="" />
 						</span>
 						<span className="flex flex-col leading-none">
 							<span className="font-display font-semibold text-[13.5px] tracking-[-0.025em] text-primary">
@@ -268,7 +268,7 @@ export function Nav() {
 							aria-hidden
 						/>
 					</a>
-					{/* nav links — liquid capsule follows hover */}
+					{/* nav links - liquid capsule follows hover */}
 					<nav
 						className="relative flex items-center gap-0 flex-1 justify-center px-1"
 						aria-label="Navigation principale"
@@ -326,7 +326,7 @@ export function Nav() {
 						})}
 					</nav>
 
-					{/* CTA — dark glass button */}
+					{/* CTA - dark glass button */}
 					<a
 						href="#contact"
 						onClick={(e) => handleNav(e, "#contact")}
@@ -367,7 +367,7 @@ export function Nav() {
 				/>
 			</div>
 
-			{/* ── MOBILE TOP — tiny glass brand chip ── */}
+			{/* ── MOBILE TOP - tiny glass brand chip ── */}
 			<div className="lg:hidden sticky top-0 z-50 pointer-events-none px-4 pt-3 sm:px-6">
 				<motion.div
 					initial={{ y: -10, opacity: 0 }}
@@ -563,7 +563,7 @@ export function Nav() {
 				)}
 			</AnimatePresence>
 
-			{/* ── BOTTOM LIQUID DOCK — mobile only ── */}
+			{/* ── BOTTOM LIQUID DOCK - mobile only ── */}
 			<div className="lg:hidden fixed bottom-0 inset-x-0 z-40 pointer-events-none px-3 pb-[max(10px,env(safe-area-inset-bottom))] pt-2">
 				<motion.nav
 					initial={{ y: 24, opacity: 0 }}

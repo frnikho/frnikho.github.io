@@ -53,11 +53,7 @@ export function Experience() {
 									<div className="font-mono text-[11px] tracking-wide opacity-60 mt-1 leading-tight">
 										{t.start_date}
 									</div>
-									{t.duration && (
-										<span className="inline-flex mt-2 bg-white border border-line rounded-full px-2.5 py-1 font-display text-[10px] tracking-widest uppercase shadow-sm">
-											{t.duration}
-										</span>
-									)}
+
 								</div>
 								<div className="hidden lg:flex justify-center pt-7">
 									<span

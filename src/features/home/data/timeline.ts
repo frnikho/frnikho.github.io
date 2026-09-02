@@ -2,21 +2,30 @@ import type { TimelineEntry } from "@/features/home/types";
 
 export const timeline: TimelineEntry[] = [
 	{
-		year: "2025",
+		year: "2026",
 		endYear: null,
 		start_date: "Jan. 2026",
 		end_date: null,
-		duration: "1 an",
+		duration: "Depuis jan. 2026",
 		title: "Développeur Fullstack",
 		company: "Privio",
 		type: "CDI",
 		accent: "#FF3E1F",
 		bg: "#FFF1EB",
-		desc: "Développement d’applications web modernes, mise en place de cluster kubernetes HA bare metal et casquette DevOps pour l’ensemble des projets de l’entreprise.",
+		desc: "Fullstack & DevOps chez Privio : apps web modernes et cluster Kubernetes HA bare-metal opéré pour l'ensemble des projets",
 		mastered: [
-			{ k: "Frontend", d: "React, TypeScript, Tailwind CSS" },
-			{ k: "Backend", d: "Node.js, Express, PostgreSQL" },
-			{ k: "DevOps", d: "Kubernetes, Docker, CI/CD" },
+			{
+				k: "Frontend",
+				d: "React, TypeScript et Tailwind pour des interfaces rapides et accessibles",
+			},
+			{
+				k: "Backend",
+				d: "Node.js, Express et PostgreSQL pour des APIs robustes et scalables",
+			},
+			{
+				k: "DevOps",
+				d: "Kubernetes, Docker et CI/CD pour des déploiements HA et observables",
+			},
 		],
 		tech: ["React", "Node.js", "PostgreSQL", "Docker", "GitHub Actions"],
 	},
@@ -25,25 +34,25 @@ export const timeline: TimelineEntry[] = [
 		endYear: "2025",
 		start_date: "Avr. 2022",
 		end_date: "Nov. 2025",
-		duration: "3 ans",
+		duration: "3 ans 7 mois",
 		title: "Consultant Salesforce",
 		company: "Capgemini",
 		type: "CDI",
 		accent: "#0176D3",
 		bg: "#EFF6FF",
-		desc: "J'interviens auprès des client sur la conception, l’évolution et la maintenance d’applications métiers critiques, avec une forte dimension d’automatisation et d’intégration inter-systèmes",
+		desc: "J'interviens auprès des clients sur la conception, l'évolution et la maintenance d'applications métiers critiques, avec une forte dimension d'automatisation et d'intégration inter-systèmes",
 		mastered: [
 			{
 				k: "Apex / LWC",
-				d: "Composants & logique métier Salesforce, Visualforce & Flow",
+				d: "Apex et LWC pour des composants métier fiables et testés",
 			},
 			{
 				k: "Intégrations",
-				d: "REST / SOAP, API externes & services tiers robustes",
+				d: "REST/SOAP et APIs externes pour des intégrations inter-systèmes robustes",
 			},
 			{
 				k: "Qualité & delivery",
-				d: "CI/CD, code review, TU à forte couverture, tests en pré-prod",
+				d: "CI/CD et tests pour des livraisons continues sans régression",
 			},
 		],
 		tech: ["Salesforce Apex", "LWC", "Flow", "REST / SOAP", "CI/CD", "Agile"],
@@ -56,35 +65,35 @@ export const timeline: TimelineEntry[] = [
 		duration: "4 ans",
 		title: "Fullstack & DevOps",
 		company: "Freelance · Remote",
-		type: null,
+		type: "Freelance · en parallèle",
 		accent: "#FF3E1F",
 		bg: "#FFF1EB",
-		desc:
-			"Accompagnement de plusieurs clients sur des projets web et mobile, de la conception à la mise en production. J’ai participé à la création et à la maintenance d’applications complètes, tout en assurant l’architecture, le développement fullstack et la mise en place des bonnes pratiques.\n" +
-			"\n",
+		desc: "J'accompagne startups et PME de l'idée à la prod : cadrage, architecture DDD/SOLID, fullstack React/Next.js et NestJS, jusqu'aux bonnes pratiques et au run",
 		mastered: [
 			{
 				k: "Architecture",
-				d: "DDD / SOLID, design system, APIs REST documentées (OpenAPI)",
+				d: "DDD et SOLID pour des APIs REST documentées et évolutives via OpenAPI",
 			},
 			{
 				k: "Fullstack",
-				d: "React / Next.js / NestJS / ElysiaJS · TypeScript · Bun/Node",
+				d: "React, Next.js et NestJS en TypeScript pour des apps performantes et maintenables",
 			},
 			{
 				k: "Infra & observabilité",
-				d: "Docker · K8s · Terraform · GH Actions · Grafana / Loki / Tempo",
+				d: "Docker, Kubernetes et Terraform pour des infras reproductibles et observables",
 			},
 		],
 		tech: [
 			"React",
 			"Next.js",
 			"NestJS",
+			"ElysiaJS",
 			"PostgreSQL",
 			"Prisma",
+			"Drizzle",
 			"Redis",
 			"Docker",
-			"K8s",
+			"Kubernetes",
 			"Terraform",
 			"Stripe",
 		],
@@ -97,24 +106,22 @@ export const timeline: TimelineEntry[] = [
 		duration: "6 mois",
 		title: "Admin. Réseau & Systèmes",
 		company: "St-Aubin La Salle · Angers",
-		type: "Campus scolaire · support & infra",
+		type: "Alternance · infra & support",
 		accent: "#C08A1A",
 		bg: "#FFFBEB",
-		desc:
-			"J’ai assuré la gestion et la maintenance des infrastructures informatiques d’un établissement campus scolaire, avec un rôle polyvalent mêlant support utilisateurs, administration réseau et gestion des systèmes. Mon travail a consisté à diagnostiquer les incidents, maintenir la sécurité du parc, gérer les comptes utilisateurs, et accompagner le personnel dans l’usage des outils numériques.\n" +
-			"\n",
+		desc: "Alternance au support et à l'administration des infra d'un campus scolaire : réseau, parc, Active Directory et accompagnement des utilisateurs au quotidien",
 		mastered: [
 			{
 				k: "Systèmes",
-				d: "Active Directory, Windows Server, Linux - gestion parc & comptes",
+				d: "Active Directory et Windows Server pour gérer parc et comptes",
 			},
 			{
 				k: "Réseau",
-				d: "Cisco, brassage, diagnostic incidents & sécurisation",
+				d: "Cisco et brassage pour des réseaux diagnostiqués, sécurisés et disponibles",
 			},
 			{
 				k: "Virtualisation",
-				d: "Proxmox / VMware - provision & maintien en conditions opérationnelles",
+				d: "Proxmox et VMware pour provisionner et maintenir les VMs opérationnelles",
 			},
 		],
 		tech: [
@@ -137,18 +144,19 @@ export const timeline: TimelineEntry[] = [
 		type: "Formation par projets · autonomie & agilité",
 		accent: "#0C2E3D",
 		bg: "#F0FDFA",
-		desc:
-			"Formation en informatique orientée projets, autonomie et expertise technique, axée sur le développement logiciel, l’architecture système et les méthodes agiles. Obtention du titre RNCP35075\n" +
-			"\n",
+		desc: "Formation Epitech par projets axée autonomie et agilité : C/C++ système, architecture, méthodes agiles et culture ship jusqu'au titre RNCP 35075 en équipe",
 		mastered: [
-			{ k: "Fondamentaux", d: "C / C++ système, structures, perf & rigueur" },
+			{
+				k: "Fondamentaux",
+				d: "C et C++ système pour des structures performantes et rigoureuses",
+			},
 			{
 				k: "Web & outillage",
-				d: "JS/TS, React, PlatformIO, Docker - culture ship",
+				d: "React, TypeScript et Docker pour shipper vite avec culture produit",
 			},
 			{
 				k: "Méthodes",
-				d: "Projets en équipe, code review, agilité & auto-apprentissage",
+				d: "Projets en équipe et code review pour agilité et autonomie",
 			},
 		],
 		tech: ["C", "C++", "TS", "Docker", "K8s", "React", "Linux", "Git"],
@@ -164,21 +172,19 @@ export const timeline: TimelineEntry[] = [
 		type: "ONG · reconditionnement & déploiement",
 		accent: "#2E7D5A",
 		bg: "#F0FDF4",
-		desc:
-			"Mission technique au sein d’une organisation à but non lucratif spécialisée dans le reconditionnement et la distribution d’équipements informatiques à des établissements scolaires dans des pays en développement. J’ai participé à l’installation, la configuration et à la remise en état de postes informatiques destinés à être expédiés vers des écoles partenaires.\n" +
-			"\n",
+		desc: "Mission ONG Camara à Dublin : reconditionnement et déploiement d'équipements informatiques pour des écoles partenaires après remise en état complète",
 		mastered: [
 			{
 				k: "Hardware",
-				d: "Montage PC, diagnostic matériel & remise en état complète",
+				d: "Montage et diagnostic matériel pour remettre les PC en état",
 			},
 			{
 				k: "Systèmes & réseau",
-				d: "Installation OS, config réseau & préparation au déploiement",
+				d: "Installation OS et config réseau pour préparer le déploiement terrain",
 			},
 			{
 				k: "Sens terrain",
-				d: "Chaîne logistique matérielle, exigences écoles partenaires",
+				d: "Logistique matérielle et exigences terrain pour livrer des écoles partenaires",
 			},
 		],
 		tech: ["Montage PC", "Installation OS", "Config Réseau", "Diagnostic"],

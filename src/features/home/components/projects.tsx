@@ -14,7 +14,7 @@ export function Projects() {
 					<SectionHeader
 						prefix="Mes dernières"
 						accent="Réalisations"
-						description="Produits et outils développés par mes soins"
+						description="Produits et side projets développés par mes soins"
 						containerClassName="max-w-[560px]"
 					/>
 					<a

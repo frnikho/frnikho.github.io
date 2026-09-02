@@ -117,9 +117,6 @@ function ContactModal({
 								>
 									{sent ? "✓ Envoyé - check console" : "Envoyer →"}
 								</button>
-								<p className="text-center font-mono text-[10px] tracking-[0.06em] opacity-35">
-									Envoi loggé en console - branchez votre API plus tard
-								</p>
 							</form>
 						</div>
 					</motion.div>
@@ -171,11 +168,11 @@ export function Contact() {
 						Un projet en tête ?
 						<br />
 						<span className="font-serif italic font-normal text-accent">
-							Discutons-en
+							Concrétisons-le ensemble.
 						</span>
 					</h2>
 					<p className="mt-4 text-[15px] leading-relaxed opacity-60">
-						Je vous recontacte en général sous 24h.
+						Réponse sous 24h
 					</p>
 					<div className="mt-8 flex flex-col items-center gap-3">
 						<button

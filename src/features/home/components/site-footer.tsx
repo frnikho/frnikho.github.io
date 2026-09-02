@@ -10,7 +10,7 @@ export function SiteFooter() {
 						height={24}
 						className="rounded-full"
 					/>
-					© 2025 Nicolas Sans - Nantes
+					© {new Date().getFullYear()} Nicolas Sans - Nantes
 				</span>
 				<a
 					href={"https://github.com/frnikho"}

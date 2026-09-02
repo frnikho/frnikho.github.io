@@ -13,7 +13,7 @@ function HeroCredentials() {
 				animate={{ scale: 1, opacity: 1 }}
 				transition={{ duration: 0.4, delay: 0.4 }}
 				className="group relative w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-primary grid place-items-center shrink-0 shadow-[0_10px_28px_rgba(12,46,61,0.22)] ring-1 ring-white/10 hover:scale-[1.15] transition-transform"
-				aria-label="5 ans d'expérience"
+				aria-label="5+ ans d'expérience"
 			>
 				<span className="absolute inset-[7px] rounded-full border border-dashed border-white/20 pointer-events-none" />
 				<span className="absolute inset-[3px] rounded-full border border-white/10 pointer-events-none" />
@@ -88,23 +88,18 @@ export function Hero() {
 								<br />
 								<span className="font-extrabold text-accent">Fullstack</span>
 							</h1>
-							<div className={"flex flex-col gap-0 mt-3"}>
+							<div className={"flex flex-col gap-1 mt-3"}>
 								<p className={"font-display text-[13px] opacity-60"}>
-									React - Rust - K8s - Salesforce
+									Fullstack · DevOps · Salesforce · Rust
 								</p>
 							</div>
 						</div>
 						<div className={"flex flex-col gap-2"}>
-							<p
-								className={"max-w-[54ch] text-[16px] leading-[1.7] opacity-70"}
-							>
-								Bienvenue sur mon portfolio 👋
-							</p>
+							<p className={"max-w-[54ch] text-[16px] leading-[1.7] opacity-70"}>Bienvenue sur mon portfolio 👋</p>
 							<p className="max-w-[54ch] text-[16px] leading-[1.7] opacity-70">
-								Depuis plusieurs années, j’accompagne des entreprises, de la
-								startup aux projets à fort trafic, dans la conception de
-								solutions robustes, scalables, et parfaitement intégrées à leur
-								écosystème.
+								J'accompagne startups et équipes produit dans la conception
+								d'apps robustes et scalables - du design système au cluster
+								Kubernetes, avec une exigence forte sur perf, sécu et DX.
 							</p>
 						</div>
 						<div className="flex flex-wrap gap-3 pt-1">
@@ -112,7 +107,7 @@ export function Hero() {
 								href="#contact"
 								className="bg-primary text-white rounded-full px-7 py-3.5 font-display text-xs tracking-widest uppercase hover:bg-black transition shadow-[0_10px_24px_rgba(12,46,61,0.16)]"
 							>
-								Contact
+								Me contacter
 							</a>
 							<a
 								href="#projects"
