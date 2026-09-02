@@ -87,3 +87,19 @@ h6 {
 		cursor: pointer;
 	}
 }
+@keyframes bubbleRise {
+	0% {
+		transform: translateY(0) scale(0.85);
+		opacity: 0;
+	}
+	12% {
+		opacity: 0.9;
+	}
+	88% {
+		opacity: 0.55;
+	}
+	100% {
+		transform: translateY(-160px) scale(1.05);
+		opacity: 0;
+	}
+}
