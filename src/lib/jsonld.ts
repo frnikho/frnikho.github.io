@@ -36,7 +36,7 @@ export function websiteJsonLd() {
 	return {
 		"@context": "https://schema.org",
 		"@type": "WebSite",
-		name: "Nicolas Sans — Portfolio",
+		name: "Nicolas Sans - Portfolio",
 		alternateName: "nikho.dev",
 		url: SITE_URL,
 		inLanguage: "fr-FR",
@@ -44,6 +44,11 @@ export function websiteJsonLd() {
 			"@type": "Person",
 			name: "Nicolas Sans",
 			url: SITE_URL,
+		},
+		potentialAction: {
+			"@type": "SearchAction",
+			target: `${SITE_URL}/?q={search_term_string}`,
+			"query-input": "required name=search_term_string",
 		},
 	};
 }

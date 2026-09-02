@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FeedbackRouteImport } from './routes/feedback'
+import { Route as ParcoursRouteImport } from './routes/parcours'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ProjetsRouteImport } from './routes/projets'
+import { Route as RecommandationsRouteImport } from './routes/recommandations'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as StackRouteImport } from './routes/stack'
+import { Route as WorkRouteImport } from './routes/work'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParcoursRoute = ParcoursRouteImport.update({
+  id: '/parcours',
+  path: '/parcours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetsRoute = ProjetsRouteImport.update({
+  id: '/projets',
+  path: '/projets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecommandationsRoute = RecommandationsRouteImport.update({
+  id: '/recommandations',
+  path: '/recommandations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StackRoute = StackRouteImport.update({
+  id: '/stack',
+  path: '/stack',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/feedback': typeof FeedbackRoute
+  '/parcours': typeof ParcoursRoute
+  '/projects': typeof ProjectsRoute
+  '/projets': typeof ProjetsRoute
+  '/recommandations': typeof RecommandationsRoute
+  '/services': typeof ServicesRoute
+  '/stack': typeof StackRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/feedback': typeof FeedbackRoute
+  '/parcours': typeof ParcoursRoute
+  '/projects': typeof ProjectsRoute
+  '/projets': typeof ProjetsRoute
+  '/recommandations': typeof RecommandationsRoute
+  '/services': typeof ServicesRoute
+  '/stack': typeof StackRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/feedback': typeof FeedbackRoute
+  '/parcours': typeof ParcoursRoute
+  '/projects': typeof ProjectsRoute
+  '/projets': typeof ProjetsRoute
+  '/recommandations': typeof RecommandationsRoute
+  '/services': typeof ServicesRoute
+  '/stack': typeof StackRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/feedback'
+    | '/parcours'
+    | '/projects'
+    | '/projets'
+    | '/recommandations'
+    | '/services'
+    | '/stack'
+    | '/work'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/feedback'
+    | '/parcours'
+    | '/projects'
+    | '/projets'
+    | '/recommandations'
+    | '/services'
+    | '/stack'
+    | '/work'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/feedback'
+    | '/parcours'
+    | '/projects'
+    | '/projets'
+    | '/recommandations'
+    | '/services'
+    | '/stack'
+    | '/work'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  FeedbackRoute: typeof FeedbackRoute
+  ParcoursRoute: typeof ParcoursRoute
+  ProjectsRoute: typeof ProjectsRoute
+  ProjetsRoute: typeof ProjetsRoute
+  RecommandationsRoute: typeof RecommandationsRoute
+  ServicesRoute: typeof ServicesRoute
+  StackRoute: typeof StackRoute
+  WorkRoute: typeof WorkRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parcours': {
+      id: '/parcours'
+      path: '/parcours'
+      fullPath: '/parcours'
+      preLoaderRoute: typeof ParcoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projets': {
+      id: '/projets'
+      path: '/projets'
+      fullPath: '/projets'
+      preLoaderRoute: typeof ProjetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recommandations': {
+      id: '/recommandations'
+      path: '/recommandations'
+      fullPath: '/recommandations'
+      preLoaderRoute: typeof RecommandationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stack': {
+      id: '/stack'
+      path: '/stack'
+      fullPath: '/stack'
+      preLoaderRoute: typeof StackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  FeedbackRoute: FeedbackRoute,
+  ParcoursRoute: ParcoursRoute,
+  ProjectsRoute: ProjectsRoute,
+  ProjetsRoute: ProjetsRoute,
+  RecommandationsRoute: RecommandationsRoute,
+  ServicesRoute: ServicesRoute,
+  StackRoute: StackRoute,
+  WorkRoute: WorkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

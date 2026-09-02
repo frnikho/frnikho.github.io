@@ -13,12 +13,17 @@ import {
 	siteNavigationJsonLd,
 	websiteJsonLd,
 } from "@/lib/jsonld";
-import { getHead } from "@/lib/seo";
 
 import "../styles/app.css";
 
 export const Route = createRootRoute({
-	head: () => getHead(),
+	head: () => ({
+		meta: [
+			{ charSet: "utf-8" as const },
+			{ name: "viewport", content: "width=device-width, initial-scale=1" },
+			{ name: "theme-color", content: "#0C2E3D" },
+		],
+	}),
 	component: RootComponent,
 });
 function RootComponent() {

@@ -1,8 +1,8 @@
-// ServiceItem: t=title, d=description — kept short to match data shape; prefer boring over churn.
+// ServiceItem: t=title, d=description - kept short to match data shape; prefer boring over churn.
 export type ServiceItem = { t: string; d: string };
 
 export type Service = {
-	// n=number ("01", "02"…) — display order label
+	// n=number ("01", "02"…) - display order label
 	n: string;
 	title: string;
 	accent: string;

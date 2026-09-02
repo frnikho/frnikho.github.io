@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://nikho.dev/sitemap.xml
+Host: https://nikho.dev

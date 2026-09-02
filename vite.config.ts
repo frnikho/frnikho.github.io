@@ -12,5 +12,29 @@ export default defineConfig({
 	resolve: {
 		tsconfigPaths: true,
 	},
-	plugins: [devtools(), tanstackStart(), viteReact(), tailwindcss()],
+	plugins: [
+		devtools(),
+		tanstackStart({
+			prerender: {
+				enabled: true,
+				autoSubfolderIndex: true,
+				crawlLinks: true,
+				concurrency: 14,
+				retryCount: 2,
+				retryDelay: 1000,
+				failOnError: false,
+			},
+			pages: [
+				{ path: "/", prerender: { enabled: true } },
+				{ path: "/services", prerender: { enabled: true } },
+				{ path: "/stack", prerender: { enabled: true } },
+				{ path: "/parcours", prerender: { enabled: true } },
+				{ path: "/projets", prerender: { enabled: true } },
+				{ path: "/recommandations", prerender: { enabled: true } },
+				{ path: "/contact", prerender: { enabled: true } },
+			],
+		}),
+		viteReact(),
+		tailwindcss(),
+	],
 });

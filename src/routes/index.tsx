@@ -9,8 +9,18 @@ import { Projects } from "@/features/home/components/projects";
 import { Services } from "@/features/home/components/services";
 import { SiteFooter } from "@/features/home/components/site-footer";
 import { Stack } from "@/features/home/components/stack";
+import { buildHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/")({ component: RouteComponent });
+export const Route = createFileRoute("/")({
+	head: () =>
+		buildHead({
+			title: "Nicolas Sans - Développeur Fullstack & DevOps | Nantes",
+			description:
+				"Développeur Fullstack & DevOps à Nantes. React, Rust, Kubernetes, Salesforce. J'accompagne startups et PME du design à la prod - perf, sécu, scalabilité.",
+			canonical: "/",
+		}),
+	component: RouteComponent,
+});
 
 function RouteComponent() {
 	return (
