@@ -14,7 +14,7 @@ import { buildHead } from "@/lib/seo";
 export const Route = createFileRoute("/")({
 	head: () =>
 		buildHead({
-			title: "Nicolas Sans - Développeur Fullstack & DevOps | Nantes",
+			title: "Nicolas Sans - Développeur Fullstack et DevOps | Nantes",
 			description:
 				"Développeur Fullstack & DevOps à Nantes. React, Rust, Kubernetes, Salesforce. J'accompagne startups et PME du design à la prod - perf, sécu, scalabilité.",
 			canonical: "/",
