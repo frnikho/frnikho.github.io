@@ -1,8 +1,5 @@
 import type { SkillEntry } from "@/features/home/types";
 
-// grafana entry removed - dead data (never rendered in Stack grid, 14 cards on 15 entries).
-// To restore, add entry here and a <SkillCard skill={skillsData.grafana} /> in Stack.
-
 export const skillsData: Record<string, SkillEntry> = {
 	typescript: {
 		name: "TypeScript",

@@ -101,7 +101,7 @@ export const services: Service[] = [
 		n: "05",
 		title: "Salesforce",
 		accent: "#0176D3",
-		icon: "/salesforce.png",
+		icon: "/stack/salesforce.png",
 		desc: "Le CRM qui s'adapte à ton métier, pas l'inverse",
 		items: [
 			{

@@ -92,8 +92,8 @@ export function Stack() {
 						/>
 						<SkillCard
 							skill={skillsData.nodejs}
-							size="sm"
-							className="col-span-1"
+							size="md"
+							className="col-span-2"
 						/>
 					</div>
 					<p className="mt-6 text-center font-display text-[11px] tracking-[0.14em] uppercase opacity-40">
@@ -105,6 +105,3 @@ export function Stack() {
 		</section>
 	);
 }
-
-// compat alias per plan
-export const StackMagnetic = Stack;

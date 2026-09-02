@@ -1,6 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 
-const Magnet = ({
+type MagnetProps = {
+	children: React.ReactNode;
+	padding?: number;
+	disabled?: boolean;
+	magnetStrength?: number;
+	activeTransition?: string;
+	inactiveTransition?: string;
+	wrapperClassName?: string;
+	innerClassName?: string;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+export function Magnet({
 	children,
 	padding = 100,
 	disabled = false,
@@ -10,7 +21,7 @@ const Magnet = ({
 	wrapperClassName = "",
 	innerClassName = "",
 	...props
-}) => {
+}: MagnetProps) {
 	const [isActive, setIsActive] = useState(false);
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 	const magnetRef = useRef<HTMLDivElement>(null);
@@ -21,7 +32,7 @@ const Magnet = ({
 			return;
 		}
 
-		const handleMouseMove = (e) => {
+		const handleMouseMove = (e: MouseEvent) => {
 			if (!magnetRef.current) return;
 
 			const { left, top, width, height } =
@@ -71,6 +82,4 @@ const Magnet = ({
 			</div>
 		</div>
 	);
-};
-
-export default Magnet;
+}

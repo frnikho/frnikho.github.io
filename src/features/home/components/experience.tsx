@@ -154,5 +154,3 @@ export function Experience() {
 		</section>
 	);
 }
-
-export const Work = Experience;

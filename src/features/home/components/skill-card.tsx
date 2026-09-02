@@ -1,4 +1,4 @@
-import Magnet from "@/components/lib/magnet";
+import { Magnet } from "@/components/ui/magnet";
 import { useHold } from "@/features/home/hooks/use-hold";
 import type { SkillColor, SkillEntry } from "@/features/home/types";
 import { cn } from "@/lib/cn";

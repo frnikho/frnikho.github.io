@@ -1,6 +1,8 @@
+// ServiceItem: t=title, d=description — kept short to match data shape; prefer boring over churn.
 export type ServiceItem = { t: string; d: string };
 
 export type Service = {
+	// n=number ("01", "02"…) — display order label
 	n: string;
 	title: string;
 	accent: string;
@@ -21,6 +23,7 @@ export type TimelineEntry = {
 	accent: string;
 	bg: string;
 	desc: string;
+	// mastered: k=key (skill label), d=description
 	mastered: { k: string; d: string }[];
 	tech: string[];
 };
@@ -54,11 +57,4 @@ export type SkillEntry = {
 	name: string;
 	icon: string;
 	color: SkillColor;
-};
-
-export type ContactPayload = {
-	name: string;
-	email: string;
-	message: string;
-	at: string;
 };

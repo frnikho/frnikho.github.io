@@ -34,8 +34,8 @@
 			"correctness": {
 				"noInvalidUseBeforeDeclaration": "off",
 				"useExhaustiveDependencies": "off",
-				"noUnusedVariables": "off",
-				"noUnusedFunctionParameters": "off"
+				"noUnusedVariables": "error",
+				"noUnusedFunctionParameters": "warn"
 			},
 			"preset": "recommended"
 		}

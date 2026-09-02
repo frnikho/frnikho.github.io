@@ -1,11 +1,17 @@
 import { createServerFn } from "@tanstack/react-start";
 
+export type ContactPayload = {
+	name: string;
+	email: string;
+	message: string;
+	at: string;
+};
+
 type ContactInput = {
 	name: string;
 	email: string;
 	message: string;
 };
-
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const submitContact = createServerFn({ method: "POST" })

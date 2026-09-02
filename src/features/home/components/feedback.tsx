@@ -90,5 +90,3 @@ export function FeedbackCarousel() {
 		</section>
 	);
 }
-
-export const FeedbackInfinite = FeedbackCarousel;
