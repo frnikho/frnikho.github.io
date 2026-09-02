@@ -53,7 +53,6 @@ export function Experience() {
 									<div className="font-mono text-[11px] tracking-wide opacity-60 mt-1 leading-tight">
 										{t.start_date}
 									</div>
-
 								</div>
 								<div className="hidden lg:flex justify-center pt-7">
 									<span

@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import {
 	createRootRoute,
@@ -9,6 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import type { ReactNode } from "react";
+import { Toaster, ToastProvider } from "@/components/ui/toast";
 
 import "../styles/app.css";
 
@@ -97,11 +96,13 @@ export const Route = createRootRoute({
 	}),
 	component: RootComponent,
 });
-
 function RootComponent() {
 	return (
 		<RootDocument>
-			<Outlet />
+			<ToastProvider>
+				<Outlet />
+				<Toaster />
+			</ToastProvider>
 		</RootDocument>
 	);
 }

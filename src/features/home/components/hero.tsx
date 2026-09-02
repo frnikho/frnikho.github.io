@@ -95,7 +95,11 @@ export function Hero() {
 							</div>
 						</div>
 						<div className={"flex flex-col gap-2"}>
-							<p className={"max-w-[54ch] text-[16px] leading-[1.7] opacity-70"}>Bienvenue sur mon portfolio 👋</p>
+							<p
+								className={"max-w-[54ch] text-[16px] leading-[1.7] opacity-70"}
+							>
+								Bienvenue sur mon portfolio 👋
+							</p>
 							<p className="max-w-[54ch] text-[16px] leading-[1.7] opacity-70">
 								J'accompagne startups et équipes produit dans la conception
 								d'apps robustes et scalables - du design système au cluster

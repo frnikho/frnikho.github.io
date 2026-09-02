@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import type { ContactPayload } from "@/features/home/types";
+import { useToast } from "@/components/ui/toast";
+import { submitContact } from "@/features/contact/contact";
 
 function ContactModal({
 	open,
@@ -8,6 +9,8 @@ function ContactModal({
 	form,
 	setForm,
 	sent,
+	pending,
+	error,
 	onSubmit,
 }: {
 	open: boolean;
@@ -15,6 +18,8 @@ function ContactModal({
 	form: { name: string; email: string; message: string };
 	setForm: (v: { name: string; email: string; message: string }) => void;
 	sent: boolean;
+	pending: boolean;
+	error: string | null;
 	onSubmit: (e: React.FormEvent) => void;
 }) {
 	if (!open) return null;
@@ -66,6 +71,7 @@ function ContactModal({
 							</div>
 							<form
 								onSubmit={onSubmit}
+								aria-busy={pending}
 								className="px-6 sm:px-8 py-6 flex flex-col gap-5"
 							>
 								<label className="flex flex-col gap-1.5">
@@ -74,10 +80,11 @@ function ContactModal({
 									</span>
 									<input
 										required
+										disabled={pending || sent}
 										value={form.name}
 										onChange={(e) => setForm({ ...form, name: e.target.value })}
 										placeholder="Votre nom"
-										className="w-full bg-surface border border-line rounded-xl px-3.5 py-3 font-display text-sm outline-none focus:border-primary/25 focus:bg-white transition placeholder:opacity-40"
+										className="w-full bg-surface border border-line rounded-xl px-3.5 py-3 font-display text-sm outline-none focus:border-primary/25 focus:bg-white transition placeholder:opacity-40 disabled:opacity-60"
 									/>
 								</label>
 								<label className="flex flex-col gap-1.5">
@@ -87,12 +94,13 @@ function ContactModal({
 									<input
 										required
 										type="email"
+										disabled={pending || sent}
 										value={form.email}
 										onChange={(e) =>
 											setForm({ ...form, email: e.target.value })
 										}
 										placeholder="vous@exemple.com"
-										className="w-full bg-surface border border-line rounded-xl px-3.5 py-3 font-display text-sm outline-none focus:border-primary/25 focus:bg-white transition placeholder:opacity-40"
+										className="w-full bg-surface border border-line rounded-xl px-3.5 py-3 font-display text-sm outline-none focus:border-primary/25 focus:bg-white transition placeholder:opacity-40 disabled:opacity-60"
 									/>
 								</label>
 								<label className="flex flex-col gap-1.5">
@@ -102,20 +110,26 @@ function ContactModal({
 									<textarea
 										required
 										rows={4}
+										disabled={pending || sent}
 										value={form.message}
 										onChange={(e) =>
 											setForm({ ...form, message: e.target.value })
 										}
 										placeholder="Contexte, objectifs, budget / timing..."
-										className="w-full bg-surface border border-line rounded-xl px-3.5 py-3 font-display text-sm outline-none focus:border-primary/25 focus:bg-white transition placeholder:opacity-40 resize-none"
+										className="w-full bg-surface border border-line rounded-xl px-3.5 py-3 font-display text-sm outline-none focus:border-primary/25 focus:bg-white transition placeholder:opacity-40 resize-none disabled:opacity-60"
 									/>
 								</label>
+								{error ? (
+									<p role="alert" className="text-sm text-red-600 font-display">
+										{error.replace(/^VALIDATION_ERROR:\s*/, "")}
+									</p>
+								) : null}
 								<button
 									type="submit"
-									disabled={sent}
-									className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-mono text-[11px] tracking-[0.14em] uppercase font-medium transition-colors ${sent ? "bg-forest text-white" : "bg-primary text-white hover:bg-black"}`}
+									disabled={pending || sent}
+									className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-mono text-[11px] tracking-[0.14em] uppercase font-medium transition-colors disabled:opacity-60 ${sent ? "bg-forest text-white" : "bg-primary text-white hover:bg-black"}`}
 								>
-									{sent ? "✓ Envoyé - check console" : "Envoyer →"}
+									{pending ? "Envoi…" : sent ? "✓ Envoyé" : "Envoyer →"}
 								</button>
 							</form>
 						</div>
@@ -130,7 +144,10 @@ export function Contact() {
 	const [open, setOpen] = useState(false);
 	const [form, setForm] = useState({ name: "", email: "", message: "" });
 	const [sent, setSent] = useState(false);
+	const [pending, setPending] = useState(false);
+	const [error, setError] = useState<string | null>(null);
 	const timeoutRef = useRef<number | undefined>(undefined);
+	const { success, error: toastError } = useToast();
 
 	useEffect(
 		() => () => {
@@ -139,22 +156,35 @@ export function Contact() {
 		[],
 	);
 
-	const onSubmit = (e: React.FormEvent) => {
+	const onSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		const payload: ContactPayload = {
-			name: form.name.trim(),
-			email: form.email.trim(),
-			message: form.message.trim(),
-			at: new Date().toISOString(),
-		};
-		// TODO: brancher API
-		console.log("[contact]", payload);
-		setSent(true);
-		timeoutRef.current = window.setTimeout(() => {
-			setSent(false);
-			setOpen(false);
-			setForm({ name: "", email: "", message: "" });
-		}, 1400);
+		setPending(true);
+		setError(null);
+		try {
+			await submitContact({
+				data: {
+					name: form.name.trim(),
+					email: form.email.trim(),
+					message: form.message.trim(),
+				},
+			});
+			success("Message envoyé, je vous recontacte sous 24h.");
+			setSent(true);
+			timeoutRef.current = window.setTimeout(() => {
+				setSent(false);
+				setOpen(false);
+				setForm({ name: "", email: "", message: "" });
+			}, 1400);
+		} catch (err) {
+			const msg = err instanceof Error ? err.message : "Envoi échoué";
+			setError(msg);
+			toastError(
+				msg.replace(/^VALIDATION_ERROR:\s*/, ""),
+				"Veuillez corriger le formulaire.",
+			);
+		} finally {
+			setPending(false);
+		}
 	};
 
 	return (
@@ -228,6 +258,8 @@ export function Contact() {
 				form={form}
 				setForm={setForm}
 				sent={sent}
+				pending={pending}
+				error={error}
 				onSubmit={onSubmit}
 			/>
 		</>
