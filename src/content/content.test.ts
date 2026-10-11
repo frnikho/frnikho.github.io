@@ -29,12 +29,25 @@ describe("catalogue de services", () => {
 });
 
 describe("contenus commerciaux", () => {
-	it("expose les trois forfaits attendus", () => {
+	it("expose les forfaits attendus, dont une offre sur devis", () => {
 		expect(offers.map((o) => o.id)).toEqual([
 			"essentiel",
 			"pro",
 			"maintenance",
+			"sur-mesure",
 		]);
+		expect(offers.filter((o) => o.quote).map((o) => o.id)).toEqual([
+			"sur-mesure",
+		]);
+	});
+
+	it("affiche un tarif de départ croissant sur les formules chiffrées", () => {
+		const amount = (price: string) => Number(price.replace(/\D/g, ""));
+		const essentiel = offers.find((o) => o.id === "essentiel");
+		const pro = offers.find((o) => o.id === "pro");
+		expect(amount(essentiel?.price ?? "")).toBeLessThan(
+			amount(pro?.price ?? ""),
+		);
 	});
 
 	it("ne mentionne aucun hébergeur hors Union européenne dans la FAQ RGPD", () => {

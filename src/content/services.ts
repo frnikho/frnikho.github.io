@@ -31,7 +31,7 @@ export const serviceFamilies: ServiceFamily[] = [
 		items: [
 			{
 				title: "Déploiement d'application sur serveur",
-				desc: "Serveur durci, application conteneurisée, HTTPS automatique, sauvegardes de la base et alertes de disponibilité.",
+				desc: "Serveur sécurisé, application conteneurisée, HTTPS automatique, sauvegardes de la base et alertes de disponibilité.",
 			},
 			{
 				title: "Mise en production d'applications générées par IA",

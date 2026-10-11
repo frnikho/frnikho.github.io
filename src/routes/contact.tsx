@@ -4,6 +4,7 @@ import { FaqSection } from "@/components/site/faq-section";
 import { PageShell } from "@/components/site/page-shell";
 import { Accent, Container } from "@/components/site/section";
 import { faq } from "@/content/faq";
+import { offers } from "@/content/offers";
 import { ContactForm } from "@/features/contact/contact-form";
 import type { ProjectType } from "@/features/contact/validation";
 import { faqJsonLd } from "@/lib/jsonld";
@@ -15,11 +16,17 @@ import {
 	SOCIAL_LINKS,
 } from "@/lib/site";
 
-type ContactSearch = { offre?: string };
+type ContactSearch = { offre?: string; estimation?: string };
+
+const MAX_ESTIMATION_LENGTH = 600;
 
 export const Route = createFileRoute("/contact")({
 	validateSearch: (search: Record<string, unknown>): ContactSearch => ({
 		offre: typeof search.offre === "string" ? search.offre : undefined,
+		estimation:
+			typeof search.estimation === "string"
+				? search.estimation.slice(0, MAX_ESTIMATION_LENGTH)
+				: undefined,
 	}),
 	head: () =>
 		buildHead({
@@ -32,7 +39,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
-	const { offre } = Route.useSearch();
+	const { offre, estimation } = Route.useSearch();
 	const defaultProjectType: ProjectType =
 		offre === "agence" ? "agence" : "startup";
 	return (
@@ -50,11 +57,15 @@ function ContactPage() {
 					</p>
 					{offre && offre !== "agence" && (
 						<p className="mt-4 inline-block border border-signal/40 px-3 py-1 text-[13px] text-signal-deep">
-							Offre sélectionnée : {offre}
+							Offre sélectionnée :{" "}
+							{offers.find((o) => o.id === offre)?.name ?? offre}
 						</p>
 					)}
 					<div className="mt-10">
-						<ContactForm defaultProjectType={defaultProjectType} />
+						<ContactForm
+							defaultProjectType={defaultProjectType}
+							defaultMessage={estimation}
+						/>
 					</div>
 				</div>
 
@@ -65,7 +76,7 @@ function ContactPage() {
 							Réservez 30 minutes dans mon agenda.
 						</p>
 						<div className="mt-6">
-							<ExternalButton href={BOOKING_URL}>
+							<ExternalButton href={BOOKING_URL} where="contact-page">
 								{BOOKING_LABEL}
 							</ExternalButton>
 						</div>
@@ -88,8 +99,9 @@ function ContactPage() {
 						</p>
 					</div>
 					<p className="border-t border-line pt-6 text-[13px] leading-relaxed text-ink-soft">
-						Vos données ne servent qu'à vous répondre. Aucun traceur, aucune
-						police externe, aucun script tiers sur ce site.
+						Vos données ne servent qu'à vous répondre. Mesure d'audience
+						anonyme, auto-hébergée et sans cookie ; aucune police externe, aucun
+						script tiers.
 					</p>
 				</aside>
 			</Container>

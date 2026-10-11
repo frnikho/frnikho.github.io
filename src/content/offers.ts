@@ -1,24 +1,35 @@
+export type OfferId = "essentiel" | "pro" | "maintenance" | "sur-mesure";
+
 export type Offer = {
-	id: "essentiel" | "pro" | "maintenance";
+	id: OfferId;
 	name: string;
+	/** Public visé, affiché au-dessus du prix. */
+	audience: string;
+	/** « à partir de », affiché avant le montant. */
+	prefix?: string;
 	price: string;
 	priceNote: string;
 	tagline: string;
 	highlighted?: boolean;
+	/** Offre sans prix public : bouton « parler à un expert ». */
+	quote?: boolean;
 	features: string[];
 	footnote?: string;
+	cta: string;
 };
 
 export const offers: Offer[] = [
 	{
 		id: "essentiel",
 		name: "Essentiel",
-		price: "300 €",
-		priceNote: "à partir de, paiement unique",
+		audience: "Indépendants, auto-entrepreneurs, premiers projets",
+		prefix: "à partir de",
+		price: "450 €",
+		priceNote: "paiement unique",
 		tagline:
 			"Votre application en production, sécurisée, sur une infrastructure dont vous restez propriétaire.",
 		features: [
-			"Serveur durci, provisionné sur votre compte chez l'hébergeur",
+			"Serveur sécurisé, provisionné sur votre compte chez l'hébergeur",
 			"Plateforme de déploiement Dokploy",
 			"Mise en production d'1 application conteneurisée",
 			"HTTPS avec renouvellement automatique des certificats",
@@ -26,12 +37,15 @@ export const offers: Offer[] = [
 			"Supervision de disponibilité avec alerte",
 			"Documentation d'exploitation et de passation",
 		],
+		cta: "Choisir Essentiel",
 	},
 	{
 		id: "pro",
 		name: "Pro",
-		price: "600 €",
-		priceNote: "à partir de, paiement unique",
+		audience: "TPE, PME, activités qui ne peuvent pas s'arrêter",
+		prefix: "à partir de",
+		price: "1 200 €",
+		priceNote: "paiement unique",
 		tagline:
 			"L'offre Essentiel, renforcée pour les activités à forte exigence de continuité.",
 		highlighted: true,
@@ -43,12 +57,15 @@ export const offers: Offer[] = [
 			"Déploiement continu à chaque mise à jour du dépôt GitHub",
 			"Environnement de préproduction pour valider avant publication",
 		],
+		cta: "Choisir Pro",
 	},
 	{
 		id: "maintenance",
 		name: "Maintenance",
-		price: "49 € ou 99 €",
-		priceNote: "par mois, engagement annuel : 2 mois offerts",
+		audience: "Après la mise en production, par serveur",
+		prefix: "à partir de",
+		price: "79 €",
+		priceNote: "par mois et par serveur, engagement annuel : 2 mois offerts",
 		tagline:
 			"Un suivi mensuel de votre infrastructure, par un interlocuteur unique.",
 		features: [
@@ -60,5 +77,28 @@ export const offers: Offer[] = [
 		],
 		footnote:
 			"Interventions en soirée et le week-end, sans astreinte 24h/24 garantie.",
+		cta: "Choisir Maintenance",
+	},
+	{
+		id: "sur-mesure",
+		name: "Sur mesure",
+		audience: "PME, équipes techniques, agences, plusieurs serveurs",
+		price: "Sur devis",
+		priceNote: "après un échange de 30 minutes, devis ferme",
+		tagline:
+			"Quand l'infrastructure dépasse un serveur : un périmètre défini avec vous.",
+		quote: true,
+		features: [
+			"Kubernetes, haute disponibilité, GitOps",
+			"Migration depuis Heroku, Vercel, Render ou AWS",
+			"Audit de sécurité, de coûts et de conformité RGPD",
+			"Plusieurs serveurs et environnements, Infrastructure as Code",
+			"Coaching d'équipe et infogérance en marque blanche",
+			"Cadre d'astreinte étudié selon vos besoins",
+		],
+		cta: "Parler à un expert",
 	},
 ];
+
+export const offersNote =
+	"Prix en euros, TVA non applicable (art. 293 B du CGI). Frais d'hébergement en sus, facturés directement par l'hébergeur.";

@@ -8,6 +8,7 @@ import {
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import type { ReactNode } from "react";
 import { Toaster, ToastProvider } from "@/components/ui/toast";
+import { getAnalyticsScript } from "@/lib/analytics-config";
 import {
 	personJsonLd,
 	siteNavigationJsonLd,
@@ -17,12 +18,25 @@ import {
 import "../styles/app.css";
 
 export const Route = createRootRoute({
-	head: () => ({
+	loader: () => getAnalyticsScript(),
+	// La configuration d'audience ne change pas en cours de navigation.
+	shouldReload: false,
+	head: ({ loaderData }) => ({
 		meta: [
 			{ charSet: "utf-8" as const },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
-			{ name: "theme-color", content: "#0C2E3D" },
 		],
+		scripts: loaderData
+			? [
+					{
+						src: loaderData.src,
+						defer: true,
+						"data-website-id": loaderData.websiteId,
+						"data-domains": loaderData.domains,
+						"data-do-not-track": String(loaderData.respectDoNotTrack),
+					},
+				]
+			: [],
 	}),
 	component: RootComponent,
 });

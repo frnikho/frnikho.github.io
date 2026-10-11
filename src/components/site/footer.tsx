@@ -58,6 +58,11 @@ export function SiteFooter() {
 							</Link>
 						</li>
 						<li>
+							<Link to="/estimation" className={link}>
+								Estimer mes ressources
+							</Link>
+						</li>
+						<li>
 							<Link to="/agences" className={link}>
 								Agences
 							</Link>

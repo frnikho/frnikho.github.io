@@ -7,7 +7,7 @@ import { BOOKING_LABEL, BOOKING_URL, CONTACT_EMAIL } from "@/lib/site";
 
 export function ContactSection() {
 	return (
-		<Section tone="alt" id="contact" labelledBy="contact-title">
+		<Section id="contact" labelledBy="contact-title">
 			<div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
 				<div>
 					<p className="eyebrow">Contact et réservation</p>
@@ -24,7 +24,9 @@ export function ContactSection() {
 						ferme. Réponse sous 24 h ouvrées.
 					</p>
 					<div className="mt-6 flex flex-wrap items-center gap-4">
-						<ExternalButton href={BOOKING_URL}>{BOOKING_LABEL}</ExternalButton>
+						<ExternalButton href={BOOKING_URL} where="home-contact">
+							{BOOKING_LABEL}
+						</ExternalButton>
 						<a
 							href={`mailto:${CONTACT_EMAIL}`}
 							className="text-[15px] font-medium text-signal-deep underline underline-offset-4"

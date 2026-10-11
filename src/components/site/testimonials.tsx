@@ -3,7 +3,7 @@ import { testimonials } from "@/content/profile";
 
 export function Testimonials() {
 	return (
-		<Section id="avis" labelledBy="avis-title">
+		<Section tone="alt" id="avis" labelledBy="avis-title">
 			<SectionHead
 				kicker="Références clients"
 				titleId="avis-title"

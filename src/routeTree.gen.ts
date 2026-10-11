@@ -14,6 +14,7 @@ import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as AgencesRouteImport } from './routes/agences'
 import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EstimationRouteImport } from './routes/estimation'
 import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as ParcoursRouteImport } from './routes/parcours'
@@ -50,6 +51,11 @@ const ConfidentialiteRoute = ConfidentialiteRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EstimationRoute = EstimationRouteImport.update({
+  id: '/estimation',
+  path: '/estimation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FeedbackRoute = FeedbackRouteImport.update({
@@ -119,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/agences': typeof AgencesRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
+  '/estimation': typeof EstimationRoute
   '/feedback': typeof FeedbackRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/parcours': typeof ParcoursRoute
@@ -138,6 +145,7 @@ export interface FileRoutesByTo {
   '/agences': typeof AgencesRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
+  '/estimation': typeof EstimationRoute
   '/feedback': typeof FeedbackRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/parcours': typeof ParcoursRoute
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/agences': typeof AgencesRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
+  '/estimation': typeof EstimationRoute
   '/feedback': typeof FeedbackRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/parcours': typeof ParcoursRoute
@@ -179,6 +188,7 @@ export interface FileRouteTypes {
     | '/agences'
     | '/confidentialite'
     | '/contact'
+    | '/estimation'
     | '/feedback'
     | '/mentions-legales'
     | '/parcours'
@@ -198,6 +208,7 @@ export interface FileRouteTypes {
     | '/agences'
     | '/confidentialite'
     | '/contact'
+    | '/estimation'
     | '/feedback'
     | '/mentions-legales'
     | '/parcours'
@@ -217,6 +228,7 @@ export interface FileRouteTypes {
     | '/agences'
     | '/confidentialite'
     | '/contact'
+    | '/estimation'
     | '/feedback'
     | '/mentions-legales'
     | '/parcours'
@@ -237,6 +249,7 @@ export interface RootRouteChildren {
   AgencesRoute: typeof AgencesRoute
   ConfidentialiteRoute: typeof ConfidentialiteRoute
   ContactRoute: typeof ContactRoute
+  EstimationRoute: typeof EstimationRoute
   FeedbackRoute: typeof FeedbackRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   ParcoursRoute: typeof ParcoursRoute
@@ -286,6 +299,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/estimation': {
+      id: '/estimation'
+      path: '/estimation'
+      fullPath: '/estimation'
+      preLoaderRoute: typeof EstimationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/feedback': {
@@ -381,6 +401,7 @@ const rootRouteChildren: RootRouteChildren = {
   AgencesRoute: AgencesRoute,
   ConfidentialiteRoute: ConfidentialiteRoute,
   ContactRoute: ContactRoute,
+  EstimationRoute: EstimationRoute,
   FeedbackRoute: FeedbackRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   ParcoursRoute: ParcoursRoute,

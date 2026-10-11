@@ -10,7 +10,7 @@ export const domains: Domain[] = [
 	{
 		slug: "mise-en-production",
 		title: "Déploiement en production",
-		desc: "Serveur durci, HTTPS, sauvegardes et alertes. Applications Lovable, Bolt ou Supabase prises en charge.",
+		desc: "Serveur sécurisé, HTTPS, sauvegardes et alertes. Applications Lovable, Bolt ou Supabase prises en charge.",
 		chips: ["Docker", "Dokploy", "Préproduction"],
 	},
 	{

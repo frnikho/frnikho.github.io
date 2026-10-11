@@ -37,13 +37,20 @@ export function ExternalButton({
 	children,
 	variant = "primary",
 	className,
-}: CommonProps & { href: string }) {
+	where,
+}: CommonProps & {
+	href: string;
+	/** Emplacement du bouton, envoyé avec l'événement de réservation. */
+	where?: string;
+}) {
 	return (
 		<a
 			href={href}
 			target="_blank"
 			rel="noopener noreferrer"
 			className={cn(base, variants[variant], className)}
+			data-umami-event={where ? "booking-click" : undefined}
+			data-umami-event-location={where}
 		>
 			{children}
 			<Arrow />

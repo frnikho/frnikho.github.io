@@ -86,7 +86,9 @@ function FamilyPage() {
 						{family.intro}
 					</p>
 					<div className="mt-9 flex flex-wrap gap-3">
-						<ExternalButton href={BOOKING_URL}>{BOOKING_LABEL}</ExternalButton>
+						<ExternalButton href={BOOKING_URL} where="service">
+							{BOOKING_LABEL}
+						</ExternalButton>
 						<RouteButton to="/contact" variant="ghost">
 							Décrire mon besoin
 						</RouteButton>

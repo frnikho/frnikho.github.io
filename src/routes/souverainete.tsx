@@ -62,7 +62,9 @@ function SovereigntyPage() {
 				}
 				intro="La conformité d'une infrastructure se décide dès l'architecture : localisation, chiffrement, accès, sous-traitants. Voici la démarche appliquée."
 			>
-				<ExternalButton href={BOOKING_URL}>{BOOKING_LABEL}</ExternalButton>
+				<ExternalButton href={BOOKING_URL} where="sovereignty">
+					{BOOKING_LABEL}
+				</ExternalButton>
 			</PageHero>
 
 			<Section labelledBy="flow-title">

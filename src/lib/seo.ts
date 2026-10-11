@@ -37,7 +37,7 @@ export function buildHead({
 			{ name: "description", content: description },
 			{ name: "robots", content: robots },
 			{ name: "author", content: "Nicolas SANS" },
-			{ name: "theme-color", content: "#F3F0E8" },
+			{ name: "theme-color", content: "#ffffff" },
 			{ property: "og:type", content: ogType },
 			{ property: "og:locale", content: "fr_FR" },
 			{ property: "og:site_name", content: SITE_NAME },

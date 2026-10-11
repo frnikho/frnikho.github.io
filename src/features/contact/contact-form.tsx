@@ -6,19 +6,23 @@ import {
 	PROJECT_TYPES,
 	type ProjectType,
 } from "@/features/contact/validation";
+import { trackEvent } from "@/lib/analytics";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 const fieldClass =
 	"w-full rounded-lg border border-line bg-card px-3.5 py-3 text-[0.95rem] outline-none transition placeholder:text-ink-soft/60 focus:border-signal focus:ring-2 focus:ring-signal/25 disabled:opacity-60";
 const labelClass = "eyebrow";
 
-type Props = { defaultProjectType?: ProjectType };
+type Props = { defaultProjectType?: ProjectType; defaultMessage?: string };
 
-export function ContactForm({ defaultProjectType = "startup" }: Props) {
+export function ContactForm({
+	defaultProjectType = "startup",
+	defaultMessage = "",
+}: Props) {
 	const [form, setForm] = useState({
 		name: "",
 		email: "",
-		message: "",
+		message: defaultMessage,
 		projectType: defaultProjectType,
 		website: "",
 	});
@@ -33,6 +37,7 @@ export function ContactForm({ defaultProjectType = "startup" }: Props) {
 		setError(null);
 		try {
 			await submitContact({ data: form });
+			trackEvent("contact-submit", { type: form.projectType });
 			success("Message envoyé. Réponse sous 24 h ouvrées.");
 			setSent(true);
 		} catch (err) {

@@ -111,9 +111,15 @@ function Confidentialite() {
 			<section>
 				<h2>Cookies, polices et mesure d'audience</h2>
 				<p>
-					Ce site ne dépose aucun cookie de suivi et n'utilise aucun outil de
-					mesure d'audience. Les polices de caractères sont hébergées sur le
-					site lui-même : aucune requête n'est envoyée à Google Fonts ni à un
+					Ce site ne dépose aucun cookie. Il mesure sa fréquentation avec Umami,
+					un outil libre hébergé sur l'infrastructure de l'éditeur, en Union
+					européenne : sans cookie, sans identifiant persistant, sans
+					recoupement avec d'autres sites et sans transmission à un tiers. Les
+					données recueillies sont anonymes (pages consultées, pays, type
+					d'appareil, clics sur les boutons de contact) et servent uniquement à
+					des statistiques de fréquentation. Le signal « Do Not Track » de votre
+					navigateur est respecté. Les polices de caractères sont hébergées sur
+					le site lui-même : aucune requête n'est envoyée à Google Fonts ni à un
 					autre service de polices.
 				</p>
 			</section>

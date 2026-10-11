@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ContactSection } from "@/components/site/contact-section";
 import { ExpertiseSection } from "@/components/site/expertise-section";
 import { Hero } from "@/components/site/hero";
+import { OffersSection } from "@/components/site/offers-section";
 import { PageShell } from "@/components/site/page-shell";
 import { RealisationsSection } from "@/components/site/realisations-section";
 import { SovereigntySection } from "@/components/site/sovereignty-section";
@@ -31,6 +32,7 @@ function HomePage() {
 			<ExpertiseSection />
 			<SovereigntySection />
 			<RealisationsSection />
+			<OffersSection />
 			<Testimonials />
 			<ContactSection />
 		</PageShell>

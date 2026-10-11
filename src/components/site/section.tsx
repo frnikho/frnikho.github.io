@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Decor, type DecorVariant } from "@/components/site/decor";
 import { cn } from "@/lib/cn";
 
 export function Container({
@@ -11,7 +12,7 @@ export function Container({
 	return (
 		<div
 			className={cn(
-				"mx-auto w-full max-w-[1400px] px-6 lg:px-10 xl:px-14",
+				"relative mx-auto w-full max-w-[1400px] px-6 lg:px-10 xl:px-14",
 				className,
 			)}
 		>
@@ -26,6 +27,8 @@ type SectionProps = {
 	className?: string;
 	children: ReactNode;
 	labelledBy?: string;
+	/** Fond décoratif. `none` pour une section sans décor. */
+	decor?: DecorVariant | "none";
 };
 
 const tones = {
@@ -40,13 +43,19 @@ export function Section({
 	className,
 	children,
 	labelledBy,
+	decor = "grid",
 }: SectionProps) {
 	return (
 		<section
 			id={id}
 			aria-labelledby={labelledBy}
-			className={cn("py-[var(--space-section)]", tones[tone], className)}
+			className={cn(
+				"relative overflow-clip py-[var(--space-section)]",
+				tones[tone],
+				className,
+			)}
 		>
+			{decor !== "none" && tone !== "night" && <Decor variant={decor} />}
 			<Container>{children}</Container>
 		</section>
 	);

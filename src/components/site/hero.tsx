@@ -1,4 +1,6 @@
 import { ExternalButton, RouteButton } from "@/components/site/button";
+import { Decor } from "@/components/site/decor";
+import { PortraitOrbit } from "@/components/site/portrait-orbit";
 import { Accent, Container } from "@/components/site/section";
 import { BOOKING_LABEL, BOOKING_URL } from "@/lib/site";
 
@@ -13,7 +15,11 @@ const delay = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
 export function Hero() {
 	return (
-		<section aria-labelledby="hero-title" className="bg-paper">
+		<section
+			aria-labelledby="hero-title"
+			className="relative overflow-clip bg-paper"
+		>
+			<Decor variant="hero" shapes={false} />
 			<Container className="grid items-center gap-10 pt-10 pb-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:pt-16 lg:pb-16">
 				<div>
 					<p className="rise-in eyebrow">
@@ -44,7 +50,9 @@ export function Hero() {
 					</p>
 
 					<div className="rise-in mt-8 flex flex-wrap gap-3" style={delay(240)}>
-						<ExternalButton href={BOOKING_URL}>{BOOKING_LABEL}</ExternalButton>
+						<ExternalButton href={BOOKING_URL} where="hero">
+							{BOOKING_LABEL}
+						</ExternalButton>
 						<RouteButton to="/" hash="expertise" variant="ghost">
 							Expertise et services
 						</RouteButton>
@@ -52,9 +60,10 @@ export function Hero() {
 				</div>
 
 				<div
-					className="rise-in mx-auto w-full max-w-[26rem] lg:max-w-none"
+					className="rise-in relative mx-auto w-full max-w-[26rem] py-16 lg:max-w-none"
 					style={delay(140)}
 				>
+					<PortraitOrbit />
 					<picture>
 						<source srcSet="/portrait.webp" type="image/webp" />
 						<img
@@ -64,7 +73,7 @@ export function Hero() {
 							height={1063}
 							fetchPriority="high"
 							decoding="async"
-							className="aspect-[4/4.4] w-full rounded-3xl object-cover object-[50%_20%] shadow-[var(--shadow-card)]"
+							className="relative aspect-[4/4.4] w-full rounded-3xl object-cover object-[50%_20%] shadow-[var(--shadow-card)]"
 						/>
 					</picture>
 				</div>

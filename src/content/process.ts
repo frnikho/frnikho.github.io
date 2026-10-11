@@ -11,7 +11,7 @@ export const steps: Step[] = [
 	},
 	{
 		title: "Installation",
-		desc: "Durcissement du serveur, mise en ligne de l'application, configuration du HTTPS, des sauvegardes et des alertes.",
+		desc: "Sécurisation du serveur, mise en ligne de l'application, configuration du HTTPS, des sauvegardes et des alertes.",
 	},
 	{
 		title: "Vérification",
