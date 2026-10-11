@@ -35,7 +35,13 @@ export const Route = createFileRoute("/services/$slug")({
 					description: loaderData.metaDescription,
 					canonical: `/services/${loaderData.slug}`,
 				})
-			: {},
+			: buildHead({
+					title: "Prestation introuvable | Nicolas Sans",
+					description:
+						"Cette prestation n'existe pas. Consultez le catalogue complet.",
+					canonical: "/services",
+					noindex: true,
+				}),
 	component: FamilyPage,
 	notFoundComponent: () => (
 		<PageShell>

@@ -22,7 +22,7 @@ export const Route = createFileRoute("/souverainete")({
 		buildHead({
 			title: "Hébergement souverain et RGPD : données en Europe | Nicolas Sans",
 			description:
-				"Hébergement en France ou dans l'Union européenne, exposition limitée au Cloud Act, chiffrement, outils libres et traçabilité : une infrastructure pensée pour la souveraineté des données et le RGPD.",
+				"Hébergement en France ou dans l'UE, exposition limitée au Cloud Act, chiffrement, outils libres et traçabilité pour la souveraineté des données et le RGPD.",
 			canonical: "/souverainete",
 		}),
 	component: SovereigntyPage,

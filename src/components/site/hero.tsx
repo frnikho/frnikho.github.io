@@ -25,20 +25,21 @@ export function Hero() {
 					<p className="rise-in eyebrow">
 						Ingénieur DevOps et fullstack · Freelance · 100 % à distance
 					</p>
-					<h1
-						id="hero-title"
-						className="rise-in mt-3 text-[clamp(2.6rem,1.4rem+4.2vw,4.4rem)] leading-[1.04]"
-						style={delay(60)}
-					>
-						Nicolas Sans
+					<h1 id="hero-title" className="mt-3">
+						<span
+							className="rise-in block text-[clamp(2.6rem,1.4rem+4.2vw,4.4rem)] leading-[1.04]"
+							style={delay(60)}
+						>
+							Nicolas Sans
+						</span>
+						<span
+							className="rise-in mt-5 block max-w-[28ch] text-[clamp(1.4rem,1rem+1.4vw,2rem)] leading-[1.25] font-semibold"
+							style={delay(120)}
+						>
+							Infrastructure souveraine,{" "}
+							<Accent>sécurité et conformité RGPD.</Accent>
+						</span>
 					</h1>
-					<p
-						className="rise-in mt-5 max-w-[28ch] text-[clamp(1.4rem,1rem+1.4vw,2rem)] leading-[1.25] font-semibold"
-						style={delay(120)}
-					>
-						Infrastructure souveraine,{" "}
-						<Accent>sécurité et conformité RGPD.</Accent>
-					</p>
 					<p
 						className="rise-in mt-5 max-w-[54ch] text-[1.1rem] leading-relaxed text-ink-soft"
 						style={delay(180)}

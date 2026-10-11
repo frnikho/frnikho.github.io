@@ -52,7 +52,7 @@ export const serviceFamilies: ServiceFamily[] = [
 		metaTitle:
 			"Mise en production d'application, serveur sécurisé | Nicolas Sans",
 		metaDescription:
-			"Déploiement d'application sur serveur sécurisé, HTTPS, sauvegardes et alertes. Mise en production d'applications Lovable, Bolt ou Supabase. DevOps freelance, à distance.",
+			"Déploiement d'application sur serveur sécurisé, HTTPS, sauvegardes et alertes. Applications Lovable, Bolt ou Supabase prises en charge. DevOps freelance.",
 	},
 	{
 		slug: "migration-couts",

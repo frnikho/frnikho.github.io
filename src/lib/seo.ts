@@ -1,9 +1,9 @@
 export const SITE_URL = "https://nikho.dev";
 export const SITE_NAME = "Nicolas Sans - DevOps freelance";
 export const HOME_TITLE =
-	"Nicolas Sans, DevOps freelance : infrastructure fiable et données souveraines en France";
+	"Nicolas Sans, DevOps freelance | Infrastructure souveraine";
 export const HOME_DESCRIPTION =
-	"Ingénieur DevOps freelance, à distance partout en France : mise en production, Kubernetes, CI/CD, sécurité, sauvegardes testées et supervision. Hébergement européen, conformité RGPD et souveraineté des données.";
+	"DevOps freelance à distance, partout en France : mise en production, Kubernetes, sécurité, sauvegardes et supervision. Hébergement européen et RGPD.";
 export const DEFAULT_OG_IMAGE = "https://nikho.dev/cover.jpg";
 export const OG_IMAGE_WIDTH = "1200";
 export const OG_IMAGE_HEIGHT = "630";
@@ -89,6 +89,7 @@ export const SITE_ROUTES = [
 	{ path: "/services", changefreq: "monthly" as const, priority: "0.9" },
 	{ path: "/souverainete", changefreq: "monthly" as const, priority: "0.9" },
 	{ path: "/realisations", changefreq: "monthly" as const, priority: "0.8" },
+	{ path: "/estimation", changefreq: "monthly" as const, priority: "0.8" },
 	{ path: "/agences", changefreq: "monthly" as const, priority: "0.7" },
 	{ path: "/a-propos", changefreq: "monthly" as const, priority: "0.6" },
 	{ path: "/contact", changefreq: "monthly" as const, priority: "0.8" },

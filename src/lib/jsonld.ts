@@ -90,6 +90,7 @@ export function siteNavigationJsonLd() {
 		{ name: "Services", url: `${SITE_URL}/services` },
 		{ name: "Souveraineté et RGPD", url: `${SITE_URL}/souverainete` },
 		{ name: "Réalisations", url: `${SITE_URL}/realisations` },
+		{ name: "Estimer mes ressources", url: `${SITE_URL}/estimation` },
 		{ name: "Agences", url: `${SITE_URL}/agences` },
 		{ name: "À propos", url: `${SITE_URL}/a-propos` },
 		{ name: "Contact", url: `${SITE_URL}/contact` },

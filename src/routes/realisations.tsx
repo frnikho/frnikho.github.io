@@ -19,10 +19,9 @@ import { buildHead } from "@/lib/seo";
 export const Route = createFileRoute("/realisations")({
 	head: () =>
 		buildHead({
-			title:
-				"Réalisations : projets clients et cluster Kubernetes | Nicolas Sans",
+			title: "Réalisations : projets clients et Kubernetes | Nicolas Sans",
 			description:
-				"Deux projets clients livrés de A à Z (développement fullstack, infrastructure, déploiement automatisé) et l'architecture anonymisée d'un cluster Kubernetes en production.",
+				"Deux projets clients livrés de A à Z (développement, infrastructure, déploiement) et l'architecture anonymisée d'un cluster Kubernetes en production.",
 			canonical: "/realisations",
 		}),
 	component: CasePage,

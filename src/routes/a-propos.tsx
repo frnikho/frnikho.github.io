@@ -8,7 +8,6 @@ import {
 	SectionHead,
 } from "@/components/site/section";
 import { career, credentials } from "@/content/profile";
-import { personJsonLd } from "@/lib/jsonld";
 import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/a-propos")({
@@ -16,7 +15,7 @@ export const Route = createFileRoute("/a-propos")({
 		buildHead({
 			title: "À propos : Nicolas Sans, ingénieur DevOps freelance",
 			description:
-				"Parcours, méthode et valeurs de Nicolas Sans, ingénieur DevOps freelance : 5 ans d'expérience en production, Kubernetes, RNCP 35075, à distance partout en France.",
+				"Parcours, méthode et valeurs de Nicolas Sans, ingénieur DevOps freelance : 5 ans en production, Kubernetes, RNCP 35075, à distance partout en France.",
 			canonical: "/a-propos",
 		}),
 	component: AboutPage,
@@ -40,11 +39,6 @@ const principles = [
 function AboutPage() {
 	return (
 		<PageShell>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
-			/>
 			<section className=" border-b border-line">
 				<Container className="grid items-center gap-12 py-16 lg:grid-cols-[1fr_0.7fr] lg:py-24">
 					<div>

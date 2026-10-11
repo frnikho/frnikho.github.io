@@ -11,7 +11,7 @@ export const Route = createFileRoute("/services/")({
 		buildHead({
 			title: "Services DevOps et infrastructure | Nicolas Sans",
 			description:
-				"Catalogue complet : mise en production, migration et réduction des coûts, CI/CD, Kubernetes, sécurité, sauvegardes, monitoring, outils auto-hébergés, maintenance et conseil.",
+				"Catalogue : mise en production, migration cloud, CI/CD, Kubernetes, sécurité, sauvegardes, monitoring, auto-hébergement, maintenance et conseil.",
 			canonical: "/services",
 		}),
 	component: ServicesPage,

@@ -9,8 +9,7 @@ import { buildHead } from "@/lib/seo";
 export const Route = createFileRoute("/estimation")({
 	head: () =>
 		buildHead({
-			title:
-				"Estimer les ressources serveur de votre application | Nicolas Sans",
+			title: "Quel serveur choisir ? Estimez vos ressources | Nicolas Sans",
 			description:
 				"Quel serveur choisir ? Estimez en quelques clics les vCPU, la RAM et le disque nécessaires à votre application, puis faites valider le dimensionnement.",
 			canonical: "/estimation",
