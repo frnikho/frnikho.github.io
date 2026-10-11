@@ -1,49 +1,40 @@
 import { createServerFn } from "@tanstack/react-start";
+import { getRequestHeader } from "@tanstack/react-start/server";
+import { sendContactEmail } from "@/features/contact/mailer.server";
+import {
+	type ContactInput,
+	createRateLimiter,
+	validateContact,
+} from "@/features/contact/validation";
 
-export type ContactPayload = {
-	name: string;
-	email: string;
-	message: string;
-	at: string;
-};
+const limiter = createRateLimiter({ max: 3, windowMs: 10 * 60 * 1000 });
 
-type ContactInput = {
-	name: string;
-	email: string;
-	message: string;
-};
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function clientKey(): string {
+	const forwarded = getRequestHeader("x-forwarded-for");
+	return forwarded?.split(",")[0]?.trim() || "unknown";
+}
 
 export const submitContact = createServerFn({ method: "POST" })
-	.validator((data: ContactInput) => data)
+	.inputValidator((data: ContactInput) => data)
 	.handler(async ({ data }) => {
-		const name = data.name.trim();
-		const email = data.email.trim();
-		const message = data.message.trim();
-
-		if (name.length < 2 || name.length > 80) {
+		const result = validateContact(data);
+		if (!result.ok) {
+			// Robot : on répond comme un succès pour ne rien lui apprendre.
+			if (result.bot) return { ok: true as const };
+			throw new Error(`VALIDATION_ERROR: ${result.error}`);
+		}
+		if (!limiter.allow(clientKey())) {
 			throw new Error(
-				"VALIDATION_ERROR: Le nom doit contenir entre 2 et 80 caractères.",
+				"VALIDATION_ERROR: Trop de messages envoyés. Réessayez dans quelques minutes.",
 			);
 		}
-		if (!EMAIL_RE.test(email)) {
-			throw new Error("VALIDATION_ERROR: Adresse email invalide.");
-		}
-		if (message.length < 10 || message.length > 4000) {
+		try {
+			await sendContactEmail(result.data);
+		} catch (err) {
+			console.error("[contact:send-failed]", err);
 			throw new Error(
-				"VALIDATION_ERROR: Le message doit contenir entre 10 et 4000 caractères.",
+				"Envoi impossible pour le moment. Écrivez-moi directement par email.",
 			);
 		}
-
-		const payload = {
-			name,
-			email,
-			message,
-			at: new Date().toISOString(),
-		};
-
-		// TODO rate-limit if abused
-		console.info("[contact:submit]", JSON.stringify(payload));
-
 		return { ok: true as const };
 	});

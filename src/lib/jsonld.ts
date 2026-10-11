@@ -1,28 +1,28 @@
+import type { FaqItem } from "@/content/faq";
+import { serviceFamilies } from "@/content/services";
 import { SITE_URL } from "./seo";
+import { CONTACT_EMAIL, SOCIAL_LINKS } from "./site";
 
 export function personJsonLd() {
 	return {
 		"@context": "https://schema.org",
 		"@type": "Person",
+		"@id": `${SITE_URL}/#person`,
 		name: "Nicolas Sans",
-		jobTitle: "Développeur Fullstack & DevOps",
+		jobTitle: "Ingénieur DevOps freelance",
 		image: `${SITE_URL}/pp.jpg`,
 		url: SITE_URL,
-		sameAs: [
-			"https://github.com/frnikho",
-			"https://www.linkedin.com/in/nicolas-sans",
-			"https://www.malt.fr/profile/nicolassans",
-		],
+		email: CONTACT_EMAIL,
+		sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin, SOCIAL_LINKS.malt],
 		knowsAbout: [
-			"React",
-			"Rust",
+			"DevOps",
 			"Kubernetes",
-			"Salesforce",
-			"TypeScript",
-			"NestJS",
 			"Docker",
 			"Terraform",
-			"DevOps",
+			"Ansible",
+			"ArgoCD",
+			"Sécurisation de serveur",
+			"Mise en production",
 		],
 		address: {
 			"@type": "PostalAddress",
@@ -36,20 +36,37 @@ export function websiteJsonLd() {
 	return {
 		"@context": "https://schema.org",
 		"@type": "WebSite",
-		name: "Nicolas Sans - Portfolio",
+		"@id": `${SITE_URL}/#website`,
+		name: "Nicolas Sans - DevOps freelance",
 		alternateName: "nikho.dev",
 		url: SITE_URL,
 		inLanguage: "fr-FR",
-		publisher: {
-			"@type": "Person",
-			name: "Nicolas Sans",
-			url: SITE_URL,
-		},
-		potentialAction: {
-			"@type": "SearchAction",
-			target: `${SITE_URL}/?q={search_term_string}`,
-			"query-input": "required name=search_term_string",
-		},
+		publisher: { "@id": `${SITE_URL}/#person` },
+	};
+}
+
+export function serviceJsonLd() {
+	return {
+		"@context": "https://schema.org",
+		"@type": "ProfessionalService",
+		name: "Nicolas Sans - DevOps freelance : infrastructure, Kubernetes, sécurité",
+		url: SITE_URL,
+		provider: { "@id": `${SITE_URL}/#person` },
+		areaServed: [{ "@type": "Country", name: "France" }],
+		priceRange: "€€",
+		knowsAbout: serviceFamilies.map((f) => f.name),
+	};
+}
+
+export function faqJsonLd(items: FaqItem[]) {
+	return {
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		mainEntity: items.map((i) => ({
+			"@type": "Question",
+			name: i.q,
+			acceptedAnswer: { "@type": "Answer", text: i.a },
+		})),
 	};
 }
 
@@ -71,10 +88,10 @@ export function breadcrumbsJsonLd(
 export function siteNavigationJsonLd() {
 	const nav = [
 		{ name: "Services", url: `${SITE_URL}/services` },
-		{ name: "Stack", url: `${SITE_URL}/stack` },
-		{ name: "Parcours", url: `${SITE_URL}/parcours` },
-		{ name: "Projets", url: `${SITE_URL}/projets` },
-		{ name: "Recommandations", url: `${SITE_URL}/recommandations` },
+		{ name: "Souveraineté et RGPD", url: `${SITE_URL}/souverainete` },
+		{ name: "Réalisations", url: `${SITE_URL}/realisations` },
+		{ name: "Agences", url: `${SITE_URL}/agences` },
+		{ name: "À propos", url: `${SITE_URL}/a-propos` },
 		{ name: "Contact", url: `${SITE_URL}/contact` },
 	];
 	return {

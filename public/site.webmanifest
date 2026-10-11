@@ -1,5 +1,5 @@
 {
-	"name": "Nicolas Sans - Portfolio",
+	"name": "Nicolas Sans - DevOps freelance",
 	"short_name": "Nicolas Sans",
 	"icons": [
 		{
@@ -13,7 +13,7 @@
 			"type": "image/png"
 		}
 	],
-	"theme_color": "#0C2E3D",
+	"theme_color": "#F3F0E8",
 	"background_color": "#F8F7F1",
 	"display": "standalone",
 	"start_url": "/",

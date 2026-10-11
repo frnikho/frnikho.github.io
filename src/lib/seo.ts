@@ -1,10 +1,13 @@
 export const SITE_URL = "https://nikho.dev";
-export const SITE_NAME = "Nicolas Sans - Portfolio";
+export const SITE_NAME = "Nicolas Sans - DevOps freelance";
+export const HOME_TITLE =
+	"Nicolas Sans, DevOps freelance : infrastructure fiable et données souveraines en France";
+export const HOME_DESCRIPTION =
+	"Ingénieur DevOps freelance, à distance partout en France : mise en production, Kubernetes, CI/CD, sécurité, sauvegardes testées et supervision. Hébergement européen, conformité RGPD et souveraineté des données.";
 export const DEFAULT_OG_IMAGE = "https://nikho.dev/cover.jpg";
 export const OG_IMAGE_WIDTH = "1200";
 export const OG_IMAGE_HEIGHT = "630";
-export const OG_IMAGE_ALT =
-	"Nicolas Sans - Développeur Fullstack & DevOps à Nantes";
+export const OG_IMAGE_ALT = "Nicolas Sans, ingénieur DevOps freelance";
 
 export type SeoProps = {
 	title: string;
@@ -34,7 +37,7 @@ export function buildHead({
 			{ name: "description", content: description },
 			{ name: "robots", content: robots },
 			{ name: "author", content: "Nicolas SANS" },
-			{ name: "theme-color", content: "#0C2E3D" },
+			{ name: "theme-color", content: "#F3F0E8" },
 			{ property: "og:type", content: ogType },
 			{ property: "og:locale", content: "fr_FR" },
 			{ property: "og:site_name", content: SITE_NAME },
@@ -55,16 +58,6 @@ export function buildHead({
 			{ name: "twitter:image:alt", content: OG_IMAGE_ALT },
 		],
 		links: [
-			{ rel: "preconnect", href: "https://fonts.googleapis.com" },
-			{
-				rel: "preconnect",
-				href: "https://fonts.gstatic.com",
-				crossOrigin: "anonymous" as const,
-			},
-			{
-				rel: "stylesheet",
-				href: "https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap",
-			},
 			{ rel: "canonical", href: canonicalUrl },
 			{ rel: "alternate", hrefLang: "fr", href: canonicalUrl },
 			{ rel: "alternate", hrefLang: "x-default", href: canonicalUrl },
@@ -90,23 +83,13 @@ export function buildHead({
 	};
 }
 
-// Compat: previous getHead() → home defaults
-export function getHead() {
-	return buildHead({
-		title: "Nicolas Sans - Développeur Fullstack & DevOps | Nantes",
-		description:
-			"Développeur Fullstack & DevOps à Nantes. React, Rust, Kubernetes, Salesforce. J'accompagne startups et PME du design à la prod - perf, sécu, scalabilité.",
-		canonical: "/",
-	});
-}
-
 // Central list for sitemap/prerender
 export const SITE_ROUTES = [
 	{ path: "/", changefreq: "weekly" as const, priority: "1.0" },
-	{ path: "/services", changefreq: "monthly" as const, priority: "0.8" },
-	{ path: "/stack", changefreq: "monthly" as const, priority: "0.8" },
-	{ path: "/parcours", changefreq: "monthly" as const, priority: "0.8" },
-	{ path: "/projets", changefreq: "monthly" as const, priority: "0.8" },
-	{ path: "/recommandations", changefreq: "monthly" as const, priority: "0.7" },
-	{ path: "/contact", changefreq: "monthly" as const, priority: "0.7" },
+	{ path: "/services", changefreq: "monthly" as const, priority: "0.9" },
+	{ path: "/souverainete", changefreq: "monthly" as const, priority: "0.9" },
+	{ path: "/realisations", changefreq: "monthly" as const, priority: "0.8" },
+	{ path: "/agences", changefreq: "monthly" as const, priority: "0.7" },
+	{ path: "/a-propos", changefreq: "monthly" as const, priority: "0.6" },
+	{ path: "/contact", changefreq: "monthly" as const, priority: "0.8" },
 ] as const;
