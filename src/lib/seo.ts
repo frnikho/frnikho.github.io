@@ -83,14 +83,72 @@ export function buildHead({
 	};
 }
 
-// Central list for sitemap/prerender
-export const SITE_ROUTES = [
-	{ path: "/", changefreq: "weekly" as const, priority: "1.0" },
-	{ path: "/services", changefreq: "monthly" as const, priority: "0.9" },
-	{ path: "/souverainete", changefreq: "monthly" as const, priority: "0.9" },
-	{ path: "/realisations", changefreq: "monthly" as const, priority: "0.8" },
-	{ path: "/estimation", changefreq: "monthly" as const, priority: "0.8" },
-	{ path: "/agences", changefreq: "monthly" as const, priority: "0.7" },
-	{ path: "/a-propos", changefreq: "monthly" as const, priority: "0.6" },
-	{ path: "/contact", changefreq: "monthly" as const, priority: "0.8" },
-] as const;
+export type SiteRoute = {
+	path: string;
+	priority: string;
+	/** Fichiers ou dossiers dont la dernière modification date la page (`lastmod`). */
+	sources: readonly string[];
+};
+
+/** Pages indexables, source unique du sitemap (voir `scripts/generate-sitemap.ts`). */
+export const SITE_ROUTES: readonly SiteRoute[] = [
+	{
+		path: "/",
+		priority: "1.0",
+		sources: [
+			"src/routes/index.tsx",
+			"src/components/site",
+			"src/content",
+			"src/lib/seo.ts",
+		],
+	},
+	{
+		path: "/services",
+		priority: "0.9",
+		sources: ["src/routes/services.index.tsx", "src/content/services.ts"],
+	},
+	{
+		path: "/souverainete",
+		priority: "0.9",
+		sources: [
+			"src/routes/souverainete.tsx",
+			"src/content/sovereignty.ts",
+			"src/components/diagrams",
+		],
+	},
+	{
+		path: "/realisations",
+		priority: "0.8",
+		sources: [
+			"src/routes/realisations.tsx",
+			"src/content/projects.ts",
+			"src/content/cluster.ts",
+		],
+	},
+	{
+		path: "/estimation",
+		priority: "0.8",
+		sources: ["src/routes/estimation.tsx", "src/features/estimator"],
+	},
+	{ path: "/agences", priority: "0.7", sources: ["src/routes/agences.tsx"] },
+	{
+		path: "/a-propos",
+		priority: "0.6",
+		sources: ["src/routes/a-propos.tsx", "src/content/profile.ts"],
+	},
+	{
+		path: "/contact",
+		priority: "0.8",
+		sources: [
+			"src/routes/contact.tsx",
+			"src/content/faq.ts",
+			"src/features/contact",
+		],
+	},
+];
+
+/** Pages de détail des services : même priorité, mêmes fichiers sources. */
+export const SERVICE_PAGE = {
+	priority: "0.8",
+	sources: ["src/routes/services.$slug.tsx", "src/content/services.ts"],
+} as const;

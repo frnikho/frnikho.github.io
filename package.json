@@ -18,6 +18,8 @@
 	},
 	"scripts": {
 		"dev": "vite dev",
+		"sitemap": "bun scripts/generate-sitemap.ts",
+		"prebuild": "bun scripts/generate-sitemap.ts",
 		"build": "vite build",
 		"start": "node .output/server/index.mjs",
 		"lint": "biome check",
