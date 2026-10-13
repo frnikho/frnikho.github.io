@@ -13,7 +13,7 @@ function requireEnv(name: string): string {
 export async function sendContactEmail(data: ContactData): Promise<void> {
 	const user = requireEnv("SMTP_USER");
 	const transporter = nodemailer.createTransport({
-		host: process.env.SMTP_HOST ?? "smtp.gmail.com",
+		host: process.env.SMTP_HOST ?? "mail.nikho.dev",
 		port: Number(process.env.SMTP_PORT ?? 465),
 		secure: true,
 		auth: { user, pass: requireEnv("SMTP_PASS") },

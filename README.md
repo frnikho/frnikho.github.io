@@ -29,14 +29,14 @@ This project uses [Bun](https://bun.sh) and [TanStack Start](https://tanstack.co
 
 ## Configuration du formulaire de contact
 
-Le formulaire envoie un email via SMTP (Gmail). Variables d'environnement requises en production :
+Le formulaire envoie un email via SMTP (serveur Stalwart auto-hébergé, `mail.nikho.dev`). Variables d'environnement requises en production :
 
 | Variable | Rôle |
 |---|---|
-| `SMTP_USER` | Adresse Gmail expéditrice |
-| `SMTP_PASS` | Mot de passe d'application Google (pas le mot de passe du compte) |
+| `SMTP_USER` | Compte Stalwart expéditeur (`contact@nikho.dev`) |
+| `SMTP_PASS` | Mot de passe du compte Stalwart |
 | `CONTACT_TO` | Destinataire (par défaut `SMTP_USER`) |
-| `SMTP_HOST`, `SMTP_PORT` | Optionnels (`smtp.gmail.com`, `465`) |
+| `SMTP_HOST`, `SMTP_PORT` | Optionnels (`mail.nikho.dev`, `465`) |
 
 ## Mesure d'audience (Umami, auto-hébergé)
 

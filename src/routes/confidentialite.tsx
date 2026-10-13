@@ -71,11 +71,10 @@ function Confidentialite() {
 						visiteurs.
 					</li>
 					<li>
-						<strong>Google (Gmail)</strong> (États-Unis) : les messages du
-						formulaire de contact sont envoyés puis reçus via une messagerie
-						Gmail. Ce transfert hors Union européenne s'appuie sur les garanties
-						prévues par le RGPD (cadre de protection des données UE-États-Unis
-						ou clauses contractuelles types).
+						<strong>Messagerie :</strong> les messages du formulaire de contact
+						sont envoyés et reçus par un serveur de messagerie que j'héberge
+						moi-même (mail.nikho.dev), chez OVH en France. Aucun service de
+						messagerie tiers n'est utilisé.
 					</li>
 					<li>
 						<strong>Prise de rendez-vous :</strong> assurée par une instance

@@ -1,4 +1,4 @@
-export const CONTACT_EMAIL = "nicolas.sansd@gmail.com";
+export const CONTACT_EMAIL = "contact@nikho.dev";
 
 export const SOCIAL_LINKS = {
 	linkedin: "https://linkedin.com/in/nicosans/",
