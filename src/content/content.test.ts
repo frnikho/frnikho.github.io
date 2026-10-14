@@ -1,7 +1,9 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { clientProjectDiagrams } from "@/components/diagrams/specs";
 import { faq } from "./faq";
 import { offers } from "./offers";
+import { clientProjects, clientResults } from "./projects";
 import { getFamily, serviceFamilies } from "./services";
 
 describe("catalogue de services", () => {
@@ -48,6 +50,19 @@ describe("contenus commerciaux", () => {
 		expect(amount(essentiel?.price ?? "")).toBeLessThan(
 			amount(pro?.price ?? ""),
 		);
+	});
+
+	it("documente chaque projet client avec ses enjeux et un schéma d'architecture", () => {
+		for (const p of clientProjects) {
+			expect(p.challenge.length).toBeGreaterThan(80);
+			expect(clientProjectDiagrams[p.id].label.length).toBeGreaterThan(0);
+		}
+	});
+
+	it("n'annonce que les chiffres mesurés sur les projets clients", () => {
+		const values = clientResults.map((r) => r.value);
+		expect(values).toContain("99,99 %");
+		expect(values).toContain("~2 000");
 	});
 
 	it("ne mentionne aucun hébergeur hors Union européenne dans la FAQ RGPD", () => {

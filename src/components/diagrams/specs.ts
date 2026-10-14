@@ -1,4 +1,5 @@
 import type { DiagramSpec, DNode } from "@/components/diagrams/types";
+import type { ClientProject } from "@/content/projects";
 
 const node = (
 	id: string,
@@ -731,4 +732,291 @@ export const backupFlow: DiagramSpec = {
 			{ edge: "chain", dur: 4, delay: 2 },
 		],
 	},
+};
+
+/** Everyloc : pipeline de livraison puis VPS OVHcloud déployé avec Dokploy. */
+const everylocArchitecture: DiagramSpec = {
+	label:
+		"Schéma : le code part de GitHub, passe par une intégration continue (lint, typage, tests, build), produit une image Docker versionnée, déployée par Dokploy sur un VPS OVHcloud en Europe. Les visiteurs accèdent en HTTPS à l'application Next.js, reliée à PostgreSQL, à un stockage S3 et à un serveur mail.",
+	legend: [
+		{ kind: "step", text: "ordre de livraison" },
+		{ kind: "flow", text: "flux automatisé" },
+		{ kind: "zone", text: "serveur de production" },
+	],
+	wide: {
+		size: [740, 350],
+		zones: [
+			{ x: 240, y: 120, w: 480, h: 220, label: "VPS OVHcloud", eu: true },
+		],
+		nodes: [
+			node("git", 0, 20, 170, 58, "GitHub", "push, pull request", undefined, {
+				icon: "git",
+				step: 1,
+			}),
+			node("ci", 200, 20, 200, 58, "CI", "lint, types, tests", undefined, {
+				icon: "zap",
+				step: 2,
+			}),
+			node(
+				"img",
+				430,
+				20,
+				170,
+				58,
+				"Image Docker",
+				"GHCR, versionnée",
+				undefined,
+				{
+					icon: "box",
+					step: 3,
+				},
+			),
+			node("users", 0, 236, 170, 58, "Visiteurs", "HTTPS", undefined, {
+				icon: "users",
+			}),
+			node("dep", 270, 140, 200, 56, "Dokploy", "déploiement", undefined, {
+				icon: "sync",
+				step: 4,
+			}),
+			node("app", 270, 230, 200, 64, "Next.js", "conteneur Docker", "primary", {
+				icon: "server",
+				step: 5,
+			}),
+			node("db", 510, 140, 180, 50, "PostgreSQL", "réservations", undefined, {
+				icon: "database",
+			}),
+			node("s3", 510, 205, 180, 50, "Stockage S3", "médias", undefined, {
+				icon: "disk",
+			}),
+			node(
+				"mail",
+				510,
+				270,
+				180,
+				50,
+				"Serveur mail",
+				"confirmations",
+				undefined,
+				{
+					icon: "bell",
+				},
+			),
+		],
+		edges: [
+			{ id: "e1", d: "M170 49H198", flow: true },
+			{ id: "e2", d: "M400 49H428", flow: true },
+			{ id: "e3", d: "M515 78V108H370V138", flow: true },
+			{ id: "e4", d: "M370 196V228", flow: true },
+			{ id: "u1", d: "M170 265H268", flow: true },
+			{ id: "l1", d: "M470 262H490V165H508" },
+			{ id: "l2", d: "M470 262H490V230H508" },
+			{ id: "l3", d: "M470 262H490V295H508" },
+			{ id: "chain", d: "M85 49H515V108H370V262", hidden: true },
+		],
+		packets: [
+			{ edge: "chain", dur: 3.6 },
+			{ edge: "u1", dur: 1.4, delay: 1, gap: 2 },
+		],
+	},
+	tall: {
+		size: [340, 590],
+		zones: [{ x: 0, y: 262, w: 340, h: 314, label: "VPS OVHcloud", eu: true }],
+		nodes: [
+			node("git", 50, 0, 240, 56, "GitHub", "push, pull request", undefined, {
+				step: 1,
+			}),
+			node("ci", 50, 90, 240, 56, "CI", "lint, types, tests", undefined, {
+				step: 2,
+			}),
+			node("img", 50, 180, 240, 56, "Image Docker", "GHCR", undefined, {
+				step: 3,
+			}),
+			node("dep", 50, 300, 240, 56, "Dokploy", "déploiement", undefined, {
+				step: 4,
+			}),
+			node("app", 50, 390, 240, 64, "Next.js", "conteneur Docker", "primary", {
+				step: 5,
+			}),
+			node("db", 0, 500, 104, 56, "PostgreSQL"),
+			node("s3", 118, 500, 104, 56, "S3", "médias"),
+			node("mail", 236, 500, 104, 56, "Mail"),
+		],
+		edges: [
+			{ id: "e1", d: "M170 56V88", flow: true },
+			{ id: "e2", d: "M170 146V178", flow: true },
+			{ id: "e3", d: "M170 236V298", flow: true },
+			{ id: "e4", d: "M170 356V388", flow: true },
+			{ id: "l1", d: "M170 454V478H52V500" },
+			{ id: "l2", d: "M170 454V500" },
+			{ id: "l3", d: "M170 454V478H288V500" },
+			{ id: "chain", d: "M170 28V420", hidden: true },
+		],
+		packets: [
+			{ edge: "chain", dur: 3.6 },
+			{ edge: "chain", dur: 3.6, delay: 1.8 },
+		],
+	},
+};
+
+/** O Cœur du Soi : site autonome et newsletter RGPD sur VPS OVHcloud. */
+const ocdsArchitecture: DiagramSpec = {
+	label:
+		"Schéma : le code part de GitHub, est construit par l'intégration continue en image Docker, puis déployé par Dokploy sur un VPS OVHcloud en Europe. Visiteurs et praticienne utilisent l'application TanStack Start, reliée à MongoDB, à un cache Valkey, à un stockage S3 pour les médias et à un serveur SMTP qui envoie la newsletter aux abonnés après double confirmation.",
+	legend: [
+		{ kind: "step", text: "ordre de livraison" },
+		{ kind: "flow", text: "flux automatisé" },
+		{ kind: "zone", text: "serveur de production" },
+	],
+	wide: {
+		size: [920, 410],
+		zones: [
+			{ x: 240, y: 120, w: 480, h: 280, label: "VPS OVHcloud", eu: true },
+		],
+		nodes: [
+			node("git", 0, 20, 170, 58, "GitHub", "push", undefined, {
+				icon: "git",
+				step: 1,
+			}),
+			node("ci", 200, 20, 200, 58, "CI", "build vérifié", undefined, {
+				icon: "zap",
+				step: 2,
+			}),
+			node("img", 430, 20, 170, 58, "Image Docker", "par version", undefined, {
+				icon: "box",
+				step: 3,
+			}),
+			node("users", 0, 212, 170, 58, "Visiteurs", "HTTPS", undefined, {
+				icon: "users",
+			}),
+			node("admin", 0, 290, 170, 58, "Praticienne", "back-office", undefined, {
+				icon: "file",
+			}),
+			node("dep", 270, 140, 200, 56, "Dokploy", "déploiement", undefined, {
+				icon: "sync",
+				step: 4,
+			}),
+			node(
+				"app",
+				270,
+				230,
+				200,
+				64,
+				"TanStack Start",
+				"rendu serveur",
+				"primary",
+				{
+					icon: "server",
+					step: 5,
+				},
+			),
+			node(
+				"db",
+				510,
+				140,
+				180,
+				50,
+				"MongoDB",
+				"contenus, contacts",
+				undefined,
+				{
+					icon: "database",
+				},
+			),
+			node("cache", 510, 202, 180, 50, "Valkey", "cache", undefined, {
+				icon: "zap",
+			}),
+			node(
+				"s3",
+				510,
+				264,
+				180,
+				50,
+				"Stockage S3",
+				"images, vidéos",
+				undefined,
+				{
+					icon: "disk",
+				},
+			),
+			node("smtp", 510, 326, 180, 50, "SMTP", "newsletter", undefined, {
+				icon: "bell",
+			}),
+			node("subs", 760, 321, 160, 60, "Abonnés", "double opt-in", "ok", {
+				icon: "check",
+			}),
+		],
+		edges: [
+			{ id: "e1", d: "M170 49H198", flow: true },
+			{ id: "e2", d: "M400 49H428", flow: true },
+			{ id: "e3", d: "M515 78V108H370V138", flow: true },
+			{ id: "e4", d: "M370 196V228", flow: true },
+			{ id: "u1", d: "M170 241H268", flow: true },
+			{ id: "u2", d: "M170 319H220V282H268", flow: true },
+			{ id: "l1", d: "M470 262H490V165H508" },
+			{ id: "l2", d: "M470 262H490V227H508" },
+			{ id: "l3", d: "M470 262H490V289H508" },
+			{ id: "l4", d: "M470 262H490V351H508" },
+			{ id: "m1", d: "M690 351H758", flow: true },
+			{ id: "chain", d: "M85 49H515V108H370V262", hidden: true },
+		],
+		packets: [
+			{ edge: "chain", dur: 3.6 },
+			{ edge: "m1", dur: 1.2, delay: 1.2, gap: 2.4 },
+		],
+	},
+	tall: {
+		size: [340, 720],
+		zones: [{ x: 0, y: 262, w: 340, h: 374, label: "VPS OVHcloud", eu: true }],
+		nodes: [
+			node("git", 50, 0, 240, 56, "GitHub", "push", undefined, { step: 1 }),
+			node("ci", 50, 90, 240, 56, "CI", "build vérifié", undefined, {
+				step: 2,
+			}),
+			node("img", 50, 180, 240, 56, "Image Docker", "par version", undefined, {
+				step: 3,
+			}),
+			node("dep", 50, 300, 240, 56, "Dokploy", "déploiement", undefined, {
+				step: 4,
+			}),
+			node(
+				"app",
+				50,
+				390,
+				240,
+				64,
+				"TanStack Start",
+				"rendu serveur",
+				"primary",
+				{
+					step: 5,
+				},
+			),
+			node("db", 0, 500, 160, 52, "MongoDB"),
+			node("cache", 180, 500, 160, 52, "Valkey", "cache"),
+			node("s3", 0, 566, 160, 52, "Stockage S3", "médias"),
+			node("smtp", 180, 566, 160, 52, "SMTP", "newsletter"),
+			node("subs", 90, 660, 160, 52, "Abonnés", "double opt-in", "ok"),
+		],
+		edges: [
+			{ id: "e1", d: "M170 56V88", flow: true },
+			{ id: "e2", d: "M170 146V178", flow: true },
+			{ id: "e3", d: "M170 236V298", flow: true },
+			{ id: "e4", d: "M170 356V388", flow: true },
+			{ id: "l1", d: "M170 454V592" },
+			{ id: "l2", d: "M160 526H180" },
+			{ id: "l3", d: "M160 592H180" },
+			{ id: "m1", d: "M260 618V640H170V658", flow: true },
+			{ id: "chain", d: "M170 28V420", hidden: true },
+		],
+		packets: [
+			{ edge: "chain", dur: 3.6 },
+			{ edge: "m1", dur: 1, delay: 1.4, gap: 2.4 },
+		],
+	},
+};
+
+/** Schéma d'architecture de chaque projet client, pour la page Réalisations. */
+export const clientProjectDiagrams: Record<ClientProject["id"], DiagramSpec> = {
+	everyloc: everylocArchitecture,
+	ocds: ocdsArchitecture,
 };

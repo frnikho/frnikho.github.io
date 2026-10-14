@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { SchemaDiagram } from "@/components/diagrams/schema-diagram";
+import { clientProjectDiagrams } from "@/components/diagrams/specs";
 import { type ClientProject, clientResults } from "@/content/projects";
 
 function Tags({ items }: { items: string[] }) {
@@ -77,6 +79,15 @@ export function ClientProjectDetail({ project }: { project: ClientProject }) {
 						{project.host} ↗
 					</a>
 				</div>
+			</div>
+			<div className="grid gap-6 border-t border-line p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr]">
+				<div>
+					<h4 className="font-semibold">Contexte et enjeux</h4>
+					<p className="mt-3 text-[0.97rem] text-ink-soft">
+						{project.challenge}
+					</p>
+				</div>
+				<SchemaDiagram spec={clientProjectDiagrams[project.id]} />
 			</div>
 			<div className="grid gap-6 border-t border-line p-6 sm:p-8 md:grid-cols-2">
 				<div>
