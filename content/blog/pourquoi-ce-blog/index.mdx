@@ -1,0 +1,55 @@
+---
+title: "Pourquoi j'ouvre ce blog, et comment il est construit"
+description: "Un blog de terrain sur le dev, l'IA et l'auto-hébergement : ce que vous y trouverez, et la stack derrière, sans traceur ni CMS."
+publishedAt: 2026-10-17
+category: dev
+tags: [tanstack-start, mdx, auto-hebergement]
+service: auto-heberge
+---
+
+Ça faisait un moment que je repoussais l'idée. Entre les missions, l'exploitation d'un cluster Kubernetes et les projets perso, j'accumule des notes, des commandes qui m'ont sauvé la mise et des outils testés à 23 h un mardi soir. Elles finissaient dans un dossier `notes/` que personne ne lit, moi compris.
+
+Alors voilà : ce blog, c'est ce dossier, en mieux rangé et en public.
+
+## Ce que vous allez trouver ici
+
+Pas de « 10 astuces pour devenir développeur 10x ». Plutôt :
+
+- **des billets courts** sur un outil, une commande ou une actu tech qui vaut le coup d'œil ;
+- **des articles de fond** quand un sujet le mérite : mettre une app en production proprement, monter des sauvegardes qu'on a vraiment restaurées, héberger ses services en Europe ;
+- **de l'IA appliquée**, testée sur de vrais projets, avec ce qui marche et ce qui reste du marketing ;
+- **des retours d'expérience** sur des missions, anonymisés quand il le faut.
+
+<Callout type="info" title="Le rythme">
+  Un à deux articles par semaine. Pas plus : je préfère publier moins, mais des choses que j'ai réellement utilisées.
+</Callout>
+
+## Comment c'est construit
+
+Le site tourne sur [TanStack Start](https://tanstack.com/start), rendu côté serveur, dans un conteneur sur un serveur en France. Les articles sont de simples fichiers MDX versionnés dans Git, à côté du code :
+
+```text title="Arborescence"
+content/blog/
+└── pourquoi-ce-blog/
+    ├── index.mdx   ← l'article
+    └── schema.png  ← ses images, converties en WebP au build
+```
+
+Chaque article déclare ses métadonnées en tête de fichier. Elles sont validées au build : une catégorie inconnue ou une description trop longue, et le déploiement échoue avant d'arriver en ligne.
+
+```yaml title="index.mdx"
+title: "Pourquoi j'ouvre ce blog"
+description: "Ce que vous trouverez ici, et la stack derrière."
+publishedAt: 2026-10-17
+category: dev
+```
+
+Petit bonus : un article daté dans le futur est filtré à chaque requête. Il apparaît tout seul le jour J, sans nouveau déploiement.
+
+### Ce qu'il n'y a pas
+
+Pas de CMS, pas de base de données, pas de traceur publicitaire. La mesure d'audience passe par une instance [Umami](https://umami.is) auto-hébergée, sans cookie. Et il y a un [flux RSS](/blog/rss.xml), parce que le RSS n'est pas mort.
+
+## Et maintenant ?
+
+Les prochains articles arrivent. Si un sujet vous intéresse en particulier (une migration, un outil, une question sur l'auto-hébergement), écrivez-moi : c'est souvent comme ça que naissent les meilleurs billets.

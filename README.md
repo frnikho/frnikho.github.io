@@ -56,3 +56,31 @@ Mentions légales : compléter `LEGAL` dans `src/lib/site.ts` avant la mise en l
 ```bash
 bun run test
 ```
+
+## Blog
+
+Articles en MDX, un dossier par article : `content/blog/<slug>/index.mdx`, images à côté.
+
+```bash
+bun run new-post "Titre de l'article" --cat ia   # crée un brouillon
+```
+
+| Champ | Rôle |
+|---|---|
+| `title`, `description` | Titre affiché ; description de 50 à 160 caractères (Google, cartes, RSS) |
+| `seoTitle` | Obligatoire si `title` dépasse 65 caractères |
+| `publishedAt`, `updatedAt` | `AAAA-MM-JJ` ou `AAAA-MM-JJTHH:mm`, **heure de Paris** |
+| `category` | `dev`, `ia`, `selfhost`, `outils`, `retex` (voir `src/content/blog.ts`) |
+| `tags` | Slugs libres ; pages de tags en `noindex` |
+| `draft` | `true` : visible en `dev` uniquement |
+| `service` | Slug d'une prestation : CTA en fin d'article et encart sur `/services/<slug>` |
+| `aliases` | Anciens slugs, redirigés en 301 |
+| `cover`, `coverAlt` | Couverture optionnelle (`./cover.png`) |
+
+Le frontmatter est validé au build (`src/features/blog/schema.ts`) : une erreur bloque le déploiement.
+
+- **Publication programmée** : un article daté du futur est filtré à chaque requête et apparaît le jour venu, sans rebuild. Le flux `/blog/rss.xml` et le sitemap `/sitemap-blog.xml` sont calculés de la même façon.
+- **Images** : `![alt](./capture.png)` dans l'article. `bun run blog:assets` (lancé avant `dev` et `build`) convertit PNG/JPEG en WebP et génère l'image de partage `og.png` dans `public/blog-assets/<slug>/` (non versionné).
+- **Composants MDX** : `<Callout type="info|astuce|attention" title="…">`. Blocs de code : ` ```ts title="fichier.ts" `.
+- Le MDX est rendu en HTML côté serveur (pas d'`unsafe-eval` dans la CSP) : les composants d'article doivent rester statiques.
+- Après la mise en ligne : déclarer `https://nikho.dev/sitemap-blog.xml` dans la Search Console (il est aussi listé dans `robots.txt`).

@@ -1,16 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ContactSection } from "@/components/site/contact-section";
-import { ExpertiseSection } from "@/components/site/expertise-section";
+import { LatestPostsSection } from "@/components/blog/latest-posts";
+import { FinalCta } from "@/components/site/final-cta";
 import { Hero } from "@/components/site/hero";
-import { OffersSection } from "@/components/site/offers-section";
 import { PageShell } from "@/components/site/page-shell";
-import { RealisationsSection } from "@/components/site/realisations-section";
-import { SovereigntySection } from "@/components/site/sovereignty-section";
-import { Testimonials } from "@/components/site/testimonials";
+import { ProofSection } from "@/components/site/proof-section";
+import { ServicesBrief } from "@/components/site/services-brief";
+import { getHomePosts } from "@/features/blog/blog";
 import { serviceJsonLd } from "@/lib/jsonld";
 import { buildHead, HOME_DESCRIPTION, HOME_TITLE } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
+	loader: () => getHomePosts(),
 	head: () =>
 		buildHead({
 			title: HOME_TITLE,
@@ -20,7 +20,9 @@ export const Route = createFileRoute("/")({
 	component: HomePage,
 });
 
+/** Accueil hybride : présentation, puis le blog en premier plan, puis les services. */
 function HomePage() {
+	const posts = Route.useLoaderData();
 	return (
 		<PageShell>
 			<script
@@ -29,12 +31,10 @@ function HomePage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd()) }}
 			/>
 			<Hero />
-			<ExpertiseSection />
-			<SovereigntySection />
-			<RealisationsSection />
-			<OffersSection />
-			<Testimonials />
-			<ContactSection />
+			<LatestPostsSection posts={posts} />
+			<ServicesBrief />
+			<ProofSection />
+			<FinalCta />
 		</PageShell>
 	);
 }

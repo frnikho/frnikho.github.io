@@ -22,11 +22,18 @@ import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProjetsRouteImport } from './routes/projets'
 import { Route as RealisationsRouteImport } from './routes/realisations'
 import { Route as RecommandationsRouteImport } from './routes/recommandations'
+import { Route as SitemapBlogDotxmlRouteImport } from './routes/sitemap-blog[.]xml'
 import { Route as SouveraineteRouteImport } from './routes/souverainete'
 import { Route as StackRouteImport } from './routes/stack'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as BlogRssDotxmlRouteImport } from './routes/blog.rss[.]xml'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as BlogCategorieCategoryRouteImport } from './routes/blog.categorie.$category'
+import { Route as BlogPagePageRouteImport } from './routes/blog.page.$page'
+import { Route as BlogTagTagRouteImport } from './routes/blog.tag.$tag'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -93,6 +100,11 @@ const RecommandationsRoute = RecommandationsRouteImport.update({
   path: '/recommandations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapBlogDotxmlRoute = SitemapBlogDotxmlRouteImport.update({
+  id: '/sitemap-blog.xml',
+  path: '/sitemap-blog.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SouveraineteRoute = SouveraineteRouteImport.update({
   id: '/souverainete',
   path: '/souverainete',
@@ -108,6 +120,21 @@ const WorkRoute = WorkRouteImport.update({
   path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRssDotxmlRoute = BlogRssDotxmlRouteImport.update({
+  id: '/blog/rss.xml',
+  path: '/blog/rss.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/services/',
   path: '/services/',
@@ -116,6 +143,21 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/services/$slug',
   path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogCategorieCategoryRoute = BlogCategorieCategoryRouteImport.update({
+  id: '/blog/categorie/$category',
+  path: '/blog/categorie/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogPagePageRoute = BlogPagePageRouteImport.update({
+  id: '/blog/page/$page',
+  path: '/blog/page/$page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogTagTagRoute = BlogTagTagRouteImport.update({
+  id: '/blog/tag/$tag',
+  path: '/blog/tag/$tag',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -133,11 +175,18 @@ export interface FileRoutesByFullPath {
   '/projets': typeof ProjetsRoute
   '/realisations': typeof RealisationsRoute
   '/recommandations': typeof RecommandationsRoute
+  '/sitemap-blog.xml': typeof SitemapBlogDotxmlRoute
   '/souverainete': typeof SouveraineteRoute
   '/stack': typeof StackRoute
   '/work': typeof WorkRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/rss.xml': typeof BlogRssDotxmlRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/blog/categorie/$category': typeof BlogCategorieCategoryRoute
+  '/blog/page/$page': typeof BlogPagePageRoute
+  '/blog/tag/$tag': typeof BlogTagTagRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -153,11 +202,18 @@ export interface FileRoutesByTo {
   '/projets': typeof ProjetsRoute
   '/realisations': typeof RealisationsRoute
   '/recommandations': typeof RecommandationsRoute
+  '/sitemap-blog.xml': typeof SitemapBlogDotxmlRoute
   '/souverainete': typeof SouveraineteRoute
   '/stack': typeof StackRoute
   '/work': typeof WorkRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/rss.xml': typeof BlogRssDotxmlRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/services': typeof ServicesIndexRoute
+  '/blog/categorie/$category': typeof BlogCategorieCategoryRoute
+  '/blog/page/$page': typeof BlogPagePageRoute
+  '/blog/tag/$tag': typeof BlogTagTagRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -174,11 +230,18 @@ export interface FileRoutesById {
   '/projets': typeof ProjetsRoute
   '/realisations': typeof RealisationsRoute
   '/recommandations': typeof RecommandationsRoute
+  '/sitemap-blog.xml': typeof SitemapBlogDotxmlRoute
   '/souverainete': typeof SouveraineteRoute
   '/stack': typeof StackRoute
   '/work': typeof WorkRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/rss.xml': typeof BlogRssDotxmlRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/blog/categorie/$category': typeof BlogCategorieCategoryRoute
+  '/blog/page/$page': typeof BlogPagePageRoute
+  '/blog/tag/$tag': typeof BlogTagTagRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -196,11 +259,18 @@ export interface FileRouteTypes {
     | '/projets'
     | '/realisations'
     | '/recommandations'
+    | '/sitemap-blog.xml'
     | '/souverainete'
     | '/stack'
     | '/work'
+    | '/blog/$slug'
+    | '/blog/rss.xml'
     | '/services/$slug'
+    | '/blog/'
     | '/services/'
+    | '/blog/categorie/$category'
+    | '/blog/page/$page'
+    | '/blog/tag/$tag'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -216,11 +286,18 @@ export interface FileRouteTypes {
     | '/projets'
     | '/realisations'
     | '/recommandations'
+    | '/sitemap-blog.xml'
     | '/souverainete'
     | '/stack'
     | '/work'
+    | '/blog/$slug'
+    | '/blog/rss.xml'
     | '/services/$slug'
+    | '/blog'
     | '/services'
+    | '/blog/categorie/$category'
+    | '/blog/page/$page'
+    | '/blog/tag/$tag'
   id:
     | '__root__'
     | '/'
@@ -236,11 +313,18 @@ export interface FileRouteTypes {
     | '/projets'
     | '/realisations'
     | '/recommandations'
+    | '/sitemap-blog.xml'
     | '/souverainete'
     | '/stack'
     | '/work'
+    | '/blog/$slug'
+    | '/blog/rss.xml'
     | '/services/$slug'
+    | '/blog/'
     | '/services/'
+    | '/blog/categorie/$category'
+    | '/blog/page/$page'
+    | '/blog/tag/$tag'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -257,11 +341,18 @@ export interface RootRouteChildren {
   ProjetsRoute: typeof ProjetsRoute
   RealisationsRoute: typeof RealisationsRoute
   RecommandationsRoute: typeof RecommandationsRoute
+  SitemapBlogDotxmlRoute: typeof SitemapBlogDotxmlRoute
   SouveraineteRoute: typeof SouveraineteRoute
   StackRoute: typeof StackRoute
   WorkRoute: typeof WorkRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogRssDotxmlRoute: typeof BlogRssDotxmlRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  BlogCategorieCategoryRoute: typeof BlogCategorieCategoryRoute
+  BlogPagePageRoute: typeof BlogPagePageRoute
+  BlogTagTagRoute: typeof BlogTagTagRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -357,6 +448,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RecommandationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap-blog.xml': {
+      id: '/sitemap-blog.xml'
+      path: '/sitemap-blog.xml'
+      fullPath: '/sitemap-blog.xml'
+      preLoaderRoute: typeof SitemapBlogDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/souverainete': {
       id: '/souverainete'
       path: '/souverainete'
@@ -378,6 +476,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/rss.xml': {
+      id: '/blog/rss.xml'
+      path: '/blog/rss.xml'
+      fullPath: '/blog/rss.xml'
+      preLoaderRoute: typeof BlogRssDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/': {
       id: '/services/'
       path: '/services'
@@ -390,6 +509,27 @@ declare module '@tanstack/react-router' {
       path: '/services/$slug'
       fullPath: '/services/$slug'
       preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/categorie/$category': {
+      id: '/blog/categorie/$category'
+      path: '/blog/categorie/$category'
+      fullPath: '/blog/categorie/$category'
+      preLoaderRoute: typeof BlogCategorieCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/page/$page': {
+      id: '/blog/page/$page'
+      path: '/blog/page/$page'
+      fullPath: '/blog/page/$page'
+      preLoaderRoute: typeof BlogPagePageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/tag/$tag': {
+      id: '/blog/tag/$tag'
+      path: '/blog/tag/$tag'
+      fullPath: '/blog/tag/$tag'
+      preLoaderRoute: typeof BlogTagTagRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -409,11 +549,18 @@ const rootRouteChildren: RootRouteChildren = {
   ProjetsRoute: ProjetsRoute,
   RealisationsRoute: RealisationsRoute,
   RecommandationsRoute: RecommandationsRoute,
+  SitemapBlogDotxmlRoute: SitemapBlogDotxmlRoute,
   SouveraineteRoute: SouveraineteRoute,
   StackRoute: StackRoute,
   WorkRoute: WorkRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  BlogRssDotxmlRoute: BlogRssDotxmlRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  BlogCategorieCategoryRoute: BlogCategorieCategoryRoute,
+  BlogPagePageRoute: BlogPagePageRoute,
+  BlogTagTagRoute: BlogTagTagRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

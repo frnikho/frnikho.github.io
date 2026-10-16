@@ -68,6 +68,16 @@ export function SiteFooter() {
 							</Link>
 						</li>
 						<li>
+							<Link to="/blog" className={link}>
+								Blog
+							</Link>
+						</li>
+						<li>
+							<Link to="/services" hash="offres" className={link}>
+								Tarifs
+							</Link>
+						</li>
+						<li>
 							<Link to="/a-propos" className={link}>
 								À propos
 							</Link>

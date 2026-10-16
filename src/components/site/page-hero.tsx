@@ -16,11 +16,11 @@ export function PageHero({
 	children?: ReactNode;
 }) {
 	return (
-		<section className="relative overflow-clip border-b border-line">
+		<section className="under-nav relative overflow-clip border-b border-line">
 			<Decor variant="hero" />
 			<Container className="py-16 lg:py-24">
 				<p className="eyebrow">{kicker}</p>
-				<h1 className="mt-5 max-w-[20ch] text-[clamp(2.4rem,1.4rem+4.2vw,4.8rem)] leading-[1] font-semibold lg:max-w-[24ch]">
+				<h1 className="mt-5 max-w-[24ch] text-[clamp(2rem,1.4rem+2.2vw,3.2rem)] leading-[1.08] font-semibold lg:max-w-[28ch]">
 					{title}
 				</h1>
 				{intro && (

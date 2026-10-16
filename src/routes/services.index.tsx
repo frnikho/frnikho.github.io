@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FinalCta } from "@/components/site/final-cta";
+import { OffersSection } from "@/components/site/offers-section";
 import { PageHero } from "@/components/site/page-hero";
 import { PageShell } from "@/components/site/page-shell";
 import { Accent, Container } from "@/components/site/section";
+import { Testimonials } from "@/components/site/testimonials";
 import { serviceFamilies } from "@/content/services";
 import { buildHead } from "@/lib/seo";
 
@@ -16,6 +18,19 @@ export const Route = createFileRoute("/services/")({
 		}),
 	component: ServicesPage,
 });
+
+const further = [
+	{
+		to: "/realisations",
+		title: "Réalisations",
+		text: "Deux projets clients livrés de A à Z et l'architecture d'un cluster Kubernetes en production.",
+	},
+	{
+		to: "/souverainete",
+		title: "Souveraineté et RGPD",
+		text: "Hébergement européen, données dont vous restez propriétaire, et ce que ça change concrètement.",
+	},
+] as const;
 
 function ServicesPage() {
 	return (
@@ -72,6 +87,28 @@ function ServicesPage() {
 						</article>
 					))}
 				</div>
+			</Container>
+			<OffersSection />
+			<Testimonials />
+			<Container className="py-16 lg:py-20">
+				<p className="eyebrow">Pour aller plus loin</p>
+				<ul className="mt-6 grid gap-5 md:grid-cols-2">
+					{further.map((f) => (
+						<li key={f.to} className="flex">
+							<article className="surface group relative flex w-full flex-col p-7">
+								<h2 className="text-[1.35rem] font-semibold">
+									<Link
+										to={f.to}
+										className="after:absolute after:inset-0 group-hover:text-signal-deep"
+									>
+										{f.title} <span aria-hidden="true">→</span>
+									</Link>
+								</h2>
+								<p className="mt-2 text-ink-soft">{f.text}</p>
+							</article>
+						</li>
+					))}
+				</ul>
 			</Container>
 			<FinalCta />
 		</PageShell>

@@ -33,6 +33,8 @@
 }
 
 :root {
+	/* Hauteur réservée par la navbar flottante (voir nav.tsx). */
+	--nav-height: 76px;
 	--text-hero: clamp(2.3rem, 1rem + 3.7vw, 3.75rem);
 	--text-h2: clamp(1.65rem, 1rem + 1.8vw, 2.4rem);
 	--space-section: clamp(3.25rem, 2rem + 4vw, 5.5rem);
@@ -95,6 +97,11 @@ h2 {
 }
 
 @layer components {
+	/* Section remontée sous la navbar : son fond passe derrière la capsule. */
+	.under-nav {
+		margin-top: calc(-1 * var(--nav-height));
+		padding-top: var(--nav-height);
+	}
 	.eyebrow {
 		font-size: 0.9rem;
 		font-weight: 600;
@@ -283,4 +290,189 @@ main > section:nth-of-type(even) .decor-flip {
 }
 .estimator-flash {
 	animation: estimator-flash 0.9s ease-out both;
+}
+
+/*
+ * Articles du blog : typographie de lecture. Le corps est du HTML rendu au
+ * serveur depuis le MDX, d'où des sélecteurs d'éléments plutôt que des
+ * utilitaires.
+ */
+.prose-article {
+	--code-font:
+		ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, monospace;
+	font-size: 1.125rem;
+	line-height: 1.75;
+	color: var(--color-ink);
+	overflow-wrap: break-word;
+}
+.prose-article > * + * {
+	margin-top: 1.25em;
+}
+.prose-article h2 {
+	margin-top: 2.2em;
+	font-size: clamp(1.5rem, 1.2rem + 0.9vw, 1.95rem);
+	line-height: 1.2;
+	scroll-margin-top: 96px;
+}
+.prose-article h3 {
+	margin-top: 1.8em;
+	font-size: 1.32rem;
+	font-weight: 650;
+	line-height: 1.3;
+	scroll-margin-top: 96px;
+}
+.prose-article h2 + *,
+.prose-article h3 + * {
+	margin-top: 0.7em;
+}
+.prose-article .heading-anchor {
+	margin-left: 0.35em;
+	color: var(--color-signal);
+	text-decoration: none;
+	opacity: 0;
+	transition: opacity 150ms;
+}
+.prose-article h2:hover .heading-anchor,
+.prose-article h3:hover .heading-anchor,
+.prose-article .heading-anchor:focus-visible {
+	opacity: 1;
+}
+.prose-article a:not(.heading-anchor) {
+	color: var(--color-signal-deep);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+.prose-article a:not(.heading-anchor):hover {
+	text-decoration-thickness: 2px;
+}
+.prose-article strong {
+	font-weight: 650;
+}
+.prose-article ul,
+.prose-article ol {
+	padding-left: 1.4em;
+}
+.prose-article ul {
+	list-style: disc;
+}
+.prose-article ol {
+	list-style: decimal;
+}
+.prose-article li + li {
+	margin-top: 0.45em;
+}
+.prose-article li::marker {
+	color: var(--color-signal);
+}
+.prose-article blockquote {
+	border-left: 3px solid var(--color-signal);
+	padding-left: 1.1em;
+	color: var(--color-ink-soft);
+	font-style: italic;
+}
+.prose-article hr {
+	margin: 2.5em 0;
+	border-color: var(--color-line);
+}
+.prose-article img {
+	max-width: 100%;
+	height: auto;
+	border: 1px solid var(--color-line);
+	border-radius: 12px;
+}
+.prose-article table {
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+	border-collapse: collapse;
+	font-size: 0.95rem;
+}
+.prose-article th,
+.prose-article td {
+	border-bottom: 1px solid var(--color-line);
+	padding: 0.6em 0.8em;
+	text-align: left;
+}
+.prose-article th {
+	font-weight: 650;
+}
+
+/* Code en ligne. */
+.prose-article :not(pre) > code {
+	border-radius: 6px;
+	background: var(--color-paper-2);
+	border: 1px solid var(--color-line);
+	padding: 0.1em 0.35em;
+	font-family: var(--code-font);
+	font-size: 0.88em;
+}
+
+/* Blocs de code (rehype-pretty-code + Shiki). */
+.prose-article figure[data-rehype-pretty-code-figure] {
+	margin-top: 1.5em;
+	overflow: hidden;
+	border-radius: 12px;
+	background: #22272e;
+	box-shadow: var(--shadow-card);
+}
+.prose-article [data-rehype-pretty-code-title] {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 0.55em 1.1em;
+	color: #adbac7;
+	font-family: var(--code-font);
+	font-size: 0.8rem;
+}
+.prose-article .code-block {
+	position: relative;
+}
+.prose-article pre {
+	overflow-x: auto;
+	padding: 1.1em 1.2em;
+	font-family: var(--code-font);
+	font-size: 0.88rem;
+	line-height: 1.65;
+}
+.prose-article pre code {
+	display: grid;
+	font-family: inherit;
+}
+.prose-article .code-copy {
+	position: absolute;
+	top: 0.55em;
+	right: 0.55em;
+	border-radius: 6px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background: rgba(34, 39, 46, 0.9);
+	padding: 0.2em 0.6em;
+	color: #adbac7;
+	font-size: 0.75rem;
+	opacity: 0;
+	transition: opacity 150ms;
+}
+.prose-article .code-block:hover .code-copy,
+.prose-article .code-copy:focus-visible {
+	opacity: 1;
+}
+@media (hover: none) {
+	.prose-article .code-copy {
+		opacity: 1;
+	}
+}
+
+/* Encarts <Callout>. */
+.prose-article .callout {
+	border-left: 3px solid;
+	border-radius: 0 12px 12px 0;
+	padding: 1em 1.2em;
+	font-size: 1rem;
+}
+.prose-article .callout-title {
+	font-weight: 650;
+}
+.prose-article .callout-body > * + * {
+	margin-top: 0.6em;
+}
+.prose-article .callout-body {
+	margin-top: 0.3em;
 }

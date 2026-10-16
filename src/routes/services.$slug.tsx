@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { ServicePosts } from "@/components/blog/latest-posts";
 import { SchemaDiagram } from "@/components/diagrams/schema-diagram";
 import {
 	backupFlow,
@@ -11,6 +12,7 @@ import { FinalCta } from "@/components/site/final-cta";
 import { PageShell } from "@/components/site/page-shell";
 import { Container } from "@/components/site/section";
 import { getFamily, serviceFamilies } from "@/content/services";
+import { getServicePosts } from "@/features/blog/blog";
 import { breadcrumbsJsonLd } from "@/lib/jsonld";
 import { buildHead, SITE_URL } from "@/lib/seo";
 import { BOOKING_LABEL, BOOKING_URL } from "@/lib/site";
@@ -23,10 +25,11 @@ const schemas: Record<string, DiagramSpec> = {
 };
 
 export const Route = createFileRoute("/services/$slug")({
-	loader: ({ params }) => {
+	loader: async ({ params }) => {
 		const family = getFamily(params.slug);
 		if (!family) throw notFound();
-		return family;
+		const posts = await getServicePosts({ data: family.slug });
+		return { ...family, posts };
 	},
 	head: ({ loaderData }) =>
 		loaderData
@@ -157,6 +160,12 @@ function FamilyPage() {
 					</div>
 				</aside>
 			</Container>
+
+			{family.posts.length > 0 && (
+				<Container className="pb-16 lg:pb-24">
+					<ServicePosts posts={family.posts} />
+				</Container>
+			)}
 
 			<div className="border-y border-line bg-paper-2">
 				<Container className="flex flex-wrap items-center justify-between gap-4 py-6">

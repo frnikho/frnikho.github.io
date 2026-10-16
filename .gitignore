@@ -44,3 +44,6 @@ next-env.d.ts
 .tanstack
 .nitro
 dist
+# blog : contenu généré et images publiées au build
+.content-collections
+public/blog-assets

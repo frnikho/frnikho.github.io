@@ -15,7 +15,7 @@ function clientKey(): string {
 }
 
 export const submitContact = createServerFn({ method: "POST" })
-	.inputValidator((data: ContactInput) => data)
+	.validator((data: ContactInput) => data)
 	.handler(async ({ data }) => {
 		const result = validateContact(data);
 		if (!result.ok) {

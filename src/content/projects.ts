@@ -64,7 +64,7 @@ export const clientProjects: ClientProject[] = [
 		summary:
 			"Site vitrine que la cliente modifie elle-même : éditeur de pages visuel, blog, newsletter et espace d'administration. Développé de A à Z, puis déployé de façon automatisée.",
 		challenge:
-			"La cliente devait pouvoir faire vivre son site seule et fidéliser sa clientèle par email, sans dépendre d'un service d'emailing tiers. Les adresses de ses abonnés sont des données personnelles : elles restent sur un serveur européen, avec un consentement vérifié par double confirmation.",
+			"La cliente devait pouvoir faire vivre son site seule et fidéliser sa clientèle par email, sans dépendre d'un service d'emailing tiers. Les adresses de ses abonnés sont des données personnelles : elles restent sur un serveur en France, avec un consentement vérifié par double confirmation.",
 		image: "/projects/ocds-site.webp",
 		imageAlt: "Page d'accueil du site O Cœur du Soi, accompagnement holistique",
 		built: [

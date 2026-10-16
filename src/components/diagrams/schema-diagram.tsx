@@ -9,6 +9,7 @@ import type {
 	Tone,
 } from "@/components/diagrams/types";
 import { cn } from "@/lib/cn";
+import { polarPoint } from "@/lib/geometry";
 import { type GsapKit, useGsap } from "@/lib/use-gsap";
 
 type ToneStyle = {
@@ -228,10 +229,9 @@ function NodeBox({ node, filterId }: { node: DNode; filterId: string }) {
 	);
 }
 
-const EU_STARS = Array.from({ length: 12 }, (_, i) => {
-	const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
-	return { x: Math.cos(a) * 9, y: Math.sin(a) * 9 };
-});
+const EU_STARS = Array.from({ length: 12 }, (_, i) =>
+	polarPoint((i / 12) * Math.PI * 2 - Math.PI / 2, 9),
+);
 
 function EuBadge({ x, y }: { x: number; y: number }) {
 	return (

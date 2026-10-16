@@ -6,9 +6,18 @@
 		"target": "ES2022",
 		"skipLibCheck": true,
 		"strict": true,
+		"noEmit": true,
+		"allowImportingTsExtensions": true,
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["./src/*"],
+			"content-collections": ["./.content-collections/generated"]
 		}
 	},
-	"include": ["src", "scripts", "./vite.config.ts", "./postcss.config.ts"]
+	"include": [
+		"src",
+		"scripts",
+		"./vite.config.ts",
+		"./postcss.config.ts",
+		"./content-collections.ts"
+	]
 }

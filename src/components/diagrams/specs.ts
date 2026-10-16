@@ -737,7 +737,7 @@ export const backupFlow: DiagramSpec = {
 /** Everyloc : pipeline de livraison puis VPS OVHcloud déployé avec Dokploy. */
 const everylocArchitecture: DiagramSpec = {
 	label:
-		"Schéma : le code part de GitHub, passe par une intégration continue (lint, typage, tests, build), produit une image Docker versionnée, déployée par Dokploy sur un VPS OVHcloud en Europe. Les visiteurs accèdent en HTTPS à l'application Next.js, reliée à PostgreSQL, à un stockage S3 et à un serveur mail.",
+		"Schéma : le code part de GitHub, passe par une intégration continue (lint, typage, tests, build), produit une image Docker versionnée, déployée par Dokploy sur un VPS OVHcloud en France. Les visiteurs accèdent en HTTPS à l'application Next.js, reliée à PostgreSQL, à un stockage S3 et à un serveur mail.",
 	legend: [
 		{ kind: "step", text: "ordre de livraison" },
 		{ kind: "flow", text: "flux automatisé" },
@@ -746,7 +746,14 @@ const everylocArchitecture: DiagramSpec = {
 	wide: {
 		size: [740, 350],
 		zones: [
-			{ x: 240, y: 120, w: 480, h: 220, label: "VPS OVHcloud", eu: true },
+			{
+				x: 240,
+				y: 120,
+				w: 480,
+				h: 220,
+				label: "VPS OVHcloud · France",
+				eu: true,
+			},
 		],
 		nodes: [
 			node("git", 0, 20, 170, 58, "GitHub", "push, pull request", undefined, {
@@ -820,7 +827,16 @@ const everylocArchitecture: DiagramSpec = {
 	},
 	tall: {
 		size: [340, 590],
-		zones: [{ x: 0, y: 262, w: 340, h: 314, label: "VPS OVHcloud", eu: true }],
+		zones: [
+			{
+				x: 0,
+				y: 262,
+				w: 340,
+				h: 314,
+				label: "VPS OVHcloud · France",
+				eu: true,
+			},
+		],
 		nodes: [
 			node("git", 50, 0, 240, 56, "GitHub", "push, pull request", undefined, {
 				step: 1,
@@ -861,7 +877,7 @@ const everylocArchitecture: DiagramSpec = {
 /** O Cœur du Soi : site autonome et newsletter RGPD sur VPS OVHcloud. */
 const ocdsArchitecture: DiagramSpec = {
 	label:
-		"Schéma : le code part de GitHub, est construit par l'intégration continue en image Docker, puis déployé par Dokploy sur un VPS OVHcloud en Europe. Visiteurs et praticienne utilisent l'application TanStack Start, reliée à MongoDB, à un cache Valkey, à un stockage S3 pour les médias et à un serveur SMTP qui envoie la newsletter aux abonnés après double confirmation.",
+		"Schéma : le code part de GitHub, est construit par l'intégration continue en image Docker, puis déployé par Dokploy sur un VPS OVHcloud en France. Visiteurs et praticienne utilisent l'application TanStack Start, reliée à MongoDB, à un cache Valkey, à un stockage S3 pour les médias et à un serveur SMTP qui envoie la newsletter aux abonnés après double confirmation.",
 	legend: [
 		{ kind: "step", text: "ordre de livraison" },
 		{ kind: "flow", text: "flux automatisé" },
@@ -870,7 +886,14 @@ const ocdsArchitecture: DiagramSpec = {
 	wide: {
 		size: [920, 410],
 		zones: [
-			{ x: 240, y: 120, w: 480, h: 280, label: "VPS OVHcloud", eu: true },
+			{
+				x: 240,
+				y: 120,
+				w: 480,
+				h: 280,
+				label: "VPS OVHcloud · France",
+				eu: true,
+			},
 		],
 		nodes: [
 			node("git", 0, 20, 170, 58, "GitHub", "push", undefined, {
@@ -966,7 +989,16 @@ const ocdsArchitecture: DiagramSpec = {
 	},
 	tall: {
 		size: [340, 720],
-		zones: [{ x: 0, y: 262, w: 340, h: 374, label: "VPS OVHcloud", eu: true }],
+		zones: [
+			{
+				x: 0,
+				y: 262,
+				w: 340,
+				h: 374,
+				label: "VPS OVHcloud · France",
+				eu: true,
+			},
+		],
 		nodes: [
 			node("git", 50, 0, 240, 56, "GitHub", "push", undefined, { step: 1 }),
 			node("ci", 50, 90, 240, 56, "CI", "build vérifié", undefined, {

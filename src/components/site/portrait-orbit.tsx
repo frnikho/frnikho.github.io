@@ -1,5 +1,6 @@
 import { ICONS } from "@/components/diagrams/icons";
 import type { IconName } from "@/components/diagrams/types";
+import { polarPoint } from "@/lib/geometry";
 
 /** Repère : 1 unité = 1 px pour un portrait de 416 × 458, centré en (0, 0). */
 const R = 290;
@@ -16,10 +17,7 @@ const BADGES: Badge[] = [
 	{ icon: "activity", angle: -114, delay: 2 },
 ];
 
-const point = (angle: number) => {
-	const a = (angle * Math.PI) / 180;
-	return { x: Math.cos(a) * R, y: Math.sin(a) * R };
-};
+const point = (angle: number) => polarPoint((angle * Math.PI) / 180, R);
 
 /**
  * Décor autour du portrait : orbites qui se tracent à l'arrivée, une comète qui

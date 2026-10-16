@@ -1,3 +1,4 @@
+import { HOME_POSTS_ANCHOR } from "@/components/blog/latest-posts";
 import { ExternalButton, RouteButton } from "@/components/site/button";
 import { Decor } from "@/components/site/decor";
 import { PortraitOrbit } from "@/components/site/portrait-orbit";
@@ -6,7 +7,7 @@ import { BOOKING_LABEL, BOOKING_URL } from "@/lib/site";
 
 const facts = [
 	{ value: "5+", label: "ans d'expérience" },
-	{ value: "99,9 %", label: "d'objectif de disponibilité" },
+	{ value: "99,99 %", label: "de disponibilité mesurée" },
 	{ value: "Kubernetes", label: "opéré en production" },
 	{ value: "Données souveraines", label: "Hébergement UE et conformité RGPD" },
 ] as const;
@@ -54,8 +55,8 @@ export function Hero() {
 						<ExternalButton href={BOOKING_URL} where="hero">
 							{BOOKING_LABEL}
 						</ExternalButton>
-						<RouteButton to="/" hash="expertise" variant="ghost">
-							Expertise et services
+						<RouteButton to="/" hash={HOME_POSTS_ANCHOR} variant="ghost">
+							Lire le blog
 						</RouteButton>
 					</div>
 				</div>

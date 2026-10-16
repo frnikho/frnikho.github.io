@@ -87,12 +87,13 @@ export function breadcrumbsJsonLd(
 
 export function siteNavigationJsonLd() {
 	const nav = [
+		{ name: "Blog", url: `${SITE_URL}/blog` },
 		{ name: "Services", url: `${SITE_URL}/services` },
-		{ name: "Souveraineté et RGPD", url: `${SITE_URL}/souverainete` },
+		{ name: "À propos", url: `${SITE_URL}/a-propos` },
 		{ name: "Réalisations", url: `${SITE_URL}/realisations` },
+		{ name: "Souveraineté et RGPD", url: `${SITE_URL}/souverainete` },
 		{ name: "Estimer mes ressources", url: `${SITE_URL}/estimation` },
 		{ name: "Agences", url: `${SITE_URL}/agences` },
-		{ name: "À propos", url: `${SITE_URL}/a-propos` },
 		{ name: "Contact", url: `${SITE_URL}/contact` },
 	];
 	return {
@@ -129,5 +130,59 @@ export function itemListJsonLd(
 				...(it.url ? { url: it.url } : {}),
 			})),
 		},
+	};
+}
+
+type BlogPostingInput = {
+	slug: string;
+	title: string;
+	description: string;
+	publishedAt: string;
+	updatedAt?: string;
+	image: string;
+	section: string;
+	tags: readonly string[];
+};
+
+export function blogPostingJsonLd(post: BlogPostingInput) {
+	const url = `${SITE_URL}/blog/${post.slug}`;
+	return {
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"@id": `${url}#article`,
+		headline: post.title,
+		description: post.description,
+		url,
+		mainEntityOfPage: url,
+		image: post.image,
+		datePublished: post.publishedAt,
+		dateModified: post.updatedAt ?? post.publishedAt,
+		inLanguage: "fr-FR",
+		articleSection: post.section,
+		keywords: post.tags.join(", "),
+		author: { "@id": `${SITE_URL}/#person` },
+		publisher: { "@id": `${SITE_URL}/#person` },
+		isPartOf: { "@id": `${SITE_URL}/blog#blog` },
+	};
+}
+
+export function blogJsonLd(
+	posts: ReadonlyArray<{ slug: string; title: string; publishedAt: string }>,
+) {
+	return {
+		"@context": "https://schema.org",
+		"@type": "Blog",
+		"@id": `${SITE_URL}/blog#blog`,
+		name: "Blog nikho.dev",
+		url: `${SITE_URL}/blog`,
+		inLanguage: "fr-FR",
+		author: { "@id": `${SITE_URL}/#person` },
+		isPartOf: { "@id": `${SITE_URL}/#website` },
+		blogPost: posts.map((p) => ({
+			"@type": "BlogPosting",
+			headline: p.title,
+			url: `${SITE_URL}/blog/${p.slug}`,
+			datePublished: p.publishedAt,
+		})),
 	};
 }

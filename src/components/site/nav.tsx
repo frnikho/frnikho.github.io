@@ -5,42 +5,21 @@ import { cn } from "@/lib/cn";
 import { BOOKING_LABEL, BOOKING_URL } from "@/lib/site";
 
 const links = [
-	{ hash: "expertise", label: "Expertise" },
-	{ hash: "souverainete", label: "Souveraineté" },
-	{ hash: "realisations", label: "Réalisations" },
-	{ hash: "offres", label: "Tarifs" },
-	{ hash: "avis", label: "Références" },
-	{ hash: "contact", label: "Contact" },
+	{ to: "/blog", label: "Blog" },
+	{ to: "/services", label: "Services" },
+	{ to: "/a-propos", label: "À propos" },
 ] as const;
+
+type NavPath = (typeof links)[number]["to"];
 
 const SCROLLED_AT = 24;
 
-/** Section de la page d'accueil actuellement à l'écran (scroll-spy). */
-function useActiveSection(enabled: boolean) {
-	const [active, setActive] = useState<string | null>(null);
-
-	useEffect(() => {
-		if (!enabled) {
-			setActive(null);
-			return;
-		}
-		const sections = links
-			.map((l) => document.getElementById(l.hash))
-			.filter((el): el is HTMLElement => el !== null);
-		const observer = new IntersectionObserver(
-			(entries) => {
-				for (const e of entries) {
-					if (e.isIntersecting) setActive(e.target.id);
-					else setActive((cur) => (cur === e.target.id ? null : cur));
-				}
-			},
-			{ rootMargin: "-45% 0px -50% 0px" },
-		);
-		for (const s of sections) observer.observe(s);
-		return () => observer.disconnect();
-	}, [enabled]);
-
-	return active;
+/** Rubrique de la navbar qui contient la page courante (`/blog/…` → Blog). */
+function activeSection(pathname: string): NavPath | null {
+	return (
+		links.find((l) => pathname === l.to || pathname.startsWith(`${l.to}/`))
+			?.to ?? null
+	);
 }
 
 type Indicator = { x: number; w: number; animate: boolean };
@@ -82,13 +61,13 @@ function useScrolled() {
 export function Nav() {
 	const [open, setOpen] = useState(false);
 	const scrolled = useScrolled();
-	const isHome = useRouterState({ select: (s) => s.location.pathname === "/" });
-	const active = useActiveSection(isHome);
+	const pathname = useRouterState({ select: (s) => s.location.pathname });
+	const active = activeSection(pathname);
 	const { items, rect } = useIndicator(active);
 
 	return (
 		// Hauteur réservée dans le flux ; la capsule flotte par-dessus le contenu.
-		<header className="sticky top-0 z-40 h-[76px] pointer-events-none">
+		<header className="sticky top-0 z-40 h-[var(--nav-height)] pointer-events-none">
 			<a
 				href="#contenu"
 				className="pointer-events-auto sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-ink focus:px-3 focus:py-2 focus:text-paper"
@@ -133,19 +112,18 @@ export function Nav() {
 								/>
 								{links.map((l) => (
 									<li
-										key={l.hash}
+										key={l.to}
 										ref={(el) => {
-											items.current[l.hash] = el;
+											items.current[l.to] = el;
 										}}
 										className="relative"
 									>
 										<Link
-											to="/"
-											hash={l.hash}
-											aria-current={active === l.hash ? "location" : undefined}
+											to={l.to}
+											aria-current={active === l.to ? "page" : undefined}
 											className={cn(
 												"rounded-full px-3.5 py-2 text-[14.5px] font-medium transition-colors",
-												active === l.hash
+												active === l.to
 													? "text-signal-deep"
 													: "text-ink-soft hover:bg-paper-2 hover:text-ink",
 											)}
@@ -189,14 +167,14 @@ export function Nav() {
 						>
 							<ul className="grid">
 								{links.map((l) => (
-									<li key={l.hash}>
+									<li key={l.to}>
 										<Link
-											to="/"
-											hash={l.hash}
+											to={l.to}
 											onClick={() => setOpen(false)}
+											aria-current={active === l.to ? "page" : undefined}
 											className={cn(
 												"block rounded-2xl px-4 py-3 text-lg",
-												active === l.hash
+												active === l.to
 													? "bg-signal-soft text-signal-deep"
 													: "hover:bg-paper-2",
 											)}
