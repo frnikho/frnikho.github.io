@@ -1,5 +1,5 @@
 import { CategoryNav } from "@/components/blog/blog-nav";
-import { PostCard, PostFeed } from "@/components/blog/post-card";
+import { PostFeed } from "@/components/blog/post-card";
 import { RouteButton } from "@/components/site/button";
 import { Accent, Section, SectionHead } from "@/components/site/section";
 import type { PostSummary } from "@/features/blog/posts";
@@ -17,10 +17,10 @@ export function LatestPostsSection({ posts }: { posts: PostSummary[] }) {
 				titleId="blog-title"
 				title={
 					<>
-						Notes de terrain, <Accent>du code au serveur.</Accent>
+						Derniers articles <Accent>sur le blog.</Accent>
 					</>
 				}
-				intro="Développement, IA, auto-hébergement et retours d'expérience : ce que j'apprends en mission, testé avant d'être écrit."
+				intro="Petits tutos, retours d'expérience, infos insolites et découvertes : ce qui m'a appris quelque chose dans la tech, le dev et l'informatique."
 			/>
 			<div className="mt-8">
 				<CategoryNav />
@@ -34,24 +34,5 @@ export function LatestPostsSection({ posts }: { posts: PostSummary[] }) {
 				</RouteButton>
 			</div>
 		</Section>
-	);
-}
-
-/** Articles liés à une prestation, sur sa page de service. */
-export function ServicePosts({ posts }: { posts: PostSummary[] }) {
-	if (posts.length === 0) return null;
-	return (
-		<section aria-labelledby="service-posts-title">
-			<p id="service-posts-title" className="eyebrow">
-				Sur le blog
-			</p>
-			<ul className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-				{posts.map((p) => (
-					<li key={p.slug} className="flex">
-						<PostCard post={p} headingLevel="h3" />
-					</li>
-				))}
-			</ul>
-		</section>
 	);
 }

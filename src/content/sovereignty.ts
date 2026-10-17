@@ -29,3 +29,10 @@ export const sovereigntyPillars: Pillar[] = [
 
 export const sovereigntyNote =
 	"Accompagnement sur les aspects techniques de la conformité RGPD. Aucun conseil juridique n'est fourni : la qualification de vos traitements relève de votre DPO ou d'un juriste.";
+
+/**
+ * Transparence sur l'infrastructure de ce site : hébergé en France, mais le
+ * DNS et la protection passent par Cloudflare (choix technique assumé).
+ */
+export const siteTransparency =
+	"Ce site est hébergé chez OVHcloud en France ; les messages et rendez-vous sont traités et stockés sur mes propres serveurs, en France. Le DNS et la protection contre les attaques passent en revanche par Cloudflare, société américaine, qui voit transiter le trafic : un choix technique assumé (validation des certificats par DNS, serveur de mail auto-hébergé). C'est l'arbitrage que je vous propose aussi : la souveraineté se décide brique par brique, en connaissance de cause.";

@@ -1,92 +1,118 @@
 import { Link } from "@tanstack/react-router";
 import { Container } from "@/components/site/section";
-import { serviceFamilies } from "@/content/services";
+import { blogCategories } from "@/content/blog";
+import { servicePoles } from "@/content/service-poles";
+import { RSS_PATH } from "@/features/blog/feeds";
 import { CONTACT_EMAIL, SOCIAL_LINKS } from "@/lib/site";
 
-const colTitle = "eyebrow mb-4 !text-night-soft";
+const colTitle =
+	"mb-4 flex items-center gap-2 text-[0.9rem] font-semibold text-night-soft";
 const link =
-	"text-[0.95rem] text-night-ink/85 transition-colors hover:text-signal";
+	"text-[0.95rem] text-night-ink/85 transition-colors hover:text-signal-glow";
+
+/** Titre de colonne avec la pastille de couleur de la partie (comme l'interrupteur de la navbar). */
+function AreaTitle({ label, dot }: { label: string; dot: string }) {
+	return (
+		<p className={colTitle}>
+			<span aria-hidden="true" className={`size-2.5 rounded-full ${dot}`} />
+			{label}
+		</p>
+	);
+}
+
+const portfolioPages = [
+	{ to: "/", label: "Accueil", hash: undefined },
+	{ to: "/services", label: "Services", hash: undefined },
+	{ to: "/services", label: "Tarifs", hash: "offres" },
+	{ to: "/realisations", label: "Réalisations", hash: undefined },
+	{ to: "/souverainete", label: "Souveraineté & RGPD", hash: undefined },
+	{ to: "/estimation", label: "Estimer mes ressources", hash: undefined },
+	{ to: "/agences", label: "Agences", hash: undefined },
+	{ to: "/a-propos", label: "À propos", hash: undefined },
+	{ to: "/contact", label: "Contact", hash: undefined },
+] as const;
 
 export function SiteFooter() {
 	return (
 		<footer className="bg-night text-night-ink">
-			<Container className="grid gap-12 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+			<Container className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_0.8fr]">
 				<div>
-					<p className=" text-3xl font-semibold">
-						nikho<span className="text-signal">.dev</span>
+					<p className="flex items-center gap-3 text-3xl font-semibold">
+						<img
+							src="/logo-96.webp"
+							alt=""
+							width={36}
+							height={36}
+							loading="lazy"
+							className="size-9 shrink-0"
+						/>
+						<span>
+							nikho<span className="text-signal-glow">.dev</span>
+						</span>
 					</p>
 					<p className="mt-3 max-w-[34ch] text-[0.95rem] leading-relaxed text-night-soft">
-						Ingénieur DevOps freelance. Infrastructure fiable, hébergement
-						européen, données souveraines. À distance, sur toute la France.
+						Ingénieur DevOps et fullstack freelance. Des applications fiables,
+						hébergées en Europe, sous votre maîtrise. À distance, partout en
+						France.
 					</p>
 					<a
 						href={`mailto:${CONTACT_EMAIL}`}
-						className="mt-5 inline-block text-[13px] text-signal underline-offset-4 hover:underline"
+						className="mt-5 inline-block text-[13px] text-signal-glow underline-offset-4 hover:underline"
 					>
 						{CONTACT_EMAIL}
 					</a>
 				</div>
 
-				<nav aria-label="Services">
-					<p className={colTitle}>Services</p>
+				<nav aria-label="Blog">
+					<AreaTitle label="Blog" dot="bg-highlight" />
 					<ul className="grid gap-2.5">
-						{serviceFamilies.slice(0, 6).map((f) => (
-							<li key={f.slug}>
+						<li>
+							<Link to="/blog" className={link}>
+								Tous les articles
+							</Link>
+						</li>
+						{blogCategories.map((c) => (
+							<li key={c.slug}>
 								<Link
-									to="/services/$slug"
-									params={{ slug: f.slug }}
+									to="/blog/categorie/$category"
+									params={{ category: c.slug }}
 									className={link}
 								>
-									{f.name}
+									{c.name}
+								</Link>
+							</li>
+						))}
+						<li>
+							<a href={RSS_PATH} className={link}>
+								Flux RSS
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+				<nav aria-label="Portfolio">
+					<AreaTitle label="Portfolio" dot="bg-signal" />
+					<ul className="grid gap-2.5">
+						{portfolioPages.map((p) => (
+							<li key={p.label}>
+								<Link to={p.to} hash={p.hash} className={link}>
+									{p.label}
 								</Link>
 							</li>
 						))}
 					</ul>
 				</nav>
 
-				<nav aria-label="Site">
-					<p className={colTitle}>Site</p>
+				<nav aria-label="Services">
+					<AreaTitle label="Services" dot="bg-signal-glow" />
 					<ul className="grid gap-2.5">
-						<li>
-							<Link to="/souverainete" className={link}>
-								Souveraineté & RGPD
-							</Link>
-						</li>
-						<li>
-							<Link to="/realisations" className={link}>
-								Réalisations
-							</Link>
-						</li>
-						<li>
-							<Link to="/estimation" className={link}>
-								Estimer mes ressources
-							</Link>
-						</li>
-						<li>
-							<Link to="/agences" className={link}>
-								Agences
-							</Link>
-						</li>
-						<li>
-							<Link to="/blog" className={link}>
-								Blog
-							</Link>
-						</li>
-						<li>
-							<Link to="/services" hash="offres" className={link}>
-								Tarifs
-							</Link>
-						</li>
-						<li>
-							<Link to="/a-propos" className={link}>
-								À propos
-							</Link>
-						</li>
-						<li>
-							<Link to="/contact" className={link}>
-								Contact
-							</Link>
-						</li>
+						{servicePoles.map((p) => (
+							<li key={p.id}>
+								<Link to="/services" hash={p.id} className={link}>
+									{p.name}
+								</Link>
+							</li>
+						))}
 					</ul>
 				</nav>
 

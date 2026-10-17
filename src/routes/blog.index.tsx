@@ -10,7 +10,7 @@ export const Route = createFileRoute("/blog/")({
 	loader: () => getBlogPage({ data: 1 }),
 	head: () =>
 		buildHead({
-			title: "Blog dev, IA et auto-hébergement | Nicolas Sans",
+			title: "Blog tech : tutos et retours d'expérience | Nicolas Sans",
 			description: BLOG_DESCRIPTION,
 			canonical: "/blog",
 		}),
@@ -25,10 +25,10 @@ function BlogHome() {
 			kicker="Blog"
 			title={
 				<>
-					Notes de terrain, <Accent>du code au serveur.</Accent>
+					Tutos, trouvailles et <Accent>retours d'expérience.</Accent>
 				</>
 			}
-			intro="Développement, IA, auto-hébergement et retours d'expérience : ce que j'apprends en mission, testé avant d'être écrit."
+			intro="Petits tutos, retours d'expérience, infos insolites et découvertes : ce qui m'a appris quelque chose dans la tech, le dev et l'informatique."
 			posts={posts}
 			page={page ?? undefined}
 			featureFirst

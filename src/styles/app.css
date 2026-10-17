@@ -2,9 +2,10 @@
 @import "@fontsource-variable/inter/wght.css";
 
 /*
- * Thème « clair neutre » : fond blanc, texte ardoise, un accent bleu.
- * Lisibilité d'abord : une seule police, pas de majuscules forcées,
- * pas d'espacement de lettres.
+ * Thème « surligneur » : fond blanc lumineux, encre ardoise, bleu pour les
+ * liens et les actions, jaune surligneur pour souligner les mots-clés.
+ * Décor de formes géométriques pastel. Lisibilité d'abord : une seule
+ * police, pas de majuscules forcées, pas d'espacement de lettres.
  */
 @theme {
 	--font-sans: "Inter Variable", system-ui, sans-serif;
@@ -12,22 +13,30 @@
 	--font-mono: "Inter Variable", system-ui, sans-serif;
 
 	--color-paper: #ffffff;
-	--color-paper-2: #f5f7fa;
+	--color-paper-2: #f7f8fb;
 	--color-card: #ffffff;
-	--color-ink: #0f172a;
-	--color-ink-soft: #475569;
-	--color-line: #e2e8f0;
-	--color-signal: #2563eb;
-	--color-signal-deep: #1d4ed8;
-	--color-signal-soft: #e8efff;
-	--color-signal-glow: #7aa7ff;
-	--color-night: #0b1220;
-	--color-night-2: #111a2e;
-	--color-night-line: #1e2a44;
-	--color-night-ink: #eef2fb;
-	--color-night-soft: #a3afc6;
+	--color-ink: #121826;
+	--color-ink-soft: #545d6e;
+	--color-line: #e5e7ee;
+	--color-signal: #2c5be6;
+	--color-signal-deep: #1f43b3;
+	--color-signal-soft: #eaf0ff;
+	--color-signal-glow: #8fb0ff;
+	--color-highlight: #ffe066;
+	--color-highlight-soft: #fff8db;
+	--color-highlight-deep: #f2b705;
+	--color-pastel-blue: #dfe8ff;
+	--color-pastel-yellow: #ffe9a8;
+	--color-pastel-ring: #b9ccff;
+	--color-pastel-lilac: #ece4fd;
+	--color-pastel-green: #ddf5e9;
+	--color-night: #121826;
+	--color-night-2: #1a2131;
+	--color-night-line: #283044;
+	--color-night-ink: #eef1f7;
+	--color-night-soft: #a4adbf;
 	--color-alert: #c2410c;
-	--color-ok: #15803d;
+	--color-ok: #0f7a54;
 
 	--breakpoint-3xl: 120rem;
 }
@@ -73,8 +82,8 @@ h2 {
 }
 
 ::selection {
-	background: var(--color-signal);
-	color: #fff;
+	background: var(--color-highlight);
+	color: var(--color-ink);
 }
 
 :focus-visible {
@@ -109,6 +118,18 @@ h2 {
 	}
 	.tabular {
 		font-variant-numeric: tabular-nums;
+	}
+	/* Mot ou fin de phrase surligné, comme au feutre ; suit les retours à la ligne. */
+	.hl {
+		padding-inline: 0.08em;
+		background-image: linear-gradient(
+			transparent 56%,
+			var(--hl-color, var(--color-highlight)) 56%,
+			var(--hl-color, var(--color-highlight)) 92%,
+			transparent 92%
+		);
+		-webkit-box-decoration-break: clone;
+		box-decoration-break: clone;
 	}
 	.surface {
 		background: var(--color-card);
@@ -152,38 +173,7 @@ h2 {
 	}
 }
 
-/* Décors de fond : halos, trame et formes, toujours derrière le contenu. */
-.decor-orb {
-	background: radial-gradient(
-		closest-side,
-		rgba(37, 99, 235, 0.12),
-		rgba(37, 99, 235, 0.04) 55%,
-		transparent
-	);
-}
-.decor-orb-alt {
-	background: radial-gradient(
-		closest-side,
-		rgba(122, 167, 255, 0.14),
-		transparent
-	);
-}
-.decor-grid {
-	background-image:
-		linear-gradient(to right, rgba(37, 99, 235, 0.07) 1px, transparent 1px),
-		linear-gradient(to bottom, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
-	background-size: 56px 56px;
-	-webkit-mask-image: radial-gradient(
-		ellipse 70% 80% at 100% 0%,
-		#000,
-		transparent 72%
-	);
-	mask-image: radial-gradient(
-		ellipse 70% 80% at 100% 0%,
-		#000,
-		transparent 72%
-	);
-}
+/* Décors de fond : formes pastel, toujours derrière le contenu. */
 main > section:nth-of-type(even) .decor-flip {
 	transform: scaleX(-1);
 }
@@ -349,6 +339,18 @@ main > section:nth-of-type(even) .decor-flip {
 .prose-article strong {
 	font-weight: 650;
 }
+.prose-article mark {
+	color: inherit;
+	padding-inline: 0.08em;
+	background: linear-gradient(
+		transparent 56%,
+		var(--color-highlight) 56%,
+		var(--color-highlight) 92%,
+		transparent 92%
+	);
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
 .prose-article ul,
 .prose-article ol {
 	padding-left: 1.4em;
@@ -366,7 +368,7 @@ main > section:nth-of-type(even) .decor-flip {
 	color: var(--color-signal);
 }
 .prose-article blockquote {
-	border-left: 3px solid var(--color-signal);
+	border-left: 3px solid var(--color-highlight-deep);
 	padding-left: 1.1em;
 	color: var(--color-ink-soft);
 	font-style: italic;
@@ -414,6 +416,7 @@ main > section:nth-of-type(even) .decor-flip {
 	overflow: hidden;
 	border-radius: 12px;
 	background: #22272e;
+	border: 1px solid #2d333b;
 	box-shadow: var(--shadow-card);
 }
 .prose-article [data-rehype-pretty-code-title] {
@@ -475,4 +478,63 @@ main > section:nth-of-type(even) .decor-flip {
 }
 .prose-article .callout-body {
 	margin-top: 0.3em;
+}
+
+/* Navbar : changement de partie Blog / Portfolio. */
+@keyframes nav-swap-in {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+		filter: blur(4px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+		filter: none;
+	}
+}
+.nav-swap-in {
+	animation: nav-swap-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+	animation-delay: calc(var(--i, 0) * 45ms + 80ms);
+}
+
+/* Pastille de l'interrupteur : étirement gélatineux pendant qu'elle coulisse. */
+@keyframes switch-squish {
+	0% {
+		transform: scale(1, 1);
+	}
+	30% {
+		transform: scale(1.32, 0.84);
+	}
+	55% {
+		transform: scale(0.9, 1.08);
+	}
+	75% {
+		transform: scale(1.05, 0.97);
+	}
+	100% {
+		transform: scale(1, 1);
+	}
+}
+.switch-squish {
+	animation: switch-squish 0.6s ease-out both;
+}
+
+/*
+ * Export PDF de l'estimateur : à l'impression, seul le récapitulatif est
+ * rendu (navbar, pied de page et sections voisines masqués).
+ */
+@media print {
+	@page {
+		margin: 16mm;
+	}
+	body:has(.print-recap) header,
+	body:has(.print-recap) footer,
+	body:has(.print-recap) main > section:not(:has(.print-recap)),
+	body:has(.print-recap) .decor-flip {
+		display: none;
+	}
+	body:has(.print-recap) main > section:has(.print-recap) {
+		padding: 0;
+	}
 }

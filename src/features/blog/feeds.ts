@@ -5,7 +5,7 @@ import { type PostSummary, parisDay } from "./posts";
 
 export const BLOG_TITLE = "Blog nikho.dev";
 export const BLOG_DESCRIPTION =
-	"Développement, IA, auto-hébergement et retours d'expérience : le blog de Nicolas Sans, ingénieur DevOps freelance.";
+	"Tutos, retours d'expérience, infos insolites et découvertes tech : le blog de Nicolas Sans, développeur et DevOps freelance.";
 export const RSS_PATH = "/blog/rss.xml";
 export const RSS_ITEMS = 20;
 

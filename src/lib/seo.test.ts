@@ -1,6 +1,5 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { serviceFamilies } from "@/content/services";
 import { buildHead, HOME_DESCRIPTION, HOME_TITLE } from "./seo";
 
 const MAX_TITLE = 65;
@@ -30,18 +29,6 @@ describe("balises SEO", () => {
 			expect(
 				m.description.length,
 				`${m.file} : description`,
-			).toBeLessThanOrEqual(MAX_DESCRIPTION);
-		}
-	});
-
-	it("contrôle chaque page de service", () => {
-		for (const f of serviceFamilies) {
-			expect(f.metaTitle.length, `${f.slug} : titre`).toBeLessThanOrEqual(
-				MAX_TITLE,
-			);
-			expect(
-				f.metaDescription.length,
-				`${f.slug} : description`,
 			).toBeLessThanOrEqual(MAX_DESCRIPTION);
 		}
 	});

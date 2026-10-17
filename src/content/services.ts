@@ -12,8 +12,6 @@ export type ServiceFamily = {
 	items: ServiceItem[];
 	deliverables: string[];
 	tools: string[];
-	metaTitle: string;
-	metaDescription: string;
 };
 
 export const serviceFamilies: ServiceFamily[] = [
@@ -49,10 +47,6 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Documentation de passation",
 		],
 		tools: ["Docker", "Traefik", "Dokploy", "PostgreSQL", "Linux"],
-		metaTitle:
-			"Mise en production d'application, serveur sécurisé | Nicolas Sans",
-		metaDescription:
-			"Déploiement d'application sur serveur sécurisé, HTTPS, sauvegardes et alertes. Applications Lovable, Bolt ou Supabase prises en charge. DevOps freelance.",
 	},
 	{
 		slug: "migration-couts",
@@ -89,9 +83,6 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Migration réalisée, vérifiée et documentée",
 		],
 		tools: ["Hetzner", "Scaleway", "OVHcloud", "Docker", "Terraform"],
-		metaTitle: "Migration cloud et réduction des coûts | Nicolas Sans",
-		metaDescription:
-			"Migration depuis Heroku, Vercel, Render ou AWS vers Hetzner ou un VPS européen. Audit de facture cloud, plan d'économies et hébergement conforme RGPD.",
 	},
 	{
 		slug: "ci-cd",
@@ -123,18 +114,15 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Documentation d'utilisation pour l'équipe",
 		],
 		tools: ["GitHub Actions", "GitLab CI", "Terraform", "Ansible", "Docker"],
-		metaTitle: "CI/CD, pipelines et Infrastructure as Code | Nicolas Sans",
-		metaDescription:
-			"Pipelines GitHub Actions ou GitLab CI, environnements de prévisualisation par pull request, Terraform et Ansible. DevOps freelance en France.",
 	},
 	{
 		slug: "kubernetes",
 		index: "04",
 		name: "Kubernetes",
-		short: "Cluster Talos ou k3s, GitOps avec ArgoCD, audit et mise à niveau.",
-		headline: "Kubernetes exploité en production, au-delà de l'installation.",
+		short: "Mise en place, audit et mise à niveau de clusters, en GitOps.",
+		headline: "Kubernetes, lorsque l'échelle le justifie.",
 		intro:
-			"J'exploite un cluster Kubernetes haute disponibilité sur serveurs dédiés. Les pratiques qui y sont appliquées (système immuable, GitOps, secrets chiffrés, observabilité) sont transposées chez vous, à la bonne échelle.",
+			"Kubernetes apporte résilience et capacité de montée en charge, au prix d'une complexité qu'il faut maîtriser. Je mets en place des clusters sobres et documentés (système immuable, GitOps, secrets chiffrés, observabilité), dimensionnés à votre besoin réel.",
 		forWho:
 			"Équipes qui souhaitent adopter Kubernetes avec méthode, ou fiabiliser un cluster existant.",
 		items: [
@@ -157,9 +145,6 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Rapport d'audit priorisé ou plan de mise à niveau",
 		],
 		tools: ["Talos", "k3s", "ArgoCD", "Cilium", "Helm", "Kustomize"],
-		metaTitle: "Kubernetes : Talos, k3s, GitOps ArgoCD | Nicolas Sans",
-		metaDescription:
-			"Mise en place, audit et mise à niveau de clusters Kubernetes (Talos, k3s) avec ArgoCD en GitOps. Expérience d'un cluster haute disponibilité en production.",
 	},
 	{
 		slug: "securite",
@@ -168,7 +153,7 @@ export const serviceFamilies: ServiceFamily[] = [
 		short: "Audit serveur, email SPF/DKIM/DMARC, Cloudflare.",
 		headline: "Réduire la surface d'attaque avant qu'elle ne soit exploitée.",
 		intro:
-			"La plupart des incidents proviennent de réglages par défaut : port ouvert, secret dans un dépôt, mise à jour oubliée. Ils sont recherchés méthodiquement, puis corrigés.",
+			"La plupart des incidents proviennent de réglages par défaut : port ouvert, secret dans un dépôt, mise à jour oubliée. Je les recherche méthodiquement, puis je les corrige ou vous fournis les correctifs.",
 		forWho:
 			"Toute organisation disposant d'un serveur exposé sur Internet, ou dont les emails sont classés en spam.",
 		items: [
@@ -191,9 +176,6 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Enregistrements DNS email validés",
 		],
 		tools: ["SSH", "UFW", "Trivy", "Cloudflare", "SPF / DKIM / DMARC"],
-		metaTitle: "Audit sécurité serveur, DMARC, Cloudflare | Nicolas Sans",
-		metaDescription:
-			"Audit de sécurité de serveur (SSH, pare-feu, secrets, images Docker), configuration email SPF DKIM DMARC et mise en place de Cloudflare.",
 	},
 	{
 		slug: "sauvegardes-continuite",
@@ -222,10 +204,6 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Procédure de reprise pas à pas",
 		],
 		tools: ["Restic", "Velero", "Object Storage UE", "PostgreSQL"],
-		metaTitle:
-			"Sauvegardes testées et plan de reprise d'activité | Nicolas Sans",
-		metaDescription:
-			"Plan de sauvegarde avec restauration testée et plan de reprise d'activité documenté (RPO, RTO) pour vos serveurs et applications.",
 	},
 	{
 		slug: "monitoring",
@@ -234,7 +212,7 @@ export const serviceFamilies: ServiceFamily[] = [
 		short: "Alertes, logs centralisés, page de statut publique.",
 		headline: "Détecter les incidents avant vos utilisateurs.",
 		intro:
-			"De la simple alerte de disponibilité à une pile Grafana complète, la supervision est dimensionnée à votre besoin, avec des alertes pertinentes plutôt que du bruit.",
+			"De la simple alerte de disponibilité à une pile Grafana complète, je dimensionne la supervision à votre besoin, avec des alertes pertinentes plutôt que du bruit.",
 		forWho:
 			"Équipes qui apprennent les pannes par leurs utilisateurs, ou qui peinent à identifier l'origine d'une erreur.",
 		items: [
@@ -257,9 +235,6 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Page de statut sur votre domaine",
 		],
 		tools: ["Grafana", "Prometheus", "Loki", "Uptime Kuma"],
-		metaTitle: "Monitoring, alertes, logs et page de statut | Nicolas Sans",
-		metaDescription:
-			"Supervision et alertes, centralisation des logs avec Grafana et Loki, page de statut publique. Du simple monitoring à la stack complète.",
 	},
 	{
 		slug: "auto-heberge",
@@ -269,7 +244,7 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Nextcloud, Vaultwarden, Forgejo, Plausible, Umami sur votre infrastructure.",
 		headline: "Vos outils, vos données, votre serveur.",
 		intro:
-			"Remplacer des services américains par des outils libres, hébergés chez vous ou en Europe, réduit la dépendance et simplifie la conformité. Chaque installation inclut sauvegardes, mises à jour et accès sécurisés.",
+			"Remplacer des services américains par des outils libres, hébergés chez vous ou en Europe, réduit la dépendance et simplifie la conformité. J'installe chaque outil avec sauvegardes, procédure de mise à jour et accès sécurisés.",
 		forWho:
 			"Organisations attachées à la maîtrise de leurs données, ou souhaitant réduire leurs abonnements SaaS.",
 		items: [
@@ -284,9 +259,6 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Vérification de licence pour votre usage",
 		],
 		tools: ["Nextcloud", "Vaultwarden", "Forgejo", "Plausible", "Umami"],
-		metaTitle: "Outils libres auto-hébergés pour entreprises | Nicolas Sans",
-		metaDescription:
-			"Installation de Nextcloud, Vaultwarden, Forgejo, Plausible ou Umami sur votre propre serveur, avec sauvegardes et sécurité. Données maîtrisées.",
 	},
 	{
 		slug: "maintenance",
@@ -306,7 +278,7 @@ export const serviceFamilies: ServiceFamily[] = [
 			},
 			{
 				title: "Infogérance en marque blanche pour agences",
-				desc: "L'agence commercialise la maintenance auprès de ses clients ; l'exécution est assurée sous sa marque.",
+				desc: "L'agence commercialise la maintenance auprès de ses clients ; je l'assure sous sa marque.",
 			},
 		],
 		deliverables: [
@@ -315,10 +287,6 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Un interlocuteur unique qui connaît vos systèmes",
 		],
 		tools: ["Ansible", "Grafana", "Restic"],
-		metaTitle:
-			"Maintenance serveur et infogérance marque blanche | Nicolas Sans",
-		metaDescription:
-			"Maintenance de serveurs et d'applications : mises à jour, surveillance, sauvegardes vérifiées. Infogérance en marque blanche pour agences.",
 	},
 	{
 		slug: "accompagnement",
@@ -328,7 +296,7 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Coaching d'équipe, documentation d'infrastructure, conseil en architecture.",
 		headline: "Rendre votre équipe autonome.",
 		intro:
-			"Transmission de compétences : formation d'équipe, documentation de l'existant pour qu'il survive aux départs, aide au choix de l'architecture avant le lancement.",
+			"Je transmets mes compétences à votre équipe : formation sur vos projets, documentation de l'existant pour qu'il survive aux départs, aide au choix de l'architecture avant le lancement.",
 		forWho:
 			"Équipes de développement souhaitant monter en compétences, et porteurs de projet avant le lancement.",
 		items: [
@@ -351,11 +319,11 @@ export const serviceFamilies: ServiceFamily[] = [
 			"Recommandation argumentée et chiffrée",
 		],
 		tools: ["Docker", "Kubernetes", "GitHub Actions"],
-		metaTitle: "Coaching DevOps, documentation et conseil | Nicolas Sans",
-		metaDescription:
-			"Coaching d'équipe Docker, CI/CD et Kubernetes, documentation d'infrastructure (runbooks) et conseil en architecture avant lancement de projet.",
 	},
 ];
 
 export const getFamily = (slug: string) =>
 	serviceFamilies.find((f) => f.slug === slug);
+
+/** Ancre d'une famille sur la page Services, si le slug existe. */
+export const familyHash = (slug: string) => getFamily(slug)?.slug;

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SchemaDiagram } from "@/components/diagrams/schema-diagram";
 import { sovereigntyFlow } from "@/components/diagrams/specs";
+import { Glyph } from "@/components/services/glyph";
 import { ExternalButton, RouteButton } from "@/components/site/button";
 import { FaqList } from "@/components/site/faq-section";
 import { FinalCta } from "@/components/site/final-cta";
@@ -12,8 +13,8 @@ import {
 	Section,
 	SectionHead,
 } from "@/components/site/section";
-import { SovereigntyPillars } from "@/components/site/sovereignty-section";
-import { sovereigntyNote } from "@/content/sovereignty";
+import { SovereigntyPillars } from "@/components/site/sovereignty-pillars";
+import { siteTransparency, sovereigntyNote } from "@/content/sovereignty";
 import { buildHead } from "@/lib/seo";
 import { BOOKING_LABEL, BOOKING_URL } from "@/lib/site";
 
@@ -145,6 +146,17 @@ function SovereigntyPage() {
 						Périmètre d'intervention, <Accent>et limites.</Accent>
 					</h2>
 					<p className="mt-6 text-[1.08rem] text-ink-soft">{sovereigntyNote}</p>
+					<aside className="surface mt-8 flex gap-4 p-6">
+						<span className="grid size-10 shrink-0 place-items-center rounded-xl bg-signal-soft text-signal">
+							<Glyph name="eye" />
+						</span>
+						<div>
+							<h3 className="font-semibold">Par transparence : ce site</h3>
+							<p className="mt-1.5 text-[0.95rem] text-ink-soft">
+								{siteTransparency}
+							</p>
+						</div>
+					</aside>
 					<div className="mt-8">
 						<RouteButton to="/contact" variant="ghost">
 							Poser une question

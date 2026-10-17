@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { SchemaDiagram } from "@/components/diagrams/schema-diagram";
 import { clientProjectDiagrams } from "@/components/diagrams/specs";
 import { type ClientProject, clientResults } from "@/content/projects";
@@ -15,39 +14,6 @@ function Tags({ items }: { items: string[] }) {
 				</li>
 			))}
 		</ul>
-	);
-}
-
-/** Carte courte pour l'accueil. */
-export function ClientProjectCard({ project }: { project: ClientProject }) {
-	return (
-		<article className="surface flex flex-col overflow-hidden">
-			<img
-				src={project.image}
-				alt={project.imageAlt}
-				width={1100}
-				height={600}
-				loading="lazy"
-				className="aspect-[16/9] w-full object-cover object-top"
-			/>
-			<div className="flex flex-1 flex-col p-6">
-				<p className="text-[0.9rem] text-ink-soft">{project.kind}</p>
-				<h3 className="mt-1 text-[1.3rem] font-semibold">{project.name}</h3>
-				<p className="mt-3 flex-1 text-[0.98rem] text-ink-soft">
-					{project.summary}
-				</p>
-				<div className="mt-4">
-					<Tags items={project.stack.slice(0, 5)} />
-				</div>
-				<Link
-					to="/realisations"
-					hash={project.id}
-					className="mt-5 inline-block text-[15px] font-semibold text-signal-deep underline underline-offset-4"
-				>
-					Voir le détail →
-				</Link>
-			</div>
-		</article>
 	);
 }
 

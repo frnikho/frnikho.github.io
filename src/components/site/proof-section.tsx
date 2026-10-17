@@ -8,7 +8,7 @@ export function ProofSection() {
 	const [quote] = testimonials;
 	if (!quote) return null;
 	return (
-		<Section labelledBy="proof-title" decor="none">
+		<Section tone="alt" labelledBy="proof-title" decor="none">
 			<h2 id="proof-title" className="sr-only">
 				Références clients
 			</h2>

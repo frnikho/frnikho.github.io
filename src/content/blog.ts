@@ -1,6 +1,10 @@
+/** Couleurs d'une catégorie : texte, fond de pastille, bordure. */
+export type CategoryTone = { ink: string; soft: string; line: string };
+
 export type BlogCategory = {
 	slug: string;
 	name: string;
+	tone: CategoryTone;
 	/** Titre de la page catégorie (balise `<title>` et `<h1>`). */
 	headline: string;
 	/** Introduction rédigée de la page catégorie, aussi utilisée en meta description. */
@@ -10,6 +14,7 @@ export type BlogCategory = {
 export const blogCategories = [
 	{
 		slug: "dev",
+		tone: { ink: "#2c5be6", soft: "#eaf0ff", line: "#cfdcff" },
 		name: "Développement",
 		headline: "Développement web, TypeScript et architecture",
 		intro:
@@ -17,6 +22,7 @@ export const blogCategories = [
 	},
 	{
 		slug: "ia",
+		tone: { ink: "#6d28d9", soft: "#f5f0ff", line: "#e2d6fb" },
 		name: "IA",
 		headline: "Intelligence artificielle appliquée au développement",
 		intro:
@@ -24,6 +30,7 @@ export const blogCategories = [
 	},
 	{
 		slug: "selfhost",
+		tone: { ink: "#0f7a54", soft: "#ecfaf3", line: "#cdeedd" },
 		name: "Auto-hébergement",
 		headline: "Auto-hébergement, infrastructure et souveraineté",
 		intro:
@@ -31,6 +38,7 @@ export const blogCategories = [
 	},
 	{
 		slug: "outils",
+		tone: { ink: "#9a4a07", soft: "#fff6e5", line: "#f6e0b8" },
 		name: "Outils",
 		headline: "Outils et découvertes pour développeurs",
 		intro:
@@ -38,6 +46,7 @@ export const blogCategories = [
 	},
 	{
 		slug: "retex",
+		tone: { ink: "#a3154f", soft: "#fff0f6", line: "#f6d0e1" },
 		name: "Retours d'expérience",
 		headline: "Retours d'expérience de projets en production",
 		intro:

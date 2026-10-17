@@ -7,6 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import type { ReactNode } from "react";
+import { Nav } from "@/components/site/nav";
 import { Toaster, ToastProvider } from "@/components/ui/toast";
 import { getAnalyticsScript } from "@/lib/analytics-config";
 import {
@@ -44,6 +45,7 @@ function RootComponent() {
 	return (
 		<RootDocument>
 			<ToastProvider>
+				<Nav />
 				<Outlet />
 				<Toaster />
 			</ToastProvider>

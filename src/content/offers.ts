@@ -14,6 +14,10 @@ export type Offer = {
 	/** Offre sans prix public : bouton « parler à un expert ». */
 	quote?: boolean;
 	features: string[];
+	/** Applications hébergées sur le serveur, illustrées sur la carte. */
+	apps?: number;
+	/** Rappel de l'offre incluse, affiché avant les fonctionnalités. */
+	basis?: string;
 	footnote?: string;
 	cta: string;
 };
@@ -28,6 +32,7 @@ export const offers: Offer[] = [
 		priceNote: "paiement unique",
 		tagline:
 			"Votre application en production, sécurisée, sur une infrastructure dont vous restez propriétaire.",
+		apps: 1,
 		features: [
 			"Serveur sécurisé, provisionné sur votre compte chez l'hébergeur",
 			"Plateforme de déploiement Dokploy",
@@ -49,6 +54,8 @@ export const offers: Offer[] = [
 		tagline:
 			"L'offre Essentiel, renforcée pour les activités à forte exigence de continuité.",
 		highlighted: true,
+		apps: 3,
+		basis: "Tout Essentiel, plus :",
 		features: [
 			"Jusqu'à 3 applications sur le serveur",
 			"Sauvegardes complètes (bases et fichiers), chiffrées",

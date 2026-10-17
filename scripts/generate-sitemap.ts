@@ -1,6 +1,5 @@
 /**
- * Génère public/sitemap.xml à partir des routes (src/lib/seo.ts) et du
- * catalogue de services. `lastmod` = date du dernier commit touchant les
+ * Génère public/sitemap.xml à partir des routes (src/lib/seo.ts). `lastmod` = date du dernier commit touchant les
  * fichiers sources de la page, ou aujourd'hui si ces fichiers sont modifiés
  * et non commités. Sans dépôt git (build Docker), la date déjà présente dans
  * le fichier est conservée : le script ne dégrade jamais le sitemap.
@@ -9,13 +8,13 @@
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { serviceFamilies } from "../src/content/services";
 import { SITE_ROUTES } from "../src/lib/seo";
 import { buildSitemapEntries, renderSitemap } from "../src/lib/sitemap";
 
 const OUTPUT = "public/sitemap.xml";
 
-const today = () => new Date().toISOString().slice(0, 10);
+// Date locale, comme `git log --format=%cs` : pas de « futur » entre minuit et 2 h.
+const today = () => new Date().toLocaleDateString("en-CA");
 
 function git(args: string[]): string | null {
 	try {
@@ -50,7 +49,6 @@ function lastModified(sources: readonly string[]): string | null {
 
 const entries = buildSitemapEntries({
 	routes: SITE_ROUTES,
-	serviceSlugs: serviceFamilies.map((f) => f.slug),
 	lastmod: (sources, loc) =>
 		lastModified(sources) ?? previousDates.get(loc) ?? today(),
 });

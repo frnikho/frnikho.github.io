@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LatestPostsSection } from "@/components/blog/latest-posts";
+import { AboutBrief } from "@/components/site/about-brief";
 import { FinalCta } from "@/components/site/final-cta";
 import { Hero } from "@/components/site/hero";
 import { PageShell } from "@/components/site/page-shell";
@@ -20,7 +21,10 @@ export const Route = createFileRoute("/")({
 	component: HomePage,
 });
 
-/** Accueil hybride : présentation, puis le blog en premier plan, puis les services. */
+/**
+ * Accueil du portfolio, pensé comme un récit pour qui ne me connaît pas :
+ * qui je suis, ce que je fais, ce que j'ai fait pour d'autres, puis le blog.
+ */
 function HomePage() {
 	const posts = Route.useLoaderData();
 	return (
@@ -31,9 +35,10 @@ function HomePage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd()) }}
 			/>
 			<Hero />
-			<LatestPostsSection posts={posts} />
+			<AboutBrief />
 			<ServicesBrief />
 			<ProofSection />
+			<LatestPostsSection posts={posts} />
 			<FinalCta />
 		</PageShell>
 	);

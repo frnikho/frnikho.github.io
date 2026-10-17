@@ -1,38 +1,33 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { serviceFamilies } from "@/content/services";
 import { SITE_ROUTES, SITE_URL } from "@/lib/seo";
 import { buildSitemapEntries, renderSitemap } from "@/lib/sitemap";
 
-const slugs = serviceFamilies.map((f) => f.slug);
 const entries = buildSitemapEntries({
 	routes: SITE_ROUTES,
-	serviceSlugs: slugs,
 	lastmod: () => "2026-01-02",
 });
 
 describe("buildSitemapEntries", () => {
-	it("contient chaque page et chaque service, sans doublon", () => {
+	it("contient chaque page, sans doublon", () => {
 		const locs = entries.map((e) => e.loc);
 		expect(new Set(locs).size).toBe(locs.length);
 		expect(locs).toContain(`${SITE_URL}/`);
 		expect(locs).toContain(`${SITE_URL}/estimation`);
-		for (const slug of slugs) {
-			expect(locs).toContain(`${SITE_URL}/services/${slug}`);
-		}
-		expect(locs).toHaveLength(SITE_ROUTES.length + slugs.length);
+		expect(locs).toContain(`${SITE_URL}/services`);
+		expect(locs).toHaveLength(SITE_ROUTES.length);
 	});
 
 	it("ne référence jamais une page exclue de l'index", () => {
 		const locs = entries.map((e) => e.loc).join(" ");
 		expect(locs).not.toMatch(/mentions-legales|confidentialite/);
+		expect(locs).not.toMatch(/\/services\/[a-z]/);
 	});
 
 	it("demande la date de dernière modification des fichiers sources de chaque page", () => {
 		const asked: string[][] = [];
 		buildSitemapEntries({
 			routes: SITE_ROUTES,
-			serviceSlugs: slugs,
 			lastmod: (sources) => {
 				asked.push([...sources]);
 				return "2026-01-02";
@@ -78,7 +73,8 @@ describe("public/sitemap.xml", () => {
 	});
 
 	it("n'utilise que des dates valides, jamais dans le futur", () => {
-		const today = new Date().toISOString().slice(0, 10);
+		// Date locale, comme le script de génération et `git log --format=%cs`.
+		const today = new Date().toLocaleDateString("en-CA");
 		for (const d of dates) {
 			expect(d).toMatch(/^\d{4}-\d{2}-\d{2}$/);
 			expect(d <= today).toBe(true);

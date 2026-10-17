@@ -10,7 +10,10 @@ import { SITE_URL } from "@/lib/seo";
 
 const calloutStyles = {
 	info: { label: "À noter", className: "border-signal bg-signal-soft" },
-	astuce: { label: "Astuce", className: "border-ok bg-[#ecfdf3]" },
+	astuce: {
+		label: "Astuce",
+		className: "border-highlight-deep bg-highlight-soft",
+	},
 	attention: { label: "Attention", className: "border-alert bg-[#fff4ed]" },
 } as const;
 

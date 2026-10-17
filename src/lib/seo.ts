@@ -1,13 +1,13 @@
 export const SITE_URL = "https://nikho.dev";
-export const SITE_NAME = "Nicolas Sans - DevOps freelance";
+export const SITE_NAME = "Nicolas Sans - Ingénieur DevOps et fullstack";
 export const HOME_TITLE =
-	"Nicolas Sans, DevOps freelance | Infrastructure souveraine";
+	"Nicolas Sans, ingénieur DevOps et fullstack freelance";
 export const HOME_DESCRIPTION =
-	"DevOps freelance à distance, partout en France : mise en production, Kubernetes, sécurité, sauvegardes et supervision. Hébergement européen et RGPD.";
+	"Ingénieur DevOps et fullstack freelance : développement, mise en production, automatisation, sécurité et maintenance. Hébergement européen, partout en France.";
 export const DEFAULT_OG_IMAGE = "https://nikho.dev/cover.jpg";
 export const OG_IMAGE_WIDTH = "1200";
 export const OG_IMAGE_HEIGHT = "630";
-export const OG_IMAGE_ALT = "Nicolas Sans, ingénieur DevOps freelance";
+export const OG_IMAGE_ALT = "Nicolas Sans, ingénieur DevOps et fullstack";
 
 export type ArticleMeta = {
 	publishedTime: string;
@@ -190,9 +190,3 @@ export const SITE_ROUTES: readonly SiteRoute[] = [
 		],
 	},
 ];
-
-/** Pages de détail des services : même priorité, mêmes fichiers sources. */
-export const SERVICE_PAGE = {
-	priority: "0.8",
-	sources: ["src/routes/services.$slug.tsx", "src/content/services.ts"],
-} as const;

@@ -7,34 +7,19 @@ import {
 	Section,
 	SectionHead,
 } from "@/components/site/section";
-import { career, credentials } from "@/content/profile";
+import { bio, career, credentials, principles } from "@/content/profile";
 import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/a-propos")({
 	head: () =>
 		buildHead({
-			title: "À propos : Nicolas Sans, ingénieur DevOps freelance",
+			title: "À propos : Nicolas Sans, ingénieur DevOps et fullstack",
 			description:
-				"Parcours, méthode et valeurs de Nicolas Sans, ingénieur DevOps freelance : 5 ans en production, Kubernetes, RNCP 35075, à distance partout en France.",
+				"Parcours, méthode et principes de Nicolas Sans, ingénieur DevOps et fullstack freelance : 5 ans en production, RNCP 35075, à distance partout en France.",
 			canonical: "/a-propos",
 		}),
 	component: AboutPage,
 });
-
-const principles = [
-	{
-		title: "Sobriété avant tout",
-		text: "Le meilleur système est celui que votre équipe comprend. L'outil le plus sobre répondant au besoin est privilégié.",
-	},
-	{
-		title: "Documenté",
-		text: "Chaque élément déployé est documenté. Vous pouvez reprendre la main, ou changer de prestataire, en toute autonomie.",
-	},
-	{
-		title: "Réversible et vérifié",
-		text: "Chaque changement est réversible, chaque sauvegarde est restaurée au moins une fois, chaque port exposé est contrôlé depuis l'extérieur.",
-	},
-];
 
 function AboutPage() {
 	return (
@@ -44,14 +29,10 @@ function AboutPage() {
 					<div>
 						<p className="eyebrow">À propos</p>
 						<h1 className="mt-5 text-[clamp(2.4rem,1.4rem+4vw,4.6rem)] leading-[1] font-semibold">
-							Nicolas Sans, <Accent>ingénieur DevOps.</Accent>
+							Nicolas Sans, <Accent>ingénieur DevOps et fullstack.</Accent>
 						</h1>
 						<p className="mt-7 max-w-[60ch] text-[1.12rem] leading-relaxed text-ink-soft">
-							Mon parcours part de l'administration systèmes et réseaux, puis du
-							développement, pour se spécialiser à leur jonction :
-							l'exploitation fiable d'applications. J'exploite aujourd'hui un
-							cluster Kubernetes en production et applique cette rigueur à des
-							projets de toute taille.
+							{bio}
 						</p>
 						<ul className="mt-8 flex flex-wrap gap-2">
 							{credentials.map((c) => (
@@ -91,7 +72,7 @@ function AboutPage() {
 					titleId="principes-title"
 					title={
 						<>
-							Trois principes <Accent>de conduite.</Accent>
+							Trois principes <Accent>de travail.</Accent>
 						</>
 					}
 				/>
@@ -112,7 +93,7 @@ function AboutPage() {
 					index="02"
 					kicker="Parcours"
 					titleId="parcours-title"
-					title="Du réseau à Kubernetes"
+					title="Entre systèmes et développement"
 				/>
 				<ol className="mt-14 border-t border-line">
 					{career.map((c) => (

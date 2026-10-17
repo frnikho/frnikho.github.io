@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "ghost" | "light";
+type Variant = "primary" | "ghost" | "light" | "ink";
 
 const base =
 	"group inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-[15px] font-semibold transition-colors duration-150";
@@ -12,6 +12,7 @@ const variants: Record<Variant, string> = {
 	ghost:
 		"border border-line bg-white text-ink hover:border-ink/30 hover:bg-paper-2",
 	light: "bg-white text-night hover:bg-signal-soft",
+	ink: "bg-ink text-highlight hover:bg-ink/85",
 };
 
 export const buttonClass = (variant: Variant = "primary") =>

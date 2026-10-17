@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Decor, type DecorVariant } from "@/components/site/decor";
 import { cn } from "@/lib/cn";
 
@@ -100,15 +100,30 @@ export function SectionHead({
 	);
 }
 
-/** Accent : mot ou fin de phrase en couleur d'accent. */
+/**
+ * Accent : mot ou fin de phrase surligné au feutre jaune. Sur fond sombre,
+ * le texte passe en jaune ; sur une bande déjà jaune, le surlignage passe en blanc.
+ */
 export function Accent({
 	children,
 	dark,
+	onHighlight,
 }: {
 	children: ReactNode;
 	dark?: boolean;
+	onHighlight?: boolean;
 }) {
+	if (dark) return <span className="text-highlight">{children}</span>;
 	return (
-		<span className={dark ? "text-signal" : "text-signal"}>{children}</span>
+		<span
+			className="hl"
+			style={
+				onHighlight
+					? ({ "--hl-color": "rgba(255,255,255,0.75)" } as CSSProperties)
+					: undefined
+			}
+		>
+			{children}
+		</span>
 	);
 }

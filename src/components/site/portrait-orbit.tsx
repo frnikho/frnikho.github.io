@@ -5,7 +5,9 @@ import { polarPoint } from "@/lib/geometry";
 /** Repère : 1 unité = 1 px pour un portrait de 416 × 458, centré en (0, 0). */
 const R = 290;
 const BADGE_R = 22;
-const COLORS = ["#4FABFF", "#B1C5FF", "#FFC99B"] as const;
+/** Teintes du thème (`app.css`) : bleu signal, anneau pastel, jaune surligneur. */
+const COLORS = ["#2c5be6", "#b9ccff", "#ffe066"] as const;
+const SIGNAL = COLORS[0];
 
 type Badge = { icon: IconName; angle: number; delay: number };
 
@@ -45,7 +47,7 @@ export function PortraitOrbit() {
 
 			<circle
 				r={R + 62}
-				stroke="#2563eb"
+				stroke={SIGNAL}
 				strokeOpacity="0.22"
 				strokeWidth="1.25"
 				strokeDasharray="2 10"
@@ -55,7 +57,7 @@ export function PortraitOrbit() {
 			<circle
 				r={R}
 				pathLength={1}
-				stroke="#2563eb"
+				stroke={SIGNAL}
 				strokeOpacity="0.3"
 				strokeWidth="1.5"
 				className="orbit-draw"
@@ -63,7 +65,7 @@ export function PortraitOrbit() {
 			<circle
 				r={R - 58}
 				pathLength={1}
-				stroke="#2563eb"
+				stroke={SIGNAL}
 				strokeOpacity="0.16"
 				strokeWidth="1.25"
 				className="orbit-draw"
@@ -96,7 +98,7 @@ export function PortraitOrbit() {
 					<g key={b.icon}>
 						<path
 							d={`M${p.x} ${p.y}L${p.x * 0.55} ${p.y * 0.55}`}
-							stroke="#2563eb"
+							stroke={SIGNAL}
 							strokeOpacity="0.4"
 							strokeWidth="1.5"
 							strokeDasharray="4 6"
@@ -110,22 +112,22 @@ export function PortraitOrbit() {
 							>
 								<circle
 									r={BADGE_R + 8}
-									fill="#4FABFF"
-									fillOpacity="0.14"
+									fill={COLORS[2]}
+									fillOpacity="0.45"
 									className="orbit-ping"
 									style={{ "--d": `${b.delay}s` } as React.CSSProperties}
 								/>
 								<circle
 									r={BADGE_R}
 									fill="#fff"
-									stroke="#2563eb"
+									stroke={SIGNAL}
 									strokeOpacity="0.28"
 									strokeWidth="1.5"
 								/>
 								<path
 									d={ICONS[b.icon]}
 									transform="translate(-11 -11) scale(0.916)"
-									stroke="#2563eb"
+									stroke={SIGNAL}
 									strokeWidth="2"
 									strokeLinecap="round"
 									strokeLinejoin="round"

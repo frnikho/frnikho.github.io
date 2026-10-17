@@ -31,7 +31,7 @@ function BlogPage() {
 		<BlogListing
 			kicker={`Blog · page ${page.page} sur ${page.totalPages}`}
 			title="Tous les articles"
-			intro="Développement, IA, auto-hébergement et retours d'expérience, du plus récent au plus ancien."
+			intro="Tutos, retours d'expérience, infos insolites et découvertes tech, du plus récent au plus ancien."
 			posts={page.items}
 			page={page}
 		/>

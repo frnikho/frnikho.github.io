@@ -1,30 +1,32 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Glyph } from "@/components/services/glyph";
 import { buttonClass } from "@/components/site/button";
+import { useToast } from "@/components/ui/toast";
 import { offers } from "@/content/offers";
+import { type EstimatorState, PRESETS } from "@/features/estimator/catalog";
 import {
-	APP_TYPE_LABELS,
-	APP_TYPES,
-	DATABASE_LABELS,
-	DATABASES,
-	DB_SIZE_LABELS,
-	DB_SIZES,
-	DEFAULT_INPUT,
-	type EstimatorInput,
-	EXTRA_LABELS,
-	EXTRAS,
-	estimateResources,
+	estimateStack,
 	formatEstimate,
-	TRAFFIC_LABELS,
-	TRAFFICS,
+	growthCurve,
 } from "@/features/estimator/estimate";
-import { useAnimatedNumber } from "@/features/estimator/use-animated-number";
+import { GrowthPanel } from "@/features/estimator/growth-panel";
+import { PrintRecap } from "@/features/estimator/print-recap";
+import { ResultPanel } from "@/features/estimator/result-panel";
+import {
+	type EstimatorSearch,
+	encodeState,
+	toQueryString,
+} from "@/features/estimator/share";
+import { StackEditor } from "@/features/estimator/stack-editor";
+import { Topology } from "@/features/estimator/topology";
+import { WorkloadPanel } from "@/features/estimator/workload-panel";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
+import { SITE_URL } from "@/lib/seo";
 
-const fieldClass =
-	"w-full rounded-lg border border-line bg-card px-3.5 py-3 text-[0.95rem] outline-none transition focus:border-signal focus:ring-2 focus:ring-signal/25";
-const labelClass = "eyebrow";
+/** Délai avant d'inscrire l'état dans l'URL : pas une navigation par cran de curseur. */
+const URL_SYNC_DELAY_MS = 350;
 
 /** Un seul événement « estimateur utilisé » par visite. */
 let usedReported = false;
@@ -34,75 +36,71 @@ function trackOnce(name: string) {
 	trackEvent(name);
 }
 
-const MAX_APPS = 10;
-const MAX_FILES_GB = 2000;
+const sameState = (a: EstimatorState, b: EstimatorState) =>
+	JSON.stringify(a) === JSON.stringify(b);
 
-function Select<T extends string>({
-	label,
-	value,
-	options,
-	onChange,
+function Presets({
+	state,
+	onPick,
 }: {
-	label: string;
-	value: T;
-	options: Record<T, string>;
-	onChange: (v: T) => void;
+	state: EstimatorState;
+	onPick: (s: EstimatorState) => void;
 }) {
 	return (
-		<label className="flex flex-col gap-1.5">
-			<span className={labelClass}>{label}</span>
-			<select
-				value={value}
-				onChange={(e) => onChange(e.target.value as T)}
-				className={fieldClass}
-			>
-				{(Object.keys(options) as T[]).map((k) => (
-					<option key={k} value={k}>
-						{options[k]}
-					</option>
-				))}
-			</select>
-		</label>
-	);
-}
-
-const pick = <T extends string>(
-	keys: readonly T[],
-	labels: Record<T, string>,
-) => Object.fromEntries(keys.map((k) => [k, labels[k]])) as Record<T, string>;
-
-function Metric({ value, unit }: { value: number; unit: string }) {
-	const shown = useAnimatedNumber(value);
-	return (
-		<div>
-			<p className="tabular text-[clamp(2.2rem,1.6rem+2vw,3.2rem)] leading-none font-bold">
-				{Math.round(shown)}
-			</p>
-			<p className="mt-1.5 text-[0.9rem] text-night-soft">{unit}</p>
+		<div className="flex flex-wrap items-center gap-2">
+			<span className="mr-1 text-[0.9rem] font-semibold text-ink-soft">
+				Partir d'un modèle :
+			</span>
+			{PRESETS.map((p) => {
+				const active = sameState(
+					{ ...p.state, workload: { ...p.state.workload, growth: 1 } },
+					{ ...state, workload: { ...state.workload, growth: 1 } },
+				);
+				return (
+					<button
+						key={p.id}
+						type="button"
+						aria-pressed={active}
+						onClick={() => onPick(p.state)}
+						className={cn(
+							"inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.88rem] font-semibold transition-colors",
+							active
+								? "border-signal bg-signal text-white"
+								: "border-line bg-card hover:border-signal/50 hover:text-signal-deep",
+						)}
+					>
+						<Glyph
+							name={p.icon}
+							className={cn("size-4", active ? "text-white" : "text-signal")}
+						/>
+						{p.label}
+					</button>
+				);
+			})}
 		</div>
 	);
 }
 
-export function EstimatorTool() {
-	const [input, setInput] = useState<EstimatorInput>(DEFAULT_INPUT);
-	const result = useMemo(() => estimateResources(input), [input]);
-	const set = <K extends keyof EstimatorInput>(
-		key: K,
-		value: EstimatorInput[K],
-	) => setInput((prev) => ({ ...prev, [key]: value }));
-
-	const toggleExtra = (extra: (typeof EXTRAS)[number]) =>
-		set(
-			"extras",
-			input.extras.includes(extra)
-				? input.extras.filter((e) => e !== extra)
-				: [...input.extras, extra],
-		);
-
+export function EstimatorTool({
+	initial,
+	onPersist,
+}: {
+	initial: EstimatorState;
+	/** Inscrit l'état dans l'URL (lien partageable). */
+	onPersist: (search: EstimatorSearch) => void;
+}) {
+	const [state, setState] = useState(initial);
+	const { success, error } = useToast();
+	const result = useMemo(() => estimateStack(state), [state]);
+	const curve = useMemo(() => growthCurve(state), [state]);
+	const query = toQueryString(encodeState(state));
+	const link = `${SITE_URL}/estimation?${query}`;
 	const offer = offers.find((o) => o.id === result.offer);
-	const maxRam = Math.max(...result.breakdown.map((b) => b.ramMb));
 
-	// Éclat bref du panneau à chaque modification (pas au premier affichage).
+	const persist = useRef(onPersist);
+	persist.current = onPersist;
+
+	// Éclat bref du panneau et synchronisation de l'URL, pas au premier rendu.
 	const [flash, setFlash] = useState(0);
 	const first = useRef(true);
 	useEffect(() => {
@@ -112,263 +110,129 @@ export function EstimatorTool() {
 		}
 		setFlash((n) => n + 1);
 		trackOnce("estimator-used");
-	}, [input]);
+		const timer = window.setTimeout(
+			() => persist.current(encodeState(state)),
+			URL_SYNC_DELAY_MS,
+		);
+		return () => window.clearTimeout(timer);
+	}, [state]);
+
+	const copyLink = async () => {
+		try {
+			await navigator.clipboard.writeText(link);
+			trackEvent("estimator-share");
+			success("Lien copié", "Il rouvre cette estimation à l'identique.");
+		} catch {
+			error("Copie impossible", "Copiez l'adresse de la page à la place.");
+		}
+	};
+	const print = () => {
+		trackEvent("estimator-print");
+		window.print();
+	};
+
+	const cta = (
+		<Link
+			to="/contact"
+			search={{
+				offre: result.offer,
+				estimation: formatEstimate(state, result),
+			}}
+			data-umami-event="estimator-cta"
+			data-umami-event-offer={result.offer}
+			className={cn(buttonClass("light"), "w-full")}
+		>
+			{result.verdict === "contact"
+				? "Parler à un expert"
+				: "Faire valider cette estimation"}{" "}
+			<span aria-hidden="true">→</span>
+		</Link>
+	);
 
 	return (
-		<div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-			<form
-				className="surface grid gap-6 p-6 sm:p-8"
-				onSubmit={(e) => e.preventDefault()}
-				aria-label="Paramètres de l'application"
-			>
-				<Select
-					label="Type d'application"
-					value={input.appType}
-					options={pick(APP_TYPES, APP_TYPE_LABELS)}
-					onChange={(v) => set("appType", v)}
-				/>
-				{result.custom ? (
-					<div key="custom" className="rise-in rounded-xl bg-signal-soft p-5">
-						<p className="text-[1.1rem] font-semibold">Sur mesure</p>
-						<p className="mt-1.5 text-[0.95rem] text-ink-soft">
-							Une application spécifique ne se dimensionne pas avec des profils
-							types : nous partons de son fonctionnement réel, en 30 minutes
-							d'échange.
-						</p>
-					</div>
-				) : (
-					<div key="fields" className="rise-in grid gap-6">
-						<div className="grid gap-6 sm:grid-cols-2">
-							<label className="flex flex-col gap-1.5">
-								<span className={labelClass}>Nombre d'applications</span>
-								<input
-									type="number"
-									min={1}
-									max={MAX_APPS}
-									value={input.appsCount}
-									onChange={(e) =>
-										set(
-											"appsCount",
-											Math.min(
-												MAX_APPS,
-												Math.max(1, Number(e.target.value) || 1),
-											),
-										)
-									}
-									className={fieldClass}
-								/>
-							</label>
-							<Select
-								label="Fréquentation"
-								value={input.traffic}
-								options={pick(TRAFFICS, TRAFFIC_LABELS)}
-								onChange={(v) => set("traffic", v)}
+		<>
+			<div className="grid gap-10 print:hidden">
+				<Presets state={state} onPick={setState} />
+
+				<div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+					<form
+						className="surface grid content-start gap-10 p-5 sm:p-8"
+						onSubmit={(e) => e.preventDefault()}
+						aria-label="Paramètres de l'application"
+					>
+						<StackEditor
+							stack={state.stack}
+							loads={result.components}
+							onChange={(stack) => setState((s) => ({ ...s, stack }))}
+						/>
+						<WorkloadPanel
+							workload={state.workload}
+							onChange={(workload) => setState((s) => ({ ...s, workload }))}
+						/>
+					</form>
+
+					<aside
+						aria-live="polite"
+						aria-label="Résultat de l'estimation"
+						className="relative h-fit overflow-hidden rounded-2xl bg-night p-6 text-night-ink shadow-[var(--shadow-card)] sm:p-8 lg:sticky lg:top-24"
+					>
+						{flash > 0 && (
+							<span
+								key={flash}
+								aria-hidden="true"
+								className="estimator-flash pointer-events-none absolute inset-0 rounded-2xl"
 							/>
-						</div>
-						<div className="grid gap-6 sm:grid-cols-2">
-							<Select
-								label="Base de données"
-								value={input.database}
-								options={pick(DATABASES, DATABASE_LABELS)}
-								onChange={(v) => set("database", v)}
-							/>
-							{input.database !== "none" && (
-								<Select
-									label="Taille de la base"
-									value={input.dbSize}
-									options={pick(DB_SIZES, DB_SIZE_LABELS)}
-									onChange={(v) => set("dbSize", v)}
-								/>
-							)}
-						</div>
-
-						<fieldset className="grid gap-3">
-							<legend className={cn(labelClass, "mb-1")}>
-								Composants associés
-							</legend>
-							{EXTRAS.map((extra) => (
-								<label
-									key={extra}
-									className="flex items-center gap-3 text-[0.95rem]"
-								>
-									<input
-										type="checkbox"
-										checked={input.extras.includes(extra)}
-										onChange={() => toggleExtra(extra)}
-										className="size-4 accent-[var(--color-signal)]"
-									/>
-									{EXTRA_LABELS[extra]}
-								</label>
-							))}
-						</fieldset>
-
-						<label className="flex flex-col gap-1.5">
-							<span className={labelClass}>
-								Fichiers envoyés par les utilisateurs (Go)
-							</span>
-							<input
-								type="number"
-								min={0}
-								max={MAX_FILES_GB}
-								value={input.filesGb}
-								onChange={(e) =>
-									set(
-										"filesGb",
-										Math.min(
-											MAX_FILES_GB,
-											Math.max(0, Number(e.target.value) || 0),
-										),
-									)
-								}
-								className={fieldClass}
-							/>
-						</label>
-
-						<fieldset className="grid gap-3">
-							<legend className={cn(labelClass, "mb-1")}>Exigences</legend>
-							<label className="flex items-center gap-3 text-[0.95rem]">
-								<input
-									type="checkbox"
-									checked={input.preprod}
-									onChange={(e) => set("preprod", e.target.checked)}
-									className="size-4 accent-[var(--color-signal)]"
-								/>
-								Environnement de préproduction
-							</label>
-							<label className="flex items-center gap-3 text-[0.95rem]">
-								<input
-									type="checkbox"
-									checked={input.availability === "critique"}
-									onChange={(e) =>
-										set(
-											"availability",
-											e.target.checked ? "critique" : "standard",
-										)
-									}
-									className="size-4 accent-[var(--color-signal)]"
-								/>
-								Activité critique (aucune interruption tolérée)
-							</label>
-						</fieldset>
-					</div>
-				)}
-			</form>
-
-			<aside
-				aria-live="polite"
-				className="relative h-fit overflow-hidden rounded-2xl bg-night p-6 text-night-ink shadow-[var(--shadow-card)] sm:p-8 lg:sticky lg:top-24"
-			>
-				{flash > 0 && (
-					<span
-						key={flash}
-						aria-hidden="true"
-						className="estimator-flash pointer-events-none absolute inset-0 rounded-2xl"
-					/>
-				)}
-				{result.custom ? (
-					<div className="rise-in">
-						<p className="eyebrow !text-signal-glow">Dimensionnement</p>
-						<p className="mt-2 text-[clamp(2rem,1.5rem+1.8vw,2.8rem)] leading-none font-bold">
-							Sur mesure
-						</p>
-						<p className="mt-4 text-[0.95rem] text-night-soft">
-							Votre application demande une analyse dédiée : fonctionnement,
-							dépendances, volumétrie, exigences de disponibilité.
-						</p>
-						<ul className="mt-5 grid gap-2 text-[0.9rem] text-night-soft">
-							{result.notes.map((n) => (
-								<li key={n} className="flex gap-2">
-									<span aria-hidden="true" className="text-signal-glow">
-										→
-									</span>
-									{n}
-								</li>
-							))}
-						</ul>
-					</div>
-				) : (
-					<div>
-						<p className="eyebrow !text-signal-glow">Estimation indicative</p>
-						<p
-							key={result.profile}
-							className="rise-in mt-2 text-[1.35rem] font-semibold"
-						>
-							Profil {result.profile.toLowerCase()}
-							{result.servers > 1 && ` · ${result.servers} serveurs`}
-						</p>
-
-						<div className="mt-6 grid grid-cols-3 gap-4 border-b border-night-line pb-6">
-							<Metric value={result.vcpu} unit="vCPU" />
-							<Metric value={result.ramGb} unit="Go de RAM" />
-							<Metric value={result.diskGb} unit="Go de disque" />
-						</div>
-
-						<h3 className="mt-6 text-[0.95rem] font-semibold">
-							Répartition de la mémoire
-						</h3>
-						<ul className="mt-3 grid gap-3">
-							{result.breakdown.map((b) => (
-								<li key={b.label} className="rise-in">
-									<div className="flex justify-between text-[0.88rem] text-night-soft">
-										<span>{b.label}</span>
-										<span className="tabular">{b.ramMb} Mo</span>
-									</div>
-									<div className="mt-1 h-1.5 rounded-full bg-night-line">
-										<div
-											className="h-full rounded-full bg-signal transition-[width] duration-500 ease-out"
-											style={{
-												width: `${Math.max(4, (b.ramMb / maxRam) * 100)}%`,
-											}}
-										/>
-									</div>
-								</li>
-							))}
-						</ul>
-
-						{result.notes.length > 0 && (
-							<ul className="mt-6 grid gap-2 text-[0.9rem] text-night-soft">
-								{result.notes.map((n) => (
-									<li key={n} className="flex gap-2">
-										<span aria-hidden="true" className="text-signal-glow">
-											→
-										</span>
-										{n}
-									</li>
-								))}
-							</ul>
 						)}
+						<ResultPanel
+							estimate={result}
+							offerLabel={
+								offer &&
+								`${offer.name}${offer.quote ? "" : ` (${offer.prefix} ${offer.price})`}`
+							}
+							onCopyLink={copyLink}
+							onPrint={print}
+							cta={cta}
+						/>
+					</aside>
+				</div>
 
-						<p className="mt-6 text-[0.92rem] text-night-soft">
-							Formule adaptée :{" "}
-							<strong className="text-night-ink">{offer?.name}</strong>
-							{offer && !offer.quote && ` (${offer.prefix} ${offer.price})`}.
-						</p>
-					</div>
-				)}
-
-				<Link
-					to="/contact"
-					search={{
-						offre: result.offer,
-						estimation: formatEstimate(input, result),
-					}}
-					data-umami-event="estimator-cta"
-					data-umami-event-offer={result.offer}
-					className={cn(buttonClass("light"), "mt-6 w-full")}
-				>
-					{result.verdict === "contact"
-						? "Parler à un expert"
-						: "Faire valider cette estimation"}{" "}
-					<span aria-hidden="true">→</span>
-				</Link>
-				{!result.custom && (
-					<p className="mt-4 text-[12.5px] leading-relaxed text-night-soft">
-						Ordre de grandeur calculé à partir de profils types, hors pics
-						exceptionnels. La taille définitive se confirme en mesurant votre
-						application réelle.
-					</p>
-				)}
-			</aside>
-		</div>
+				<div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
+					<section
+						aria-labelledby="topology-title"
+						className="surface p-5 sm:p-8"
+					>
+						<p className="eyebrow">Architecture</p>
+						<h3 id="topology-title" className="mt-2 text-[1.3rem] font-bold">
+							À quoi ressemblera votre infrastructure
+						</h3>
+						<div className="mt-6">
+							<Topology estimate={result} stack={state.stack} />
+						</div>
+					</section>
+					<section
+						aria-labelledby="growth-title"
+						className="surface p-5 sm:p-8"
+					>
+						<p className="eyebrow">Simulateur de croissance</p>
+						<h3 id="growth-title" className="mt-2 text-[1.3rem] font-bold">
+							Et si votre trafic était multiplié ?
+						</h3>
+						<div className="mt-6">
+							<GrowthPanel
+								curve={curve}
+								growth={state.workload.growth}
+								onGrowthChange={(growth) =>
+									setState((s) => ({
+										...s,
+										workload: { ...s.workload, growth },
+									}))
+								}
+							/>
+						</div>
+					</section>
+				</div>
+			</div>
+			<PrintRecap state={state} estimate={result} curve={curve} link={link} />
+		</>
 	);
 }

@@ -27,6 +27,7 @@
 		"predev": "bun scripts/build-blog-assets.ts",
 		"dev": "vite dev",
 		"sitemap": "bun scripts/generate-sitemap.ts",
+		"cover": "bun scripts/cover-image.tsx",
 		"blog:assets": "bun scripts/build-blog-assets.ts",
 		"new-post": "bun scripts/new-post.ts",
 		"prebuild": "bun scripts/generate-sitemap.ts && bun scripts/build-blog-assets.ts",

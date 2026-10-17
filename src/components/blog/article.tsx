@@ -122,11 +122,7 @@ export function PostCta({ service }: { service?: string }) {
 			</p>
 			<div className="mt-6 flex flex-wrap gap-3">
 				{family ? (
-					<Link
-						to="/services/$slug"
-						params={{ slug: family.slug }}
-						className={buttonClass()}
-					>
+					<Link to="/services" hash={family.slug} className={buttonClass()}>
 						Voir la prestation <span aria-hidden="true">→</span>
 					</Link>
 				) : (
@@ -172,8 +168,8 @@ export function ServicesAside({ service }: { service?: string }) {
 			<div className="mt-5 grid gap-2">
 				{family ? (
 					<Link
-						to="/services/$slug"
-						params={{ slug: family.slug }}
+						to="/services"
+						hash={family.slug}
 						className={cn(buttonClass(), "w-full !text-[14px]")}
 					>
 						{family.name} <span aria-hidden="true">→</span>

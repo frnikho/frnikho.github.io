@@ -2,71 +2,22 @@ import { cn } from "@/lib/cn";
 
 export type DecorVariant = "hero" | "grid" | "rings";
 
-const RING = "rgba(37,99,235,0.2)";
-const FILL = "rgba(37,99,235,0.08)";
-
-/** Cercles concentriques, croix et carrés : formes légères, purement décoratives. */
-function Shapes({ className }: { className?: string }) {
-	return (
-		<svg
-			viewBox="0 0 520 520"
-			fill="none"
-			aria-hidden="true"
-			className={cn("absolute", className)}
-		>
-			<g className="decor-spin" style={{ transformOrigin: "260px 260px" }}>
-				<circle
-					cx="260"
-					cy="260"
-					r="240"
-					stroke={RING}
-					strokeDasharray="3 9"
-					strokeWidth="1.5"
-				/>
-				<circle cx="500" cy="260" r="5" fill={RING} />
-			</g>
-			<circle cx="260" cy="260" r="170" stroke={RING} strokeWidth="1.25" />
-			<circle cx="260" cy="260" r="100" stroke={RING} strokeWidth="1.25" />
-			<g className="decor-float" stroke={RING} strokeWidth="1.5">
-				<path d="M60 92v22M49 103h22" />
-				<path d="M452 410v22M441 421h22" />
-			</g>
-			<g className="decor-float-alt">
-				<rect
-					x="420"
-					y="70"
-					width="26"
-					height="26"
-					rx="6"
-					stroke={RING}
-					strokeWidth="1.5"
-					transform="rotate(18 433 83)"
-				/>
-				<rect
-					x="70"
-					y="400"
-					width="18"
-					height="18"
-					rx="4"
-					fill={FILL}
-					transform="rotate(-14 79 409)"
-				/>
-			</g>
-		</svg>
-	);
-}
-
 /**
- * Fond décoratif d'une section : halo, trame fine et formes géométriques.
- * Se place en premier enfant d'un parent `relative overflow-clip`. Les
- * sections paires sont inversées par `.decor-flip` (voir app.css).
+ * Fond décoratif d'une section : formes géométriques pastel (disque bleu,
+ * carré jaune incliné, anneau, pastilles). Se place en premier enfant d'un
+ * parent `relative overflow-clip`. Les sections paires sont inversées par
+ * `.decor-flip` (voir app.css).
+ *
+ * - `hero` : formes larges, pour les en-têtes de page ;
+ * - `grid` : version discrète, pour les sections courantes ;
+ * - `rings` : formes claires, pour les bandes colorées (CTA surligneur).
  */
 export function Decor({
 	variant = "grid",
 	shapes = true,
 }: {
 	variant?: DecorVariant;
-	/** `false` retire les cercles et croix (déjà portés par un autre décor). */
+	/** `false` ne garde que le grand disque (les petites formes sont portées par un autre décor). */
 	shapes?: boolean;
 }) {
 	return (
@@ -74,34 +25,66 @@ export function Decor({
 			aria-hidden="true"
 			className="decor-flip pointer-events-none absolute inset-0 -z-0 overflow-clip"
 		>
-			<div
-				className={cn(
-					"decor-orb absolute rounded-full",
-					variant === "hero"
-						? "-top-40 -right-32 size-[46rem]"
-						: "-top-48 -right-40 size-[34rem]",
-				)}
-			/>
-			<div
-				className={cn(
-					"decor-grid absolute inset-0",
-					variant === "rings" && "opacity-60",
-				)}
-			/>
-			{shapes && (
-				<Shapes
-					className={cn(
-						"hidden md:block",
-						variant === "hero"
-							? "top-6 -right-24 size-[34rem] lg:right-[-6rem]"
-							: "-top-16 -right-28 size-[26rem]",
-						variant === "grid" && "opacity-60",
-					)}
-				/>
-			)}
-			{variant === "hero" && (
-				<div className="decor-orb-alt absolute -bottom-48 -left-40 size-[30rem] rounded-full" />
-			)}
+			{variant === "rings" ? <BandShapes /> : null}
+			{variant === "hero" && <HeroShapes shapes={shapes} />}
+			{variant === "grid" && <SectionShapes />}
 		</div>
+	);
+}
+
+function HeroShapes({ shapes }: { shapes: boolean }) {
+	return (
+		<>
+			<div className="absolute -top-24 -right-24 size-[26rem] rounded-full bg-pastel-blue/80 lg:size-[34rem]" />
+			{shapes && (
+				<>
+					<div className="decor-float absolute top-[58%] right-[22%] hidden size-24 rotate-[14deg] rounded-[1.4rem] bg-pastel-yellow md:block" />
+					<div className="decor-float-alt absolute top-[22%] right-[38%] hidden size-12 rounded-full border-[3px] border-pastel-ring md:block" />
+					<Dots className="bottom-8 left-[46%] hidden lg:block" />
+				</>
+			)}
+			<div className="absolute -bottom-20 -left-16 size-44 rounded-full bg-pastel-yellow/60" />
+		</>
+	);
+}
+
+function SectionShapes() {
+	return (
+		<>
+			<div className="absolute -top-20 -right-16 size-56 rounded-full bg-pastel-blue/60" />
+			<div className="decor-float absolute top-16 right-40 hidden size-14 rotate-[18deg] rounded-xl bg-pastel-yellow/80 md:block" />
+			<div className="decor-float-alt absolute right-[8%] bottom-10 hidden size-9 rounded-full border-[3px] border-pastel-ring/80 lg:block" />
+		</>
+	);
+}
+
+function BandShapes() {
+	return (
+		<>
+			<div className="absolute -top-16 right-[8%] size-40 rounded-full bg-white/50" />
+			<div className="decor-float absolute right-[30%] bottom-6 hidden size-12 rotate-[14deg] rounded-xl border-[3px] border-ink/10 md:block" />
+			<div className="absolute -bottom-24 -left-10 size-56 rounded-full bg-ink/[0.04]" />
+		</>
+	);
+}
+
+/** Petite trame de pastilles, en grille 4 × 3. */
+function Dots({ className }: { className?: string }) {
+	return (
+		<svg
+			aria-hidden="true"
+			viewBox="0 0 64 44"
+			className={cn("absolute w-16 text-pastel-ring", className)}
+			fill="currentColor"
+		>
+			{Array.from({ length: 12 }, (_, i) => (
+				<circle
+					key={i}
+					cx={4 + (i % 4) * 18}
+					cy={4 + Math.floor(i / 4) * 18}
+					r={2.5}
+				/>
+			))}
+		</svg>
 	);
 }

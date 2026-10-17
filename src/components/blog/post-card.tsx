@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { getBlogCategory } from "@/content/blog";
 import { formatPostDate, type PostSummary } from "@/features/blog/posts";
 import { cn } from "@/lib/cn";
+import { categoryStyle } from "./category-tone";
 
 export function PostMeta({
 	post,
@@ -22,7 +23,8 @@ export function PostMeta({
 				<Link
 					to="/blog/categorie/$category"
 					params={{ category: category.slug }}
-					className="relative z-10 font-semibold text-signal hover:text-signal-deep"
+					style={categoryStyle(category.slug)}
+					className="relative z-10 font-semibold text-(--cat) underline-offset-4 hover:underline"
 				>
 					{category.name}
 				</Link>
@@ -163,7 +165,8 @@ function RowMeta({ post }: { post: PostSummary }) {
 				<Link
 					to="/blog/categorie/$category"
 					params={{ category: category.slug }}
-					className="relative z-10 font-semibold text-signal hover:text-signal-deep"
+					style={categoryStyle(category.slug)}
+					className="relative z-10 font-semibold text-(--cat) underline-offset-4 hover:underline"
 				>
 					{category.name}
 				</Link>

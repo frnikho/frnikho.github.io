@@ -46,14 +46,6 @@ export const getTagPosts = createServerFn({ method: "GET" })
 		visibleSummaries().filter((p) => p.tags.includes(tag)),
 	);
 
-export const getServicePosts = createServerFn({ method: "GET" })
-	.validator(asSlug)
-	.handler(({ data: service }) =>
-		visibleSummaries()
-			.filter((p) => p.service === service)
-			.slice(0, LATEST_POSTS),
-	);
-
 export type PostPage =
 	| {
 			kind: "post";

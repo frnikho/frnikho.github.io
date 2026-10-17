@@ -19,9 +19,9 @@ import { buildHead } from "@/lib/seo";
 export const Route = createFileRoute("/realisations")({
 	head: () =>
 		buildHead({
-			title: "Réalisations : projets clients et Kubernetes | Nicolas Sans",
+			title: "Réalisations : projets clients et étude de cas | Nicolas Sans",
 			description:
-				"Deux projets clients livrés de A à Z (développement, infrastructure, déploiement) et l'architecture anonymisée d'un cluster Kubernetes en production.",
+				"Deux projets clients conçus et livrés de bout en bout (développement, infrastructure, déploiement), et une étude de cas d'infrastructure haute disponibilité.",
 			canonical: "/realisations",
 		}),
 	component: CasePage,
@@ -56,7 +56,7 @@ function CasePage() {
 						Des projets menés <Accent>du code au serveur.</Accent>
 					</>
 				}
-				intro="Deux produits livrés de bout en bout, et un cluster Kubernetes exploité en production."
+				intro="Deux produits conçus et livrés de bout en bout, et une étude de cas d'infrastructure en production."
 			/>
 
 			<Section labelledBy="clients-title">
@@ -65,7 +65,7 @@ function CasePage() {
 					titleId="clients-title"
 					title={
 						<>
-							Deux clients, <Accent>de A à Z.</Accent>
+							Deux produits, <Accent>de la conception à l'exploitation.</Accent>
 						</>
 					}
 					intro="Sur ces deux projets, j'ai conçu l'application puis mis en place l'infrastructure et le déploiement automatisé. Un interlocuteur unique, du code au serveur."
@@ -81,9 +81,9 @@ function CasePage() {
 			<Section tone="alt" labelledBy="decisions-title">
 				<SectionHead
 					index="01"
-					kicker="Étude de cas : cluster Kubernetes"
+					kicker="Étude de cas : plateforme haute disponibilité"
 					titleId="decisions-title"
-					intro="Exploitation de l'infrastructure d'une entreprise qui héberge l'ensemble de ses projets sur Kubernetes, sur serveurs dédiés. Description anonymisée : ni noms, ni adresses, ni domaines."
+					intro="Plateforme qui héberge l'ensemble des projets d'une entreprise, sur serveurs dédiés, orchestrée par Kubernetes. Description anonymisée : ni noms, ni adresses, ni domaines."
 					title={
 						<>
 							Quatre décisions{" "}
@@ -146,7 +146,7 @@ function CasePage() {
 							Ce que ça change <Accent>pour votre projet.</Accent>
 						</>
 					}
-					intro="Un cluster à seize vagues n'est pas nécessaire à votre échelle. Les mêmes principes s'appliquent en revanche, dimensionnés à votre besoin : reproductibilité, maîtrise des secrets, sauvegardes restaurées et traçabilité de chaque changement."
+					intro="Une telle architecture n'est pas nécessaire à toutes les échelles. Ses principes, eux, s'appliquent à chaque projet, dimensionnés au besoin : reproductibilité, maîtrise des secrets, sauvegardes restaurées et traçabilité de chaque changement."
 				/>
 			</Section>
 			<FinalCta />

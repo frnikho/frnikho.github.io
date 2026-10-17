@@ -3,6 +3,7 @@ import { blogCategories } from "@/content/blog";
 import { RSS_PATH } from "@/features/blog/feeds";
 import type { Page } from "@/features/blog/posts";
 import { cn } from "@/lib/cn";
+import { categoryStyle } from "./category-tone";
 
 const chip =
 	"rounded-full border border-line bg-white px-3.5 py-1.5 text-[14px] font-medium text-ink-soft transition-colors hover:border-ink/30 hover:text-ink";
@@ -24,7 +25,12 @@ export function CategoryNav({ active }: { active?: string }) {
 					key={c.slug}
 					to="/blog/categorie/$category"
 					params={{ category: c.slug }}
-					className={cn(chip, active === c.slug && chipActive)}
+					style={categoryStyle(c.slug)}
+					className={cn(
+						chip,
+						"!border-(--cat-line) !bg-(--cat-soft) !text-(--cat) hover:brightness-[0.97]",
+						active === c.slug && "ring-2 ring-(--cat)/40",
+					)}
 					aria-current={active === c.slug ? "page" : undefined}
 				>
 					{c.name}

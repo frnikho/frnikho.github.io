@@ -70,7 +70,8 @@ function AgenciesPage() {
 					titleId="benefits-title"
 					title={
 						<>
-							Un partenaire, <Accent>au-delà du simple prestataire.</Accent>
+							Un partenaire technique,{" "}
+							<Accent>intégré à votre organisation.</Accent>
 						</>
 					}
 				/>

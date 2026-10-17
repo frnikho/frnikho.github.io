@@ -69,8 +69,10 @@ async function publishOgImage(slug: string, outDir: string): Promise<boolean> {
 	if (isFresh(out, source, "scripts/og-image.tsx")) return false;
 	const data = frontmatter(source);
 	const title = String(data.title ?? slug);
-	const category = getBlogCategory(String(data.category))?.name ?? "Blog";
-	writeFileSync(out, await renderOgImage({ title, category }));
+	const found = getBlogCategory(String(data.category));
+	const category = found?.name ?? "Blog";
+	const tone = found?.tone ?? { ink: "#2c5be6", soft: "#eaf0ff" };
+	writeFileSync(out, await renderOgImage({ title, category, tone }));
 	return true;
 }
 

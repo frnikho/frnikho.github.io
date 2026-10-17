@@ -26,8 +26,8 @@ export const faq: FaqItem[] = [
 		a: "Toute demande reçoit une réponse sous 24 h ouvrées. Les forfaits standards n'incluent pas de garantie de disponibilité 24h/24 ; un cadre d'astreinte peut être étudié sur devis.",
 	},
 	{
-		q: "Quel est le périmètre exclu ?",
-		a: "Le développement applicatif, la correction de bugs applicatifs et le support des utilisateurs finaux. Le périmètre couvre l'infrastructure : serveur, déploiement, sécurité, sauvegardes. L'hébergement, les noms de domaine et les services tiers restent à votre charge.",
+		q: "Que couvrent exactement les forfaits ?",
+		a: "Les forfaits affichés couvrent l'infrastructure : serveur, déploiement, sécurité, sauvegardes. Le développement applicatif, la correction de bugs et le support des utilisateurs finaux n'y sont pas inclus et font l'objet d'un devis dédié. L'hébergement, les noms de domaine et les services tiers restent à votre charge.",
 	},
 	{
 		q: "Une application générée par IA (Lovable, Bolt…) peut-elle être mise en production ?",

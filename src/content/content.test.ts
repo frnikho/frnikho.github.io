@@ -4,7 +4,8 @@ import { clientProjectDiagrams } from "@/components/diagrams/specs";
 import { faq } from "./faq";
 import { offers } from "./offers";
 import { clientProjects, clientResults } from "./projects";
-import { getFamily, serviceFamilies } from "./services";
+import { servicePoles } from "./service-poles";
+import { familyHash, getFamily, serviceFamilies } from "./services";
 
 describe("catalogue de services", () => {
 	it("utilise des slugs uniques et résolubles", () => {
@@ -13,19 +14,30 @@ describe("catalogue de services", () => {
 		for (const slug of slugs) expect(getFamily(slug)?.slug).toBe(slug);
 	});
 
-	it("renseigne chaque famille de façon exploitable pour le SEO", () => {
+	it("renseigne chaque famille de quoi remplir son volet dépliable", () => {
 		for (const f of serviceFamilies) {
 			expect(f.items.length).toBeGreaterThan(0);
 			expect(f.deliverables.length).toBeGreaterThan(0);
-			expect(f.metaTitle.length).toBeLessThanOrEqual(65);
-			expect(f.metaDescription.length).toBeLessThanOrEqual(200);
+			expect(f.tools.length).toBeGreaterThan(0);
 		}
 	});
 
-	it("référence toutes les familles dans le sitemap", () => {
+	it("redirige une ancienne page de détail vers son ancre, et le reste vers la page", () => {
+		expect(familyHash("kubernetes")).toBe("kubernetes");
+		expect(familyHash("inconnue")).toBeUndefined();
+	});
+
+	it("range chaque famille dans un seul pôle de la page Services", () => {
+		const slugs = servicePoles.flatMap((p) => p.families);
+		expect([...slugs].sort()).toEqual(
+			serviceFamilies.map((f) => f.slug).sort(),
+		);
+	});
+
+	it("ne référence plus de page de détail dans le sitemap", () => {
 		const sitemap = readFileSync("public/sitemap.xml", "utf8");
 		for (const f of serviceFamilies) {
-			expect(sitemap).toContain(`https://nikho.dev/services/${f.slug}`);
+			expect(sitemap).not.toContain(`https://nikho.dev/services/${f.slug}`);
 		}
 	});
 });
@@ -50,6 +62,12 @@ describe("contenus commerciaux", () => {
 		expect(amount(essentiel?.price ?? "")).toBeLessThan(
 			amount(pro?.price ?? ""),
 		);
+	});
+
+	it("héberge plus d'applications en Pro qu'en Essentiel", () => {
+		const apps = (id: string) => offers.find((o) => o.id === id)?.apps ?? 0;
+		expect(apps("essentiel")).toBeGreaterThan(0);
+		expect(apps("pro")).toBeGreaterThan(apps("essentiel"));
 	});
 
 	it("documente chaque projet client avec ses enjeux et un schéma d'architecture", () => {

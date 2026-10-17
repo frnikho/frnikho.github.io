@@ -1,32 +1,21 @@
-import { SERVICE_PAGE, SITE_URL, type SiteRoute } from "@/lib/seo";
+import { SITE_URL, type SiteRoute } from "@/lib/seo";
 
 export type SitemapEntry = { loc: string; lastmod: string; priority: string };
 
 type BuildOptions = {
 	routes: readonly SiteRoute[];
-	serviceSlugs: readonly string[];
 	/** Date (AAAA-MM-JJ) de dernière modification des fichiers sources d'une page. */
 	lastmod: (sources: readonly string[], loc: string) => string;
 };
 
 export function buildSitemapEntries({
 	routes,
-	serviceSlugs,
 	lastmod,
 }: BuildOptions): SitemapEntry[] {
-	const pages = routes.map((r) => {
+	return routes.map((r) => {
 		const loc = `${SITE_URL}${r.path}`;
 		return { loc, lastmod: lastmod(r.sources, loc), priority: r.priority };
 	});
-	const services = serviceSlugs.map((slug) => {
-		const loc = `${SITE_URL}/services/${slug}`;
-		return {
-			loc,
-			lastmod: lastmod(SERVICE_PAGE.sources, loc),
-			priority: SERVICE_PAGE.priority,
-		};
-	});
-	return [...pages, ...services];
 }
 
 const escapeXml = (value: string) =>

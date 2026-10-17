@@ -1,3 +1,7 @@
+/** Présentation courte, reprise sur l'accueil et la page À propos. */
+export const bio =
+	"Formé à l'administration systèmes et réseaux puis au développement logiciel, j'interviens à la jonction des deux : concevoir des applications, les mettre en production et en assurer l'exploitation dans la durée. J'accompagne startups, PME et équipes techniques avec la même exigence de fiabilité, quelle que soit la taille du projet.";
+
 export type CareerEntry = {
 	period: string;
 	title: string;
@@ -8,35 +12,36 @@ export type CareerEntry = {
 
 export const career: CareerEntry[] = [
 	{
-		period: "Depuis janv. 2026",
-		title: "Développeur Fullstack et DevOps",
-		company: "CDI · entreprise anonymisée",
-		desc: "Exploitation d'un cluster Kubernetes haute disponibilité sur serveurs dédiés (Talos, Hetzner, ArgoCD), qui héberge l'ensemble des projets de l'entreprise.",
+		period: "Depuis 2021",
+		title: "Freelance Fullstack et DevOps",
+		company: "Indépendant · startups et PME",
+		desc: "Conception, mise en production et exploitation d'applications web. Activité menée en parallèle de mon poste salarié : disponible pour de nouvelles missions.",
 		highlight: true,
 	},
 	{
-		period: "2021 → 2025",
-		title: "Freelance Fullstack et DevOps",
-		company: "Startups et PME",
-		desc: "Mise en production et exploitation d'applications avec Docker, Kubernetes et Terraform.",
+		period: "Depuis janv. 2026",
+		title: "Développeur Fullstack et DevOps",
+		company: "CDI · Privio",
+		desc: "Développement applicatif et exploitation de la plateforme qui héberge l'ensemble des projets de l'entreprise, conçue pour la haute disponibilité.",
+		highlight: true,
 	},
 	{
 		period: "2022 → 2025",
 		title: "Consultant Salesforce",
-		company: "Capgemini",
-		desc: "Conception et évolution d'applications métiers.",
+		company: "CDI · Capgemini",
+		desc: "Conception et évolution d'applications métiers sur Salesforce.",
 	},
 	{
 		period: "2020 → 2021",
 		title: "Administrateur réseau et systèmes",
 		company: "Alternance · Angers",
-		desc: "Linux, Proxmox, VMware, Active Directory et Cisco : socle de compétences en infrastructure.",
+		desc: "Administration Linux, virtualisation (Proxmox, VMware), Active Directory et réseau Cisco.",
 	},
 	{
 		period: "2019 → 2024",
 		title: "Epitech Nantes",
 		company: "RNCP 35075 · Expert en Technologies de l'Information",
-		desc: "Formation par projets, en équipe, axée sur l'autonomie et la rigueur.",
+		desc: "Formation d'ingénieur par projets, en équipe, fondée sur l'autonomie et la rigueur.",
 	},
 ];
 
@@ -66,7 +71,25 @@ export const testimonials: Testimonial[] = [
 export const credentials = [
 	"5+ ans en production",
 	"RNCP 35075 · Epitech",
-	"Kubernetes en exploitation",
+	"Développement et infrastructure",
 	"Hébergement UE · RGPD",
 	"100 % à distance, France entière",
 ] as const;
+
+export type Principle = { title: string; text: string };
+
+/** Principes de conduite, repris sur l'accueil et la page À propos. */
+export const principles: Principle[] = [
+	{
+		title: "Simplicité",
+		text: "Je privilégie la solution la plus simple qui réponde au besoin : un système que votre équipe comprend est un système qu'elle peut maintenir.",
+	},
+	{
+		title: "Transparence",
+		text: "Chaque élément livré est documenté. Vous gardez la maîtrise de votre infrastructure et restez libre de changer de prestataire.",
+	},
+	{
+		title: "Vérification",
+		text: "Chaque changement peut être annulé, chaque sauvegarde est validée par une restauration réelle, chaque exposition réseau est contrôlée depuis l'extérieur.",
+	},
+];
